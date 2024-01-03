@@ -8,4 +8,5 @@ qemu-system-x86_64 -m 512M -kernel bzImage -initrd initramfs.cpio -append "conso
 https://repo.or.cz/syslinux.git
 https://wiki.syslinux.org/wiki/index.php?title=Development
 https://pub.nethence.com/booting/syslinux-install
+https://wiki.archlinux.org/title/syslinux
 https://wiki.gentoo.org/wiki/Syslinux

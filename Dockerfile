@@ -38,6 +38,9 @@ RUN \
 	rm syslinux-6.04-pre1.tar.gz && \
 	cp ./syslinux-6.04-pre1/bios/core/isolinux.bin /opt/mydistro/myiso/isolinux/ && \
 	cp ./syslinux-6.04-pre1/bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux/ && \
+	cp ./syslinux-6.04-pre1/bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux/ && \
+	cp ./syslinux-6.04-pre1/bios/com32/libutil/libutil.c32 /opt/mydistro/myiso/isolinux/ && \
+	cp ./syslinux-6.04-pre1/bios/com32/menu/vesamenu.c32 /opt/mydistro/myiso/isolinux/ && \
 	exit 0
 
 # compile memtest86+
@@ -48,7 +51,7 @@ RUN \
 	rm mt86plus_6.20.src.zip && \
 	cd mt86plus/build64 && \
 	make -j$(nproc) && \
-	cp memtest.bin /opt/mydistro/myiso && \
+	cp memtest.bin /opt/mydistro/myiso/memtest && \
 	exit 0
 
 ADD init.sh /opt/mydistro/initramfs/init
