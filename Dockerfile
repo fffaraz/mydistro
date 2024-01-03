@@ -14,6 +14,9 @@ RUN \
 	cd /opt/mydistro && \
 	git clone --depth 1 https://github.com/torvalds/linux.git && \
 	git clone --depth 1 https://git.busybox.net/busybox && \
+	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
+	wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.gz && \
+	wget https://www.memtest.org/download/v6.20/mt86plus_6.20.src.zip && \
 	exit 0
 
 # compile kernel
@@ -25,17 +28,16 @@ ADD busybox.config /opt/mydistro/busybox/.config
 RUN cd /opt/mydistro/busybox && make -j$(nproc) && make CONFIG_PREFIX=/opt/mydistro/initramfs install
 
 # compile syslinux
-# git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git
-# cd /opt/mydistro/syslinux
-# for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f
-# make -j$(nproc) bios
+#RUN \
+#	cd /opt/mydistro/syslinux && \
+#	for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f && \
+#	make -j$(nproc) bios && \
+#	exit 0
 
 # install syslinux
 RUN \
 	cd /opt/mydistro && \
-	wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.gz && \
 	tar xzf syslinux-6.04-pre1.tar.gz && \
-	rm syslinux-6.04-pre1.tar.gz && \
 	cp ./syslinux-6.04-pre1/bios/core/isolinux.bin /opt/mydistro/myiso/isolinux/ && \
 	cp ./syslinux-6.04-pre1/bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux/ && \
 	cp ./syslinux-6.04-pre1/bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux/ && \
@@ -46,12 +48,10 @@ RUN \
 # compile memtest86+
 RUN \
 	cd /opt/mydistro && \
-	wget https://www.memtest.org/download/v6.20/mt86plus_6.20.src.zip && \
 	unzip mt86plus_6.20.src.zip -d mt86plus && \
-	rm mt86plus_6.20.src.zip && \
-	cd mt86plus/build64 && \
+	cd ./mt86plus/build64 && \
 	make -j$(nproc) && \
-	cp memtest.bin /opt/mydistro/myiso/memtest && \
+	cp ./memtest.bin /opt/mydistro/myiso/memtest && \
 	exit 0
 
 ADD init.sh /opt/mydistro/initramfs/init
