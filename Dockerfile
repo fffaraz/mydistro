@@ -4,7 +4,7 @@ FROM debian:sid-slim
 RUN \
 	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get update && \
-	apt-get install -yq nano build-essential bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools genisoimage wget curl nasm python3 python-is-python3 unzip && \
+	apt-get install -yq nano build-essential bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools genisoimage wget curl nasm python3 python-is-python3 unzip uuid-dev upx-ucl && \
 	exit 0
 
 # download source code
@@ -24,10 +24,11 @@ RUN cd /opt/mydistro/linux && make -j$(nproc) && cp ./arch/x86/boot/bzImage /opt
 ADD busybox.config /opt/mydistro/busybox/.config
 RUN cd /opt/mydistro/busybox && make -j$(nproc) && make CONFIG_PREFIX=/opt/mydistro/initramfs install
 
-# compile syslinux (https://repo.or.cz/syslinux.git)
+# compile syslinux
 # git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git
+# cd /opt/mydistro/syslinux
 # for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f
-# cd /opt/mydistro/syslinux && make -j$(nproc) bios
+# make -j$(nproc) bios
 
 # install syslinux
 RUN \
@@ -61,3 +62,5 @@ RUN \
 	exit 0
 
 ADD build.sh /opt/mydistro
+
+WORKDIR /opt/mydistro
