@@ -31,7 +31,7 @@ RUN cd /opt/mydistro/busybox && make -j$(nproc) && make CONFIG_PREFIX=/opt/mydis
 #RUN \
 #	cd /opt/mydistro/syslinux && \
 #	for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f && \
-#	make -j$(nproc) bios && \
+#	DATE=not-too-long make -j$(nproc) bios && \
 #	exit 0
 
 # install syslinux
