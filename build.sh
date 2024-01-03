@@ -10,7 +10,7 @@ mount boot.img mnt
 
 cp ./myiso/bzImage mnt
 cp ./myiso/initramfs mnt
-cp ./myiso/memtest.bin mnt
+cp ./myiso/memtest mnt
 cp ./myiso/isolinux/isolinux.cfg mnt/syslinux.cfg
 
 umount mnt
