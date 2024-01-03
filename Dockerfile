@@ -37,7 +37,6 @@ ADD syslinux.cfg /opt/mydistro/myiso/isolinux/isolinux.cfg
 
 RUN \
 	cd /opt/mydistro/initramfs && \
-	rm linuxrc && \
 	find . | cpio -H newc -o > /opt/mydistro/myiso/initramfs && \
 	cd /opt/mydistro && \
 	mkisofs -J -R -o output.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table myiso && \
