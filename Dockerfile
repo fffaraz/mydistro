@@ -15,13 +15,13 @@ RUN \
 	git clone --depth 1 https://github.com/torvalds/linux.git && \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
+	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
 	wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.gz && \
-	wget https://www.memtest.org/download/v6.20/mt86plus_6.20.src.zip && \
 	exit 0
 
 # compile kernel
 ADD linux.config /opt/mydistro/linux/.config
-RUN cd /opt/mydistro/linux && make -j$(nproc) && cp ./arch/x86/boot/bzImage /opt/mydistro/myiso/
+RUN cd /opt/mydistro/linux && make -j$(nproc) && cp ./arch/x86/boot/bzImage /opt/mydistro/myiso
 
 # compile busybox
 ADD busybox.config /opt/mydistro/busybox/.config
@@ -38,18 +38,16 @@ RUN cd /opt/mydistro/busybox && make -j$(nproc) && make CONFIG_PREFIX=/opt/mydis
 RUN \
 	cd /opt/mydistro && \
 	tar xzf syslinux-6.04-pre1.tar.gz && \
-	cp ./syslinux-6.04-pre1/bios/core/isolinux.bin /opt/mydistro/myiso/isolinux/ && \
-	cp ./syslinux-6.04-pre1/bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux/ && \
-	cp ./syslinux-6.04-pre1/bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux/ && \
-	cp ./syslinux-6.04-pre1/bios/com32/libutil/libutil.c32 /opt/mydistro/myiso/isolinux/ && \
-	cp ./syslinux-6.04-pre1/bios/com32/menu/vesamenu.c32 /opt/mydistro/myiso/isolinux/ && \
+	cp ./syslinux-6.04-pre1/bios/core/isolinux.bin /opt/mydistro/myiso/isolinux && \
+	cp ./syslinux-6.04-pre1/bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux && \
+	cp ./syslinux-6.04-pre1/bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux && \
+	cp ./syslinux-6.04-pre1/bios/com32/libutil/libutil.c32 /opt/mydistro/myiso/isolinux && \
+	cp ./syslinux-6.04-pre1/bios/com32/menu/vesamenu.c32 /opt/mydistro/myiso/isolinux && \
 	exit 0
 
 # compile memtest86+
 RUN \
-	cd /opt/mydistro && \
-	unzip mt86plus_6.20.src.zip -d mt86plus && \
-	cd ./mt86plus/build64 && \
+	cd /opt/mydistro/memtest86plus/build64 && \
 	make -j$(nproc) && \
 	cp ./memtest.bin /opt/mydistro/myiso/memtest && \
 	exit 0
@@ -61,7 +59,7 @@ RUN \
 	cd /opt/mydistro/initramfs && \
 	find . | cpio -H newc -o > /opt/mydistro/myiso/initramfs && \
 	cd /opt/mydistro && \
-	mkisofs -J -R -o output.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table myiso && \
+	mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table myiso && \
 	exit 0
 
 ADD build.sh /opt/mydistro
