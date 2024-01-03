@@ -1,12 +1,13 @@
 FROM debian:sid-slim
 
+# install dependencies
 RUN \
 	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get update && \
-	apt-get install -yq nano build-essential bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools genisoimage wget curl && \
+	apt-get install -yq nano build-essential bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools genisoimage wget curl nasm python3 python-is-python3 unzip && \
 	exit 0
 
-# curl -fsSL -o linux.zip https://codeload.github.com/torvalds/linux/zip/refs/heads/master && \
+# download source code
 RUN \
 	mkdir -p /opt/mydistro/initramfs && \
 	mkdir -p /opt/mydistro/myiso/isolinux && \
@@ -15,22 +16,39 @@ RUN \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	exit 0
 
+# compile kernel
+ADD linux.config /opt/mydistro/linux/.config
+RUN cd /opt/mydistro/linux && make -j$(nproc) && cp ./arch/x86/boot/bzImage /opt/mydistro/myiso/
+
+# compile busybox
+ADD busybox.config /opt/mydistro/busybox/.config
+RUN cd /opt/mydistro/busybox && make -j$(nproc) && make CONFIG_PREFIX=/opt/mydistro/initramfs install
+
+# compile syslinux (https://repo.or.cz/syslinux.git)
+# git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git
+# for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f
+# cd /opt/mydistro/syslinux && make -j$(nproc) bios
+
+# install syslinux
 RUN \
 	cd /opt/mydistro && \
-	curl -fsSL -o syslinux.tar.gz https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.gz && \
-	tar xzf syslinux.tar.gz && \
-	rm syslinux.tar.gz && \
+	wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.gz && \
+	tar xzf syslinux-6.04-pre1.tar.gz && \
+	rm syslinux-6.04-pre1.tar.gz && \
 	cp ./syslinux-6.04-pre1/bios/core/isolinux.bin /opt/mydistro/myiso/isolinux/ && \
 	cp ./syslinux-6.04-pre1/bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux/ && \
 	exit 0
 
-# make menuconfig
-ADD linux.config /opt/mydistro/linux/.config
-RUN cd /opt/mydistro/linux && make -j$(nproc) && cp ./arch/x86/boot/bzImage /opt/mydistro/myiso/
-
-# make menuconfig
-ADD busybox.config /opt/mydistro/busybox/.config
-RUN cd /opt/mydistro/busybox && make -j$(nproc) && make CONFIG_PREFIX=/opt/mydistro/initramfs install
+# compile memtest86+
+RUN \
+	cd /opt/mydistro && \
+	wget https://www.memtest.org/download/v6.20/mt86plus_6.20.src.zip && \
+	unzip mt86plus_6.20.src.zip -d mt86plus && \
+	rm mt86plus_6.20.src.zip && \
+	cd mt86plus/build64 && \
+	make -j$(nproc) && \
+	cp memtest.bin /opt/mydistro/myiso && \
+	exit 0
 
 ADD init.sh /opt/mydistro/initramfs/init
 ADD syslinux.cfg /opt/mydistro/myiso/isolinux/isolinux.cfg
