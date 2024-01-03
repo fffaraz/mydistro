@@ -16,7 +16,6 @@ RUN \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
-	wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.gz && \
 	exit 0
 
 # compile kernel
@@ -28,21 +27,15 @@ ADD busybox.config /opt/mydistro/busybox/.config
 RUN cd /opt/mydistro/busybox && make -j$(nproc) && make CONFIG_PREFIX=/opt/mydistro/initramfs install
 
 # compile syslinux
-#RUN \
-#	cd /opt/mydistro/syslinux && \
-#	for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f && \
-#	DATE=not-too-long make -j$(nproc) bios && \
-#	exit 0
-
-# install syslinux
 RUN \
-	cd /opt/mydistro && \
-	tar xzf syslinux-6.04-pre1.tar.gz && \
-	cp ./syslinux-6.04-pre1/bios/core/isolinux.bin /opt/mydistro/myiso/isolinux && \
-	cp ./syslinux-6.04-pre1/bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux && \
-	cp ./syslinux-6.04-pre1/bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux && \
-	cp ./syslinux-6.04-pre1/bios/com32/libutil/libutil.c32 /opt/mydistro/myiso/isolinux && \
-	cp ./syslinux-6.04-pre1/bios/com32/menu/vesamenu.c32 /opt/mydistro/myiso/isolinux && \
+	cd /opt/mydistro/syslinux && \
+	for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f && \
+	DATE=not-too-long make -j$(nproc) bios && \
+	cp ./bios/core/isolinux.bin /opt/mydistro/myiso/isolinux && \
+	cp ./bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux && \
+	cp ./bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux && \
+	cp ./bios/com32/libutil/libutil.c32 /opt/mydistro/myiso/isolinux && \
+	cp ./bios/com32/menu/vesamenu.c32 /opt/mydistro/myiso/isolinux && \
 	exit 0
 
 # compile memtest86+

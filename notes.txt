@@ -13,3 +13,8 @@ https://wiki.gentoo.org/wiki/Syslinux
 https://www.memtest.org/download/v6.20/mt86plus_6.20.src.zip
 unzip mt86plus_6.20.src.zip -d memtest86plus
 ---
+wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/syslinux-6.04-pre1.tar.gz
+cd /opt/mydistro
+tar xzf syslinux-6.04-pre1.tar.gz
+cd ./syslinux-6.04-pre1
+---
