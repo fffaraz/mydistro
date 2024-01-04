@@ -16,6 +16,7 @@ RUN \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
+	git clone --depth 1 https://github.com/mkj/dropbear.git && \
 	exit 0
 
 # compile kernel
@@ -47,6 +48,14 @@ RUN \
 	cd /opt/mydistro/memtest86plus/build64 && \
 	make -j$(nproc) && \
 	cp ./memtest.bin /opt/mydistro/myiso/memtest && \
+	exit 0
+
+# compile dropbear
+RUN \
+	cd /opt/mydistro/dropbear && \
+	./configure --enable-static && \
+	make -j$(nproc) && \
+	make install DESTDIR=/opt/mydistro/initramfs && \
 	exit 0
 
 ADD init.sh /opt/mydistro/initramfs/init

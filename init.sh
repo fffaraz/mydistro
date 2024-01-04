@@ -11,5 +11,6 @@ hostname myhostname
 
 export HOME=/root
 export PS1='\w\$ '
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin
 
 exec /sbin/init
