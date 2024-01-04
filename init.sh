@@ -1,9 +1,5 @@
 #!/bin/sh
 
-mkdir /proc
-mkdir /sys
-mkdir /tmp
-
 mount -t proc proc /proc
 mount -t sysfs sysfs /sys
 mount -t tmpfs -o mode=1777,strictatime tmpfs /tmp
@@ -16,4 +12,4 @@ hostname myhostname
 export HOME=/root
 export PS1='\w\$ '
 
-exec /bin/sh
+exec /sbin/init

@@ -31,11 +31,15 @@ RUN \
 	cd /opt/mydistro/syslinux && \
 	for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f && \
 	DATE=not-too-long make -j$(nproc) bios && \
+	exit 0
+RUN \
+	cd /opt/mydistro/syslinux && \
 	cp ./bios/core/isolinux.bin /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/libutil/libutil.c32 /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/menu/vesamenu.c32 /opt/mydistro/myiso/isolinux && \
+	cp ./bios/com32/menu/menu.c32 /opt/mydistro/myiso/isolinux && \
 	exit 0
 
 # compile memtest86+
@@ -50,6 +54,11 @@ ADD syslinux.cfg /opt/mydistro/myiso/isolinux/isolinux.cfg
 
 RUN \
 	cd /opt/mydistro/initramfs && \
+	mkdir -p etc/init.d proc sys tmp && \
+	cp ../busybox/examples/inittab ./etc/ && \
+	touch ./etc/init.d/rcS && \
+	chmod +x ./etc/init.d/rcS && \
+	touch ./etc/fstab && \
 	find . | cpio -H newc -o > /opt/mydistro/myiso/initramfs && \
 	cd /opt/mydistro && \
 	mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table myiso && \
