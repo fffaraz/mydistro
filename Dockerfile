@@ -7,7 +7,7 @@ RUN \
 	apt-get install -yq nano build-essential bzip2 git vim make gcc \
 		libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux \
 		dosfstools genisoimage wget curl nasm python3 python-is-python3 \
-		unzip uuid-dev upx-ucl pkg-config
+		unzip uuid-dev upx-ucl pkg-config autoconf libtool
 
 # download source code
 RUN \
@@ -18,7 +18,8 @@ RUN \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
-	git clone --depth 1 https://github.com/mkj/dropbear.git
+	git clone --depth 1 https://github.com/mkj/dropbear.git && \
+	git clone --depth 1 https://github.com/curl/curl.git
 
 # compile kernel
 # ADD linux.config /opt/mydistro/linux/.config
@@ -61,6 +62,14 @@ RUN \
 RUN \
 	cd /opt/mydistro/dropbear && \
 	./configure --enable-static && \
+	make -j$(nproc) && \
+	make install DESTDIR=/opt/mydistro/initramfs
+
+# compile curl
+RUN \
+	cd /opt/mydistro/curl && \ 
+	autoreconf -vif && \
+	./configure --without-ssl && \
 	make -j$(nproc) && \
 	make install DESTDIR=/opt/mydistro/initramfs
 
