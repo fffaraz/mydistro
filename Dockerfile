@@ -33,7 +33,7 @@ RUN \
 RUN \
 	cd /opt/mydistro/busybox && \
 	make defconfig && \
-	echo "CONFIG_STATIC=y" >> .config && \
+	sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config && \
 	make -j$(nproc) && \
 	make CONFIG_PREFIX=/opt/mydistro/initramfs install
 
