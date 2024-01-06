@@ -69,7 +69,7 @@ ADD syslinux.cfg /opt/mydistro/myiso/isolinux/isolinux.cfg
 
 RUN \
 	cd /opt/mydistro/initramfs && \
-	mkdir -p etc/init.d proc sys tmp && \
+	mkdir -p etc/init.d proc sys tmp home mnt usr/lib var && \
 	cp ../busybox/examples/inittab ./etc/ && \
 	touch ./etc/init.d/rcS && \
 	chmod +x ./etc/init.d/rcS && \
