@@ -69,7 +69,7 @@ RUN \
 RUN \
 	cd /opt/mydistro/curl && \ 
 	autoreconf -vif && \
-	./configure --disable-shared --enable-static --without-ssl && \
+	./configure --disable-shared --enable-static --without-ssl --without-zstd --without-zlib && \
 	make -j$(nproc) && \
 	make install DESTDIR=/opt/mydistro/initramfs
 
