@@ -4,7 +4,7 @@ FROM debian:sid-slim
 RUN \
 	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get update && \
-	apt-get install -yq nano build-essential bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools genisoimage wget curl nasm python3 python-is-python3 unzip uuid-dev upx-ucl && \
+	apt-get install -yq nano build-essential bzip2 git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools genisoimage wget curl nasm python3 python-is-python3 unzip uuid-dev upx-ucl pkg-config && \
 	exit 0
 
 # download source code
@@ -20,8 +20,8 @@ RUN \
 	exit 0
 
 # compile kernel
-ADD linux.config /opt/mydistro/linux/.config
-RUN cd /opt/mydistro/linux && make -j$(nproc) && cp ./arch/x86/boot/bzImage /opt/mydistro/myiso
+# ADD linux.config /opt/mydistro/linux/.config
+RUN cd /opt/mydistro/linux && make defconfig && make -j$(nproc) && cp ./arch/x86/boot/bzImage /opt/mydistro/myiso
 
 # compile busybox
 ADD busybox.config /opt/mydistro/busybox/.config
