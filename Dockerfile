@@ -90,6 +90,6 @@ RUN \
 	cd /opt/mydistro && \
 	mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table myiso
 
-ADD build.sh /opt/mydistro
+ADD mk-boot-img.sh /opt/mydistro
 
 WORKDIR /opt/mydistro

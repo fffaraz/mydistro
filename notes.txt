@@ -1,6 +1,3 @@
-./build.sh
-cp boot.img /output
----
 qemu-system-x86_64 ./output/boot.img
 qemu-system-x86_64 -m 512M -kernel bzImage -initrd initramfs.cpio -append "console=ttyS0" -nographic
 ---
