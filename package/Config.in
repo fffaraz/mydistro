@@ -1,1 +1,1 @@
-source "$BR2_EXTERNAL_MYLINUX_PATH/package/pkg-1/Config.in"
+source "$BR2_EXTERNAL_MYDISTRO_PATH/package/pkg-1/Config.in"
