@@ -1,6 +1,21 @@
-TARGETS = mydistro
+export BR2_EXTERNAL := $(CURDIR)
 
-MK_DIR = $(realpath $(dir $(firstword $(MAKEFILE_LIST)))))
-BR_DIR = $(realpath $(MK_DIR)/../buildroot)
+ARCH   ?= $(shell uname -m)
+O      ?= $(CURDIR)/output
 
-include $(BR_DIR)/board/mydistro/build-rules.mk
+config := $(O)/.config
+bmake   = $(MAKE) -C buildroot O=$(O) $1
+
+.PHONY: all
+all: $(config) buildroot/Makefile
+	@+$(call bmake,$@)
+
+$(config):
+	@+$(call bmake,list-defconfigs)
+	@echo "ERROR: No configuration selected."
+	@echo "Please choose a configuration from the list above by running"
+	@echo "'make <board>_defconfig' before building an image."
+	@exit 1
+
+%: | buildroot/Makefile
+	@+$(call bmake,$@)

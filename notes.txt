@@ -21,3 +21,17 @@ make qemu_x86_64_defconfig
 firefox --kiosk --private-window [target URL]
 ---
 https://github.com/afbjorklund/minimal-buildroot
+https://github.com/team-eureka/eureka_buildroot
+https://github.com/troglobit/myLinux
+---
+linux
+grub
+systemd
+coreutils
+openssh
+curl
+git
+bash
+wget
+wifi
+---
