@@ -15,3 +15,11 @@ cd /opt/mydistro
 tar xzf syslinux-6.04-pre1.tar.gz
 cd ./syslinux-6.04-pre1
 ---
+https://github.com/buildroot/buildroot
+https://gitlab.com/buildroot.org/buildroot
+https://buildroot.org/downloads/manual/customize-outside-br.txt
+make qemu_x86_64_defconfig
+---
+firefox --kiosk --private-window [target URL]
+---
+https://github.com/afbjorklund/minimal-buildroot

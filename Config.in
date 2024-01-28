@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_mydistro_PATH/package/package-1/Config.in"

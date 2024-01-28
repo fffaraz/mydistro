@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PKG_1
+    bool "pkg-1"
+    depends on BR2_PACKAGE_LIBA
+    select BR2_PACKAGE_LIBB
+    help
+        This is an example to add a package to the br2-external tree.
