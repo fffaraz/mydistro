@@ -14,7 +14,7 @@ RUN \
 	mkdir -p /opt/mydistro/initramfs && \
 	mkdir -p /opt/mydistro/myiso/isolinux && \
 	cd /opt/mydistro && \
-	git clone --depth 1 https://github.com/torvalds/linux.git && \
+	git clone --depth 1 -b v6.7 https://github.com/torvalds/linux.git && \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
