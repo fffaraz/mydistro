@@ -6,7 +6,7 @@ docker build -t mydistro .
 docker run --privileged --rm -it -v $(pwd)/output:/output mydistro
 cp mydistro.iso /output
 
-qemu-system-x86_64 -cdrom ./output/mydistro.iso
+qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 256M -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
 ```
 
 ```
