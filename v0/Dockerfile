@@ -19,7 +19,7 @@ RUN \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
 	git clone --depth 1 https://github.com/mkj/dropbear.git && \
-	git clone --depth 1 https://github.com/curl/curl.git
+	git clone --depth 1 -b curl-8_5_0 https://github.com/curl/curl.git
 
 # compile kernel
 # ADD linux.config /opt/mydistro/linux/.config
