@@ -23,6 +23,9 @@ firefox --kiosk --private-window [target URL]
 https://github.com/afbjorklund/minimal-buildroot
 https://github.com/team-eureka/eureka_buildroot
 https://github.com/troglobit/myLinux
+https://github.com/batocera-linux/batocera.linux
+https://github.com/retroroot-linux/retroroot
+https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf
 ---
 linux
 grub
