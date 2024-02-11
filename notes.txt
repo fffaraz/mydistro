@@ -27,6 +27,9 @@ https://github.com/batocera-linux/batocera.linux
 https://github.com/retroroot-linux/retroroot
 https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf
 ---
+https://t2sde.org/
+https://t2sde.org/handbook/ps+pdf/t2-handbook.pdf
+---
 linux
 grub
 systemd

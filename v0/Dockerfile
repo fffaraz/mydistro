@@ -18,8 +18,9 @@ RUN \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
+	git clone --depth 1 https://github.com/ghaerr/microwindows.git && \
 	git clone --depth 1 https://github.com/mkj/dropbear.git && \
-	git clone --depth 1 -b curl-8_5_0 https://github.com/curl/curl.git
+	git clone --depth 1 https://github.com/curl/curl.git
 
 # compile kernel
 # ADD linux.config /opt/mydistro/linux/.config
@@ -58,6 +59,15 @@ RUN \
 	make -j$(nproc) && \
 	cp ./memtest.bin /opt/mydistro/myiso/memtest
 
+# compile microwindows
+RUN \
+	cd /opt/microwindows/src && \
+	cp Configs/config.linux-fb config && \
+	sed -i 's/NX11                     = N/NX11 = Y/' config && \
+	sed -i 's/^X11_INCLUDE=\$(X11HDRLOCATION)/#&/; s/^#X11_INCLUDE=.\/X11-local/X11_INCLUDE=.\/X11-local/' nx11/Makefile && \
+	make -j$(nproc) && \
+	make install DESTDIR=/opt/mydistro/initramfs
+
 # compile dropbear
 RUN \
 	cd /opt/mydistro/dropbear && \
@@ -69,7 +79,7 @@ RUN \
 RUN \
 	cd /opt/mydistro/curl && \ 
 	autoreconf -vif && \
-	./configure --disable-shared --enable-static --without-ssl --without-zstd --without-zlib && \
+	./configure --disable-shared --enable-static --without-libpsl --without-ssl --without-zstd --without-zlib && \
 	make -j$(nproc) && \
 	make install DESTDIR=/opt/mydistro/initramfs
 
