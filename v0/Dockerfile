@@ -4,10 +4,11 @@ FROM debian:sid-slim
 RUN \
 	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get update && \
-	apt-get install -yq nano build-essential bzip2 git vim make gcc \
-		libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux \
-		dosfstools genisoimage wget curl nasm python3 python-is-python3 \
-		unzip uuid-dev upx-ucl pkg-config autoconf libtool
+	apt-get install -yq autoconf bc bison build-essential bzip2 cpio curl \
+	dosfstools extlinux flex g++ gcc genisoimage git libelf-dev \
+	libfreetype-dev libncurses-dev libpng-dev libssl-dev libtool \
+	make nano nasm pkg-config python-is-python3 python3 syslinux \
+	unzip upx-ucl uuid-dev vim wget xz-utils
 
 # download source code
 RUN \
