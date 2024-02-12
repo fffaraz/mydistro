@@ -10,7 +10,7 @@ RUN \
 RUN \
 	mkdir -p /opt/mydistro/rootfs && \
 	cd /opt/mydistro && \
-	debootstrap --arch=amd64 --include linux-image-amd64,live-boot sid rootfs http://deb.debian.org/debian/
+	debootstrap --arch=amd64 --include linux-image-amd64,live-boot,curl,git,ncdu,plocate,wget sid rootfs http://deb.debian.org/debian/
 
 # chroot
 RUN \
