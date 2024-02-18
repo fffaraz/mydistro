@@ -16,10 +16,7 @@ RUN \
 
 # chroot
 RUN \
-	echo "myhostname" > /opt/mydistro/rootfs/etc/hostname && \
 	echo "deb http://deb.debian.org/debian/ sid main contrib non-free non-free-firmware" > /opt/mydistro/rootfs/etc/apt/sources.list && \
-	mkdir -p /opt/mydistro/rootfs/etc/lightdm/lightdm.conf.d && \
-	echo "[SeatDefaults]\nautologin-user=root" > /opt/mydistro/rootfs/etc/lightdm/lightdm.conf.d/12-autologin.conf && \
 	chroot /opt/mydistro/rootfs apt update && \
 	chroot /opt/mydistro/rootfs apt install -yq \
 		xorg xinit xfce4 xfce4-goodies lightdm xserver-xorg-video-vesa dbus-x11 pulseaudio \
@@ -28,6 +25,14 @@ RUN \
 	echo 'root:root' | chroot /opt/mydistro/rootfs chpasswd && \
 	chroot /opt/mydistro/rootfs apt-get clean && \
 	rm -rf /opt/mydistro/rootfs/var/lib/apt/lists/* /opt/mydistro/rootfs/var/log/* /opt/mydistro/rootfs/tmp/*
+
+# files
+RUN \
+	echo "myhostname" > /opt/mydistro/rootfs/etc/hostname && \
+	echo "systemctl --user restart pulseaudio" >> /opt/mydistro/rootfs/root/.profile && \
+	"ConditionUser=!root"
+	mkdir -p /opt/mydistro/rootfs/etc/lightdm/lightdm.conf.d && \
+	echo "[SeatDefaults]\nautologin-user=root" > /opt/mydistro/rootfs/etc/lightdm/lightdm.conf.d/12-autologin.conf
 
 # squashfs
 RUN \
