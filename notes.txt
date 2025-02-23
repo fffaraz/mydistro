@@ -89,3 +89,7 @@ ffmpeg
 BR2_ROOTFS_OVERLAY="board/mydistro/overlay"
 BR2_ROOTFS_POST_BUILD_SCRIPT="board/mydistro/post-build.sh"
 ---
+https://github.com/bootlin/simplest-yocto-setup
+https://vpetersson.com/2025/02/21/yocto-rockpi-and-sboms.html
+---
+
