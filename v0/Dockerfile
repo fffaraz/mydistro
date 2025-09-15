@@ -60,7 +60,7 @@ RUN \
 RUN \
 	cd /opt/mydistro/memtest86plus/build/x86_64 && \
 	make -j$(nproc) && \
-	cp ./memtest_shared.bin /opt/mydistro/myiso/memtest
+	cp ./mt86plus /opt/mydistro/myiso/memtest
 
 # compile microwindows
 RUN \
