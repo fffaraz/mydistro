@@ -15,7 +15,7 @@ RUN \
 	mkdir -p /opt/mydistro/initramfs && \
 	mkdir -p /opt/mydistro/myiso/isolinux && \
 	cd /opt/mydistro && \
-	git clone --depth 1 -b v6.7 https://github.com/torvalds/linux.git && \
+	git clone --depth 1 -b v6.16 https://github.com/torvalds/linux.git && \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
@@ -37,6 +37,7 @@ RUN \
 	cd /opt/mydistro/busybox && \
 	make defconfig && \
 	sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config && \
+	sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config && \
 	make -j$(nproc) && \
 	make CONFIG_PREFIX=/opt/mydistro/initramfs install
 
@@ -44,6 +45,7 @@ RUN \
 RUN \
 	cd /opt/mydistro/syslinux && \
 	for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f && \
+	sed -i '/#include <stdbool.h>/a #include <stdio.h>' ./com32/lib/syslinux/debug.c && \
 	DATE=not-too-long make -j$(nproc) bios
 RUN \
 	cd /opt/mydistro/syslinux && \
@@ -56,9 +58,9 @@ RUN \
 
 # compile memtest86+
 RUN \
-	cd /opt/mydistro/memtest86plus/build64 && \
+	cd /opt/mydistro/memtest86plus/build/x86_64 && \
 	make -j$(nproc) && \
-	cp ./memtest.bin /opt/mydistro/myiso/memtest
+	cp ./memtest_shared.bin /opt/mydistro/myiso/memtest
 
 # compile microwindows
 RUN \
