@@ -21,7 +21,9 @@ RUN \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
 	git clone --depth 1 https://github.com/ghaerr/microwindows.git && \
 	git clone --depth 1 https://github.com/mkj/dropbear.git && \
-	git clone --depth 1 https://github.com/curl/curl.git
+	git clone --depth 1 git://sourceware.org/git/glibc.git && \
+	git clone --depth 1 https://github.com/curl/curl.git && \
+	exit 0
 
 # compile kernel
 # ADD linux.config /opt/mydistro/linux/.config
@@ -78,11 +80,20 @@ RUN \
 	make -j$(nproc) && \
 	make install DESTDIR=/opt/mydistro/initramfs
 
+# compile glibc
+# RUN \
+#	cd /opt/mydistro/glibc && \
+#	mkdir build && \
+#	cd build && \
+#	../configure && \
+#	make -j$(nproc) && \
+#	make install DESTDIR=/opt/mydistro/initramfs
+
 # compile curl
 RUN \
 	cd /opt/mydistro/curl && \ 
 	autoreconf -vif && \
-	./configure --disable-shared --enable-static --without-libpsl --without-ssl --without-zstd --without-zlib && \
+	./configure CFLAGS='-static' LDFLAGS='-static -static-libgcc' --disable-shared --enable-static --without-brotli --without-libpsl --without-ssl --without-zstd --without-zlib && \
 	make -j$(nproc) && \
 	make install DESTDIR=/opt/mydistro/initramfs
 
