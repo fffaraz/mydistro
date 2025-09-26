@@ -8,35 +8,36 @@ RUN \
 	dosfstools extlinux flex g++ gcc genisoimage git libelf-dev \
 	libfreetype-dev libncurses-dev libpng-dev libssl-dev libtool \
 	make nano nasm pkg-config python-is-python3 python3 syslinux \
-	unzip upx-ucl uuid-dev vim wget xz-utils
+	unzip upx-ucl uuid-dev vim wget xz-utils ncdu tree gawk
 
-# download source code
+# download source repositories
 RUN \
 	mkdir -p /opt/mydistro/initramfs && \
 	mkdir -p /opt/mydistro/myiso/isolinux && \
-	cd /opt/mydistro && \
+	mkdir -p /opt/mydistro/src && \
+	cd /opt/mydistro/src && \
 	git clone --depth 1 -b v6.16 https://github.com/torvalds/linux.git && \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
 	git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git && \
 	git clone --depth 1 https://github.com/ghaerr/microwindows.git && \
 	git clone --depth 1 https://github.com/mkj/dropbear.git && \
-	git clone --depth 1 git://sourceware.org/git/glibc.git && \
+	git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git && \
 	git clone --depth 1 https://github.com/curl/curl.git && \
 	exit 0
 
 # compile kernel
-# ADD linux.config /opt/mydistro/linux/.config
+# ADD linux.config /opt/mydistro/src/linux/.config
 RUN \
-	cd /opt/mydistro/linux && \
+	cd /opt/mydistro/src/linux && \
 	make defconfig && \
 	make -j$(nproc) && \
 	cp ./arch/x86/boot/bzImage /opt/mydistro/myiso
 
 # compile busybox
-# ADD busybox.config /opt/mydistro/busybox/.config
+# ADD busybox.config /opt/mydistro/src/busybox/.config
 RUN \
-	cd /opt/mydistro/busybox && \
+	cd /opt/mydistro/src/busybox && \
 	make defconfig && \
 	sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config && \
 	sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config && \
@@ -44,13 +45,14 @@ RUN \
 	make CONFIG_PREFIX=/opt/mydistro/initramfs install
 
 # compile syslinux
+# git://repo.or.cz/syslinux.git
 RUN \
-	cd /opt/mydistro/syslinux && \
+	cd /opt/mydistro/src/syslinux && \
 	for f in debian/patches/*.patch; do patch -p1 < $f; done; unset f && \
 	sed -i '/#include <stdbool.h>/a #include <stdio.h>' ./com32/lib/syslinux/debug.c && \
 	DATE=not-too-long make -j$(nproc) bios
 RUN \
-	cd /opt/mydistro/syslinux && \
+	cd /opt/mydistro/src/syslinux && \
 	cp ./bios/core/isolinux.bin /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux && \
@@ -60,13 +62,13 @@ RUN \
 
 # compile memtest86+
 RUN \
-	cd /opt/mydistro/memtest86plus/build/x86_64 && \
+	cd /opt/mydistro/src/memtest86plus/build/x86_64 && \
 	make -j$(nproc) && \
 	cp ./mt86plus /opt/mydistro/myiso/memtest
 
 # compile microwindows
 RUN \
-	cd /opt/mydistro/microwindows/src && \
+	cd /opt/mydistro/src/microwindows/src && \
 	cp Configs/config.linux-fb config && \
 	sed -i 's/NX11                     = N/NX11 = Y/' config && \
 	sed -i 's/^X11_INCLUDE=\$(X11HDRLOCATION)/#&/; s/^#X11_INCLUDE=.\/X11-local/X11_INCLUDE=.\/X11-local/' nx11/Makefile && \
@@ -75,23 +77,27 @@ RUN \
 
 # compile dropbear
 RUN \
-	cd /opt/mydistro/dropbear && \
+	cd /opt/mydistro/src/dropbear && \
 	./configure --enable-static && \
 	make -j$(nproc) && \
 	make install DESTDIR=/opt/mydistro/initramfs
 
+# compile musl
+# git://git.musl-libc.org/musl
+
 # compile glibc
-# RUN \
-#	cd /opt/mydistro/glibc && \
-#	mkdir build && \
-#	cd build && \
-#	../configure && \
-#	make -j$(nproc) && \
-#	make install DESTDIR=/opt/mydistro/initramfs
+RUN \
+	cd /opt/mydistro/src/glibc && \
+	mkdir build && \
+	cd build && \
+	../configure --prefix /opt/mydistro/initramfs/usr/local/glibc && \
+	make -j$(nproc) && \
+	exit 0
+#	make install
 
 # compile curl
 RUN \
-	cd /opt/mydistro/curl && \ 
+	cd /opt/mydistro/src/curl && \ 
 	autoreconf -vif && \
 	./configure CFLAGS='-static' LDFLAGS='-static -static-libgcc' --disable-shared --enable-static --without-brotli --without-libpsl --without-ssl --without-zstd --without-zlib && \
 	make -j$(nproc) && \
@@ -103,7 +109,7 @@ ADD syslinux.cfg /opt/mydistro/myiso/isolinux/isolinux.cfg
 RUN \
 	cd /opt/mydistro/initramfs && \
 	mkdir -p etc/init.d proc sys tmp home mnt usr/lib var && \
-	cp ../busybox/examples/inittab ./etc/ && \
+	cp ../src/busybox/examples/inittab ./etc/ && \
 	touch ./etc/init.d/rcS && \
 	chmod +x ./etc/init.d/rcS && \
 	touch ./etc/fstab && \
