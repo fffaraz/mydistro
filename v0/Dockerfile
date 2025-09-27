@@ -8,12 +8,13 @@ RUN \
 	dosfstools extlinux flex g++ gcc genisoimage git libelf-dev \
 	libfreetype-dev libncurses-dev libpng-dev libssl-dev libtool \
 	make nano nasm pkg-config python-is-python3 python3 syslinux \
-	unzip upx-ucl uuid-dev vim wget xz-utils ncdu tree gawk
+	unzip upx-ucl uuid-dev vim wget xz-utils ncdu tree gawk file texinfo && \
+	rm -rf /var/lib/apt/lists/*
 
 # download source repositories
 RUN \
 	mkdir -p /opt/mydistro/initramfs && \
-	mkdir -p /opt/mydistro/myiso/isolinux && \
+	mkdir -p /opt/mydistro/myiso && \
 	mkdir -p /opt/mydistro/src && \
 	cd /opt/mydistro/src && \
 	git config --global advice.detachedHead false && \
@@ -34,7 +35,7 @@ RUN \
 	make defconfig && \
 	sed -i 's/^CONFIG_CC_VERSION_TEXT=.*/CONFIG_CC_VERSION_TEXT="gcc (mydistro)"/' .config && \
 	make -j$(nproc) && \
-	cp ./arch/x86/boot/bzImage /opt/mydistro/myiso
+	cp ./arch/x86/boot/bzImage /opt/mydistro/myiso/bzImage
 
 # compile busybox
 # ADD src/busybox.config /opt/mydistro/src/busybox/.config
@@ -55,6 +56,7 @@ RUN \
 	DATE=not-too-long make -j$(nproc) bios
 RUN \
 	cd /opt/mydistro/src/syslinux && \
+	mkdir -p /opt/mydistro/myiso/isolinux && \
 	cp ./bios/core/isolinux.bin /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/myiso/isolinux && \
 	cp ./bios/com32/lib/libcom32.c32 /opt/mydistro/myiso/isolinux && \
