@@ -8,6 +8,7 @@ mkfs -t fat boot.img
 syslinux boot.img
 
 mkdir -p ./mnt
+sync
 mount boot.img ./mnt
 
 cp ./iso-dir/bzImage ./mnt
