@@ -14,7 +14,7 @@ docker build -t mydistro .
 docker run --privileged -d -it --name mydistro mydistro
 
 docker cp mydistro:/opt/mydistro/src/linux/arch/x86/boot/bzImage $(pwd)/output/bzImage
-docker cp mydistro:/opt/mydistro/iso-dir/initramfs $(pwd)/output/initramfs.cpio
+docker cp mydistro:/opt/mydistro/iso-dir/initramfs.cpio $(pwd)/output/initramfs.cpio
 docker cp mydistro:/opt/mydistro/mydistro.iso $(pwd)/output/mydistro.iso
 
 docker exec -it mydistro /opt/mydistro/mk-boot-img.sh

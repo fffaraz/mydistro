@@ -11,7 +11,7 @@ mkdir -p ./mnt
 mount boot.img ./mnt
 
 cp ./iso-dir/bzImage ./mnt
-cp ./iso-dir/initramfs ./mnt
+cp ./iso-dir/initramfs.cpio ./mnt
 cp ./iso-dir/memtest ./mnt
 cp ./iso-dir/isolinux/isolinux.cfg ./mnt/syslinux.cfg
 cp /usr/lib/syslinux/modules/bios/libcom32.c32 ./mnt
