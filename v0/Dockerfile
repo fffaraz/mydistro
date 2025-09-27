@@ -16,6 +16,7 @@ RUN \
 	mkdir -p /opt/mydistro/myiso/isolinux && \
 	mkdir -p /opt/mydistro/src && \
 	cd /opt/mydistro/src && \
+	git config --global advice.detachedHead false && \
 	git clone --depth 1 -b v6.16 https://github.com/torvalds/linux.git && \
 	git clone --depth 1 https://git.busybox.net/busybox && \
 	git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git && \
@@ -27,15 +28,16 @@ RUN \
 	exit 0
 
 # compile kernel
-# ADD linux.config /opt/mydistro/src/linux/.config
+# ADD src/linux.config /opt/mydistro/src/linux/.config
 RUN \
 	cd /opt/mydistro/src/linux && \
 	make defconfig && \
+	sed -i 's/^CONFIG_CC_VERSION_TEXT=.*/CONFIG_CC_VERSION_TEXT="gcc (mydistro)"/' .config && \
 	make -j$(nproc) && \
 	cp ./arch/x86/boot/bzImage /opt/mydistro/myiso
 
 # compile busybox
-# ADD busybox.config /opt/mydistro/src/busybox/.config
+# ADD src/busybox.config /opt/mydistro/src/busybox/.config
 RUN \
 	cd /opt/mydistro/src/busybox && \
 	make defconfig && \
@@ -103,9 +105,10 @@ RUN \
 	make -j$(nproc) && \
 	make install DESTDIR=/opt/mydistro/initramfs
 
-ADD init.sh /opt/mydistro/initramfs/init
-ADD syslinux.cfg /opt/mydistro/myiso/isolinux/isolinux.cfg
+ADD src/init.sh /opt/mydistro/initramfs/init
+ADD src/syslinux.cfg /opt/mydistro/myiso/isolinux/isolinux.cfg
 
+# dd if=/dev/zero of=./largefile count=102400 bs=4096 && \
 RUN \
 	cd /opt/mydistro/initramfs && \
 	mkdir -p etc/init.d proc sys tmp home mnt usr/lib var && \
@@ -120,6 +123,6 @@ RUN \
 	cd /opt/mydistro && \
 	mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table myiso
 
-ADD mk-boot-img.sh /opt/mydistro
+ADD src/mk-boot-img.sh /opt/mydistro
 
 WORKDIR /opt/mydistro

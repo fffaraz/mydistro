@@ -15,4 +15,6 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin
 /bin/hostname myhostname
 /sbin/ifconfig lo 127.0.0.1
 
+echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
+
 exec /sbin/init

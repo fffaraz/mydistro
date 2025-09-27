@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /opt/mydistro
+
 dd if=/dev/zero of=boot.img bs=1M count=50
 mkfs -t fat boot.img
 
@@ -20,5 +22,5 @@ cp /usr/lib/syslinux/modules/bios/menu.c32 ./mnt
 umount mnt
 rmdir mnt
 
-cp boot.img /output
-cp mydistro.iso /output
+# cp boot.img /output
+# cp mydistro.iso /output
