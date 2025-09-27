@@ -2,7 +2,7 @@
 
 cd /opt/mydistro
 
-dd if=/dev/zero of=boot.img bs=1M count=50
+dd if=/dev/zero of=boot.img bs=1M count=512
 mkfs -t fat boot.img
 
 syslinux boot.img
