@@ -13,8 +13,8 @@ RUN \
 
 # download source repositories
 RUN \
-	mkdir -p /opt/mydistro/initramfs && \
-	mkdir -p /opt/mydistro/isodir && \
+	mkdir -p /opt/mydistro/initramfs-dir && \
+	mkdir -p /opt/mydistro/iso-dir && \
 	mkdir -p /opt/mydistro/src && \
 	cd /opt/mydistro/src && \
 	git config --global advice.detachedHead false && \
@@ -35,7 +35,7 @@ RUN \
 	make defconfig && \
 	sed -i 's/^CONFIG_CC_VERSION_TEXT=.*/CONFIG_CC_VERSION_TEXT="gcc (mydistro)"/' .config && \
 	make -j$(nproc) && \
-	cp ./arch/x86/boot/bzImage /opt/mydistro/isodir/bzImage
+	cp ./arch/x86/boot/bzImage /opt/mydistro/iso-dir/bzImage
 
 # compile busybox
 # ADD src/busybox.config /opt/mydistro/src/busybox/.config
@@ -45,7 +45,7 @@ RUN \
 	sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config && \
 	sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config && \
 	make -j$(nproc) && \
-	make CONFIG_PREFIX=/opt/mydistro/initramfs install
+	make CONFIG_PREFIX=/opt/mydistro/initramfs-dir install
 
 # compile syslinux
 # git://repo.or.cz/syslinux.git
@@ -56,19 +56,19 @@ RUN \
 	DATE=not-too-long make -j$(nproc) bios
 RUN \
 	cd /opt/mydistro/src/syslinux && \
-	mkdir -p /opt/mydistro/isodir/isolinux && \
-	cp ./bios/core/isolinux.bin /opt/mydistro/isodir/isolinux && \
-	cp ./bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/isodir/isolinux && \
-	cp ./bios/com32/lib/libcom32.c32 /opt/mydistro/isodir/isolinux && \
-	cp ./bios/com32/libutil/libutil.c32 /opt/mydistro/isodir/isolinux && \
-	cp ./bios/com32/menu/vesamenu.c32 /opt/mydistro/isodir/isolinux && \
-	cp ./bios/com32/menu/menu.c32 /opt/mydistro/isodir/isolinux
+	mkdir -p /opt/mydistro/iso-dir/isolinux && \
+	cp ./bios/core/isolinux.bin /opt/mydistro/iso-dir/isolinux && \
+	cp ./bios/com32/elflink/ldlinux/ldlinux.c32 /opt/mydistro/iso-dir/isolinux && \
+	cp ./bios/com32/lib/libcom32.c32 /opt/mydistro/iso-dir/isolinux && \
+	cp ./bios/com32/libutil/libutil.c32 /opt/mydistro/iso-dir/isolinux && \
+	cp ./bios/com32/menu/vesamenu.c32 /opt/mydistro/iso-dir/isolinux && \
+	cp ./bios/com32/menu/menu.c32 /opt/mydistro/iso-dir/isolinux
 
 # compile memtest86+
 RUN \
 	cd /opt/mydistro/src/memtest86plus/build/x86_64 && \
 	make -j$(nproc) && \
-	cp ./mt86plus /opt/mydistro/isodir/memtest
+	cp ./mt86plus /opt/mydistro/iso-dir/memtest
 
 # compile microwindows
 RUN \
@@ -77,14 +77,14 @@ RUN \
 	sed -i 's/NX11                     = N/NX11 = Y/' config && \
 	sed -i 's/^X11_INCLUDE=\$(X11HDRLOCATION)/#&/; s/^#X11_INCLUDE=.\/X11-local/X11_INCLUDE=.\/X11-local/' nx11/Makefile && \
 	make -j$(nproc) && \
-	make install DESTDIR=/opt/mydistro/initramfs
+	make install DESTDIR=/opt/mydistro/initramfs-dir
 
 # compile dropbear
 RUN \
 	cd /opt/mydistro/src/dropbear && \
 	./configure --enable-static && \
 	make -j$(nproc) && \
-	make install DESTDIR=/opt/mydistro/initramfs
+	make install DESTDIR=/opt/mydistro/initramfs-dir
 
 # compile musl
 # git://git.musl-libc.org/musl
@@ -94,7 +94,7 @@ RUN \
 	cd /opt/mydistro/src/glibc && \
 	mkdir build && \
 	cd build && \
-	../configure --prefix /opt/mydistro/initramfs/usr/local/glibc && \
+	../configure --prefix /opt/mydistro/initramfs-dir/usr/local/glibc && \
 	make -j$(nproc) && \
 	exit 0
 #	make install
@@ -105,14 +105,14 @@ RUN \
 	autoreconf -vif && \
 	./configure CFLAGS='-static' LDFLAGS='-static -static-libgcc' --disable-shared --enable-static --without-brotli --without-libpsl --without-ssl --without-zstd --without-zlib && \
 	make -j$(nproc) && \
-	make install DESTDIR=/opt/mydistro/initramfs
+	make install DESTDIR=/opt/mydistro/initramfs-dir
 
-ADD src/init.sh /opt/mydistro/initramfs/init
-ADD src/syslinux.cfg /opt/mydistro/isodir/isolinux/isolinux.cfg
+ADD src/init.sh /opt/mydistro/initramfs-dir/init
+ADD src/syslinux.cfg /opt/mydistro/iso-dir/isolinux/isolinux.cfg
 
 # dd if=/dev/zero of=./largefile count=102400 bs=4096 && \
 RUN \
-	cd /opt/mydistro/initramfs && \
+	cd /opt/mydistro/initramfs-dir && \
 	mkdir -p etc/init.d proc sys tmp home mnt usr/lib var && \
 	cp ../src/busybox/examples/inittab ./etc/ && \
 	touch ./etc/init.d/rcS && \
@@ -121,9 +121,9 @@ RUN \
 	echo "root::0:0:root:/root:/bin/sh" > ./etc/passwd && \
 	echo "root:x:0:" > ./etc/group && \
 	echo "nameserver 8.8.8.8" > ./etc/resolv.conf && \
-	find . | cpio -H newc -o > /opt/mydistro/isodir/initramfs && \
+	find . | cpio -H newc -o > /opt/mydistro/iso-dir/initramfs && \
 	cd /opt/mydistro && \
-	mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table isodir
+	mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
 
 ADD src/mk-boot-img.sh /opt/mydistro
 
