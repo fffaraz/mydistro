@@ -1,0 +1,2 @@
+https://github.com/reinterpretcat/lfs
+https://github.com/EvilFreelancer/docker-lfs-build

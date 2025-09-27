@@ -19,6 +19,7 @@ cp /usr/lib/syslinux/modules/bios/libutil.c32 ./mnt
 cp /usr/lib/syslinux/modules/bios/vesamenu.c32 ./mnt
 cp /usr/lib/syslinux/modules/bios/menu.c32 ./mnt
 
+sync
 umount ./mnt
 rmdir ./mnt
 
