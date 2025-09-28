@@ -2,8 +2,9 @@
 
 # download source repositories
 
-mkdir -p /opt/mydistro/src
-cd /opt/mydistro/src
+# cd /opt/mydistro
+mkdir -p ./src
+cd ./src
 
 git config --global advice.detachedHead false
 
