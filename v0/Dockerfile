@@ -44,10 +44,14 @@ RUN scripts/0009-glibc.sh
 ADD scripts/0010-curl.sh /opt/mydistro/scripts/
 RUN scripts/0010-curl.sh
 
-# 11. initramfs
+# 11. compile nano
+ADD scripts/0011-nano.sh /opt/mydistro/scripts/
+RUN scripts/0011-nano.sh
+
+# 12. initramfs
 ADD assets/init.sh /opt/mydistro/initramfs-dir/init
 ADD assets/syslinux.cfg /opt/mydistro/iso-dir/isolinux/isolinux.cfg
-ADD scripts/0011-initramfs.sh /opt/mydistro/scripts/
-RUN scripts/0011-initramfs.sh
+ADD scripts/0012-initramfs.sh /opt/mydistro/scripts/
+RUN scripts/0012-initramfs.sh
 
 ADD assets/mk-boot-img.sh /opt/mydistro
