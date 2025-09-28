@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# compile microwindows
+
 cd /opt/mydistro/src/microwindows/src
 cp Configs/config.linux-fb config
 

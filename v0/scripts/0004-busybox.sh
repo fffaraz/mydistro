@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# compile busybox
+
+mkdir -p /opt/mydistro/initramfs-dir
+
 cd /opt/mydistro/src/busybox
 make defconfig
 

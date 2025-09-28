@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# compile linux kernel
+
+mkdir -p /opt/mydistro/iso-dir
+
 cd /opt/mydistro/src/linux
 make defconfig
 

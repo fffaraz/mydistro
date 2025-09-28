@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# compile dropbear ssh server
+
 cd /opt/mydistro/src/dropbear
 ./configure --enable-static
 make -j$(nproc)

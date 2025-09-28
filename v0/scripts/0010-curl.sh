@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# compile curl
+
 cd /opt/mydistro/src/curl
 autoreconf -vif
 

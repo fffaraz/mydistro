@@ -2,10 +2,7 @@
 
 # download source repositories
 
-mkdir -p /opt/mydistro/initramfs-dir
-mkdir -p /opt/mydistro/iso-dir
 mkdir -p /opt/mydistro/src
-
 cd /opt/mydistro/src
 
 git config --global advice.detachedHead false
@@ -19,3 +16,4 @@ git clone --depth 1 https://github.com/mkj/dropbear.git
 git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
 git clone --depth 1 git://git.musl-libc.org/musl
 git clone --depth 1 https://github.com/curl/curl.git
+git clone --depth 1 git://git.wh0rd.org/nano-editor.git

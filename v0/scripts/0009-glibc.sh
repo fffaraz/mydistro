@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# compile glibc
+
 cd /opt/mydistro/src/glibc
 mkdir build
 cd build
