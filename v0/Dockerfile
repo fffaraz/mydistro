@@ -38,8 +38,8 @@ ADD scripts/0008-dropbear.sh /opt/mydistro/scripts/
 RUN scripts/0008-dropbear.sh
 
 # 9. compile glibc
-ADD scripts/0009-glibc.sh /opt/mydistro/scripts/
-RUN scripts/0009-glibc.sh
+# ADD scripts/0009-glibc.sh /opt/mydistro/scripts/
+# RUN scripts/0009-glibc.sh
 
 # 10. compile curl
 ADD scripts/0010-curl.sh /opt/mydistro/scripts/
