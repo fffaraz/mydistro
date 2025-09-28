@@ -5,7 +5,7 @@
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -yq \
-	autoconf autopoint bc bison build-essential bzip2 cpio curl \
+	autoconf automake autopoint bc bison build-essential bzip2 cpio curl \
 	dosfstools extlinux file flex g++ gawk gcc genisoimage gettext \
 	git groff libelf-dev libfreetype-dev libncurses-dev libpng-dev \
 	libssl-dev libtool make nano nasm ncdu pkg-config python-is-python3 \

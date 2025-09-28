@@ -5,6 +5,6 @@
 cd /opt/mydistro/src/nano
 
 ./autogen.sh
-./configure
+./configure --enable-utf8 --enable-year2038 CFLAGS="-O3 -Wall --static"
 make -j$(nproc)
 make install DESTDIR=/opt/mydistro/initramfs-dir

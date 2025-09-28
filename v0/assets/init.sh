@@ -4,6 +4,7 @@ set -x
 export HOME=/root
 export PS1='\w\$ '
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin
+# export TERM=xterm-256color
 
 /bin/mount -t proc proc /proc
 /bin/mount -t sysfs sysfs /sys

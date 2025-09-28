@@ -1,2 +1,3 @@
 https://github.com/reinterpretcat/lfs
 https://github.com/EvilFreelancer/docker-lfs-build
+https://github.com/andrew-d/static-binaries
