@@ -4,11 +4,14 @@ cd /opt/mydistro
 
 dd if=/dev/zero of=boot.img bs=1M count=512
 mkfs -t fat boot.img
+sync
 
 syslinux boot.img
+sync
 
 mkdir -p ./mnt
 sync
+
 mount boot.img ./mnt
 
 cp ./iso-dir/bzImage ./mnt
