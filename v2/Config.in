@@ -1,5 +1,0 @@
-menu Packages
-
-source "$BR2_EXTERNAL_MYDISTRO_PATH/package/Config.in"
-
-endmenu

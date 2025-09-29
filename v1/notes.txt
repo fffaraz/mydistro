@@ -1,6 +1,0 @@
-https://github.com/cirosantilli/linux-cheat/blob/master/debootstrap-debian-qemu.sh
-https://l3net.wordpress.com/2013/09/21/how-to-build-a-debian-livecd/
-https://gist.github.com/ravecat/63a0d49014b6187bebc68cf855d55a83
-https://www.techtimejourney.net/wp-content/uploads/2013/05/The-live-build.x66479.pdf
-https://www.linkedin.com/pulse/build-your-own-linux-distro-sriharsha-mopidevi/
-https://github.com/EHowardHill/Debian-Bootstrap-Script
