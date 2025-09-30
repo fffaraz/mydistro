@@ -7,9 +7,9 @@ ADD scripts/0001-dependencies.sh /opt/mydistro/scripts/
 RUN scripts/0001-dependencies.sh && rm -rf /var/lib/apt/lists/*
 
 # 2. download source repositories
+ADD src /opt/mydistro/
 ADD scripts/0002-source.sh /opt/mydistro/scripts/
 RUN scripts/0002-source.sh
-# ADD src /opt/mydistro/src/
 
 # 3. compile kernel
 # ADD assets/linux.config /opt/mydistro/src/linux/.config
