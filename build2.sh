@@ -9,7 +9,8 @@ docker rm -f mydistro2
 docker build -t mydistro2 -f ./Dockerfile2 .
 
 docker run --privileged --rm -it \
+	-v $(pwd)/assets:/opt/mydistro/assets:ro \
+	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src \
-	-v $(pwd)/scripts:/opt/mydistro/scripts \
 	-v $(pwd)/output:/output \
 	mydistro2
