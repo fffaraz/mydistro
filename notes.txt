@@ -1,3 +1,7 @@
 https://github.com/reinterpretcat/lfs
 https://github.com/EvilFreelancer/docker-lfs-build
 https://github.com/andrew-d/static-binaries
+---
+https://github.com/Stefan20162016/linux-insides-code/blob/master/bootloader.asm
+https://docs.kernel.org/arch/x86/boot.html
+---
