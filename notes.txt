@@ -5,3 +5,5 @@ https://github.com/andrew-d/static-binaries
 https://github.com/Stefan20162016/linux-insides-code/blob/master/bootloader.asm
 https://docs.kernel.org/arch/x86/boot.html
 ---
+https://www.youtube.com/watch?v=DXUlaSYTLQI
+---
