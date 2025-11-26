@@ -8,7 +8,7 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin
 
 /bin/mount -t proc proc /proc
 /bin/mount -t sysfs sysfs /sys
-# /bin/mount -t devtmmpfs dev /dev
+# /bin/mount -t devtmpfs dev /dev
 
 /bin/mount -t tmpfs -o mode=1777,strictatime tmpfs /tmp
 
