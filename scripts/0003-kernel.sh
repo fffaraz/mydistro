@@ -16,8 +16,6 @@ make defconfig
 ./scripts/config --enable DRM_BOCHS # DRM Support for bochs dispi vga interface (qemu stdvga)
 ./scripts/config --enable LOGO # Bootup logo
 
-# cp /opt/mydistro/assets/linux.config .config
-
 make olddefconfig
 
 make -j$(nproc)
