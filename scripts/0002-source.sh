@@ -9,7 +9,7 @@ cd ./src
 git config --global advice.detachedHead false
 
 [ -d ./linux ] || git clone --depth 1 -b v6.16 https://github.com/torvalds/linux.git
-[ -d ./busybox ] || git clone --depth 1 https://git.busybox.net/busybox # https://github.com/mirror/busybox.git
+[ -d ./busybox ] || git clone --depth 1 https://github.com/mirror/busybox.git # https://git.busybox.net/busybox
 [ -d ./syslinux ] || git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git # git://repo.or.cz/syslinux.git
 [ -d ./memtest86plus ] || git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git
 [ -d ./microwindows ] || git clone --depth 1 https://github.com/ghaerr/microwindows.git

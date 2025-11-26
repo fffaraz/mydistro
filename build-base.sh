@@ -8,7 +8,7 @@ docker rm -f mydistro-base
 # docker pull debian:sid-slim
 docker build -t mydistro-base -f ./Dockerfile.base .
 
-# ./scripts/0002-source.sh
+./scripts/0002-source.sh
 
 docker run --privileged --rm -it --network none \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
