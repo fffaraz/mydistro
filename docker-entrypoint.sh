@@ -18,10 +18,10 @@ cp ./assets/syslinux.cfg ./iso-dir/isolinux/isolinux.cfg
 
 ./scripts/0012-initramfs.sh
 
-mkdir -p ./output
-cp ./src/linux/arch/x86/boot/bzImage ./output/bzImage
-cp ./iso-dir/initramfs.cpio ./output/initramfs.cpio
-cp ./mydistro.iso ./output/mydistro.iso
+mkdir -p /output
+cp ./src/linux/arch/x86/boot/bzImage /output/bzImage
+cp ./iso-dir/initramfs.cpio /output/initramfs.cpio
+cp ./mydistro.iso /output/mydistro.iso
 
 ./assets/mk-boot-img.sh
-cp ./boot.img ./output/boot.img
+cp ./boot.img /output/boot.img
