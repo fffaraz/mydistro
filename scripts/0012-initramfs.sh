@@ -23,3 +23,7 @@ find . | cpio -o -H newc > /opt/mydistro/iso-dir/initramfs.cpio
 
 cd /opt/mydistro
 mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
+
+# alt mk iso
+cd /opt/mydistro/src/linux
+make isoimage FDINITRD=/opt/mydistro/iso-dir/initramfs.cpio FDARGS="initrd=/initramfs.cpio"
