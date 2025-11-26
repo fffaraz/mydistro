@@ -1,6 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
+# sudo apt install qemu-system-x86
+
 qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 256M -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
 
 # qemu-system-x86_64 ./output/boot.img
