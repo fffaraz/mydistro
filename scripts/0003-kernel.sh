@@ -11,6 +11,8 @@ make defconfig
 
 # sed -i 's/^CONFIG_CC_VERSION_TEXT=.*/CONFIG_CC_VERSION_TEXT="gcc (mydistro)"/' .config
 
+# https://www.kernelconfig.io/
+
 ./scripts/config --enable IKCONFIG
 ./scripts/config --enable IKCONFIG_PROC
 ./scripts/config --enable DRM_FBDEV_EMULATION # Enable legacy fbdev support for your modesetting driver
