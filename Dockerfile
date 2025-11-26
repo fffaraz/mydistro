@@ -12,7 +12,7 @@ ADD scripts/0002-source.sh /opt/mydistro/scripts/
 RUN scripts/0002-source.sh
 
 # 3. compile kernel
-# ADD assets/linux.config /opt/mydistro/src/linux/.config
+ADD assets/linux.config /opt/mydistro/assets/linux.config
 ADD scripts/0003-kernel.sh /opt/mydistro/scripts/
 RUN scripts/0003-kernel.sh
 
