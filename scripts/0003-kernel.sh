@@ -7,11 +7,8 @@ cd /opt/mydistro/src/linux
 
 make defconfig
 
-# make menuconfig
-
-# sed -i 's/^CONFIG_CC_VERSION_TEXT=.*/CONFIG_CC_VERSION_TEXT="gcc (mydistro)"/' .config
-
 # https://www.kernelconfig.io/
+# make menuconfig
 
 ./scripts/config --enable IKCONFIG
 ./scripts/config --enable IKCONFIG_PROC
