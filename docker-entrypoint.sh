@@ -22,7 +22,7 @@ mkdir -p /output
 cp ./src/linux/arch/x86/boot/bzImage /output/bzImage
 cp ./iso-dir/initramfs.cpio /output/initramfs.cpio
 cp ./mydistro.iso /output/mydistro.iso
-cp /opt/mydistro/src/linux/arch/x86/boot/image.iso /output/image.iso
+# cp /opt/mydistro/src/linux/arch/x86/boot/image.iso /output/image.iso
 
 ./assets/mk-boot-img.sh
 cp ./boot.img /output/boot.img
