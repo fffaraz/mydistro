@@ -19,6 +19,7 @@ git config --global advice.detachedHead false
 [ -d ./curl ] || git clone --depth 1 https://github.com/curl/curl.git
 [ -d ./toybox ] || git clone --depth 1 https://github.com/landley/toybox.git
 [ -d ./coreutils ] || git clone --depth 1 https://github.com/coreutils/coreutils.git # git://git.savannah.gnu.org/coreutils.git
+[ -d ./wlroots ] || git clone --depth 1 -b 0.18.3 https://gitlab.freedesktop.org/wlroots/wlroots.git
 
 [ -d ./nano ] || git clone --depth 1 https://github.com/madnight/nano.git # https://git.savannah.gnu.org/git/nano.git
 [ -d ./nano/gnulib ] || git clone https://github.com/coreutils/gnulib.git ./nano/gnulib # git://git.sv.gnu.org/gnulib.git

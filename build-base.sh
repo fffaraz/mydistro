@@ -10,6 +10,8 @@ docker build -t mydistro-base -f ./Dockerfile.base .
 
 ./scripts/0002-source.sh
 
+# --entrypoint /bin/bash \
+
 docker run --privileged --rm -it --network none \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \

@@ -17,7 +17,9 @@ echo "root::0:0:root:/root:/bin/sh" > ./etc/passwd
 echo "root:x:0:" > ./etc/group
 echo "nameserver 8.8.8.8" > ./etc/resolv.conf
 
-find . | cpio -H newc -o > /opt/mydistro/iso-dir/initramfs.cpio
+# -o, --create
+# -H, --format=
+find . | cpio -o -H newc > /opt/mydistro/iso-dir/initramfs.cpio
 
 cd /opt/mydistro
 mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir

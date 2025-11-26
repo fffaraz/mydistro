@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # compile linux kernel
 
@@ -8,6 +9,8 @@ make defconfig
 # make menuconfig
 
 sed -i 's/^CONFIG_CC_VERSION_TEXT=.*/CONFIG_CC_VERSION_TEXT="gcc (mydistro)"/' .config
+sed -i 's/# CONFIG_IKCONFIG is not set/CONFIG_IKCONFIG=y/' .config
+echo "CONFIG_IKCONFIG_PROC=y" >> .config
 
 make -j$(nproc)
 
