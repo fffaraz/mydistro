@@ -16,7 +16,6 @@ ADD scripts/0003-kernel.sh /opt/mydistro/scripts/
 RUN scripts/0003-kernel.sh
 
 # 4. compile busybox
-# ADD assets/busybox.config /opt/mydistro/src/busybox/.config
 ADD scripts/0004-busybox.sh /opt/mydistro/scripts/
 RUN scripts/0004-busybox.sh
 
