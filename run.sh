@@ -5,7 +5,7 @@ set -exuo pipefail
 
 ls -alh ./output
 
-qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 256M -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
+qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
 
 # qemu-system-x86_64 ./output/boot.img
 # qemu-system-x86_64 -drive format=raw,file=./output/boot.img 

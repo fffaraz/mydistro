@@ -1,8 +1,9 @@
 #!/bin/bash
+set -x
 
 cd /opt/mydistro/initramfs-dir
 
-# dd if=/dev/zero of=./largefile bs=1M count=128
+dd if=/dev/zero of=./largefile bs=1M count=128
 
 mkdir -p etc/init.d proc sys tmp home mnt usr/lib var
 
@@ -25,5 +26,5 @@ cd /opt/mydistro
 mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
 
 # alt mk iso
-cd /opt/mydistro/src/linux
-make isoimage FDINITRD=/opt/mydistro/iso-dir/initramfs.cpio FDARGS="initrd=/initramfs.cpio"
+# cd /opt/mydistro/src/linux
+# make isoimage FDINITRD=/opt/mydistro/iso-dir/initramfs.cpio FDARGS="initrd=/initramfs.cpio"
