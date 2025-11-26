@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-./scripts/0002-source.sh
+# ./scripts/0002-source.sh
+cp -r ./src-ro ./src
+
 ./scripts/0003-kernel.sh
 ./scripts/0004-busybox.sh
 ./scripts/0005-syslinux.sh

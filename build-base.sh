@@ -13,6 +13,6 @@ docker build -t mydistro-base -f ./Dockerfile.base .
 docker run --privileged --rm -it --network none \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
-	-v $(pwd)/src:/opt/mydistro/src \
+	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output:/output \
 	mydistro-base
