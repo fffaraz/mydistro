@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# install dependencies
+# install build dependencies
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update

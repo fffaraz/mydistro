@@ -3,14 +3,16 @@ set -exuo pipefail
 
 rm -rf ./output
 mkdir ./output
-docker rm -f mydistro2
+docker rm -f mydistro-base
 
 # docker pull debian:sid-slim
-docker build -t mydistro2 -f ./Dockerfile2 .
+docker build -t mydistro-base -f ./Dockerfile.base .
 
-docker run --privileged --rm -it \
+# ./scripts/0002-source.sh
+
+docker run --privileged --rm -it --network none \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src \
 	-v $(pwd)/output:/output \
-	mydistro2
+	mydistro-base

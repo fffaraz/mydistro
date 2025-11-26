@@ -6,7 +6,7 @@ cd /opt/mydistro/initramfs-dir
 
 mkdir -p etc/init.d proc sys tmp home mnt usr/lib var
 
-cp ../src/busybox/examples/inittab ./etc/
+cp /opt/mydistro/src/busybox/examples/inittab ./etc/
 
 touch ./etc/init.d/rcS
 chmod +x ./etc/init.d/rcS

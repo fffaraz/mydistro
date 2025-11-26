@@ -2,7 +2,7 @@ FROM debian:sid-slim
 
 WORKDIR /opt/mydistro
 
-# 1. install dependencies
+# 1. install build dependencies
 ADD scripts/0001-dependencies.sh /opt/mydistro/scripts/
 RUN scripts/0001-dependencies.sh && rm -rf /var/lib/apt/lists/*
 
