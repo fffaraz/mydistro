@@ -3,7 +3,7 @@ set -x
 
 cd /opt/mydistro/initramfs-dir
 
-dd if=/dev/zero of=./largefile bs=1M count=128
+# dd if=/dev/zero of=./largefile bs=1M count=128
 
 mkdir -p etc/init.d proc sys tmp home mnt usr/lib var
 
