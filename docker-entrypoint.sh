@@ -2,7 +2,6 @@
 set -exuo pipefail
 
 cd /opt/mydistro
-
 cp -r ./src-ro ./src
 
 ./scripts/0003-kernel.sh
@@ -13,10 +12,6 @@ cp -r ./src-ro ./src
 ./scripts/0008-dropbear.sh
 ./scripts/0010-curl.sh
 ./scripts/0011-nano.sh
-
-cp ./assets/init.sh ./initramfs-dir/init
-cp ./assets/syslinux.cfg ./iso-dir/isolinux/isolinux.cfg
-
 ./scripts/0012-initramfs.sh
 
 mkdir -p ./output

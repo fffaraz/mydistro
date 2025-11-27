@@ -1,6 +1,9 @@
 #!/bin/bash
 set -x
 
+cp ./assets/init.sh ./initramfs-dir/init
+cp ./assets/syslinux.cfg ./iso-dir/isolinux/isolinux.cfg
+
 cd /opt/mydistro/initramfs-dir
 
 # dd if=/dev/zero of=./largefile bs=1M count=128
