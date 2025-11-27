@@ -11,7 +11,7 @@ cd /opt/mydistro/initramfs-dir
 mkdir -p etc/init.d proc sys tmp home mnt usr/lib var
 
 cp /opt/mydistro/src/busybox/examples/inittab ./etc/
-cp ./assets/rcS.sh ./etc/init.d/rcS
+cp ../assets/rcS.sh ./etc/init.d/rcS
 touch ./etc/fstab
 
 echo "root::0:0:root:/root:/bin/sh" > ./etc/passwd
