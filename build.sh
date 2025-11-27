@@ -10,7 +10,7 @@ docker rm -f mydistro
 # docker pull debian:sid-slim
 docker build -t mydistro .
 
-docker run --privileged --rm -it --network none \
+docker run --privileged --rm -i --network none \
 	-e "TERM=xterm-256color" \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
@@ -18,4 +18,4 @@ docker run --privileged --rm -it --network none \
 	-v $(pwd)/output:/opt/mydistro/output \
 	mydistro
 
-# --entrypoint /bin/bash \
+# -t --entrypoint /bin/bash \
