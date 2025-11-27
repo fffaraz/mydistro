@@ -1,6 +1,2 @@
-.git/
-output/
-.dockerignore
-.gitignore
-notes.txt
-README.md
+*
+!docker-entrypoint.sh

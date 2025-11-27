@@ -1,7 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
-# ./scripts/0002-source.sh
+cd /opt/mydistro
+
 cp -r ./src-ro ./src
 
 ./scripts/0003-kernel.sh

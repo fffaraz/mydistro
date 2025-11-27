@@ -8,16 +8,14 @@ docker rm -f mydistro
 # docker pull debian:sid-slim
 docker build -t mydistro .
 
-# docker run --privileged --rm -it -v $(pwd)/output:/output mydistro
-# cp mydistro.iso /output
+./scripts/0000-source.sh
 
-docker run --privileged -d -it --name mydistro mydistro
+# --entrypoint /bin/bash \
 
-docker cp mydistro:/opt/mydistro/src/linux/arch/x86/boot/bzImage $(pwd)/output/bzImage
-docker cp mydistro:/opt/mydistro/iso-dir/initramfs.cpio $(pwd)/output/initramfs.cpio
-docker cp mydistro:/opt/mydistro/mydistro.iso $(pwd)/output/mydistro.iso
-
-docker exec -it mydistro /opt/mydistro/mk-boot-img.sh
-docker cp mydistro:/opt/mydistro/boot.img $(pwd)/output/boot.img
-
-docker rm -f mydistro
+docker run --privileged --rm -it --network none \
+	-e "TERM=xterm-256color" \
+	-v $(pwd)/assets:/opt/mydistro/assets:ro \
+	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
+	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
+	-v $(pwd)/output:/output \
+	mydistro
