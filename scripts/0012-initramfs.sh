@@ -23,8 +23,10 @@ echo "nameserver 8.8.8.8" > ./etc/resolv.conf
 find . | cpio -o -H newc > /opt/mydistro/iso-dir/initramfs.cpio
 
 cd /opt/mydistro
-mkisofs -J -R -o mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
+mkdir -p ./output
+mkisofs -J -R -o ./output/mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
 
 # alt mk iso
 # cd /opt/mydistro/src/linux
 # make isoimage FDINITRD=/opt/mydistro/iso-dir/initramfs.cpio FDARGS="initrd=/initramfs.cpio"
+# cp /opt/mydistro/src/linux/arch/x86/boot/image.iso ./output/image.iso
