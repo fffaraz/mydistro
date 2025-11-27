@@ -4,16 +4,16 @@ set -exuo pipefail
 cd /opt/mydistro
 
 dd if=/dev/zero of=boot.img bs=1M count=512
-mkfs -t fat boot.img
+mkfs -t fat ./boot.img
 sync
 
-syslinux boot.img
+/opt/mydistro/src/syslinux/bios/mtools/syslinux ./boot.img
 sync
 
 mkdir -p ./mnt
 sync
 
-mount boot.img ./mnt
+mount ./boot.img ./mnt
 
 cp ./iso-dir/bzImage ./mnt
 cp ./iso-dir/initramfs.cpio ./mnt
@@ -28,5 +28,5 @@ sync
 umount ./mnt
 rmdir ./mnt
 
-# cp boot.img /output
-# cp mydistro.iso /output
+# cp ./boot.img /output
+# cp ./mydistro.iso /output

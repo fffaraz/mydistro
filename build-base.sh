@@ -13,6 +13,7 @@ docker build -t mydistro-base -f ./Dockerfile.base .
 # --entrypoint /bin/bash \
 
 docker run --privileged --rm -it --network none \
+	-e "TERM=xterm-256color" \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
