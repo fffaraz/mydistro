@@ -7,4 +7,5 @@ https://docs.kernel.org/arch/x86/boot.html
 ---
 https://www.youtube.com/watch?v=DXUlaSYTLQI
 https://www.youtube.com/watch?v=n4CpjUpistc
+https://www.youtube.com/watch?v=u2Juz5sQyYQ
 ---
