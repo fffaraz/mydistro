@@ -3,6 +3,7 @@
 # compile nano editor
 
 cd /opt/mydistro/src/nano
+ln -s ../gnulib ./gnulib
 
 ./autogen.sh
 ./configure --enable-utf8 --enable-year2038 CFLAGS="-O3 -Wall --static"

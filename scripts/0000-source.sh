@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # download source repositories
 
@@ -23,7 +24,5 @@ git config --global advice.detachedHead false
 
 [ -d ./nano ] || git clone --depth 1 https://github.com/madnight/nano.git # https://git.savannah.gnu.org/git/nano.git
 [ -d ./gnulib ] || git clone https://github.com/coreutils/gnulib.git ./gnulib # git://git.sv.gnu.org/gnulib.git
-
-[ -L ./nano/gnulib ] || ln -s ../gnulib ./nano/gnulib
 
 # [ -d ./ncurses ] || git clone --depth 1 https://github.com/mirror/ncurses
