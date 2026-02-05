@@ -13,9 +13,4 @@ cp -r ./src-ro ./src
 ./scripts/0010-curl.sh
 ./scripts/0011-nano.sh
 ./scripts/0012-initramfs.sh
-
-mkdir -p ./output
-cp ./src/linux/arch/x86/boot/bzImage ./output/bzImage
-cp ./iso-dir/initramfs.cpio ./output/initramfs.cpio
-
-./scripts/mk-boot-img.sh
+./scripts/0013-mk-boot-img.sh

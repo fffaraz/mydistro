@@ -1,6 +1,11 @@
 #!/bin/bash
 set -exuo pipefail
 
+DEBUG_MODE=""
+if [ "${1:-}" = "-d" ]; then
+	DEBUG_MODE="-t --entrypoint /bin/bash"
+fi
+
 ./scripts/0000-source.sh
 
 rm -rf ./output
@@ -16,6 +21,5 @@ docker run --privileged --rm -i --network none \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output:/opt/mydistro/output \
+	$DEBUG_MODE \
 	mydistro
-
-# -t --entrypoint /bin/bash \

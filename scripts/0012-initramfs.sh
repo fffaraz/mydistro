@@ -30,3 +30,6 @@ mkisofs -J -R -o ./output/mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot
 # cd /opt/mydistro/src/linux
 # make isoimage FDINITRD=/opt/mydistro/iso-dir/initramfs.cpio FDARGS="initrd=/initramfs.cpio"
 # cp /opt/mydistro/src/linux/arch/x86/boot/image.iso ./output/image.iso
+
+cp ./src/linux/arch/x86/boot/bzImage ./output/bzImage
+cp ./iso-dir/initramfs.cpio ./output/initramfs.cpio
