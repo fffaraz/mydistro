@@ -15,7 +15,7 @@ docker rm -f mydistro
 # docker pull debian:sid-slim
 docker build -t mydistro .
 
-docker run --privileged --rm -i --network none \
+docker run --privileged --rm -i --network none --name mydistro \
 	-e "TERM=xterm-256color" \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
