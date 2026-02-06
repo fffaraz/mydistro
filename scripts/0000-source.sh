@@ -9,6 +9,7 @@ git config --global advice.detachedHead false
 [ -d ./busybox ] || git clone --depth 1 -b 1_37_0 https://git.busybox.net/busybox # https://github.com/mirror/busybox.git
 [ -d ./syslinux ] || git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git # git://repo.or.cz/syslinux.git
 [ -d ./memtest86plus ] || git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git
+[ -d ./git ] || git clone --depth 1 -b v2.53.0 https://github.com/git/git.git
 [ -d ./microwindows ] || git clone --depth 1 https://github.com/ghaerr/microwindows.git
 [ -d ./dropbear ] || git clone --depth 1 https://github.com/mkj/dropbear.git
 [ -d ./glibc ] || git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
