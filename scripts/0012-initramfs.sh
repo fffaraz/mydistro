@@ -13,6 +13,7 @@ echo "nameserver 8.8.8.8" > ./initramfs-dir/etc/resolv.conf
 # large dummy file
 # dd if=/dev/zero of=./initramfs-dir/largefile bs=1M count=128
 
+cd ./initramfs-dir
+find . | cpio -o -H newc > ../output/initramfs.cpio
 # -o, --create
 # -H, --format=
-find ./initramfs-dir | cpio -o -H newc > ./output/initramfs.cpio
