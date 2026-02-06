@@ -1,23 +1,24 @@
 #!/bin/bash
 set -exuo pipefail
 
-# debug mode drops into a shell inside the container instead of running the build scripts, allowing you to inspect the container's filesystem and run commands manually
+# debug mode drops into a shell inside the container instead of running the build scripts, 
+# allowing you to inspect the container's filesystem and run commands manually
 DEBUG_MODE=""
 if [ "${1:-}" = "-d" ]; then
 	DEBUG_MODE="-t --entrypoint /bin/bash"
 fi
 
-# download source repositories
-./scripts/0000-source.sh
-
 # delete and recreate output directory
 rm -rf ./output
 mkdir ./output
-docker rm -f mydistro || true
 
 # build the docker image for the build environment
 # docker pull debian:sid-slim
+docker rm -f mydistro || true
 docker build -t mydistro .
+
+# download source repositories
+./scripts/0000-source.sh
 
 # run the build inside a docker container without network access
 docker run --privileged --rm -i --network none --name mydistro \
