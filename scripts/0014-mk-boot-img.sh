@@ -21,10 +21,10 @@ cp ./src/memtest86plus/build/x86_64/mt86plus ./mnt
 
 # copy syslinux
 cp ./assets/syslinux.cfg ./mnt
-cp /usr/lib/syslinux/modules/bios/libcom32.c32 ./mnt
-cp /usr/lib/syslinux/modules/bios/libutil.c32 ./mnt
-cp /usr/lib/syslinux/modules/bios/vesamenu.c32 ./mnt
-cp /usr/lib/syslinux/modules/bios/menu.c32 ./mnt
+cp ./src/syslinux/bios/com32/lib/libcom32.c32 ./mnt
+cp ./src/syslinux/bios/com32/libutil/libutil.c32 ./mnt
+cp ./src/syslinux/bios/com32/menu/vesamenu.c32 ./mnt
+cp ./src/syslinux/bios/com32/menu/menu.c32 ./mnt
 
 # unmount image
 sync
