@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # compile busybox
-
 cd ./src/busybox
+
 make defconfig
 
 sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config

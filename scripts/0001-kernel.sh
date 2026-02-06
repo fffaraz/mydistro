@@ -2,7 +2,6 @@
 set -x
 
 # compile linux kernel
-
 cd ./src/linux
 
 make defconfig

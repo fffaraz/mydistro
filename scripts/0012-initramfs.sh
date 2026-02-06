@@ -2,9 +2,9 @@
 set -x
 
 cp ./assets/init.sh ./initramfs-dir/init
-cp ./src/busybox/examples/inittab ./initramfs-dir/etc/
 cp ./assets/rcS.sh ./initramfs-dir/etc/init.d/rcS
-touch ./initramfs-dir/etc/fstab
+
+cp ./src/busybox/examples/inittab ./initramfs-dir/etc/
 
 echo "root::0:0:root:/root:/bin/sh" > ./initramfs-dir/etc/passwd
 echo "root:x:0:" > ./initramfs-dir/etc/group

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # compile glibc
-
 cd ./src/glibc
+
 mkdir build
 cd build
 

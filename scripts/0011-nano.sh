@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # compile nano editor
-
 cd ./src/nano
+
 ln -s ../gnulib ./gnulib
 
 ./autogen.sh

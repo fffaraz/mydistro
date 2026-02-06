@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # compile curl
-
 cd ./src/curl
+
 autoreconf -vif
 
 ./configure \

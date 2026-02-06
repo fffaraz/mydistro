@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # compile toybox
-
 cd ./src/toybox
-make defconfig
 
+make defconfig
 # make menuconfig
 
 make -j$(nproc)
