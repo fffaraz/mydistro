@@ -18,6 +18,9 @@ cp ./src/syslinux/bios/com32/menu/menu.c32 ./iso-dir/isolinux
 # memtest86+
 cp ./src/memtest86plus/build/x86_64/mt86plus ./iso-dir/memtest
 
+# initramfs
+cp ./output/initramfs.cpio ./iso-dir/initramfs.cpio
+
 # mk iso
 mkisofs -J -R -o ./output/mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
 

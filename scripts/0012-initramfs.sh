@@ -10,7 +10,7 @@ echo "root::0:0:root:/root:/bin/sh" > ./initramfs-dir/etc/passwd
 echo "root:x:0:" > ./initramfs-dir/etc/group
 echo "nameserver 8.8.8.8" > ./initramfs-dir/etc/resolv.conf
 
-# dummy large file
+# large dummy file
 # dd if=/dev/zero of=./initramfs-dir/largefile bs=1M count=128
 
 # -o, --create
