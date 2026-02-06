@@ -6,7 +6,7 @@ mkdir -p ./iso-dir/isolinux
 # copy kernel and initramfs and memtest86+
 cp ./output/bzImage ./iso-dir
 cp ./output/initramfs.cpio ./iso-dir
-cp ./src/memtest86plus/build/x86_64/mt86plus ./iso-dir/memtest
+cp ./src/memtest86plus/build/x86_64/mt86plus ./iso-dir
 
 # copy syslinux
 cp ./assets/syslinux.cfg ./iso-dir/isolinux/isolinux.cfg
