@@ -17,10 +17,10 @@ mount ./output/boot.img ./mnt
 # copy kernel and initramfs and memtest86+
 cp ./output/bzImage ./mnt
 cp ./output/initramfs.cpio ./mnt
-cp ./iso-dir/mt86plus ./mnt
+cp ./src/memtest86plus/build/x86_64/mt86plus ./mnt
 
 # copy syslinux
-cp ./iso-dir/isolinux/isolinux.cfg ./mnt/syslinux.cfg
+cp ./assets/syslinux.cfg ./mnt
 cp /usr/lib/syslinux/modules/bios/libcom32.c32 ./mnt
 cp /usr/lib/syslinux/modules/bios/libutil.c32 ./mnt
 cp /usr/lib/syslinux/modules/bios/vesamenu.c32 ./mnt
