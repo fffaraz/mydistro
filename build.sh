@@ -1,6 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
+# debug mode drops into a shell inside the container instead of running the build scripts, allowing you to inspect the container's filesystem and run commands manually
 DEBUG_MODE=""
 if [ "${1:-}" = "-d" ]; then
 	DEBUG_MODE="-t --entrypoint /bin/bash"
