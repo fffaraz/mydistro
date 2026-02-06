@@ -19,6 +19,3 @@ make defconfig
 make olddefconfig
 
 make -j$(nproc)
-
-mkdir -p /opt/mydistro/iso-dir
-cp ./arch/x86/boot/bzImage /opt/mydistro/iso-dir/bzImage

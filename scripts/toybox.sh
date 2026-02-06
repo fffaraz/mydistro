@@ -9,5 +9,4 @@ make defconfig
 
 make -j$(nproc)
 
-mkdir -p /opt/mydistro/initramfs-dir
 PREFIX=/opt/mydistro/initramfs-dir make install
