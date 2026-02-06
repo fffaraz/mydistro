@@ -2,7 +2,7 @@
 
 # compile musl
 
-cd /opt/mydistro/src/musl
+cd ./src/musl
 
 ./configure
 make -j$(nproc)

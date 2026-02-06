@@ -2,7 +2,7 @@
 
 # compile microwindows
 
-cd /opt/mydistro/src/microwindows/src
+cd ./src/microwindows/src
 cp Configs/config.linux-fb config
 
 sed -i 's/NX11                     = N/NX11 = Y/' config

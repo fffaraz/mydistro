@@ -2,11 +2,7 @@
 set -x
 
 # download source repositories
-
-# cd /opt/mydistro
-mkdir -p ./src
 cd ./src
-
 git config --global advice.detachedHead false
 
 [ -d ./linux ] || git clone --depth 1 -b v6.18 https://github.com/torvalds/linux.git

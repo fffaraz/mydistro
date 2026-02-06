@@ -2,7 +2,7 @@
 
 # compile curl
 
-cd /opt/mydistro/src/curl
+cd ./src/curl
 autoreconf -vif
 
 ./configure \

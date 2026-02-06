@@ -2,7 +2,7 @@
 
 # compile toybox
 
-cd /opt/mydistro/src/toybox
+cd ./src/toybox
 make defconfig
 
 # make menuconfig

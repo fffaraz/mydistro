@@ -2,7 +2,7 @@
 
 # compile busybox
 
-cd /opt/mydistro/src/busybox
+cd ./src/busybox
 make defconfig
 
 sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config

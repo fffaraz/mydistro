@@ -2,7 +2,7 @@
 
 # compile nano editor
 
-cd /opt/mydistro/src/nano
+cd ./src/nano
 ln -s ../gnulib ./gnulib
 
 ./autogen.sh

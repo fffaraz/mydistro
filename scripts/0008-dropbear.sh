@@ -2,7 +2,7 @@
 
 # compile dropbear ssh server
 
-cd /opt/mydistro/src/dropbear
+cd ./src/dropbear
 ./configure --enable-static
 make -j$(nproc)
 make install DESTDIR=/opt/mydistro/initramfs-dir

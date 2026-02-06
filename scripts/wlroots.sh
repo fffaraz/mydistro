@@ -2,7 +2,7 @@
 
 # compile wlroots
 
-cd /opt/mydistro/src/wlroots
+cd ./src/wlroots
 
 meson setup build/
 ninja -C build/
