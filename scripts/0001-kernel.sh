@@ -3,7 +3,7 @@ set -x
 
 # compile linux kernel
 
-cd /opt/mydistro/src/linux
+cd ./src/linux
 
 make defconfig
 
@@ -19,3 +19,5 @@ make defconfig
 make olddefconfig
 
 make -j$(nproc)
+
+cp ./arch/x86/boot/bzImage /opt/mydistro/output/bzImage

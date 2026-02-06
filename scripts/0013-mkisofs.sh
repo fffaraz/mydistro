@@ -1,17 +1,13 @@
 #!/bin/bash
 set -exuo pipefail
 
-mkdir -p ./iso-dir
-
-# kernel
-cp ./src/linux/arch/x86/boot/bzImage ./iso-dir/bzImage
-
-# syslinux
-
 mkdir -p ./iso-dir/isolinux
 
-cp ./assets/syslinux.cfg ./iso-dir/isolinux/isolinux.cfg
+# kernel
+cp ./output/bzImage ./iso-dir/bzImage
 
+# syslinux
+cp ./assets/syslinux.cfg ./iso-dir/isolinux/isolinux.cfg
 cp ./src/syslinux/bios/core/isolinux.bin ./iso-dir/isolinux
 cp ./src/syslinux/bios/com32/elflink/ldlinux/ldlinux.c32 ./iso-dir/isolinux
 cp ./src/syslinux/bios/com32/lib/libcom32.c32 ./iso-dir/isolinux

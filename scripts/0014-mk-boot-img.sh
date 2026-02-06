@@ -16,11 +16,10 @@ sync
 
 mount ./output/boot.img ./mnt
 
-cp ./iso-dir/bzImage ./mnt
-cp ./iso-dir/initramfs.cpio ./mnt
+cp ./output/bzImage ./mnt
+cp ./output/initramfs.cpio ./mnt
 cp ./iso-dir/memtest ./mnt
 cp ./iso-dir/isolinux/isolinux.cfg ./mnt/syslinux.cfg
-
 cp /usr/lib/syslinux/modules/bios/libcom32.c32 ./mnt
 cp /usr/lib/syslinux/modules/bios/libutil.c32 ./mnt
 cp /usr/lib/syslinux/modules/bios/vesamenu.c32 ./mnt

@@ -15,7 +15,4 @@ echo "nameserver 8.8.8.8" > ./initramfs-dir/etc/resolv.conf
 
 # -o, --create
 # -H, --format=
-find ./initramfs-dir | cpio -o -H newc > /opt/mydistro/output/initramfs.cpio
-
-# copy kernel to output dir
-cp ./src/linux/arch/x86/boot/bzImage ./output/bzImage
+find ./initramfs-dir | cpio -o -H newc > ./output/initramfs.cpio
