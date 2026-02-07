@@ -1,6 +1,7 @@
 # mydistro
 
 A minimal Linux distribution built entirely from git source repositories.
+
 Compiles the Linux kernel, busybox, syslinux, and more inside a Docker container with no internet access.
 
 ## Prerequisites

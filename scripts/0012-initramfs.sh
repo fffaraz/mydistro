@@ -17,3 +17,5 @@ cd ./initramfs-dir
 find . | cpio -o -H newc > ../output/initramfs.cpio
 # -o, --create
 # -H, --format=
+
+tar -czvf ../output/initramfs.tar.gz .

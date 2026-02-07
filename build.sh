@@ -14,18 +14,21 @@ mkdir ./output
 
 # build the docker image for the build environment
 # docker pull debian:sid-slim
-docker rm -f mydistro || true
-docker build -t mydistro .
+docker rm -f mydistro-builder || true
+docker build -t mydistro-builder .
 
 # download source repositories
 ./scripts/0000-source.sh
 
 # run the build inside a docker container without network access
-docker run --privileged --rm -i --network none --name mydistro \
+docker run --privileged --rm -i --network none --name mydistro-builder \
 	-e "TERM=xterm-256color" \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output:/opt/mydistro/output \
 	$DEBUG_MODE \
-	mydistro
+	mydistro-builder
+
+docker rmi -f mydistro-initramfs:latest || true
+docker import ./output/initramfs.tar.gz mydistro-initramfs:latest
