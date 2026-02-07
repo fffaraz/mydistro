@@ -5,6 +5,17 @@ set -x
 mkdir -p ./initramfs-dir
 
 cd ./initramfs-dir
-mkdir -p etc/init.d proc sys tmp home mnt usr/lib var
+mkdir -p bin etc/init.d home lib mnt proc sys tmp usr/local var
+
+ROOT_DIR=/opt/mydistro/initramfs-dir
+
+ln -s $ROOT_DIR/bin ./sbin
+ln -s $ROOT_DIR/bin ./usr/bin
+ln -s $ROOT_DIR/bin ./usr/sbin
+ln -s $ROOT_DIR/bin ./usr/local/bin
+ln -s $ROOT_DIR/bin ./usr/local/sbin
+
+ln -s $ROOT_DIR/lib ./usr/lib
+ln -s $ROOT_DIR/lib ./usr/local/lib
 
 touch ./etc/fstab
