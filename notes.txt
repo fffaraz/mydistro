@@ -9,3 +9,7 @@ https://www.youtube.com/watch?v=DXUlaSYTLQI
 https://www.youtube.com/watch?v=n4CpjUpistc
 https://www.youtube.com/watch?v=u2Juz5sQyYQ
 ---
+https://github.com/oasislinux/oasis
+https://github.com/kisslinux/repo
+https://github.com/kisslinux/init
+---
