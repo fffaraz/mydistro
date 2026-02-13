@@ -5,8 +5,37 @@ set -x
 cd ./src
 git config --global advice.detachedHead false
 
-[ -d ./linux ] || git clone --depth 1 -b v6.18 https://github.com/torvalds/linux.git
-[ -d ./busybox ] || git clone --depth 1 -b 1_37_0 https://git.busybox.net/busybox # https://github.com/mirror/busybox.git
+[ -d ./linux ]        || git clone --depth 1 -b v6.18    https://github.com/torvalds/linux.git
+
+[ -d ./acl ]          || git clone --depth 1 -b v2.3.2 https://git.savannah.nongnu.org/git/acl.git
+[ -d ./attr ]         || git clone --depth 1 -b v2.5.2 https://git.savannah.nongnu.org/git/attr.git
+[ -d ./autoconf ]     || git clone --depth 1 -b v2.72 git://git.sv.gnu.org/autoconf # http://git.sv.gnu.org/r/autoconf.git
+[ -d ./automake ]     || git clone --depth 1 -b v1.18.1 https://git.savannah.gnu.org/git/automake.git
+[ -d ./bash ]         || git clone --depth 1 -b bash-5.3 https://git.savannah.gnu.org/git/bash.git
+[ -d ./bc ]           || git clone --depth 1 -b 7.0.3 https://github.com/gavinhoward/bc.git
+[ -d ./binutils-gdb ] || git clone --depth 1 -b binutils-2_45 git://sourceware.org/git/binutils-gdb.git
+[ -d ./bison ]        || git clone --depth 1 -b v3.8.2 https://git.savannah.gnu.org/git/bison.git
+[ -d ./bzip2 ]        || git clone --depth 1 -b bzip2-1.0.8 https://sourceware.org/git/bzip2.git
+[ -d ./coreutils ]    || git clone --depth 1 -b v9.7 git://git.sv.gnu.org/coreutils
+[ -d ./dejagnu ]      || git clone --depth 1 -b dejagnu-1.6.3-release git://git.sv.gnu.org/dejagnu.git
+[ -d ./diffutils ]    || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/diffutils.git
+[ -d ./e2fsprogs ]    || git clone --depth 1 -b v1.47.3 https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+[ -d ./elfutils ]     || git clone --depth 1 -b elfutils-0.193 git://sourceware.org/git/elfutils.git
+[ -d ./libexpat ]     || git clone --depth 1 -b R_2_7_1 https://github.com/libexpat/libexpat.git
+
+if [ ! -d ./expect ]; then
+	curl -L -o expect.tar.gz "https://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz"
+	tar -xzf expect.tar.gz -C ./expect --strip-components=1
+	rm expect.tar.gz
+fi
+
+[ -d ./file ]     || git clone --depth 1 -b FILE5_46 https://github.com/file/file.git
+[ -d ./findutils ]|| git clone --depth 1 -b v4.10.0 https://git.savannah.gnu.org/git/findutils.git
+
+# https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
+# https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
+
+[ -d ./busybox ]  || git clone --depth 1 -b 1_37_0 https://git.busybox.net/busybox # https://github.com/mirror/busybox.git
 [ -d ./syslinux ] || git clone --depth 1 https://salsa.debian.org/images-team/syslinux.git # git://repo.or.cz/syslinux.git
 [ -d ./memtest86plus ] || git clone --depth 1 https://github.com/memtest86plus/memtest86plus.git
 [ -d ./git ] || git clone --depth 1 -b v2.53.0 https://github.com/git/git.git
