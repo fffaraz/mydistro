@@ -41,6 +41,9 @@ git config --global advice.detachedHead false
 [ -d ./mpc ]          || git clone --depth 1 -b 1.3.1 https://gitlab.inria.fr/mpc/mpc.git # https://www.multiprecision.org/
 [ -d ./m4 ]           || git clone --depth 1 -b v1.4.20 git://git.sv.gnu.org/m4 # http://git.savannah.gnu.org/r/m4.git https://gitweb.git.savannah.gnu.org/gitweb/?p=m4.git
 [ -d ./ncurses ]      || git clone --depth 1 -b v6_5_20250809 https://github.com/ThomasDickey/ncurses-snapshots.git ./ncurses # https://www.gnu.org/software/ncurses/ https://ncurses.scripts.mit.edu/?p=ncurses.git
+[ -d ./make ]         || git clone --depth 1 -b 4.4.1 https://git.savannah.gnu.org/git/make.git # https://www.gnu.org/software/make/
+[ -d ./patch ]        || git clone --depth 1 -b v2.8 https://git.savannah.gnu.org/git/patch.git # https://cgit.git.savannah.gnu.org/cgit/patch.git
+[ -d ./sed ]          || git clone --depth 1 -b v4.9 git://git.sv.gnu.org/sed # https://cgit.git.savannah.gnu.org/cgit/sed.git
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html

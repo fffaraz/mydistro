@@ -42,3 +42,5 @@ make -j$(nproc)
 make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{stdc++{,exp,fs},supc++}.la
+
+exit 0
