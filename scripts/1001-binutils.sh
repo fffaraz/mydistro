@@ -6,7 +6,7 @@ cd ./src/binutils-gdb
 mkdir -v build
 cd build
 
-../configure --prefix /opt/mydistro/tools \
+../configure --prefix=/opt/mydistro/tools \
              --with-sysroot=/opt/mydistro/initramfs-dir \
              --target=x86_64-mydistro-linux-gnu \
              --disable-nls       \
@@ -14,8 +14,8 @@ cd build
              --disable-werror    \
              --enable-new-dtags  \
              --enable-default-hash-style=gnu \
-             --with-gmp=/opt/mydistro/src/gmp \
-             --with-mpfr=/opt/mydistro/src/mpfr
+             --disable-gdb       \
+             --disable-gdbserver
 
 make -j$(nproc)
 

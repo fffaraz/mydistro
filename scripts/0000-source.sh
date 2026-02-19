@@ -38,6 +38,7 @@ git config --global advice.detachedHead false
 [ -d ./gzip ]         || git clone --depth 1 -b v1.14 https://git.savannah.gnu.org/git/gzip.git # https://cgit.git.savannah.gnu.org/cgit/gzip.git
 [ -d ./inetutils ]    || git clone --depth 1 -b v2.6 https://git.savannah.gnu.org/git/inetutils.git # https://cgit.git.savannah.gnu.org/cgit/inetutils.git
 [ -d ./mpfr ]         || git clone --depth 1 -b 4.2.2 https://gitlab.inria.fr/mpfr/mpfr.git # git@gitlab.inria.fr:mpfr/mpfr.git https://www.mpfr.org/git.html
+[ -d ./mpc ]          || git clone --depth 1 -b 1.3.1 git@gitlab.inria.fr:mpc/mpc.git # https://gitlab.inria.fr/mpc/mpc
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
