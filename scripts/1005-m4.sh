@@ -13,3 +13,5 @@ ln -s ../gnulib ./gnulib
 
 make
 make DESTDIR=$LFS install
+
+exit 0
