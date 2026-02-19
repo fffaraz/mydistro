@@ -3,7 +3,7 @@ set -x
 
 cd ./src/m4
 
-./bootstrap --skip-git --skip-po --gnulib-srcdir=../gnulib
+./bootstrap --skip-po --skip-git --gnulib-srcdir=../gnulib
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
             --build=$(build-aux/config.guess)
