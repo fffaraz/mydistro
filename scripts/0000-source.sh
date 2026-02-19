@@ -31,6 +31,19 @@ fi
 
 [ -d ./file ]     || git clone --depth 1 -b FILE5_46 https://github.com/file/file.git
 [ -d ./findutils ]|| git clone --depth 1 -b v4.10.0 https://git.savannah.gnu.org/git/findutils.git
+[ -d ./flex ]     || git clone --depth 1 -b v2.6.4 https://github.com/westes/flex.git
+[ -d ./flit ]     || git clone --depth 1 -b 3.12.0 https://github.com/pypa/flit
+[ -d ./gawk ]|| git clone --depth 1 -b gawk-5.3.2 https://git.savannah.gnu.org/git/gawk.git
+[ -d ./gcc ]|| git clone --depth 1 -b releases/gcc-15.2.0 https://gcc.gnu.org/git/gcc.git
+[ -d ./gdbm ]|| git clone --depth 1 -b v1.26 git://git.gnu.org.ua/gdbm.git
+[ -d ./gettext ]|| git clone --depth 1 -b v0.26 https://git.savannah.gnu.org/git/gettext.git
+[ -d ./glibc ]|| git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
+
+
+
+[ -d ./ ]|| git clone --depth 1 -b 
+[ -d ./ ]|| git clone --depth 1 -b 
+[ -d ./ ]|| git clone --depth 1 -b 
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
@@ -41,7 +54,6 @@ fi
 [ -d ./git ] || git clone --depth 1 -b v2.53.0 https://github.com/git/git.git
 [ -d ./microwindows ] || git clone --depth 1 https://github.com/ghaerr/microwindows.git
 [ -d ./dropbear ] || git clone --depth 1 https://github.com/mkj/dropbear.git
-[ -d ./glibc ] || git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
 [ -d ./musl ] || git clone --depth 1 git://git.musl-libc.org/musl
 [ -d ./curl ] || git clone --depth 1 https://github.com/curl/curl.git
 [ -d ./toybox ] || git clone --depth 1 https://github.com/landley/toybox.git

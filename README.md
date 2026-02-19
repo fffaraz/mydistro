@@ -4,7 +4,14 @@ A minimal Linux distribution built entirely from git source repositories.
 
 Compiles the Linux kernel, busybox, syslinux, and more inside a Docker container with no internet access.
 
-## Prerequisites
+This project is in early development and is not yet functional for general use.
+
+# Philosophy and Principles
+
+- **Minimalism**: Only include essential components to keep the distribution lightweight and simple.
+- **Transparency**: Build everything from source code available in git repositories.
+
+## Build Prerequisites
 
 - Docker
 - QEMU with KVM support
