@@ -37,7 +37,6 @@ git config --global advice.detachedHead false
 [ -d ./grub ]         || git clone --depth 1 -b grub-2.12 https://git.savannah.gnu.org/git/grub.git # https://cgit.git.savannah.gnu.org/cgit/grub.git
 [ -d ./gzip ]         || git clone --depth 1 -b v1.14 https://git.savannah.gnu.org/git/gzip.git # https://cgit.git.savannah.gnu.org/cgit/gzip.git
 [ -d ./inetutils ]    || git clone --depth 1 -b v2.6 https://git.savannah.gnu.org/git/inetutils.git # https://cgit.git.savannah.gnu.org/cgit/inetutils.git
-[ -d ./ ] || git clone --depth 1 -b
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
