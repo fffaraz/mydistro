@@ -15,7 +15,7 @@ git config --global advice.detachedHead false
 [ -d ./bison ]         || git clone --depth 1 -b v3.8.2 https://git.savannah.gnu.org/git/bison.git
 [ -d ./busybox ]       || git clone --depth 1 -b 1_37_0 https://git.busybox.net/busybox # https://github.com/mirror/busybox.git
 [ -d ./bzip2 ]         || git clone --depth 1 -b bzip2-1.0.8 https://sourceware.org/git/bzip2.git
-[ -d ./coreutils ]     || git clone --depth 1 -b v9.7 git://git.sv.gnu.org/coreutils # https://github.com/coreutils/coreutils.git git://git.savannah.gnu.org/coreutils.git
+[ -d ./coreutils ]     || git clone --depth 1 -b v9.10 git://git.sv.gnu.org/coreutils # https://github.com/coreutils/coreutils.git git://git.savannah.gnu.org/coreutils.git
 [ -d ./curl ]          || git clone --depth 1 -b curl-8_18_0 https://github.com/curl/curl.git
 [ -d ./dejagnu ]       || git clone --depth 1 -b dejagnu-1.6.3-release git://git.sv.gnu.org/dejagnu.git
 [ -d ./diffutils ]     || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/diffutils.git
@@ -32,7 +32,7 @@ git config --global advice.detachedHead false
 [ -d ./gettext ]       || git clone --depth 1 -b v0.26 https://git.savannah.gnu.org/git/gettext.git
 [ -d ./git ]           || git clone --depth 1 -b v2.53.0 https://github.com/git/git.git
 [ -d ./glibc ]         || git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
-[ -d ./gnulib ]        || git clone --depth 1 -b stable-202401 git://git.git.savannah.gnu.org/gnulib.git # https://github.com/coreutils/gnulib.git https://git.savannah.gnu.org/git/gnulib.git git://git.sv.gnu.org/gnulib.git https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git
+[ -d ./gnulib ]        || git clone --depth 1 -b stable-202507 git://git.git.savannah.gnu.org/gnulib.git # https://github.com/coreutils/gnulib.git https://git.savannah.gnu.org/git/gnulib.git git://git.sv.gnu.org/gnulib.git https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git
 [ -d ./gperf ]         || git clone --depth 1 -b v3.3 https://git.savannah.gnu.org/git/gperf.git
 [ -d ./grep ]          || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/grep.git
 [ -d ./groff ]         || git clone --depth 1 -b 1.23.0 https://git.savannah.gnu.org/git/groff.git
