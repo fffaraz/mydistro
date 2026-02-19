@@ -62,9 +62,7 @@ git config --global advice.detachedHead false
 [ -d ./coreutils ] || git clone --depth 1 https://github.com/coreutils/coreutils.git # git://git.savannah.gnu.org/coreutils.git
 [ -d ./wlroots ] || git clone --depth 1 -b 0.18.3 https://gitlab.freedesktop.org/wlroots/wlroots.git
 [ -d ./nano ] || git clone --depth 1 https://github.com/madnight/nano.git # https://git.savannah.gnu.org/git/nano.git
-[ -d ./gnulib ] || git clone https://github.com/coreutils/gnulib.git ./gnulib # git://git.sv.gnu.org/gnulib.git
-
-
+[ -d ./gnulib ] || git clone https://github.com/coreutils/gnulib.git ./gnulib # git://git.sv.gnu.org/gnulib.git https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git
 
 # TODO: couldn't find git repositories for these, so download tarballs instead
 

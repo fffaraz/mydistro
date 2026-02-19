@@ -3,6 +3,8 @@ set -x
 
 cd ./src/m4
 
+ln -s ../gnulib ./gnulib
+
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
             --build=$(build-aux/config.guess)
