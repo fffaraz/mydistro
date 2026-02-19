@@ -15,10 +15,10 @@ mkdir -v build
 cd build
 
 ../configure \
-    --target=x86_64-mydistro-linux-gnu \
-    --prefix=/opt/mydistro/initramfs-dir/tools \
+    --target=$LFS_TGT         \
+    --prefix=$LFS/tools       \
     --with-glibc-version=2.42 \
-    --with-sysroot=/opt/mydistro/initramfs-dir \
+    --with-sysroot=$LFS       \
     --with-newlib             \
     --without-headers         \
     --enable-default-pie      \
@@ -39,4 +39,4 @@ make -j$(nproc)
 make install
 
 cd ..
-cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $(/opt/mydistro/initramfs-dir/tools/bin/x86_64-mydistro-linux-gnu-gcc -print-libgcc-file-name)`/include/limits.h
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $($LFS/tools/bin/$LFS_TGT-gcc -print-libgcc-file-name)`/include/limits.h

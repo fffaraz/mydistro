@@ -9,9 +9,9 @@ ln -s ../mpfr mpfr
 mkdir -v build
 cd build
 
-../configure --prefix=/opt/mydistro/initramfs-dir/tools \
-             --with-sysroot=/opt/mydistro/initramfs-dir \
-             --target=x86_64-mydistro-linux-gnu \
+../configure --prefix=$LFS/tools \
+             --with-sysroot=$LFS \
+             --target=$LFS_TGT \
              --disable-nls       \
              --enable-gprofng=no \
              --disable-werror    \
