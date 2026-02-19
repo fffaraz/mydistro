@@ -9,7 +9,7 @@ ln -s ../mpfr mpfr
 mkdir -v build
 cd build
 
-../configure --prefix=/opt/mydistro/tools \
+../configure --prefix=/opt/mydistro/initramfs-dir/tools \
              --with-sysroot=/opt/mydistro/initramfs-dir \
              --target=x86_64-mydistro-linux-gnu \
              --disable-nls       \

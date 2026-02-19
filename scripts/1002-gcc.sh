@@ -16,7 +16,7 @@ cd build
 
 ../configure \
     --target=x86_64-mydistro-linux-gnu \
-    --prefix=/opt/mydistro/tools \
+    --prefix=/opt/mydistro/initramfs-dir/tools \
     --with-glibc-version=2.42 \
     --with-sysroot=/opt/mydistro/initramfs-dir \
     --with-newlib             \
@@ -39,4 +39,4 @@ make -j$(nproc)
 make install
 
 cd ..
-cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $(/opt/mydistro/tools/bin/x86_64-mydistro-linux-gnu-gcc -print-libgcc-file-name)`/include/limits.h
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $(/opt/mydistro/initramfs-dir/tools/bin/x86_64-mydistro-linux-gnu-gcc -print-libgcc-file-name)`/include/limits.h

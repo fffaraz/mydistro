@@ -3,10 +3,10 @@ set -x
 
 # initialize initramfs directory structure
 mkdir -p ./initramfs-dir
-mkdir -p ./tools
 
 cd ./initramfs-dir
 mkdir -p bin etc/init.d home lib lib64 mnt proc sys tmp usr/local var
+mkdir -p tools
 
 ROOT_DIR=/opt/mydistro/initramfs-dir
 
