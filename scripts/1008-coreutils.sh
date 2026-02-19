@@ -9,7 +9,7 @@ cd ./src/coreutils
             --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
             --enable-no-install-program=kill,uptime \
-            CFLAGS="-Wno-error=unterminated-string-initialization -Wno-error=cast-align"
+            CFLAGS="-Wno-error=unterminated-string-initialization -Wno-error=cast-align -Wno-error=switch-enum -Wno-error=calloc-transposed-args"
 
 make
 make DESTDIR=$LFS install
