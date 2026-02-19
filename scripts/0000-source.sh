@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -exuo pipefail
 
 # download source repositories
 cd ./src
@@ -25,6 +25,7 @@ git config --global advice.detachedHead false
 
 if [ ! -d ./expect ]; then
 	curl -L -o expect.tar.gz "https://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz"
+	echo "00fce8de158422f5ccd2666512329bd2  expect.tar.gz" | md5sum -c
 	tar -xzf expect.tar.gz -C ./expect --strip-components=1
 	rm expect.tar.gz
 fi
@@ -39,11 +40,16 @@ fi
 [ -d ./gettext ]|| git clone --depth 1 -b v0.26 https://git.savannah.gnu.org/git/gettext.git
 [ -d ./glibc ]|| git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
 
+if [ ! -d ./gmp ]; then
+	curl -L -o gmp.tar.gz "https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz"
+	echo "956dc04e864001a9c22429f761f2c283  gmp.tar.gz" | md5sum -c
+	tar -xJf gmp.tar.gz -C ./gmp --strip-components=1
+	rm gmp.tar.gz
+fi
 
-
-[ -d ./ ]|| git clone --depth 1 -b 
-[ -d ./ ]|| git clone --depth 1 -b 
-[ -d ./ ]|| git clone --depth 1 -b 
+[ -d ./gperf ]|| git clone --depth 1 -b v3.3 https://git.savannah.gnu.org/git/gperf.git
+[ -d ./grep ]|| git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/grep.git
+[ -d ./groff ]|| git clone --depth 1 -b 1.23.0 https://git.savannah.gnu.org/git/groff.git
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
