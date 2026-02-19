@@ -3,10 +3,10 @@ set -x
 
 cd ./src/coreutils
 
-./bootstrap --skip-git --skip-po --gnulib-srcdir=../gnulib
+./bootstrap --skip-po --gnulib-srcdir=../gnulib
 ./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \
-            --build=$(gnulib/build-aux/config.guess) \
+            --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
             --enable-no-install-program=kill,uptime
 
