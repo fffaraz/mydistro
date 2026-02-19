@@ -17,7 +17,7 @@ mkdir ./output
 docker rm -f mydistro-builder || true
 docker build -t mydistro-builder .
 
-# download source repositories
+# download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
 ./scripts/0000-source.sh
 
 # run the build inside a docker container without network access
