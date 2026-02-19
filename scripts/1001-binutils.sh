@@ -3,6 +3,9 @@ set -x
 
 cd ./src/binutils-gdb
 
+ln -s ../gmp gmp
+ln -s ../mpfr mpfr
+
 mkdir -v build
 cd build
 
@@ -13,9 +16,7 @@ cd build
              --enable-gprofng=no \
              --disable-werror    \
              --enable-new-dtags  \
-             --enable-default-hash-style=gnu \
-             --disable-gdb       \
-             --disable-gdbserver
+             --enable-default-hash-style=gnu
 
 make -j$(nproc)
 

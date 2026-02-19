@@ -19,3 +19,4 @@ cp -r ./src-ro ./src
 
 # ./scripts/0002-initramfs.sh
 # ./scripts/1001-binutils.sh
+# ./scripts/1002-gcc.sh

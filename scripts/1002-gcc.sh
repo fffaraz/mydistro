@@ -3,6 +3,10 @@ set -x
 
 cd ./src/gcc
 
+ln -s ../gmp gmp
+ln -s ../mpc mpc
+ln -s ../mpfr mpfr
+
 if [ $(uname -m) = "x86_64" ]; then
     sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 fi
