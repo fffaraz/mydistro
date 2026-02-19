@@ -19,5 +19,4 @@ cd build
              --enable-default-hash-style=gnu
 
 make -j$(nproc)
-
 make install

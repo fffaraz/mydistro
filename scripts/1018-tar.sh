@@ -1,11 +1,11 @@
 #!/bin/bash
 set -x
 
-cd ./src/sed
+cd ./src/tar
 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            --build=$(./build-aux/config.guess)
+            --build=$(build-aux/config.guess)
 
 make -j$(nproc)
 make DESTDIR=$LFS install

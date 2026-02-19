@@ -44,6 +44,8 @@ git config --global advice.detachedHead false
 [ -d ./make ]         || git clone --depth 1 -b 4.4.1 https://git.savannah.gnu.org/git/make.git # https://www.gnu.org/software/make/
 [ -d ./patch ]        || git clone --depth 1 -b v2.8 https://git.savannah.gnu.org/git/patch.git # https://cgit.git.savannah.gnu.org/cgit/patch.git
 [ -d ./sed ]          || git clone --depth 1 -b v4.9 git://git.sv.gnu.org/sed # https://cgit.git.savannah.gnu.org/cgit/sed.git
+[ -d ./tar ]          || git clone --depth 1 -b v1.35 https://git.savannah.gnu.org/git/tar.git # https://cgit.git.savannah.gnu.org/cgit/tar.git
+[ -d ./xz ]           || git clone --depth 1 -b v5.8.1 https://github.com/tukaani-project/xz.git
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
