@@ -19,37 +19,25 @@ git config --global advice.detachedHead false
 [ -d ./coreutils ]    || git clone --depth 1 -b v9.7 git://git.sv.gnu.org/coreutils
 [ -d ./dejagnu ]      || git clone --depth 1 -b dejagnu-1.6.3-release git://git.sv.gnu.org/dejagnu.git
 [ -d ./diffutils ]    || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/diffutils.git
-[ -d ./e2fsprogs ]    || git clone --depth 1 -b v1.47.3 https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+[ -d ./e2fsprogs ]    || git clone --depth 1 -b v1.47.3 git://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
 [ -d ./elfutils ]     || git clone --depth 1 -b elfutils-0.193 git://sourceware.org/git/elfutils.git
 [ -d ./libexpat ]     || git clone --depth 1 -b R_2_7_1 https://github.com/libexpat/libexpat.git
-
-if [ ! -d ./expect ]; then
-	curl -L -o expect.tar.gz "https://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz"
-	echo "00fce8de158422f5ccd2666512329bd2  expect.tar.gz" | md5sum -c
-	tar -xzf expect.tar.gz -C ./expect --strip-components=1
-	rm expect.tar.gz
-fi
-
-[ -d ./file ]     || git clone --depth 1 -b FILE5_46 https://github.com/file/file.git
-[ -d ./findutils ]|| git clone --depth 1 -b v4.10.0 https://git.savannah.gnu.org/git/findutils.git
-[ -d ./flex ]     || git clone --depth 1 -b v2.6.4 https://github.com/westes/flex.git
-[ -d ./flit ]     || git clone --depth 1 -b 3.12.0 https://github.com/pypa/flit
-[ -d ./gawk ]|| git clone --depth 1 -b gawk-5.3.2 https://git.savannah.gnu.org/git/gawk.git
-[ -d ./gcc ]|| git clone --depth 1 -b releases/gcc-15.2.0 https://gcc.gnu.org/git/gcc.git
-[ -d ./gdbm ]|| git clone --depth 1 -b v1.26 git://git.gnu.org.ua/gdbm.git
-[ -d ./gettext ]|| git clone --depth 1 -b v0.26 https://git.savannah.gnu.org/git/gettext.git
-[ -d ./glibc ]|| git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
-
-if [ ! -d ./gmp ]; then
-	curl -L -o gmp.tar.gz "https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz"
-	echo "956dc04e864001a9c22429f761f2c283  gmp.tar.gz" | md5sum -c
-	tar -xJf gmp.tar.gz -C ./gmp --strip-components=1
-	rm gmp.tar.gz
-fi
-
-[ -d ./gperf ]|| git clone --depth 1 -b v3.3 https://git.savannah.gnu.org/git/gperf.git
-[ -d ./grep ]|| git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/grep.git
-[ -d ./groff ]|| git clone --depth 1 -b 1.23.0 https://git.savannah.gnu.org/git/groff.git
+[ -d ./file ]         || git clone --depth 1 -b FILE5_46 https://github.com/file/file.git
+[ -d ./findutils ]    || git clone --depth 1 -b v4.10.0 https://git.savannah.gnu.org/git/findutils.git
+[ -d ./flex ]         || git clone --depth 1 -b v2.6.4 https://github.com/westes/flex.git
+[ -d ./flit ]         || git clone --depth 1 -b 3.12.0 https://github.com/pypa/flit
+[ -d ./gawk ]         || git clone --depth 1 -b gawk-5.3.2 https://git.savannah.gnu.org/git/gawk.git
+[ -d ./gcc ]          || git clone --depth 1 -b releases/gcc-15.2.0 https://gcc.gnu.org/git/gcc.git
+[ -d ./gdbm ]         || git clone --depth 1 -b v1.26 git://git.gnu.org.ua/gdbm.git
+[ -d ./gettext ]      || git clone --depth 1 -b v0.26 https://git.savannah.gnu.org/git/gettext.git
+[ -d ./glibc ]        || git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
+[ -d ./gperf ]        || git clone --depth 1 -b v3.3 https://git.savannah.gnu.org/git/gperf.git
+[ -d ./grep ]         || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/grep.git
+[ -d ./groff ]        || git clone --depth 1 -b 1.23.0 https://git.savannah.gnu.org/git/groff.git
+[ -d ./grub ]         || git clone --depth 1 -b grub-2.12 https://git.savannah.gnu.org/git/grub.git # https://cgit.git.savannah.gnu.org/cgit/grub.git
+[ -d ./gzip ]         || git clone --depth 1 -b v1.14 https://git.savannah.gnu.org/git/gzip.git # https://cgit.git.savannah.gnu.org/cgit/gzip.git
+[ -d ./inetutils ]    || git clone --depth 1 -b v2.6 https://git.savannah.gnu.org/git/inetutils.git # https://cgit.git.savannah.gnu.org/cgit/inetutils.git
+[ -d ./ ] || git clone --depth 1 -b
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
@@ -69,3 +57,30 @@ fi
 [ -d ./gnulib ] || git clone https://github.com/coreutils/gnulib.git ./gnulib # git://git.sv.gnu.org/gnulib.git
 
 # [ -d ./ncurses ] || git clone --depth 1 https://github.com/mirror/ncurses
+
+
+# TODO: couldn't find git repositories for these, so download tarballs instead
+
+if [ ! -d ./expect ]; then
+	curl -L -o expect.tar.gz "https://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz"
+	echo "00fce8de158422f5ccd2666512329bd2  expect.tar.gz" | md5sum -c
+	mkdir -p ./expect
+	tar -xzf expect.tar.gz -C ./expect --strip-components=1
+	rm expect.tar.gz
+fi
+
+if [ ! -d ./gmp ]; then
+	curl -L -o gmp.tar.xz "https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz"
+	echo "956dc04e864001a9c22429f761f2c283  gmp.tar.xz" | md5sum -c
+	mkdir -p ./gmp
+	tar -xJf gmp.tar.xz -C ./gmp --strip-components=1
+	rm gmp.tar.xz
+fi
+
+if [ ! -d ./iana-etc ]; then
+	curl -L -o iana-etc.tar.gz "https://github.com/Mic92/iana-etc/releases/download/20250807/iana-etc-20250807.tar.gz"
+	echo "de0a909103d4ff59d1424c5ec7ac9e4a  iana-etc.tar.gz" | md5sum -c
+	mkdir -p ./iana-etc
+	tar -xzf iana-etc.tar.gz -C ./iana-etc --strip-components=1
+	rm iana-etc.tar.gz
+fi
