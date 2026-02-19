@@ -13,7 +13,9 @@ cd build
              --enable-gprofng=no \
              --disable-werror    \
              --enable-new-dtags  \
-             --enable-default-hash-style=gnu
+             --enable-default-hash-style=gnu \
+             --with-gmp=/opt/mydistro/src/gmp \
+             --with-mpfr=/opt/mydistro/src/mpfr
 
 make -j$(nproc)
 

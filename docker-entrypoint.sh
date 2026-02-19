@@ -16,3 +16,6 @@ cp -r ./src-ro ./src
 ./scripts/0012-initramfs.sh
 ./scripts/0013-mkisofs.sh
 ./scripts/0014-mk-boot-img.sh
+
+# ./scripts/0002-initramfs.sh
+# ./scripts/1001-binutils.sh
