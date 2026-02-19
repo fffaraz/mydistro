@@ -24,7 +24,7 @@ popd
             --disable-stripping          \
             AWK=gawk
 
-make -j$(nproc)
+make
 
 make DESTDIR=$LFS install
 ln -sv libncursesw.so $LFS/usr/lib/libncurses.so

@@ -14,7 +14,7 @@ popd
 
 ./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
 
-make FILE_COMPILE=$(pwd)/build/src/file -j$(nproc)
+make FILE_COMPILE=$(pwd)/build/src/file
 
 make DESTDIR=$LFS install
 

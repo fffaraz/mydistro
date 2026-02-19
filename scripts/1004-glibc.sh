@@ -24,7 +24,7 @@ echo "rootsbindir=/usr/sbin" > configparms
       libc_cv_slibdir=/usr/lib           \
       --enable-kernel=5.4
 
-make -j$(nproc)
+make
 make DESTDIR=$LFS install
 
 sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
@@ -38,7 +38,7 @@ sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
     --disable-libstdcxx-pch    \
     --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/15.2.0
 
-make -j$(nproc)
+make
 make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{stdc++{,exp,fs},supc++}.la

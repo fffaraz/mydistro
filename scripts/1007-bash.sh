@@ -8,7 +8,7 @@ cd ./src/bash
             --host=$LFS_TGT                    \
             --without-bash-malloc
 
-make -j$(nproc)
+make
 make DESTDIR=$LFS install
 
 ln -sv bash $LFS/bin/sh

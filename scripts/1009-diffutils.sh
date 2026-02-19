@@ -8,5 +8,5 @@ cd ./src/diffutils
             gl_cv_func_strcasecmp_works=y \
             --build=$(./build-aux/config.guess)
 
-make -j$(nproc)
+make
 make DESTDIR=$LFS install

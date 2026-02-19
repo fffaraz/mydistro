@@ -37,7 +37,7 @@ cd build
     --disable-libstdcxx       \
     --enable-languages=c,c++
 
-make -j$(nproc)
+make
 make install
 
 cd ..

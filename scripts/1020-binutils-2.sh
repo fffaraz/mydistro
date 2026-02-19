@@ -21,7 +21,7 @@ cd       build
     --enable-new-dtags         \
     --enable-default-hash-style=gnu
 
-make -j$(nproc)
+make
 make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}

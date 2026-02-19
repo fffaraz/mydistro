@@ -33,7 +33,7 @@ cd build
     --enable-languages=c,c++   \
     LDFLAGS_FOR_TARGET=-L$PWD/$LFS_TGT/libgcc
 
-make -j$(nproc)
+make
 make DESTDIR=$LFS install
 
 ln -sv gcc $LFS/usr/bin/cc

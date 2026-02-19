@@ -9,7 +9,7 @@ cd ./src/xz
             --disable-static                  \
             --docdir=/usr/share/doc/xz-5.8.1
 
-make -j$(nproc)
+make
 make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/liblzma.la
