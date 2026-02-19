@@ -39,6 +39,8 @@ git config --global advice.detachedHead false
 [ -d ./inetutils ]    || git clone --depth 1 -b v2.6 https://git.savannah.gnu.org/git/inetutils.git # https://cgit.git.savannah.gnu.org/cgit/inetutils.git
 [ -d ./mpfr ]         || git clone --depth 1 -b 4.2.2 https://gitlab.inria.fr/mpfr/mpfr.git # git@gitlab.inria.fr:mpfr/mpfr.git https://www.mpfr.org/git.html
 [ -d ./mpc ]          || git clone --depth 1 -b 1.3.1 https://gitlab.inria.fr/mpc/mpc.git # https://www.multiprecision.org/
+[ -d ./m4 ]           || git clone --depth 1 -b v1.4.20 git://git.sv.gnu.org/m4 # http://git.savannah.gnu.org/r/m4.git https://gitweb.git.savannah.gnu.org/gitweb/?p=m4.git
+[ -d ./ncurses ]      || git clone --depth 1 -b v6_5_20250809 https://github.com/ThomasDickey/ncurses-snapshots.git ./ncurses # https://www.gnu.org/software/ncurses/ https://ncurses.scripts.mit.edu/?p=ncurses.git
 
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 # https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
@@ -57,7 +59,6 @@ git config --global advice.detachedHead false
 [ -d ./nano ] || git clone --depth 1 https://github.com/madnight/nano.git # https://git.savannah.gnu.org/git/nano.git
 [ -d ./gnulib ] || git clone https://github.com/coreutils/gnulib.git ./gnulib # git://git.sv.gnu.org/gnulib.git
 
-# [ -d ./ncurses ] || git clone --depth 1 https://github.com/mirror/ncurses
 
 
 # TODO: couldn't find git repositories for these, so download tarballs instead
