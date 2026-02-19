@@ -13,6 +13,8 @@ https://github.com/oasislinux/oasis
 https://github.com/kisslinux/repo
 https://github.com/kisslinux/init
 ---
+PATH=$LFS/tools/bin:$PATH
+
 LFS_TGT=$(uname -m)-lfs-linux-gnu
 export LFS=/mnt/lfs
 mount -v -t ext4 /dev/<xxx> $LFS

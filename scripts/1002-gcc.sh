@@ -37,3 +37,6 @@ cd build
 
 make -j$(nproc)
 make install
+
+cd ..
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $(/opt/mydistro/tools/bin/x86_64-mydistro-linux-gnu-gcc -print-libgcc-file-name)`/include/limits.h
