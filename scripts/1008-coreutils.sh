@@ -8,7 +8,8 @@ cd ./src/coreutils
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
-            --enable-no-install-program=kill,uptime
+            --enable-no-install-program=kill,uptime \
+            CFLAGS="-Wno-error=unterminated-string-initialization -Wno-error=cast-align"
 
 make
 make DESTDIR=$LFS install
