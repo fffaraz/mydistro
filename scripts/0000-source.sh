@@ -58,8 +58,8 @@ git config --global advice.detachedHead false
 [ -d ./wlroots ]       || git clone --depth 1 -b 0.18.3 https://gitlab.freedesktop.org/wlroots/wlroots.git
 [ -d ./xz ]            || git clone --depth 1 -b v5.8.1 https://github.com/tukaani-project/xz.git
 
-# https://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
-# https://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
+# https://www.linuxfromscratch.org/lfs/view/stable-systemd/chapter03/packages.html
+# https://www.linuxfromscratch.org/lfs/view/stable-systemd/chapter03/patches.html
 
 # TODO: couldn't find git repositories for these, so download tarballs instead
 

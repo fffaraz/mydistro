@@ -31,7 +31,7 @@ sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
 
 ../libstdc++-v3/configure      \
     --host=$LFS_TGT            \
-    --build=$(../scripts/config.guess) \
+    --build=$(../config.guess) \
     --prefix=/usr              \
     --disable-multilib         \
     --disable-nls              \
