@@ -13,8 +13,11 @@ This project is in early development and is not yet functional for general use.
 
 ## Build Prerequisites
 
+- Bash
+- Git
+- Curl
 - Docker
-- QEMU with KVM support
+- QEMU with KVM support (to run the built OS in a virtual machine)
 
 ## Quick start
 
