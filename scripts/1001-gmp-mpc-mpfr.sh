@@ -7,6 +7,7 @@ cd gmp
 cd ..
 
 cd mpc
+git config --global --add safe.directory $(pwd)
 autoreconf -vif
 cd ..
 
