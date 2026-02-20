@@ -8,6 +8,7 @@ rm paxutils || true
 ln -s ../paxutils ./paxutils
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
+echo 'verror' >> gnulib.modules
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
 
 echo '#include <sys/ioctl.h>' > lib/system-ioctl.h
@@ -16,10 +17,11 @@ echo '#include <sys/ioctl.h>' > lib/system-ioctl.h
 sed -i 's/void write_error_details (char const \*name, size_t status, size_t size)/void write_error_details (char const *name, idx_t status, idx_t size)/' src/common.h
 sed -i 's/_Noreturn void write_fatal_details (char const \*name, ssize_t status, size_t size)/_Noreturn void write_fatal_details (char const *name, idx_t status, idx_t size)/' src/common.h
 sed -i 's/write_fatal_details (char const \*name, ssize_t status, size_t size)/write_fatal_details (char const *name, idx_t status, idx_t size)/' src/buffer.c
-sed -i '/#include "common.h"/a #include <ctype.h>' src/transform.c
+sed -i '/#include <termios.h>/a #include <sys/time.h>' src/checkpoint.c
 
-# Define legacy gnulib macros removed in newer versions
+# Fix missing headers and macros for newer gnulib
 sed -i '/^#include "tar.h"/a \
+#include <ctype.h>\
 #ifndef ISDIGIT\
 # define ISDIGIT(c) ((unsigned) (c) - '\''0'\'' <= 9)\
 #endif\
