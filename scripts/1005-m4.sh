@@ -3,6 +3,7 @@ set -exuo pipefail
 
 cd ./src/m4
 
+rmdir ./gnulib
 cp -r --reflink=auto ../gnulib ./gnulib
 
 git config --global --add safe.directory $(pwd)
