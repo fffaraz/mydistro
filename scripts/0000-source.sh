@@ -51,6 +51,7 @@ git config --global advice.detachedHead false
 [ -d ./nano ]          || git clone --depth 1 -b master https://github.com/madnight/nano.git # https://git.savannah.gnu.org/git/nano.git
 [ -d ./ncurses ]       || git clone --depth 1 -b v6_5_20250809 https://github.com/ThomasDickey/ncurses-snapshots.git ./ncurses # https://www.gnu.org/software/ncurses/ https://ncurses.scripts.mit.edu/?p=ncurses.git
 [ -d ./patch ]         || git clone --depth 1 -b v2.8 https://git.savannah.gnu.org/git/patch.git # https://cgit.git.savannah.gnu.org/cgit/patch.git
+[ -d ./paxutils ]      || git clone --depth 1 -b master https://git.savannah.gnu.org/git/paxutils.git # git://git.sv.gnu.org/paxutils.git https://cgit.git.savannah.gnu.org/cgit/paxutils.git
 [ -d ./sed ]           || git clone --depth 1 -b v4.9 git://git.sv.gnu.org/sed # https://cgit.git.savannah.gnu.org/cgit/sed.git
 [ -d ./syslinux ]      || git clone --depth 1 -b debian/master https://salsa.debian.org/images-team/syslinux.git # git://repo.or.cz/syslinux.git
 [ -d ./tar ]           || git clone --depth 1 -b v1.35 https://git.savannah.gnu.org/git/tar.git # https://cgit.git.savannah.gnu.org/cgit/tar.git
