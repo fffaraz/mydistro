@@ -18,7 +18,9 @@ cd build2
     --disable-werror           \
     --enable-64-bit-bfd        \
     --enable-new-dtags         \
-    --enable-default-hash-style=gnu
+    --enable-default-hash-style=gnu \
+    --disable-gdb              \
+    --disable-gdbserver
 
 make
 make DESTDIR=$LFS install
