@@ -8,6 +8,13 @@ This project is in early development and is not yet functional for general use.
 
 # Philosophy and Principles
 
+All source code must come from a git repo, no tarbals, no binaries
+No package manager, no partial updates
+No internet required for installation
+No internet to build the entire os from downloaded source repos
+Self hosted. Must be compiled by itself with no external dependencies
+Only one desktop env is supported
+
 - **Linux from Scratch**: Follow the LFS guidelines for building a Linux system from source code.
 - **Minimalism**: Only include essential components to keep the distribution lightweight and simple.
 - **Transparency**: Build everything from source code available in git repositories. Using git repositories instead of tarballs allows better source control and reproducibility.
