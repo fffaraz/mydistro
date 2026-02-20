@@ -22,8 +22,8 @@ This project is in early development and is not yet functional for general use.
 ## Quick start
 
 ```sh
-./build.sh    # download sources and compile everything in Docker
-./run.sh      # boot the ISO in QEMU
+./build.sh    # Download sources and compile everything in Docker
+./run.sh      # Boot the ISO in a QEMU virtual machine
 ```
 
 ## Build output
