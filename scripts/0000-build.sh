@@ -23,6 +23,7 @@ export PATH="$LFS/tools/bin:$PATH"
 export CONFIG_SITE=$LFS/usr/share/config.site
 export MAKEFLAGS=-j$(nproc)
 
+./scripts/1001-gmp-mpc-mpfr.sh
 ./scripts/1001-binutils-1.sh
 ./scripts/1002-gcc-1.sh
 ./scripts/1003-linux-headers.sh
