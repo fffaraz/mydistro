@@ -3,12 +3,11 @@ set -exuo pipefail
 
 cd ./src/m4
 
-rmdir ./gnulib
-cp -r --reflink=auto ../gnulib ./gnulib
+cp -r --reflink=auto ../gnulib ./gnulib-repo
 
 git config --global --add safe.directory $(pwd)
 
-./bootstrap --skip-po --skip-git --gnulib-srcdir=./gnulib
+./bootstrap --skip-po --skip-git --gnulib-srcdir=./gnulib-repo
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
             --build=$(build-aux/config.guess)
