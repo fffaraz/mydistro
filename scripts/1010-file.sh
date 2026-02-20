@@ -3,6 +3,8 @@ set -exuo pipefail
 
 cd ./src/file
 
+autoreconf -vif
+
 mkdir build
 pushd build
   ../configure --disable-bzlib      \
