@@ -21,6 +21,7 @@ docker build -t mydistro-builder .
 ./scripts/0000-source.sh
 
 # run the build inside a docker container without network access
+SECONDS=0
 docker run --privileged --rm -i --network none --name mydistro-builder \
 	-e "TERM=xterm-256color" \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
@@ -30,6 +31,7 @@ docker run --privileged --rm -i --network none --name mydistro-builder \
 	--tmpfs /tmp \
 	$DEBUG_MODE \
 	mydistro-builder
+echo "docker run took $((SECONDS / 60))m $((SECONDS % 60))s"
 
 docker rmi -f mydistro-initramfs:latest || true
 [ -f ./output/initramfs.tar.gz ] && docker import ./output/initramfs.tar.gz mydistro-initramfs:latest
