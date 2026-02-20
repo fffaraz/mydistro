@@ -10,7 +10,8 @@ sed -i "/emit += 'AM_CFLAGS %s.*am_set_or_augment/i\\        emit += 'AM_CFLAGS 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
             gl_cv_func_strcasecmp_works=y \
-            --build=$(./build-aux/config.guess)
+            --build=$(./build-aux/config.guess) \
+            CFLAGS="-Wno-error=zero-as-null-pointer-constant"
 
 make
 make DESTDIR=$LFS install
