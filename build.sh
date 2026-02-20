@@ -32,4 +32,4 @@ docker run --privileged --rm -i --network none --name mydistro-builder \
 	mydistro-builder
 
 docker rmi -f mydistro-initramfs:latest || true
-docker import ./output/initramfs.tar.gz mydistro-initramfs:latest
+[ -f ./output/initramfs.tar.gz ] && docker import ./output/initramfs.tar.gz mydistro-initramfs:latest
