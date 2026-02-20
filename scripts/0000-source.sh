@@ -18,7 +18,7 @@ git config --global advice.detachedHead false
 [ -d ./coreutils ]     || git clone --depth 1 -b v9.10 git://git.sv.gnu.org/coreutils # https://github.com/coreutils/coreutils.git git://git.savannah.gnu.org/coreutils.git
 [ -d ./curl ]          || git clone --depth 1 -b curl-8_18_0 https://github.com/curl/curl.git
 [ -d ./dejagnu ]       || git clone --depth 1 -b dejagnu-1.6.3-release git://git.sv.gnu.org/dejagnu.git
-[ -d ./diffutils ]     || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/diffutils.git
+[ -d ./diffutils ]     || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/diffutils.git # https://cgit.git.savannah.gnu.org/cgit/diffutils.git
 [ -d ./dropbear ]      || git clone --depth 1 -b master https://github.com/mkj/dropbear.git
 [ -d ./e2fsprogs ]     || git clone --depth 1 -b v1.47.3 git://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
 [ -d ./elfutils ]      || git clone --depth 1 -b elfutils-0.193 git://sourceware.org/git/elfutils.git
