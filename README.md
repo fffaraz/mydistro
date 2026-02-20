@@ -23,7 +23,7 @@ This project is in early development and is not yet functional for general use.
 
 ```sh
 ./build.sh    # Download sources and compile everything in Docker
-./run.sh      # Boot the ISO in a QEMU virtual machine
+./run.sh      # Boot the ISO in a VM
 ```
 
 ## Build output
