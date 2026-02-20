@@ -27,6 +27,7 @@ docker run --privileged --rm -i --network none --name mydistro-builder \
 	-v $(pwd)/scripts:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output:/opt/mydistro/output \
+	--tmpfs /tmp \
 	$DEBUG_MODE \
 	mydistro-builder
 
