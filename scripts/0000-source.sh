@@ -32,7 +32,7 @@ git config --global advice.detachedHead false
 [ -d ./gettext ]       || git clone --depth 1 -b v0.26 https://git.savannah.gnu.org/git/gettext.git
 [ -d ./git ]           || git clone --depth 1 -b v2.53.0 https://github.com/git/git.git
 [ -d ./glibc ]         || git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
-[ -d ./gnulib ]        || git clone --depth 1 -b stable-202601 git://git.git.savannah.gnu.org/gnulib.git # https://github.com/coreutils/gnulib.git https://git.savannah.gnu.org/git/gnulib.git git://git.sv.gnu.org/gnulib.git https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git
+[ -d ./gnulib ]        || git clone --depth 1 -b v1.0 git://git.git.savannah.gnu.org/gnulib.git # https://github.com/coreutils/gnulib.git https://git.savannah.gnu.org/git/gnulib.git git://git.sv.gnu.org/gnulib.git https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git
 [ -d ./gperf ]         || git clone --depth 1 -b v3.3 https://git.savannah.gnu.org/git/gperf.git
 [ -d ./grep ]          || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/grep.git
 [ -d ./groff ]         || git clone --depth 1 -b 1.23.0 https://git.savannah.gnu.org/git/groff.git
@@ -41,7 +41,7 @@ git config --global advice.detachedHead false
 [ -d ./inetutils ]     || git clone --depth 1 -b v2.6 https://git.savannah.gnu.org/git/inetutils.git # https://cgit.git.savannah.gnu.org/cgit/inetutils.git
 [ -d ./libexpat ]      || git clone --depth 1 -b R_2_7_1 https://github.com/libexpat/libexpat.git
 [ -d ./linux ]         || git clone --depth 1 -b v6.18 https://github.com/torvalds/linux.git
-[ -d ./m4 ]            || git clone --depth 1 -b v1.4.20 git://git.sv.gnu.org/m4 # http://git.savannah.gnu.org/r/m4.git https://gitweb.git.savannah.gnu.org/gitweb/?p=m4.git
+[ -d ./m4 ]            || git clone --depth 1 -b v1.4.21 git://git.sv.gnu.org/m4 # http://git.savannah.gnu.org/r/m4.git https://gitweb.git.savannah.gnu.org/gitweb/?p=m4.git
 [ -d ./make ]          || git clone --depth 1 -b 4.4.1 https://git.savannah.gnu.org/git/make.git # https://www.gnu.org/software/make/
 [ -d ./memtest86plus ] || git clone --depth 1 -v v8.00 https://github.com/memtest86plus/memtest86plus.git
 [ -d ./microwindows ]  || git clone --depth 1 -b master https://github.com/ghaerr/microwindows.git

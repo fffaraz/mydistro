@@ -10,5 +10,3 @@ cd ./src/m4
 
 make
 make DESTDIR=$LFS install
-
-exit 0

@@ -3,8 +3,8 @@ set -exuo pipefail
 
 cd ./src/gcc
 
-mkdir -v build
-cd build
+mkdir -v build2
+cd build2
 
 ../libstdc++-v3/configure      \
     --host=$LFS_TGT            \
