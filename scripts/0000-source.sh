@@ -42,7 +42,7 @@ git config --global advice.detachedHead false
 [ -d ./libexpat ]      || git clone --depth 1 -b R_2_7_1 https://github.com/libexpat/libexpat.git
 [ -d ./linux ]         || git clone --depth 1 -b v6.18 https://github.com/torvalds/linux.git
 [ -d ./m4 ]            || git clone --depth 1 -b v1.4.21 git://git.sv.gnu.org/m4 # http://git.savannah.gnu.org/r/m4.git https://gitweb.git.savannah.gnu.org/gitweb/?p=m4.git
-[ -d ./make ]          || git clone --depth 1 -b 4.4.1 https://git.savannah.gnu.org/git/make.git # https://www.gnu.org/software/make/
+[ -d ./make ]          || git clone --depth 1 -b 4.4.1 https://git.savannah.gnu.org/git/make.git # https://cgit.git.savannah.gnu.org/cgit/make.git
 [ -d ./memtest86plus ] || git clone --depth 1 -v v8.00 https://github.com/memtest86plus/memtest86plus.git
 [ -d ./microwindows ]  || git clone --depth 1 -b master https://github.com/ghaerr/microwindows.git
 [ -d ./mpc ]           || git clone --depth 1 -b 1.3.1 https://gitlab.inria.fr/mpc/mpc.git # https://www.multiprecision.org/
