@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -exuo pipefail
 
 cp ./assets/init.sh ./initramfs-dir/init
 cp ./assets/rcS.sh ./initramfs-dir/etc/init.d/rcS

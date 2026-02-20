@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -exuo pipefail
 
 # compile linux kernel
 cd ./src/linux

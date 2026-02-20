@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -exuo pipefail
 
 # initialize initramfs directory structure
 mkdir -p ./initramfs-dir
