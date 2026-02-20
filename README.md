@@ -1,23 +1,15 @@
 # mydistro
 
-A minimal Linux distribution built entirely from git source repositories.
-
-Compiles the Linux kernel, busybox, syslinux, and more inside a Docker container with no internet access.
+A minimal Linux distribution built entirely from source.
 
 This project is in early development and is not yet functional for general use.
 
 # Philosophy and Principles
 
-All source code must come from a git repo, no tarbals, no binaries
-No package manager, no partial updates
-No internet required for installation
-No internet to build the entire os from downloaded source repos
-Self hosted. Must be compiled by itself with no external dependencies
-Only one desktop env is supported
-
-- **Linux from Scratch**: Follow the LFS guidelines for building a Linux system from source code.
-- **Minimalism**: Only include essential components to keep the distribution lightweight and simple.
-- **Transparency**: Build everything from source code available in git repositories. Using git repositories instead of tarballs allows better source control and reproducibility.
+- **Source Transparency**: All source code comes from upstream git repositories. No tarballs, no binaries.
+- **Atomic builds**: No package manager and no partial updates. The entire system is built as one unit.
+- **Offline by design**: No internet connection is required to install or build the OS once sources are downloaded.
+- **Self-hosted**: The distribution must be compilable by itself with no external dependencies.
 
 ## Build Prerequisites
 
