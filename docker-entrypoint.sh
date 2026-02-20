@@ -33,6 +33,7 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/1002-gcc-1.sh
 ./scripts/1003-linux-headers.sh
 ./scripts/1004-glibc.sh
+./scripts/1005-libstdc.sh
 ./scripts/1005-m4.sh
 ./scripts/1006-ncurses.sh
 ./scripts/1007-bash.sh
