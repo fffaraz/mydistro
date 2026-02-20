@@ -3,6 +3,8 @@ set -exuo pipefail
 
 cd ./src/xz
 
+autoreconf -vif
+
 ./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \

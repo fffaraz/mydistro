@@ -11,8 +11,8 @@ esac
 
 sed '/thread_header =/s/@.*@/gthr-posix.h/' -i libgcc/Makefile.in libstdc++-v3/include/Makefile.in
 
-mkdir -v build
-cd build
+mkdir -v build2
+cd build2
 
 ../configure                   \
     --build=$(../config.guess) \

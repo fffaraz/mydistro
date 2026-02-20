@@ -5,9 +5,8 @@ cd ./src/binutils-gdb
 
 sed '6031s/$add_dir//' -i ltmain.sh
 
-rm -rf build
-mkdir -v build
-cd       build
+mkdir -v build2
+cd build2
 
 ../configure                   \
     --prefix=/usr              \
