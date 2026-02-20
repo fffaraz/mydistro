@@ -3,6 +3,8 @@ set -exuo pipefail
 
 cd ./src/coreutils
 
+git config --global --add safe.directory .
+
 ./bootstrap --skip-po --gnulib-srcdir=../gnulib
 ./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \

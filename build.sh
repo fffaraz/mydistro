@@ -30,7 +30,7 @@ docker run --privileged --rm -i --network none --name mydistro-builder \
 	-v $(pwd)/output:/opt/mydistro/output \
 	--tmpfs /tmp \
 	$DEBUG_MODE \
-	mydistro-builder
+	mydistro-builder 2>&1 | tee ./output/build.log
 echo "docker run took $((SECONDS / 60))m $((SECONDS % 60))s"
 
 docker rmi -f mydistro-initramfs:latest || true
