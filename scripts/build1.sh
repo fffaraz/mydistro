@@ -19,4 +19,6 @@ docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/output:/opt/mydistro/output \
 	--tmpfs /tmp \
 	$DEBUG_MODE \
-	mydistro-builder:latest 2>&1 | tee ./output/build-1.log
+	mydistro-builder:latest 2>&1 | tee ./output/build1.log
+
+ls -alh ./output

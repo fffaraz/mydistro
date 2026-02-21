@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-DEBUG_MODE=""
+DEBUG_MODE="--entrypoint /opt/mydistro/scripts/000-build.sh"
 if [ "${1:-}" = "-d" ]; then
 	DEBUG_MODE="-t --entrypoint /bin/bash"
 fi
@@ -18,4 +18,4 @@ docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/output:/opt/mydistro/output \
 	--tmpfs /tmp \
 	$DEBUG_MODE \
-	mydistro-bootstrap:latest 2>&1 | tee ./output/build-2.log
+	mydistro-bootstrap:latest 2>&1 | tee ./output/build2.log
