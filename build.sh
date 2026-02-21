@@ -14,43 +14,19 @@ if [ "${1:-}" = "-d2" ]; then
 fi
 
 # download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
-./scripts/0000-source.sh
+./scripts/source.sh
 
 # delete and recreate output directory
 rm -rf ./output
 mkdir ./output
-docker rm -f mydistro || true
-
-# build the docker image for the build environment
-# docker pull debian:sid-slim
-# docker rmi -f mydistro-builder:latest || true
-docker build -t mydistro-builder .
 
 SECONDS=0
 
-# run the build inside a docker container without network access
-docker run --privileged --rm -i --network none --name mydistro \
-	-v $(pwd)/assets:/opt/mydistro/assets:ro \
-	-v $(pwd)/scripts1:/opt/mydistro/scripts:ro \
-	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
-	-v $(pwd)/output:/opt/mydistro/output \
-	--tmpfs /tmp \
-	$DEBUG_MODE_1 \
-	mydistro-builder 2>&1 | tee ./output/build-1.log
+# build the first stage of the build process, which creates a bootstrap image containing the compiled toolchain and initramfs
+./scripts/build1.sh
 
-exit 0
-
-docker rmi -f mydistro-bootstrap:latest || true
-docker import ./output/bootstrap.tar.gz mydistro-bootstrap:latest
-
-docker run --privileged --rm -i --network none --name mydistro \
-	-v $(pwd)/assets:/opt/mydistro/assets:ro \
-	-v $(pwd)/scripts2:/opt/mydistro/scripts:ro \
-	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
-	-v $(pwd)/output:/opt/mydistro/output \
-	--tmpfs /tmp \
-	$DEBUG_MODE_2 \
-	mydistro-bootstrap:latest 2>&1 | tee ./output/build-2.log
+# build the second stage of the build process, which creates the final image containing the compiled kernel and root filesystem
+./scripts/build2.sh
 
 echo "build took $((SECONDS / 60))m $((SECONDS % 60))s"
 

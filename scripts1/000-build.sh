@@ -32,3 +32,4 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/022-xz.sh
 ./scripts/023-binutils-2.sh
 ./scripts/024-gcc-2.sh
+./scripts/025-export.sh
