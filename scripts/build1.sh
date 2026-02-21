@@ -1,6 +1,11 @@
 #!/bin/bash
 set -exuo pipefail
 
+DEBUG_MODE=""
+if [ "${1:-}" = "-d" ]; then
+	DEBUG_MODE="-t --entrypoint /bin/bash"
+fi
+
 docker rm -f mydistro || true
 
 # docker pull debian:sid-slim
@@ -13,5 +18,5 @@ docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output:/opt/mydistro/output \
 	--tmpfs /tmp \
-	$DEBUG_MODE_1 \
+	$DEBUG_MODE \
 	mydistro-builder:latest 2>&1 | tee ./output/build-1.log

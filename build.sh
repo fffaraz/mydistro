@@ -1,18 +1,6 @@
 #!/bin/bash
 set -exuo pipefail
 
-# debug mode drops into a shell inside the container instead of running the build scripts, 
-# allowing you to inspect the container's filesystem and run commands manually
-INTERACTIVE_MODE="-t --entrypoint /bin/bash"
-DEBUG_MODE_1=""
-if [ "${1:-}" = "-d1" ]; then
-	DEBUG_MODE_1=$INTERACTIVE_MODE
-fi
-DEBUG_MODE_2=""
-if [ "${1:-}" = "-d2" ]; then
-	DEBUG_MODE_2=$INTERACTIVE_MODE
-fi
-
 # download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
 ./scripts/source.sh
 
