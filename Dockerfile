@@ -11,8 +11,3 @@ RUN \
 		python3 rsync texinfo uuid-dev xz-utils && \
 	apt-get install -yq curl groff nano ncdu tree unzip upx-ucl vim wget && \
 	rm -rf /var/lib/apt/lists/*
-
-COPY docker-entrypoint.sh /
-RUN chown root:root /docker-entrypoint.sh && chmod 544 /docker-entrypoint.sh
-
-ENTRYPOINT ["/docker-entrypoint.sh"]

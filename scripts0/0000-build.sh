@@ -1,6 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
+cd /opt/mydistro
+
 ./scripts/0001-kernel.sh
 ./scripts/0002-initramfs.sh
 ./scripts/0004-busybox.sh
