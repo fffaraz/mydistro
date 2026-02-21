@@ -4,6 +4,7 @@ set -exuo pipefail
 cd ./src
 
 cd gmp
+# configure script already exists
 cd ..
 
 cd mpc
