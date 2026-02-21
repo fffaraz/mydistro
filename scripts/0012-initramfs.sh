@@ -18,7 +18,6 @@ cat > ./initramfs-dir/etc/hosts << EOF
 ::1        localhost
 EOF
 
-
 # large dummy file
 # dd if=/dev/zero of=./initramfs-dir/largefile bs=1M count=128
 
