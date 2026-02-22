@@ -13,4 +13,5 @@ export TESTSUITEFLAGS=-j$(nproc)
 
 ./scripts/001-fs.sh
 ./scripts/002-files.sh
-./scripts/003-gettext.sh
+./scripts/003-perl.sh
+./scripts/004-gettext.sh

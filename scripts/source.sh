@@ -52,10 +52,12 @@ git config --global advice.detachedHead false
 [ -d ./ncurses ]       || git clone --depth 1 -b v6_5_20250809 https://github.com/ThomasDickey/ncurses-snapshots.git ./ncurses # https://www.gnu.org/software/ncurses/ https://ncurses.scripts.mit.edu/?p=ncurses.git
 [ -d ./patch ]         || git clone --depth 1 -b v2.8 https://git.savannah.gnu.org/git/patch.git # https://cgit.git.savannah.gnu.org/cgit/patch.git
 [ -d ./paxutils ]      || git clone --depth 1 -b master https://git.savannah.gnu.org/git/paxutils.git # git://git.sv.gnu.org/paxutils.git https://cgit.git.savannah.gnu.org/cgit/paxutils.git
+[ -d ./perl ]          || git clone --depth 1 -b v5.42.0 https://github.com/Perl/perl5.git
 [ -d ./sed ]           || git clone --depth 1 -b v4.9 git://git.sv.gnu.org/sed # https://cgit.git.savannah.gnu.org/cgit/sed.git
 [ -d ./syslinux ]      || git clone --depth 1 -b debian/master https://salsa.debian.org/images-team/syslinux.git # git://repo.or.cz/syslinux.git
 [ -d ./tar ]           || git clone --depth 1 -b v1.35 https://git.savannah.gnu.org/git/tar.git # https://cgit.git.savannah.gnu.org/cgit/tar.git
 [ -d ./toybox ]        || git clone --depth 1 -b 0.8.13 https://github.com/landley/toybox.git
+[ -d ./util-linux ]    || git clone --depth 1 -b v2.41.1 https://github.com/util-linux/util-linux.git # git://git.kernel.org/pub/scm/utils/util-linux/util-linux.git https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
 [ -d ./wlroots ]       || git clone --depth 1 -b 0.18.3 https://gitlab.freedesktop.org/wlroots/wlroots.git
 [ -d ./xz ]            || git clone --depth 1 -b v5.8.1 https://github.com/tukaani-project/xz.git
 
