@@ -3,9 +3,7 @@ set -exuo pipefail
 
 cd /opt/mydistro
 
-# cp -r --reflink=auto ./src-ro ./src
-mkdir -p ./src /tmp/src-upper /tmp/src-work
-mount -t overlay overlay -o lowerdir=./src-ro,upperdir=/tmp/src-upper,workdir=/tmp/src-work ./src
+cp -r --reflink=auto ./src-ro ./src
 
 export HOME=/root
 export TERM=xterm-256color

@@ -3,6 +3,9 @@ set -exuo pipefail
 
 cd ./src/gettext
 
+rmdir ./gnulib
+ln -s ../gnulib gnulib
+
 ./autogen.sh
 ./configure --disable-shared
 make
