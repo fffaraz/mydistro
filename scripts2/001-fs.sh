@@ -18,5 +18,7 @@ mkdir -pv /var/lib/{color,misc,locate}
 ln -sfv /run /var/run
 ln -sfv /run/lock /var/lock
 
+ln -sv /usr/libexec /libexec
+
 install -dv -m 0750 /root
 install -dv -m 1777 /tmp /var/tmp
