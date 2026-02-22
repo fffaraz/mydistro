@@ -4,7 +4,7 @@ set -exuo pipefail
 mkdir -pv $LFS
 cd $LFS
 
-mkdir -p bin boot/efi dev etc/init.d home lib lib64 mnt opt proc root run srv sys tmp usr/local var
+mkdir -p bin etc lib lib64 usr/local var
 mkdir -p tools
 
 ln -s $LFS/bin ./sbin
