@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/perl
+cd ./src/perl5
 
 sh Configure -des                                         \
              -D prefix=/usr                               \
