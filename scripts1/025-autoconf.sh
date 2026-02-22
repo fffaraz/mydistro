@@ -3,6 +3,8 @@ set -exuo pipefail
 
 cd ./src/autoconf
 
+cp .prev-version .tarball-version
+
 autoreconf -vif
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
