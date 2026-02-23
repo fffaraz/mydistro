@@ -7,7 +7,7 @@ git config --global advice.detachedHead false
 
 [ -d ./acl ]           || git clone --depth 1 -b v2.3.2 https://git.savannah.nongnu.org/git/acl.git
 [ -d ./attr ]          || git clone --depth 1 -b v2.5.2 https://git.savannah.nongnu.org/git/attr.git
-[ -d ./autoconf ]      || git clone --depth 1 -b v2.72 git://git.sv.gnu.org/autoconf # http://git.sv.gnu.org/r/autoconf.git
+[ -d ./autoconf ]      || git clone --depth 1 -b v2.72 git://git.sv.gnu.org/autoconf # http://git.sv.gnu.org/r/autoconf.git git://git.sv.gnu.org/autoconf.git
 [ -d ./automake ]      || git clone --depth 1 -b v1.18.1 https://git.savannah.gnu.org/git/automake.git
 [ -d ./bash ]          || git clone --depth 1 -b bash-5.3 https://git.savannah.gnu.org/git/bash.git
 [ -d ./bc ]            || git clone --depth 1 -b 7.0.3 https://github.com/gavinhoward/bc.git
@@ -32,7 +32,7 @@ git config --global advice.detachedHead false
 [ -d ./gettext ]       || git clone --depth 1 -b v0.26 https://git.savannah.gnu.org/git/gettext.git
 [ -d ./git ]           || git clone --depth 1 -b v2.53.0 https://github.com/git/git.git
 [ -d ./glibc ]         || git clone --depth 1 -b glibc-2.42 git://sourceware.org/git/glibc.git
-[ -d ./gnulib ]        || git clone --depth 1 -b master git://git.git.savannah.gnu.org/gnulib.git # https://github.com/coreutils/gnulib.git https://git.savannah.gnu.org/git/gnulib.git git://git.sv.gnu.org/gnulib.git https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git
+[ -d ./gnulib ]        || git clone --depth 1 -b master git://git.git.savannah.gnu.org/gnulib.git # https://github.com/coreutils/gnulib.git https://git.savannah.gnu.org/git/gnulib.git git://git.sv.gnu.org/gnulib.git https://gitweb.git.savannah.gnu.org/gitweb/?p=gnulib.git git://git.savannah.gnu.org/gnulib.git
 [ -d ./gperf ]         || git clone --depth 1 -b v3.3 https://git.savannah.gnu.org/git/gperf.git
 [ -d ./grep ]          || git clone --depth 1 -b v3.12 https://git.savannah.gnu.org/git/grep.git
 [ -d ./groff ]         || git clone --depth 1 -b 1.23.0 https://git.savannah.gnu.org/git/groff.git
