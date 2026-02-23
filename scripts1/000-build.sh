@@ -41,4 +41,5 @@ export TERM=xterm-256color
 ./scripts/025-autoconf.sh
 ./scripts/026-automake.sh
 ./scripts/027-bison.sh
-./scripts/028-export.sh
+./scripts/028-gperf.sh
+./scripts/029-export.sh
