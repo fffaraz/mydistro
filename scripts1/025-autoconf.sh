@@ -5,7 +5,7 @@ cd ./src/autoconf
 
 cp .prev-version .tarball-version
 
-autoreconf -vif
+./bootstrap
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
             --build=$(build-aux/config.guess)
