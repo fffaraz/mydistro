@@ -3,6 +3,9 @@ set -exuo pipefail
 
 cd ./src/bison
 
+rmdir ./submodules/autoconf
+ln -s ../autoconf ./submodules/autoconf
+
 cp -r --reflink=auto ../gnulib ./gnulib-repo
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
 
