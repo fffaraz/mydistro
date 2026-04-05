@@ -2,7 +2,7 @@
 set -exuo pipefail
 
 # download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
-./scripts/download-src.sh
+./scripts/download-src.sh ./assets/sources.conf
 
 # delete and recreate output directory
 rm -rf ./output
