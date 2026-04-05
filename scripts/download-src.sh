@@ -3,6 +3,13 @@ set -euo pipefail
 
 # download-src.sh downloads source code for all dependencies
 
+for cmd in curl git md5sum tar realpath; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "Error: required command '$cmd' is not installed" >&2
+        exit 1
+    fi
+done
+
 if [[ $# -lt 1 ]]; then
     echo "Usage: $0 <config-file>" >&2
     exit 1
