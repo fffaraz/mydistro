@@ -1,7 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
-# download source repositories
+# download-src.sh downloads source code for all dependencies
+
 cd ./src
 git config --global advice.detachedHead false
 
