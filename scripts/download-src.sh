@@ -27,6 +27,10 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     # Skip empty lines and comments
     [[ -z "$line" || "$line" == \#* ]] && continue
 
+    # Strip inline comments
+    line="${line%%#*}"
+    line="${line%"${line##*[![:space:]]}"}"
+
     read -ra fields <<< "$line"
 
     if [[ ${#fields[@]} -ne 4 ]]; then
