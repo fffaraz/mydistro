@@ -8,7 +8,7 @@ if [[ $# -lt 1 ]]; then
     exit 1
 fi
 
-CONFIG="$1"
+CONFIG="$(realpath "$1")"
 
 if [[ ! -f "$CONFIG" ]]; then
     echo "Error: config file '$CONFIG' not found" >&2
