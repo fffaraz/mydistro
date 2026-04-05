@@ -41,8 +41,8 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     read -ra fields <<< "$line"
 
     if [[ ${#fields[@]} -ne 4 ]]; then
-        echo "Warning: skipping malformed line: $line" >&2
-        continue
+        echo "Error: malformed line: $line" >&2
+        exit 1
     fi
 
     dir="${fields[0]}"
@@ -65,7 +65,10 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         echo "==> Cloning $dir from $repo @ $branch"
         git clone --depth=1 --branch "$branch" "$repo" "$dir"
     else
-        echo "Warning: unknown type '$type' on line: $line" >&2
+        echo "Error: unknown type '$type' on line: $line" >&2
+        exit 1
     fi
 
 done < "$CONFIG"
+
+echo "All sources downloaded successfully."
