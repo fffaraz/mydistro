@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+# download-src.sh downloads source code for all dependencies
+
 if [[ $# -lt 1 ]]; then
     echo "Usage: $0 <config-file>" >&2
     exit 1
@@ -14,6 +16,8 @@ if [[ ! -f "$CONFIG" ]]; then
 fi
 
 cd ./src
+
+git config --global advice.detachedHead false
 
 while IFS= read -r line || [[ -n "$line" ]]; do
     # Strip leading/trailing whitespace
