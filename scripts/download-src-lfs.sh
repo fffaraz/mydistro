@@ -6,4 +6,4 @@ wget --input-file=./assets/wget-list-systemd \
      --directory-prefix=./src
 
 cd ./src
-md5sum -c "./assets/md5sums"
+md5sum -c ../assets/md5sums
