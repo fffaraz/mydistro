@@ -18,8 +18,7 @@ fi
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
-            --enable-no-install-program=kill,uptime \
-            CFLAGS="-Wno-error=unterminated-string-initialization -Wno-error=cast-align -Wno-error=switch-enum -Wno-error=calloc-transposed-args -Wno-error=maybe-uninitialized -Wno-error=format-overflow"
+            --enable-no-install-program=kill,uptime
 
 make
 make DESTDIR=$LFS install

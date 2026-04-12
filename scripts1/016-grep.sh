@@ -15,8 +15,7 @@ fi
 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            --build=$(./build-aux/config.guess) \
-            CFLAGS="-Wno-error=zero-as-null-pointer-constant"
+            --build=$(./build-aux/config.guess)
 
 make
 make DESTDIR=$LFS install

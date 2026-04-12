@@ -10,7 +10,7 @@ export TERM=xterm-256color
 export PS1='\u@\h \W]\$ '
 export MAKEFLAGS=-j$(nproc)
 export TESTSUITEFLAGS=-j$(nproc)
-export CFLAGS="-Wno-error=all"
+export CFLAGS="-march=native -O2 -pipe -Wno-error"
 
 ./scripts/001-fs.sh
 ./scripts/002-files.sh

@@ -16,8 +16,7 @@ fi
 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            --build=$(./build-aux/config.guess) \
-            CFLAGS="-Wno-error=deprecated-declarations -Wno-error=analyzer-use-of-uninitialized-value"
+            --build=$(./build-aux/config.guess)
 
 make
 make DESTDIR=$LFS install

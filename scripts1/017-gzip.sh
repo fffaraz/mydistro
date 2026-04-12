@@ -13,6 +13,6 @@ else
   ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
 fi
 
-./configure --prefix=/usr --host=$LFS_TGT CFLAGS="-Wno-error=zero-as-null-pointer-constant"
+./configure --prefix=/usr --host=$LFS_TGT
 make
 make DESTDIR=$LFS install
