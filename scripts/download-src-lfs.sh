@@ -45,9 +45,3 @@ fi
 # Verify all checksums
 cd "$SRC_DIR"
 md5sum -c "../$MD5_FILE"
-
-# Generate sources.conf
-while read -r md5 filename; do
-  package_name=$(echo "$filename" | sed -E 's/-[0-9].*//')
-  echo "$package_name file $filename $md5"
-done < "../$MD5_FILE" > ../assets/sources.conf
