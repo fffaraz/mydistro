@@ -1,7 +1,10 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/binutils-gdb
+if [ ! -d binutils ]; then
+  tar xf binutils-*.tar.* && mv binutils-*/ binutils
+fi
+cd ./src/binutils
 
 ln -s ../gmp gmp
 ln -s ../mpfr mpfr
