@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/binutils-gdb
+cd ./src/binutils
 
 sed '6031s/$add_dir//' -i ltmain.sh
 

@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/autoconf
+cd ./src
+[ -d autoconf ] || (tar xf autoconf-*.tar.* && mv autoconf-*/ autoconf)
+cd ./autoconf
 
 cp .prev-version .tarball-version
 

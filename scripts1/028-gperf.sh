@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/gperf
+cd ./src
+[ -d gperf ] || (tar xf gperf-*.tar.* && mv gperf-*/ gperf)
+cd ./gperf
 
 ln -s ../gnulib ./gnulib
 

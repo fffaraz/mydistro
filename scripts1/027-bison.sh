@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/bison
+cd ./src
+[ -d bison ] || (tar xf bison-*.tar.* && mv bison-*/ bison)
+cd ./bison
 
 git config --global --add safe.directory $(pwd)
 

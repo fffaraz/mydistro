@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/tar
+cd ./src
+[ -d tar ] || (tar xf tar-*.tar.* && mv tar-*/ tar)
+cd ./tar
 
 rmdir paxutils
 ln -s ../paxutils ./paxutils

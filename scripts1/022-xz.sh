@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/xz
+cd ./src
+[ -d xz ] || (tar xf xz-*.tar.* && mv xz-*/ xz)
+cd ./xz
 
 autoreconf -vif
 
