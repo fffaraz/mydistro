@@ -2,10 +2,15 @@
 set -exuo pipefail
 
 cd ./src
-[ -d automake ] || (tar xf automake-*.tar.* && mv automake-*/ automake)
-cd ./automake
+if [ ! -d automake ]; then
+  tar xf automake-*.tar.*
+  mv automake-*/ automake
+  cd ./automake
+else
+  cd ./automake
+  ./bootstrap
+fi
 
-./bootstrap
 ./configure --prefix=/usr --host=$LFS_TGT
 make
 make DESTDIR=$LFS install

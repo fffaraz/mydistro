@@ -13,7 +13,10 @@ export PATH="$LFS/tools/bin:$PATH"
 export CONFIG_SITE=$LFS/usr/share/config.site
 export MAKEFLAGS=-j$(nproc)
 export TERM=xterm-256color
-export CFLAGS="-march=native -O2 -pipe -Wno-error"
+
+COMMON_FLAGS="-O2 -pipe -march=native -Wno-error"
+export CFLAGS="${COMMON_FLAGS}"
+export CXXFLAGS="${COMMON_FLAGS}"
 
 ./scripts/001-fs.sh
 ./scripts/002-gmp-mpc-mpfr.sh
