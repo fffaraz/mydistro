@@ -59,6 +59,13 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         mkdir -p "$dir"
         tar -xf "$archive" -C "$dir" --strip-components=1
         rm -f "$archive"
+    elif [[ "$type" == "file" ]]; then
+        archive="${fields[2]}"
+        md5="${fields[3]}"
+        echo "==> Extracting $dir from $archive"
+        echo "$md5  $archive" | md5sum -c -
+        mkdir -p "$dir"
+        tar -xf "$archive" -C "$dir" --strip-components=1
     elif [[ "$type" == "git" ]]; then
         repo="${fields[2]}"
         branch="${fields[3]}"
