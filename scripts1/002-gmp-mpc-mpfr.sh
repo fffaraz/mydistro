@@ -16,7 +16,6 @@ else
   cd ..
 fi
 
-
 if [ ! -d mpfr ]; then
   tar xf mpfr-*.tar.* && mv mpfr-*/ mpfr
 else
