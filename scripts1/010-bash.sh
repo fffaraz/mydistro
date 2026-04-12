@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/bash
+cd ./src
+[ -d bash ] || (tar xf bash-*.tar.* && mv bash-*/ bash)
+cd ./bash
 
 ./configure --prefix=/usr                      \
             --build=$(sh support/config.guess) \

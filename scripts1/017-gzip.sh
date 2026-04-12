@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/gzip
+cd ./src
+[ -d gzip ] || (tar xf gzip-*.tar.* && mv gzip-*/ gzip)
+cd ./gzip
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo

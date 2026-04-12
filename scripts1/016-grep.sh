@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/grep
+cd ./src
+[ -d grep ] || (tar xf grep-*.tar.* && mv grep-*/ grep)
+cd ./grep
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo

@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/m4
+cd ./src
+[ -d m4 ] || (tar xf m4-*.tar.* && mv m4-*/ m4)
+cd ./m4
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
 

@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/gawk
+cd ./src
+[ -d gawk ] || (tar xf gawk-*.tar.* && mv gawk-*/ gawk)
+cd ./gawk
 
 ln -sf "$(which aclocal)" /usr/local/bin/aclocal-1.16
 ln -sf "$(which automake)" /usr/local/bin/automake-1.16

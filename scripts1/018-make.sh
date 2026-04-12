@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/make
+cd ./src
+[ -d make ] || (tar xf make-*.tar.* && mv make-*/ make)
+cd ./make
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo

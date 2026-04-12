@@ -1,8 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
+cd ./src
 [ -d binutils ] || (tar xf binutils-*.tar.* && mv binutils-*/ binutils)
-cd ./src/binutils
+cd ./binutils
 
 ln -s ../gmp gmp
 ln -s ../mpfr mpfr

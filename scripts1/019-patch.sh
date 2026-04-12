@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/patch
+cd ./src
+[ -d patch ] || (tar xf patch-*.tar.* && mv patch-*/ patch)
+cd ./patch
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo

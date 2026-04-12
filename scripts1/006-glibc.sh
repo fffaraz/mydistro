@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/glibc
+cd ./src
+[ -d glibc ] || (tar xf glibc-*.tar.* && mv glibc-*/ glibc)
+cd ./glibc
 
 case $(uname -m) in
     i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3

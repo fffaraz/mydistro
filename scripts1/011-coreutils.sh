@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/coreutils
+cd ./src
+[ -d coreutils ] || (tar xf coreutils-*.tar.* && mv coreutils-*/ coreutils)
+cd ./coreutils
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
 

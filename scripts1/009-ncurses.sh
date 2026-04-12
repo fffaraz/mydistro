@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/ncurses
+cd ./src
+[ -d ncurses ] || (tar xf ncurses-*.tar.* && mv ncurses-*/ ncurses)
+cd ./ncurses
 
 mkdir build
 pushd build

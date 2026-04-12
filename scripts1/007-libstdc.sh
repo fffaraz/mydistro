@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/gcc
+cd ./src
+[ -d gcc ] || (tar xf gcc-*.tar.* && mv gcc-*/ gcc)
+cd ./gcc
 
 mkdir -v build2
 cd build2
