@@ -49,7 +49,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     type="${fields[1]}"
     [[ -d "$dir" ]] && { echo "  Skipping, '$dir' already exists"; continue; }
 
-    if [[ "$type" == "file" ]]; then
+    if [[ "$type" == "url" ]]; then
         url="${fields[2]}"
         md5="${fields[3]}"
         archive="${url##*/}"
