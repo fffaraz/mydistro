@@ -1,7 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/perl5
+cd ./src
+[ -d perl ] || (tar xf perl-*.tar.* && mv perl-*/ perl)
+cd ./perl
 
 sh Configure -des                                         \
              -D prefix=/usr                               \
