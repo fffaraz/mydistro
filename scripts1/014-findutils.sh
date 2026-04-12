@@ -7,10 +7,10 @@ if [ ! -d findutils ]; then
   tar xf findutils-*.tar.*
   mv findutils-*/ findutils
   cd ./findutils
-  cp -r --reflink=auto ../gnulib ./gnulib-repo
-  ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
 else
   cd ./findutils
+  cp -r --reflink=auto ../gnulib ./gnulib-repo
+  ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
 fi
 
 ./configure --prefix=/usr                   \
