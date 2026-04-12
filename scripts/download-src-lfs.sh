@@ -7,3 +7,9 @@ wget --input-file=./assets/wget-list-systemd \
 
 cd ./src
 md5sum -c ../assets/md5sums
+
+# Generate sources.conf
+while read -r md5 filename; do
+  package_name=$(echo "$filename" | sed -E 's/-[0-9].*//')
+  echo "$package_name file $filename $md5"
+done < ../assets/md5sums > ../sources.conf
