@@ -2,8 +2,8 @@
 set -euo pipefail
 
 SRC_DIR=./src
-MD5_FILE=./assets/md5sums
-WGET_LIST=./assets/wget-list-systemd
+MD5_FILE=./deps/md5sums
+WGET_LIST=./deps/wget-list-systemd
 
 # Build an associative array of filename -> expected md5
 declare -A expected_md5
