@@ -17,5 +17,5 @@ fi
             --build=$(build-aux/config.guess) \
             --docdir=/usr/share/doc/gperf-3.3
 
-make
+make LDFLAGS="-static-libgcc -static-libstdc++"
 make DESTDIR=$LFS install
