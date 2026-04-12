@@ -39,7 +39,7 @@ done
 # Download missing files
 if [[ ${#missing_urls[@]} -gt 0 ]]; then
   echo "Downloading ${#missing_urls[@]} file(s)..."
-  printf '%s\n' "${missing_urls[@]}" | wget --input-file=- --continue --directory-prefix="$SRC_DIR" || true
+  printf '%s\n' "${missing_urls[@]}" | wget --input-file=- --continue --timeout=10 --directory-prefix="$SRC_DIR" || true
 fi
 
 # Verify all checksums
