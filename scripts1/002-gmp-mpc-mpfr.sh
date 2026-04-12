@@ -3,18 +3,22 @@ set -exuo pipefail
 
 cd ./src
 
-[ -d gmp ] || (tar xf gmp-*.tar.* && mv gmp-*/ gmp)
-cd gmp
-# configure script already exists
-cd ..
+if [ ! -d gmp ]; then
+  tar xf gmp-*.tar.* && mv gmp-*/ gmp
+fi
 
-[ -d mpc ] || (tar xf mpc-*.tar.* && mv mpc-*/ mpc)
-cd mpc
-git config --global --add safe.directory $(pwd)
-autoreconf -vif
-cd ..
+if [ ! -d mpc ]; then
+  tar xf mpc-*.tar.* && mv mpc-*/ mpc
+  cd mpc
+  git config --global --add safe.directory $(pwd)
+  autoreconf -vif
+  cd ..
+fi
 
-[ -d mpfr ] || (tar xf mpfr-*.tar.* && mv mpfr-*/ mpfr)
-cd mpfr
-./autogen.sh
-cd ..
+
+if [ ! -d mpfr ]; then
+  tar xf mpfr-*.tar.* && mv mpfr-*/ mpfr
+  cd mpfr
+  ./autogen.sh
+  cd ..
+fi
