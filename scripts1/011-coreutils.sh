@@ -6,12 +6,12 @@ if [ ! -d coreutils ]; then
   tar xf coreutils-*.tar.*
   mv coreutils-*/ coreutils
   cd ./coreutils
+else
+  cd ./coreutils
   cp -r --reflink=auto ../gnulib ./gnulib-repo
   rm ./gl/top/maint.mk.diff
   git config --global --add safe.directory $(pwd)
   ./bootstrap --skip-po --gnulib-srcdir=./gnulib-repo
-else
-  cd ./coreutils
 fi
 
 ./configure --prefix=/usr                     \
