@@ -2,16 +2,18 @@
 set -exuo pipefail
 
 cd ./src
-[ -d coreutils ] || (tar xf coreutils-*.tar.* && mv coreutils-*/ coreutils)
-cd ./coreutils
+if [ ! -d coreutils ]; then
+  tar xf coreutils-*.tar.*
+  mv coreutils-*/ coreutils
+  cd ./coreutils
+  cp -r --reflink=auto ../gnulib ./gnulib-repo
+  rm ./gl/top/maint.mk.diff
+  git config --global --add safe.directory $(pwd)
+  ./bootstrap --skip-po --gnulib-srcdir=./gnulib-repo
+else
+  cd ./coreutils
+fi
 
-cp -r --reflink=auto ../gnulib ./gnulib-repo
-
-rm ./gl/top/maint.mk.diff
-
-git config --global --add safe.directory $(pwd)
-
-./bootstrap --skip-po --gnulib-srcdir=./gnulib-repo
 ./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \
