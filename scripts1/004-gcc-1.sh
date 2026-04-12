@@ -5,9 +5,9 @@ cd ./src
 [ -d gcc ] || (tar xf gcc-*.tar.* && mv gcc-*/ gcc)
 cd ./gcc
 
+ln -s ../mpfr mpfr
 ln -s ../gmp gmp
 ln -s ../mpc mpc
-ln -s ../mpfr mpfr
 
 case $(uname -m) in
   x86_64)
@@ -21,7 +21,7 @@ cd build
 ../configure \
     --target=$LFS_TGT         \
     --prefix=$LFS/tools       \
-    --with-glibc-version=2.42 \
+    --with-glibc-version=2.43 \
     --with-sysroot=$LFS       \
     --with-newlib             \
     --without-headers         \
