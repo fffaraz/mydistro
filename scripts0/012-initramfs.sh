@@ -3,20 +3,17 @@ set -exuo pipefail
 
 cp ./assets/init.sh ./initramfs-dir/init
 cp ./assets/rcS.sh ./initramfs-dir/etc/init.d/rcS
+chmod +x ./initramfs-dir/init ./initramfs-dir/etc/init.d/rcS
 
 cp ./src/busybox/examples/inittab ./initramfs-dir/etc/
+cp ./assets/hosts ./initramfs-dir/etc/hosts
+cp ./assets/resolv.conf ./initramfs-dir/etc/resolv.conf
 
 touch ./initramfs-dir/etc/fstab
 echo "root::0:0:root:/root:/bin/sh" >./initramfs-dir/etc/passwd
 echo "root:x:0:" >./initramfs-dir/etc/group
-echo "nameserver 8.8.8.8" >./initramfs-dir/etc/resolv.conf
 
 ln -sv /proc/self/mounts ./initramfs-dir/etc/mtab
-
-cat >./initramfs-dir/etc/hosts <<EOF
-127.0.0.1  localhost
-::1        localhost
-EOF
 
 # large dummy file
 # dd if=/dev/zero of=./initramfs-dir/largefile bs=1M count=128
