@@ -1,0 +1,4 @@
+export HOME=/root
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin
+export TERM=xterm-256color
+export PS1='\w\$ '

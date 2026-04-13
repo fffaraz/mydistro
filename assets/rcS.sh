@@ -12,11 +12,6 @@ set -x
 /bin/hostname myhostname
 /sbin/ifconfig lo 127.0.0.1
 
-export HOME=/root
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin
-export TERM=xterm-256color
-export PS1='\w\$ '
-
 set +x
 echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
 

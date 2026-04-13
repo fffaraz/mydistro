@@ -5,7 +5,8 @@ cp ./assets/rcS.sh ./initramfs-dir/etc/init.d/rcS
 chmod +x ./initramfs-dir/etc/init.d/rcS
 
 cp ./src/busybox/examples/inittab ./initramfs-dir/etc/
-cp ./assets/hosts ./initramfs-dir/etc/hosts
+cp ./assets/etc-hosts ./initramfs-dir/etc/hosts
+cp ./assets/etc-profile ./initramfs-dir/etc/profile
 cp ./assets/resolv.conf ./initramfs-dir/etc/resolv.conf
 
 touch ./initramfs-dir/etc/fstab
