@@ -6,11 +6,18 @@ set -x
 /bin/mount -t devtmpfs dev /dev
 /bin/mount -t tmpfs -o mode=1777,strictatime tmpfs /tmp
 
+mkdir /dev/pts
+/bin/mount -t devpts devpts /dev/pts
+
 # scan /sys and populate /dev
 # /sbin/mdev -s
 
 /bin/hostname "$(cat /etc/hostname)"
 /sbin/ifconfig lo 127.0.0.1
+
+# setup networking for QEMU
+/sbin/ifconfig eth0 10.0.2.15
+/sbin/route add default gw 10.0.2.2
 
 set +x
 echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"

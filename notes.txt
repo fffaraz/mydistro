@@ -13,6 +13,9 @@ https://github.com/oasislinux/oasis
 https://github.com/kisslinux/repo
 https://github.com/kisslinux/init
 ---
+https://github.com/landley/aboriginal/blob/master/sources/root-filesystem/sbin/init.sh
+https://github.com/landley/toybox/blob/master/mkroot/mkroot.sh
+---
 fix formatting of shell scripts:
 ~/go/bin/shfmt -l -w .
 ---

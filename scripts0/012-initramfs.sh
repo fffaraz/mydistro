@@ -1,14 +1,15 @@
 #!/bin/bash
 set -exuo pipefail
 
-cp ./assets/rcS.sh ./initramfs-dir/etc/init.d/rcS
-chmod +x ./initramfs-dir/etc/init.d/rcS
+cp ./assets/etc/init.d/rcS ./initramfs-dir/etc/init.d/rcS
+cp ./assets/etc/hostname ./initramfs-dir/etc/hostname
+cp ./assets/etc/hosts ./initramfs-dir/etc/hosts
+cp ./assets/etc/os-release ./initramfs-dir/etc/os-release
+cp ./assets/etc/profile ./initramfs-dir/etc/profile
+cp ./assets/etc/resolv.conf ./initramfs-dir/etc/resolv.conf
+cp ./src/busybox/examples/inittab ./initramfs-dir/etc/inittab
 
-cp ./src/busybox/examples/inittab ./initramfs-dir/etc/
-cp ./assets/etc-hostname ./initramfs-dir/etc/hostname
-cp ./assets/etc-hosts ./initramfs-dir/etc/hosts
-cp ./assets/etc-profile ./initramfs-dir/etc/profile
-cp ./assets/resolv.conf ./initramfs-dir/etc/resolv.conf
+chmod +x ./initramfs-dir/etc/init.d/rcS
 
 touch ./initramfs-dir/etc/fstab
 echo "root::0:0:root:/root:/bin/sh" >./initramfs-dir/etc/passwd
