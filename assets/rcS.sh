@@ -9,7 +9,7 @@ set -x
 # scan /sys and populate /dev
 # /sbin/mdev -s
 
-/bin/hostname myhostname
+/bin/hostname "$(cat /etc/hostname)"
 /sbin/ifconfig lo 127.0.0.1
 
 set +x
