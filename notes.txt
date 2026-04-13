@@ -13,6 +13,9 @@ https://github.com/oasislinux/oasis
 https://github.com/kisslinux/repo
 https://github.com/kisslinux/init
 ---
+fix formatting of shell scripts:
+~/go/bin/shfmt -l -w .
+---
 PATH=$LFS/tools/bin:$PATH
 
 LFS_TGT=$(uname -m)-lfs-linux-gnu
@@ -29,5 +32,3 @@ done
 case $(uname -m) in
   x86_64) mkdir -pv $LFS/lib64 ;;
 esac
-
----
