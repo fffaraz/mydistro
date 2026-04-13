@@ -2,6 +2,7 @@
 set -exuo pipefail
 
 # download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
+# ./scripts/download-src.sh ./deps/sources-min.conf
 # ./scripts/download-src.sh ./deps/sources-lfs.conf
 # ./scripts/download-src-lfs.sh
 
