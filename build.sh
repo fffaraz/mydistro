@@ -31,7 +31,7 @@ else
 	./scripts/build0.sh
 fi
 
-echo "build took $((SECONDS / 60))m $((SECONDS % 60))s"
+echo "Build took $((SECONDS / 60))m $((SECONDS % 60))s"
 
 docker rmi -f mydistro-initramfs:latest || true
 [ -f ./output/initramfs.tar.gz ] && docker import ./output/initramfs.tar.gz mydistro-initramfs:latest
