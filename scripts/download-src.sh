@@ -69,6 +69,12 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 		echo "$md5  $archive" | md5sum -c -
 		mkdir -p "$dir"
 		tar -xf "$archive" -C "$dir" --strip-components=1
+	elif [[ "$type" == "patch" ]]; then
+		url="${fields[2]}"
+		md5="${fields[3]}"
+		echo "==> Downloading patch $dir from $url"
+		curl -fL -o "$dir" "$url"
+		echo "$md5  $dir" | md5sum -c -
 	elif [[ "$type" == "git" ]]; then
 		repo="${fields[2]}"
 		branch="${fields[3]}"
