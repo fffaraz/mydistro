@@ -17,6 +17,7 @@ echo "root:x:0:" >./initramfs-dir/etc/group
 
 ln -sv /sbin/init ./initramfs-dir/init
 ln -sv /proc/self/mounts ./initramfs-dir/etc/mtab
+ln -sv /bin/sh ./initramfs-dir/bin/bash
 
 mkdir -p ./initramfs-dir/etc/ssl/certs
 cp ./src/cacert/cacert-*.pem ./initramfs-dir/etc/ssl/certs/ca-certificates.crt
