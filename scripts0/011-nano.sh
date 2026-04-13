@@ -7,6 +7,13 @@ cd ./src/nano
 cp -r --reflink=auto ../gnulib ./gnulib
 
 ./autogen.sh
-./configure --enable-utf8 --enable-year2038 CFLAGS="-O3 -Wall --static"
+./configure --enable-utf8 --enable-year2038
 make
 make install DESTDIR=/opt/mydistro/initramfs-dir
+
+# install terminfo entries so ncurses can initialize the terminal
+mkdir -p /opt/mydistro/initramfs-dir/usr/share/terminfo/x
+mkdir -p /opt/mydistro/initramfs-dir/usr/share/terminfo/l
+cp /usr/share/terminfo/x/xterm-256color /opt/mydistro/initramfs-dir/usr/share/terminfo/x/
+cp /usr/share/terminfo/x/xterm /opt/mydistro/initramfs-dir/usr/share/terminfo/x/
+cp /usr/share/terminfo/l/linux /opt/mydistro/initramfs-dir/usr/share/terminfo/l/

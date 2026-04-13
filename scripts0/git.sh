@@ -5,7 +5,6 @@ cd ./src/git
 
 make configure
 ./configure \
-	CFLAGS='-O3 -Wall' \
 	--prefix=/usr \
 	--without-tcltk \
 	--without-python
