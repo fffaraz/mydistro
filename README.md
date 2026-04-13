@@ -10,6 +10,7 @@ This project is in early development and is not yet functional for general use.
 - **Atomic builds**: No package manager and no partial updates. The entire operating system is built as one unit.
 - **Offline by design**: No internet connection is required to install or build the OS once sources are downloaded.
 - **Self-hosted**: The distribution must be compilable by itself with no external dependencies.
+- **Statically linked**: All binaries are compiled statically. No dynamic libraries shipping with the OS.
 
 ## Build Prerequisites
 
