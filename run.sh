@@ -5,6 +5,9 @@ set -exuo pipefail
 
 ls -alh ./output
 
+# qemu-system-x86_64: symbol lookup error: /snap/core20/current/lib/x86_64-linux-gnu/libpthread.so.0: undefined symbol: __libc_pthread_init, version GLIBC_PRIVATE
+unset GTK_PATH
+
 qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
 
 # qemu-system-x86_64 ./output/boot.img
