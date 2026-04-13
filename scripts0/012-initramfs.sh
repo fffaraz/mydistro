@@ -23,6 +23,9 @@ cd ./initramfs-dir
 # remove unnecessary files
 rm -rf ./tmp/*
 
+# strip all binaries
+find ./bin ./sbin ./usr/bin ./usr/sbin ./usr/local/bin ./usr/local/sbin -type f -exec strip --strip-all {} + 2>/dev/null || true
+
 # fix symlink targets
 rm ./sbin
 rm ./usr/bin
