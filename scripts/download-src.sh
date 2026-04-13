@@ -83,9 +83,11 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 	elif [[ "$type" == "patch" ]]; then
 		url="${fields[2]}"
 		hash="${fields[3]}"
+		archive="${url##*/}"
 		echo "==> Downloading patch $dir from $url"
-		curl -fL -o "$dir" "$url"
-		verify_hash "$hash" "$dir"
+		mkdir -p "$dir"
+		curl -fL -o "$dir/$archive" "$url"
+		verify_hash "$hash" "$dir/$archive"
 	elif [[ "$type" == "git" ]]; then
 		repo="${fields[2]}"
 		branch="${fields[3]}"
