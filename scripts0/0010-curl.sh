@@ -10,7 +10,7 @@ autoreconf -vif
 	--disable-shared --enable-static \
 	--without-brotli --without-libpsl --without-ssl --without-zstd --without-zlib
 
-make -j$(nproc)
+make
 
 # make install DESTDIR=/opt/mydistro/initramfs-dir
 

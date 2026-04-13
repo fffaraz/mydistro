@@ -6,6 +6,6 @@ cd ./src/toybox
 make defconfig
 # make menuconfig
 
-make -j$(nproc)
+make
 
 PREFIX=/opt/mydistro/initramfs-dir make install

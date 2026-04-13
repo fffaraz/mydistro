@@ -17,6 +17,6 @@ make defconfig
 
 make olddefconfig
 
-make -j$(nproc)
+make
 
 cp ./arch/x86/boot/bzImage /opt/mydistro/output/bzImage

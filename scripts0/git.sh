@@ -10,5 +10,5 @@ make configure
 	--without-tcltk \
 	--without-python
 
-make -j$(nproc) NO_GETTEXT=1
+make NO_GETTEXT=1
 make install DESTDIR=/opt/mydistro/initramfs-dir NO_GETTEXT=1

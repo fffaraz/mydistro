@@ -8,5 +8,5 @@ cp -r --reflink=auto ../gnulib ./gnulib
 
 ./autogen.sh
 ./configure --enable-utf8 --enable-year2038 CFLAGS="-O3 -Wall --static"
-make -j$(nproc)
+make
 make install DESTDIR=/opt/mydistro/initramfs-dir

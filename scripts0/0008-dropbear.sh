@@ -4,5 +4,5 @@
 cd ./src/dropbear
 
 ./configure --enable-static
-make -j$(nproc)
+make
 make install DESTDIR=/opt/mydistro/initramfs-dir

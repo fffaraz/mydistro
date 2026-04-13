@@ -3,6 +3,14 @@ set -exuo pipefail
 
 cd /opt/mydistro
 
+mkdir -p ./src /tmp/src-upper /tmp/src-work
+mount -t overlay overlay -o lowerdir=./src-ro,upperdir=/tmp/src-upper,workdir=/tmp/src-work ./src
+
+COMMON_FLAGS="-O2 -pipe -march=native -Wno-error"
+export CFLAGS="${COMMON_FLAGS}"
+export CXXFLAGS="${COMMON_FLAGS}"
+export MAKEFLAGS=-j$(nproc)
+
 ./scripts/0001-kernel.sh
 ./scripts/0002-initramfs.sh
 ./scripts/0004-busybox.sh

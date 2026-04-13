@@ -7,6 +7,6 @@ mkdir build
 cd build
 
 ../configure --prefix /opt/mydistro/initramfs-dir/usr/local/glibc
-make -j$(nproc)
 
+make
 # make install

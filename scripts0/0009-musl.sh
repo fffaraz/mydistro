@@ -4,5 +4,5 @@
 cd ./src/musl
 
 ./configure
-make -j$(nproc)
+make
 make install DESTDIR=/opt/mydistro/initramfs-dir
