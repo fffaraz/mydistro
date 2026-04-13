@@ -2,15 +2,21 @@
 set -exuo pipefail
 
 ENTRY_POINT="--entrypoint /opt/mydistro/scripts/000-build.sh"
-if [ "${1:-}" = "-d" ]; then
-	ENTRY_POINT="-t --entrypoint /bin/bash"
-fi
+SKIP_IMPORT=false
+
+while getopts "dn" opt; do
+	case $opt in
+	d) ENTRY_POINT="-t --entrypoint /bin/bash" ;;
+	n) SKIP_IMPORT=true ;;
+	esac
+done
 
 docker rm -f mydistro || true
 
-# docker pull debian:sid-slim
-# docker rmi -f mydistro-builder:latest || true
-docker build -t mydistro-builder:latest .
+if [ "$SKIP_IMPORT" = false ]; then
+	docker rmi -f mydistro-initramfs:latest || true
+	docker import ./output/initramfs.tar.gz mydistro-initramfs:latest
+fi
 
 docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
@@ -19,6 +25,6 @@ docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/output:/opt/mydistro/output \
 	--tmpfs /tmp \
 	$ENTRY_POINT \
-	mydistro-builder:latest 2>&1 | tee ./output/build0.log
+	mydistro-initramfs:latest 2>&1 | tee ./output/build00.log
 
 ls -alh ./output
