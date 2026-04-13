@@ -6,10 +6,10 @@ This project is in early development and is not yet functional for general use.
 
 # Philosophy and Principles
 
-- **Source Transparency**: All source code comes from upstream git repositories. No tarballs, no binaries.
-- **Atomic builds**: No package manager and no partial updates. The entire operating system is built as one unit.
-- **Offline by design**: No internet connection is required to install or build the OS once sources are downloaded.
-- **Self-hosted**: The distribution must be compilable by itself with no external dependencies.
+- **Source transparency**: All source code comes from upstream git repositories. No tarballs, no binaries.
+- **Atomic builds**: No package manager, no partial updates. The entire OS is built as one unit.
+- **Offline by design**: No internet needed to install or build the OS once sources are downloaded.
+- **Self-hosted**: The distribution can build itself with no external dependencies.
 - **Statically linked**: All binaries are compiled statically. No dynamic libraries shipping with the OS.
 
 ## Build Prerequisites
@@ -29,7 +29,7 @@ This project is in early development and is not yet functional for general use.
 
 ## Build output
 
-All artifacts are written to `output/` directory:
+All artifacts are written to the `output/` directory:
 
 | File | Description |
 |------|-------------|
