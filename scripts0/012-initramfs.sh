@@ -1,9 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
-cp ./assets/init.sh ./initramfs-dir/init
 cp ./assets/rcS.sh ./initramfs-dir/etc/init.d/rcS
-chmod +x ./initramfs-dir/init ./initramfs-dir/etc/init.d/rcS
+chmod +x ./initramfs-dir/etc/init.d/rcS
 
 cp ./src/busybox/examples/inittab ./initramfs-dir/etc/
 cp ./assets/hosts ./initramfs-dir/etc/hosts
@@ -13,6 +12,7 @@ touch ./initramfs-dir/etc/fstab
 echo "root::0:0:root:/root:/bin/sh" >./initramfs-dir/etc/passwd
 echo "root:x:0:" >./initramfs-dir/etc/group
 
+ln -sv /sbin/init ./initramfs-dir/init
 ln -sv /proc/self/mounts ./initramfs-dir/etc/mtab
 
 # large dummy file
