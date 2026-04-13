@@ -16,6 +16,7 @@ export PS1='\w\$ '
 /bin/hostname myhostname
 /sbin/ifconfig lo 127.0.0.1
 
+set +x
 echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
 
 sleep 1
