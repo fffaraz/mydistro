@@ -6,9 +6,10 @@ cd /opt/mydistro
 mkdir -p ./src /tmp/src-upper /tmp/src-work
 mount -t overlay overlay -o lowerdir=./src-ro,upperdir=/tmp/src-upper,workdir=/tmp/src-work ./src
 
-COMMON_FLAGS="-O2 -pipe -march=native -Wno-error"
+COMMON_FLAGS="-O3 -pipe -march=native --static -Wno-error"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
+export LDFLAGS="-static-libgcc -static-libstdc++"
 export MAKEFLAGS=-j$(nproc)
 
 ./scripts/001-kernel.sh
