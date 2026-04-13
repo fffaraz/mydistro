@@ -12,8 +12,8 @@ make defconfig
 ./scripts/config --enable IKCONFIG
 ./scripts/config --enable IKCONFIG_PROC
 ./scripts/config --enable DRM_FBDEV_EMULATION # Enable legacy fbdev support for your modesetting driver
-./scripts/config --enable DRM_BOCHS # DRM Support for bochs dispi vga interface (qemu stdvga)
-./scripts/config --enable LOGO # Bootup logo
+./scripts/config --enable DRM_BOCHS           # DRM Support for bochs dispi vga interface (qemu stdvga)
+./scripts/config --enable LOGO                # Bootup logo
 
 make olddefconfig
 

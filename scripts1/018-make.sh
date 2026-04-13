@@ -3,20 +3,20 @@ set -exuo pipefail
 
 cd ./src
 if [ ! -d make ]; then
-  tar xf make-*.tar.*
-  mv make-*/ make
-  cd ./make
+	tar xf make-*.tar.*
+	mv make-*/ make
+	cd ./make
 else
-  cd ./make
-  cp -r --reflink=auto ../gnulib ./gnulib-repo
-  ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
-  sed -i '1i #define streq(s1, s2) (strcmp(s1, s2) == 0)' lib/concat-filename.c lib/findprog-in.c
+	cd ./make
+	cp -r --reflink=auto ../gnulib ./gnulib-repo
+	./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
+	sed -i '1i #define streq(s1, s2) (strcmp(s1, s2) == 0)' lib/concat-filename.c lib/findprog-in.c
 fi
 
-./configure --prefix=/usr   \
-            --host=$LFS_TGT \
-            --build=$(build-aux/config.guess) \
-            --disable-nls
+./configure --prefix=/usr \
+	--host=$LFS_TGT \
+	--build=$(build-aux/config.guess) \
+	--disable-nls
 
 make
 make DESTDIR=$LFS install

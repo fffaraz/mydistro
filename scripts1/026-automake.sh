@@ -3,12 +3,12 @@ set -exuo pipefail
 
 cd ./src
 if [ ! -d automake ]; then
-  tar xf automake-*.tar.*
-  mv automake-*/ automake
-  cd ./automake
+	tar xf automake-*.tar.*
+	mv automake-*/ automake
+	cd ./automake
 else
-  cd ./automake
-  ./bootstrap
+	cd ./automake
+	./bootstrap
 fi
 
 ./configure --prefix=/usr --host=$LFS_TGT

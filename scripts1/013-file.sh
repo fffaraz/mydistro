@@ -4,21 +4,21 @@ set -exuo pipefail
 cd ./src
 
 if [ ! -d file ]; then
-  tar xf file-*.tar.*
-  mv file-*/ file
-  cd ./file
+	tar xf file-*.tar.*
+	mv file-*/ file
+	cd ./file
 else
-  cd ./file
-  autoreconf -vif
+	cd ./file
+	autoreconf -vif
 fi
 
 mkdir build
 pushd build
-  ../configure --disable-bzlib      \
-               --disable-libseccomp \
-               --disable-xzlib      \
-               --disable-zlib
-  make
+../configure --disable-bzlib \
+	--disable-libseccomp \
+	--disable-xzlib \
+	--disable-zlib
+make
 popd
 
 ./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
