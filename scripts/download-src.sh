@@ -14,6 +14,8 @@ verify_hash() {
 	local hash="$1" file="$2"
 	if [[ "$hash" == sha256:* ]]; then
 		echo "${hash#sha256:}  $file" | sha256sum -c -
+	elif [[ "$hash" == md5:* ]]; then
+		echo "${hash#md5:}  $file" | md5sum -c -
 	else
 		echo "$hash  $file" | md5sum -c -
 	fi
