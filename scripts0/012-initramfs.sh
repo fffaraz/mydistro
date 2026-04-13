@@ -20,6 +20,9 @@ ln -sv /proc/self/mounts ./initramfs-dir/etc/mtab
 
 cd ./initramfs-dir
 
+# remove unnecessary files
+rm -rf ./tmp/*
+
 # fix symlink targets
 rm ./sbin
 rm ./usr/bin
