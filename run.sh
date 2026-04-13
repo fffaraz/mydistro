@@ -10,13 +10,12 @@ unset GTK_PATH
 
 qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
 
-# qemu-system-x86_64 ./output/boot.img
-# qemu-system-x86_64 -drive format=raw,file=./output/boot.img
+# qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G ./output/boot.img
+# qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -drive format=raw,file=./output/boot.img
 
-# qemu-system-x86_64 -drive format=raw,media=cdrom,readonly=on,file=./output/mydistro.iso
+# qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -drive format=raw,media=cdrom,readonly=on,file=./output/mydistro.iso
 
-# qemu-system-x86_64 -kernel ./output/bzImage
-# qemu-system-x86_64 -m 2G -kernel ./output/bzImage -initrd ./output/initramfs.cpio -append "console=ttyS0" -nographic
+# qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -kernel ./output/bzImage -initrd ./output/initramfs.cpio -append "console=ttyS0" -nographic
 
 # To exit QEMU when running in a terminal without a graphical interface: Ctrl+A -> X
 
