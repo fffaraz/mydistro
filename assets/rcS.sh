@@ -15,4 +15,4 @@ set -x
 set +x
 echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
 
-sleep 1
+sleep 0.5
