@@ -9,7 +9,7 @@ mount -t overlay overlay -o lowerdir=./src-ro,upperdir=/tmp/src-upper,workdir=/t
 COMMON_FLAGS="-O3 -pipe -march=native -static -Wno-error"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
-export LDFLAGS="-static-libgcc -static-libstdc++" # "-static"
+export LDFLAGS="-static" # "-static-libgcc -static-libstdc++" "-all-static"
 export MAKEFLAGS=-j$(nproc)
 
 ./scripts/001-kernel.sh
@@ -26,7 +26,7 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/099-autoconf.sh
 ./scripts/099-automake.sh
 ./scripts/099-gmp-mpc-mpfr.sh
-./scripts/099-binutils.sh
+# ./scripts/099-binutils.sh
 ./scripts/099-gcc.sh
 
 ./scripts/012-initramfs.sh
