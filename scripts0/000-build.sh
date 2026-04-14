@@ -18,16 +18,16 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/005-syslinux.sh
 ./scripts/006-memtest86.sh
 # ./scripts/007-microwindows.sh
-# ./scripts/008-dropbear.sh
+./scripts/008-dropbear.sh
 ./scripts/010-curl.sh
 ./scripts/011-nano.sh
 
-# ./scripts/099-make.sh
-# ./scripts/099-autoconf.sh
-# ./scripts/099-automake.sh
-# ./scripts/099-gmp-mpc-mpfr.sh
-# ./scripts/099-binutils.sh
-# ./scripts/099-gcc.sh
+./scripts/099-make.sh
+./scripts/099-autoconf.sh
+./scripts/099-automake.sh
+./scripts/099-gmp-mpc-mpfr.sh
+./scripts/099-binutils.sh
+./scripts/099-gcc.sh
 
 ./scripts/012-initramfs.sh
 ./scripts/013-mkisofs.sh

@@ -5,7 +5,7 @@ set -exuo pipefail
 mkdir -p ./initramfs-dir
 
 cd ./initramfs-dir
-mkdir -p bin boot/efi dev etc/init.d home lib lib64 mnt opt proc root run srv sys tmp usr/local var
+mkdir -p bin boot/efi dev etc/init.d home lib lib64 mnt opt proc root run srv sys tmp usr/libexec usr/local var
 mkdir -p tools
 
 ROOT_DIR=/opt/mydistro/initramfs-dir
