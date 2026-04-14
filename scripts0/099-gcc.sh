@@ -12,14 +12,11 @@ ln -sf ../mpc ./mpc
 mkdir -p build
 cd build
 
-# GCC's build system manages its own flags; the global --static breaks it
-CFLAGS="-O3 -pipe" \
-CXXFLAGS="-O3 -pipe" \
-LDFLAGS="" \
 ../configure \
     --disable-multilib \
     --disable-bootstrap \
     --disable-nls \
+    --disable-shared \
     --enable-languages=c,c++
 
 make
