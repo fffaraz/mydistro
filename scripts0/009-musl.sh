@@ -1,8 +1,8 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile musl
 cd ./src/musl
 
-./configure
+./configure --prefix=/usr
 make
 make install DESTDIR=/opt/mydistro/initramfs-dir

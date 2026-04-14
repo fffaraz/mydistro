@@ -22,3 +22,5 @@ cd build
 
 make
 make install DESTDIR=/opt/mydistro/initramfs-dir
+
+# echo 'int main(){return 0;}' | gcc -x c - -o /tmp/test && /tmp/test && echo OK
