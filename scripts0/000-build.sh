@@ -23,7 +23,7 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/011-nano.sh
 
 ./scripts/099-autoconf.sh
-./scripts/099-autoomake.sh
+./scripts/099-automake.sh
 
 ./scripts/012-initramfs.sh
 ./scripts/013-mkisofs.sh
