@@ -22,7 +22,7 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/010-curl.sh
 ./scripts/011-nano.sh
 
-./scripts/009-make.sh
+./scripts/099-make.sh
 ./scripts/099-autoconf.sh
 ./scripts/099-automake.sh
 
