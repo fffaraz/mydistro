@@ -50,6 +50,7 @@ ln -s /bin ./usr/local/bin
 ln -s /bin ./usr/local/sbin
 ln -s /lib ./usr/lib
 ln -s /lib ./usr/local/lib
+ln -s /usr/libexec ./libexec
 
 # create initramfs.cpio
 find . | cpio -o -H newc >../output/initramfs.cpio
