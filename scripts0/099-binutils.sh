@@ -13,7 +13,9 @@ cd build
     --disable-nls \
     --disable-shared \
     --disable-multilib \
-    --disable-gprofng
+    --disable-gprofng \
+    --disable-gdb \
+    --disable-gdbserver
 
 make
 make install DESTDIR=/opt/mydistro/initramfs-dir
