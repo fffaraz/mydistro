@@ -8,15 +8,15 @@ ls -alh ./output
 # qemu-system-x86_64: symbol lookup error: /snap/core20/current/lib/x86_64-linux-gnu/libpthread.so.0: undefined symbol: __libc_pthread_init, version GLIBC_PRIVATE
 unset GTK_PATH
 
-qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
+if [[ "${1:-}" == "--cli" ]]; then
+    echo "To exit QEMU when running in a terminal without a graphical interface: Ctrl+A -> X"
+    qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -kernel ./output/bzImage -initrd ./output/initramfs.cpio -append "console=ttyS0" -nographic
+else
+    qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
+fi
 
 # qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G ./output/boot.img
 # qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -drive format=raw,file=./output/boot.img
-
 # qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -drive format=raw,media=cdrom,readonly=on,file=./output/mydistro.iso
-
-# qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -kernel ./output/bzImage -initrd ./output/initramfs.cpio -append "console=ttyS0" -nographic
-
-# To exit QEMU when running in a terminal without a graphical interface: Ctrl+A -> X
 
 # docker run --rm -it mydistro-initramfs:latest /bin/sh
