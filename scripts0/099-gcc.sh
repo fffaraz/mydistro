@@ -13,6 +13,7 @@ mkdir -p build
 cd build
 
 ../configure \
+    --prefix=/usr \
     --disable-multilib \
     --disable-bootstrap \
     --disable-nls \
