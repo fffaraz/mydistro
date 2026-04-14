@@ -25,6 +25,7 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/099-make.sh
 ./scripts/099-autoconf.sh
 ./scripts/099-automake.sh
+./scripts/099-gmp-mpc-mpfr.sh
 ./scripts/099-gcc.sh
 
 ./scripts/012-initramfs.sh
