@@ -27,6 +27,8 @@ export MAKEFLAGS=-j$(nproc)
 ./scripts/099-make.sh
 ./scripts/099-autoconf.sh
 ./scripts/099-automake.sh
+./scripts/099-flex.sh
+./scripts/099-bison.sh
 ./scripts/099-gmp-mpc-mpfr.sh
 ./scripts/099-binutils.sh
 ./scripts/099-gcc.sh
