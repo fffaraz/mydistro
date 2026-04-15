@@ -3,10 +3,7 @@ set -exuo pipefail
 
 cd ./src/bash
 
-./configure \
-	--prefix=/usr \
-	--build="$(sh support/config.guess)" \
-	--without-bash-malloc
+./configure --prefix=/usr
 
 make
 make install DESTDIR=$INITRAMFS_DIR
