@@ -4,6 +4,8 @@ set -exuo pipefail
 # compile linux kernel
 cd ./src/linux
 
+export HOSTCC="gcc -static"
+
 make defconfig
 
 # https://www.kernelconfig.io/
@@ -25,3 +27,5 @@ make olddefconfig
 make
 
 cp ./arch/x86/boot/bzImage /opt/mydistro/output/bzImage
+
+make headers_install INSTALL_HDR_PATH=/opt/mydistro/initramfs-dir/usr
