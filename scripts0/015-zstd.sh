@@ -3,5 +3,5 @@ set -exuo pipefail
 
 cd ./src/zstd
 
-make
-make install DESTDIR=/opt/mydistro/initramfs-dir
+make PREFIX=/usr
+make install PREFIX=/usr DESTDIR=/opt/mydistro/initramfs-dir
