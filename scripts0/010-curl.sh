@@ -5,7 +5,7 @@ cd ./src/curl
 
 autoreconf -vif
 
-./configure --disable-shared --enable-static --without-libpsl --without-brotli --with-openssl
+./configure --without-libpsl --without-brotli --with-openssl
 
 make
 

@@ -4,8 +4,6 @@ set -exuo pipefail
 # compile linux kernel
 cd ./src/linux
 
-export HOSTLDFLAGS=-static
-
 make defconfig
 
 # https://www.kernelconfig.io/
