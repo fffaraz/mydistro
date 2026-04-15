@@ -4,7 +4,7 @@ set -exuo pipefail
 # compile linux kernel
 cd ./src/linux
 
-export HOSTCC="gcc -static"
+export HOSTLDFLAGS=-static
 
 make defconfig
 
