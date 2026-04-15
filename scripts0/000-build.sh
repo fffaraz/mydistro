@@ -35,6 +35,7 @@ export INITRAMFS_DIR=/opt/mydistro/initramfs-dir
 ./scripts/099-gmp-mpc-mpfr.sh
 ./scripts/099-binutils.sh
 ./scripts/099-gcc.sh
+./scripts/099-ncurses.sh
 ./scripts/099-bash.sh
 
 ./scripts/012-initramfs.sh
