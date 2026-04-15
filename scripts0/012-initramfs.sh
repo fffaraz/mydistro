@@ -35,23 +35,6 @@ rm -rf ./tmp/*
 # strip all binaries
 find ./usr/bin -type f -exec strip --strip-all {} + 2>/dev/null || true
 
-# fix symlink targets
-rm ./bin
-rm ./sbin
-rm ./usr/sbin
-rm ./usr/local/bin
-rm ./usr/local/sbin
-rm ./lib
-rm ./usr/local/lib
-ln -s /usr/bin ./bin
-ln -s /usr/bin ./sbin
-ln -s /usr/bin ./usr/sbin
-ln -s /usr/bin ./usr/local/bin
-ln -s /usr/bin ./usr/local/sbin
-ln -s /usr/lib ./lib
-ln -s /usr/lib ./usr/local/lib
-ln -s /usr/libexec ./libexec
-
 # create initramfs.cpio
 find . | cpio -o -H newc >../output/initramfs.cpio
 # -o, --create
