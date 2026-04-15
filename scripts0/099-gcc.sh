@@ -14,13 +14,10 @@ cd build
 
 ../configure \
     --prefix=/usr \
-    --disable-multilib \
     --disable-bootstrap \
+    --disable-multilib \
     --disable-nls \
-    --disable-shared \
-    --enable-languages=c,c++ \
-    --with-as=/usr/bin/as \
-    --with-ld=/usr/bin/ld
+    --enable-languages=c,c++
 
 make
 make install DESTDIR=$INITRAMFS_DIR
