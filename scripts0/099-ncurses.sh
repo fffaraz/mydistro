@@ -18,3 +18,5 @@ cd ./src/ncurses
 make
 make install DESTDIR=$INITRAMFS_DIR
 ln -svf libncursesw.so "$INITRAMFS_DIR/usr/lib/libncurses.so"
+ln -svf libtinfow.so.6 "$INITRAMFS_DIR/usr/lib/libtinfo.so.6"
+ln -svf libtinfow.so "$INITRAMFS_DIR/usr/lib/libtinfo.so"
