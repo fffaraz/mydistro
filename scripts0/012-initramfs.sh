@@ -33,23 +33,23 @@ cd ./initramfs-dir
 rm -rf ./tmp/*
 
 # strip all binaries
-find ./bin ./sbin ./usr/bin ./usr/sbin ./usr/local/bin ./usr/local/sbin -type f -exec strip --strip-all {} + 2>/dev/null || true
+find ./usr/bin -type f -exec strip --strip-all {} + 2>/dev/null || true
 
 # fix symlink targets
+rm ./bin
 rm ./sbin
-rm ./usr/bin
 rm ./usr/sbin
 rm ./usr/local/bin
 rm ./usr/local/sbin
-rm ./usr/lib
+rm ./lib
 rm ./usr/local/lib
-ln -s /bin ./sbin
-ln -s /bin ./usr/bin
-ln -s /bin ./usr/sbin
-ln -s /bin ./usr/local/bin
-ln -s /bin ./usr/local/sbin
-ln -s /lib ./usr/lib
-ln -s /lib ./usr/local/lib
+ln -s /usr/bin ./bin
+ln -s /usr/bin ./sbin
+ln -s /usr/bin ./usr/sbin
+ln -s /usr/bin ./usr/local/bin
+ln -s /usr/bin ./usr/local/sbin
+ln -s /usr/lib ./lib
+ln -s /usr/lib ./usr/local/lib
 ln -s /usr/libexec ./libexec
 
 # create initramfs.cpio
