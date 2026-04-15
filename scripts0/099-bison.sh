@@ -18,4 +18,4 @@ sed -i '/\/\* directory \*\/ NULL,/a\ NULL,' src/output.c src/print-xml.c
 ./configure --disable-nls --disable-shared
 
 make
-make install DESTDIR=/opt/mydistro/initramfs-dir
+make install DESTDIR=$INITRAMFS_DIR

@@ -10,4 +10,4 @@ make configure
 	--without-python
 
 make NO_GETTEXT=1
-make install DESTDIR=/opt/mydistro/initramfs-dir NO_GETTEXT=1
+make install NO_GETTEXT=1 DESTDIR=$INITRAMFS_DIR

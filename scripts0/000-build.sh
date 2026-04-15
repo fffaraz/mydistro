@@ -11,6 +11,8 @@ export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 export MAKEFLAGS=-j$(nproc)
 
+export INITRAMFS_DIR=/opt/mydistro/initramfs-dir
+
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
 ./scripts/004-busybox.sh

@@ -8,4 +8,4 @@ sed -i '1i #define streq(s1, s2) (strcmp(s1, s2) == 0)' lib/concat-filename.c li
 
 ./configure --disable-nls
 make
-make install DESTDIR=/opt/mydistro/initramfs-dir
+make install DESTDIR=$INITRAMFS_DIR

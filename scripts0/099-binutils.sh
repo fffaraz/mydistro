@@ -18,4 +18,4 @@ cd build
     --disable-gdbserver
 
 make
-make install DESTDIR=/opt/mydistro/initramfs-dir
+make install DESTDIR=$INITRAMFS_DIR

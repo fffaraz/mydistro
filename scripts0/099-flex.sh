@@ -7,4 +7,4 @@ cd ./src/flex
 
 ./configure --disable-nls --disable-shared
 make
-make install DESTDIR=/opt/mydistro/initramfs-dir
+make install DESTDIR=$INITRAMFS_DIR

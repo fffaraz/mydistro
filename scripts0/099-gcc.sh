@@ -21,6 +21,6 @@ cd build
     --enable-languages=c,c++
 
 make
-make install DESTDIR=/opt/mydistro/initramfs-dir
+make install DESTDIR=$INITRAMFS_DIR
 
 # echo 'int main(){return 0;}' | gcc -x c - -o /tmp/test && /tmp/test && echo OK

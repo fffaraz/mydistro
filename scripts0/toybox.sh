@@ -13,5 +13,4 @@ sed -i 's/# CONFIG_VI is not set/CONFIG_VI=y/' .config
 make oldconfig
 
 make
-
-PREFIX=/opt/mydistro/initramfs-dir make install
+make install DESTDIR=$INITRAMFS_DIR
