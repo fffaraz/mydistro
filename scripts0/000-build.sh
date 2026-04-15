@@ -27,6 +27,7 @@ export INITRAMFS_DIR=/opt/mydistro/initramfs-dir
 ./scripts/009-glibc.sh
 
 ./scripts/099-make.sh
+./scripts/099-m4.sh
 ./scripts/099-autoconf.sh
 ./scripts/099-automake.sh
 ./scripts/099-flex.sh
