@@ -18,6 +18,7 @@ cd build
     --disable-libsanitizer \
     --disable-multilib \
     --disable-nls \
+    --disable-shared \
     --enable-languages=c,c++
 
 make
