@@ -4,6 +4,6 @@ set -exuo pipefail
 cd ./src/automake
 ./bootstrap
 
-./configure
+./configure --prefix=/usr
 make
 make install DESTDIR=$INITRAMFS_DIR

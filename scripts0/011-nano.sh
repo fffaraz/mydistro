@@ -7,7 +7,7 @@ cd ./src/nano
 cp -r --reflink=auto ../gnulib ./gnulib
 
 ./autogen.sh
-./configure --enable-utf8 --enable-year2038 --disable-nls --docdir=/tmp/nano-doc --mandir=/tmp/nano-man --infodir=/tmp/nano-info
+./configure --prefix=/usr --enable-utf8 --enable-year2038 --disable-nls --docdir=/tmp/nano-doc --mandir=/tmp/nano-man --infodir=/tmp/nano-info
 make
 make install DESTDIR=$INITRAMFS_DIR
 

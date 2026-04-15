@@ -19,7 +19,7 @@ export INITRAMFS_DIR=/opt/mydistro/initramfs-dir
 ./scripts/005-syslinux.sh
 ./scripts/006-memtest86.sh
 # ./scripts/007-microwindows.sh
-./scripts/008-dropbear.sh
+# ./scripts/008-dropbear.sh
 ./scripts/010-curl.sh
 ./scripts/011-nano.sh
 ./scripts/015-zstd.sh
