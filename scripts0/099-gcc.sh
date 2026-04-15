@@ -15,6 +15,7 @@ cd build
 ../configure \
     --prefix=/usr \
     --disable-bootstrap \
+    --disable-libsanitizer \
     --disable-multilib \
     --disable-nls \
     --enable-languages=c,c++
