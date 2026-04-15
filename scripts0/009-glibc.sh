@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# compile glibc
 cd ./src/glibc
 
 mkdir build
 cd build
 
-../configure --prefix /opt/mydistro/initramfs-dir/usr/local/glibc
+../configure
 
 make
-# make install
+make install DESTDIR=/opt/mydistro/initramfs-dir
