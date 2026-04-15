@@ -19,7 +19,9 @@ cd build
     --disable-multilib \
     --disable-nls \
     --disable-shared \
-    --enable-languages=c,c++
+    --enable-languages=c,c++ \
+    --with-as=/usr/bin/as \
+    --with-ld=/usr/bin/ld
 
 make
 make install DESTDIR=$INITRAMFS_DIR
