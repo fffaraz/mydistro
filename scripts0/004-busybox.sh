@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile busybox
 cd ./src/busybox
 
 make defconfig

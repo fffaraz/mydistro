@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile nano editor
 cd ./src/nano
 
 # ln -s ../gnulib ./gnulib

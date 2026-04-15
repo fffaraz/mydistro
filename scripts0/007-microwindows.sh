@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile microwindows
 cd ./src/microwindows/src
 
 cp Configs/config.linux-fb config

@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile dropbear ssh server
 cd ./src/dropbear
 
 ./configure --mandir=/tmp/dropbear-man

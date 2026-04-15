@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile syslinux
 cd ./src/syslinux
 
 # apply patches

@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile curl
 cd ./src/curl
 
 autoreconf -vif
