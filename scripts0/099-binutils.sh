@@ -9,13 +9,13 @@ mkdir -p build
 cd build
 
 ../configure \
-    --prefix=/usr \
-    --disable-nls \
-    --disable-shared \
-    --disable-multilib \
-    --disable-gprofng \
-    --disable-gdb \
-    --disable-gdbserver
+	--prefix=/usr \
+	--disable-nls \
+	--disable-shared \
+	--disable-multilib \
+	--disable-gprofng \
+	--disable-gdb \
+	--disable-gdbserver
 
 make
 make install DESTDIR=$INITRAMFS_DIR

@@ -13,15 +13,15 @@ mkdir -p build
 cd build
 
 ../configure \
-    --prefix=/usr \
-    --disable-bootstrap \
-    --disable-libsanitizer \
-    --disable-multilib \
-    --disable-nls \
-    --disable-shared \
-    --enable-languages=c,c++ \
-    --with-as=/usr/bin/as \
-    --with-ld=/usr/bin/ld
+	--prefix=/usr \
+	--disable-bootstrap \
+	--disable-libsanitizer \
+	--disable-multilib \
+	--disable-nls \
+	--disable-shared \
+	--enable-languages=c,c++ \
+	--with-as=/usr/bin/as \
+	--with-ld=/usr/bin/ld
 
 make
 make install DESTDIR=$INITRAMFS_DIR
