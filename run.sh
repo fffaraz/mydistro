@@ -11,12 +11,14 @@ unset GTK_PATH
 if [[ "${1:-}" == "--cli" ]]; then
     echo "To exit QEMU when running in a terminal without a graphical interface: Ctrl+A -> X"
     qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -kernel ./output/bzImage -initrd ./output/initramfs.cpio -append "console=ttyS0" -nographic
-else
+elif [[ "${1:-}" == "--qemu" ]]; then
     qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -cdrom ./output/mydistro.iso -net nic,model=virtio -net user
+elif [[ "${1:-}" == "--docker" ]]; then
+    docker run --rm -it mydistro-initramfs:latest /bin/sh
+else
+    echo "Usage: $0 [--cli | --qemu | --docker]"
 fi
 
 # qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G ./output/boot.img
 # qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -drive format=raw,file=./output/boot.img
 # qemu-system-x86_64 -cpu host -enable-kvm -smp 2 -m 2G -drive format=raw,media=cdrom,readonly=on,file=./output/mydistro.iso
-
-# docker run --rm -it mydistro-initramfs:latest /bin/sh
