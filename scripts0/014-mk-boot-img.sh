@@ -17,7 +17,7 @@ mount ./output/boot.img ./mnt
 
 # copy kernel and initramfs and memtest86+
 cp ./output/bzImage ./mnt
-cp ./output/initramfs.cpio ./mnt
+cp ./output/initramfs.cpio.gz ./mnt
 cp ./src/memtest86plus/build/x86_64/mt86plus ./mnt
 
 # copy syslinux

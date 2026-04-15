@@ -33,6 +33,7 @@ All artifacts are written to the `output/` directory:
 | File | Description |
 |------|-------------|
 | `bzImage` | Compressed kernel image |
-| `initramfs.cpio` | Root filesystem archive |
+| `initramfs.cpio.gz` | Compressed root filesystem archive |
+| `initramfs.tar.gz` | Compressed root filesystem archive in tar format |
 | `mydistro.iso` | Bootable ISO image |
 | `boot.img` | Bootable FAT disk image |

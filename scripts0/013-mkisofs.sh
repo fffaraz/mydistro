@@ -5,7 +5,7 @@ mkdir -p ./iso-dir/isolinux
 
 # copy kernel and initramfs and memtest86+
 cp ./output/bzImage ./iso-dir
-cp ./output/initramfs.cpio ./iso-dir
+cp ./output/initramfs.cpio.gz ./iso-dir
 cp ./src/memtest86plus/build/x86_64/mt86plus ./iso-dir
 
 # copy syslinux
@@ -22,5 +22,5 @@ mkisofs -J -R -o ./output/mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot
 
 # alt mk iso
 # cd ./src/linux
-# make isoimage FDINITRD=/opt/mydistro/output/initramfs.cpio FDARGS="initrd=/initramfs.cpio"
+# make isoimage FDINITRD=/opt/mydistro/output/initramfs.cpio.gz FDARGS="initrd=/initramfs.cpio.gz"
 # cp ./arch/x86/boot/image.iso /opt/mydistro/output/image.iso
