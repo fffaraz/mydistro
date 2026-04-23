@@ -4,6 +4,7 @@ set -exuo pipefail
 cd ./src
 
 cd ./gmp
+# no need to configure gpm
 cd ..
 
 cd ./mpc
