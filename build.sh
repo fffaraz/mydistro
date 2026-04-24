@@ -9,8 +9,8 @@ fi
 
 # download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
 if [ "$BUILD_LFS" = "1" ]; then
-	# ./scripts/download-src.sh ./deps/sources-lfs.conf
 	./scripts/download-src-lfs.sh
+	# ./scripts/download-src.sh ./deps/sources-lfs.conf
 else
 	./scripts/download-src.sh ./deps/sources-min.conf
 fi
@@ -22,11 +22,8 @@ mkdir ./output
 SECONDS=0
 
 if [ "$BUILD_LFS" = "1" ]; then
-	# build the first stage of the build process, which creates a bootstrap image containing the compiled toolchain and initramfs
-	./scripts/build-lfs-1.sh
-
-	# build the second stage of the build process, which creates the final image containing the compiled kernel and root filesystem
-	./scripts/build-lfs-2.sh
+	./scripts/build-lfs-1.sh # first stage
+	./scripts/build-lfs-2.sh # second stage
 else
 	./scripts/build1.sh # first pass
 	./scripts/build2.sh # second pass
