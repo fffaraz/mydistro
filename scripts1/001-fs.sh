@@ -10,7 +10,7 @@ mkdir \
 	etc/init.d \
 	home \
 	lib \
-    lib64 \
+	lib64 \
 	mnt \
 	opt \
 	proc \
