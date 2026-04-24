@@ -6,7 +6,7 @@ cp -r --reflink=auto ./src-ro ./src
 export HOME=/root
 export TERM=xterm-256color
 export PS1='\u@\h \W]\$ '
-export PATH=/usr/bin:/usr/sbin
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin
 export MAKEFLAGS=-j$(nproc)
 export TESTSUITEFLAGS=-j$(nproc)
 
