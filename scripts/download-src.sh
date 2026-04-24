@@ -3,7 +3,7 @@ set -euo pipefail
 
 # download-src.sh downloads source code for all dependencies
 
-for cmd in curl git md5sum sha256sum tar realpath; do
+for cmd in curl git md5sum sha256sum realpath; do
 	if ! command -v "$cmd" &>/dev/null; then
 		echo "Error: required command '$cmd' is not installed" >&2
 		exit 1
@@ -68,23 +68,6 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 		hash="${fields[3]}"
 		archive="${url##*/}"
 		echo "==> Downloading $dir from $url"
-		curl -fL -o "$archive" "$url"
-		verify_hash "$hash" "$archive"
-		mkdir -p "$dir"
-		tar -xf "$archive" -C "$dir" --strip-components=1
-		rm -f "$archive"
-	elif [[ "$type" == "file" ]]; then
-		archive="${fields[2]}"
-		hash="${fields[3]}"
-		echo "==> Extracting $dir from $archive"
-		verify_hash "$hash" "$archive"
-		mkdir -p "$dir"
-		tar -xf "$archive" -C "$dir" --strip-components=1
-	elif [[ "$type" == "patch" ]]; then
-		url="${fields[2]}"
-		hash="${fields[3]}"
-		archive="${url##*/}"
-		echo "==> Downloading patch $dir from $url"
 		mkdir -p "$dir"
 		curl -fL -o "$dir/$archive" "$url"
 		verify_hash "$hash" "$dir/$archive"
