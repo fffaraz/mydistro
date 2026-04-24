@@ -14,7 +14,8 @@ fi
 
 mkdir build
 pushd build
-../configure --disable-bzlib \
+../configure \
+	--disable-bzlib \
 	--disable-libseccomp \
 	--disable-xzlib \
 	--disable-zlib

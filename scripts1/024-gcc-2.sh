@@ -3,6 +3,10 @@ set -exuo pipefail
 
 cd ./src/gcc
 
+[ -d mpfr ] || ln -s ../mpfr mpfr
+[ -d gmp ] || ln -s ../gmp gmp
+[ -d mpc ] || ln -s ../mpc mpc
+
 case $(uname -m) in
 x86_64)
 	sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
