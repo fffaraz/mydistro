@@ -6,7 +6,7 @@ SKIP_IMPORT=false
 
 while getopts "dn" opt; do
 	case $opt in
-	d) ENTRY_POINT="-t --entrypoint /bin/bash" ;;
+	d) ENTRY_POINT="-t --entrypoint /bin/sh" ;;
 	n) SKIP_IMPORT=true ;;
 	esac
 done
