@@ -5,6 +5,7 @@ mkdir -pv $LFS
 cd $LFS
 
 mkdir -p \
+	bin \
 	boot/efi \
 	dev \
 	etc/init.d \
