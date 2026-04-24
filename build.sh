@@ -23,12 +23,13 @@ SECONDS=0
 
 if [ "$BUILD_LFS" = "1" ]; then
 	# build the first stage of the build process, which creates a bootstrap image containing the compiled toolchain and initramfs
-	./scripts/build1.sh
+	./scripts/build-lfs-1.sh
 
 	# build the second stage of the build process, which creates the final image containing the compiled kernel and root filesystem
-	./scripts/build2.sh
+	./scripts/build-lfs-2.sh
 else
-	./scripts/build0.sh
+	./scripts/build1.sh # first pass
+	./scripts/build2.sh # second pass
 fi
 
 echo "Build took $((SECONDS / 60))m $((SECONDS % 60))s"
