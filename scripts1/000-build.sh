@@ -43,10 +43,9 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/023-binutils-2.sh
 ./scripts/024-gcc-2.sh
 
-exit 0
+# ./scripts/025-autoconf.sh
+# ./scripts/026-automake.sh
+# ./scripts/027-bison.sh
+# ./scripts/028-gperf.sh
 
-./scripts/025-autoconf.sh
-./scripts/026-automake.sh
-./scripts/027-bison.sh
-./scripts/028-gperf.sh
 ./scripts/029-export.sh
