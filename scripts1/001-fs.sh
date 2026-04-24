@@ -4,7 +4,7 @@ set -exuo pipefail
 mkdir -pv $LFS
 cd $LFS
 
-mkdir \
+mkdir -p \
 	boot/efi \
 	dev \
 	etc/init.d \

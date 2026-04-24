@@ -1,8 +1,6 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd /opt/mydistro
-
 cp -r --reflink=auto ./src-ro ./src
 
 export HOME=/root
