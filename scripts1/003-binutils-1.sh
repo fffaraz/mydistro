@@ -4,7 +4,8 @@ set -exuo pipefail
 cd ./src
 
 if [ ! -d binutils ]; then
-	tar xf binutils-*.tar.* && mv binutils-*/ binutils
+	tar xf binutils-*.tar.*
+	mv binutils-*/ binutils
 	cd ./binutils
 else
 	cd ./binutils

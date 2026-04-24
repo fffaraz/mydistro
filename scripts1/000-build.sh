@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd /opt/mydistro
+./scripts/version-check.sh
 
 mkdir -p ./src /tmp/src-upper /tmp/src-work
 mount -t overlay overlay -o lowerdir=./src-ro,upperdir=/tmp/src-upper,workdir=/tmp/src-work ./src
@@ -14,7 +14,7 @@ export CONFIG_SITE=$LFS/usr/share/config.site
 export MAKEFLAGS=-j$(nproc)
 export TERM=xterm-256color
 
-COMMON_FLAGS="-O2 -pipe -march=native -Wno-error"
+COMMON_FLAGS="-O3 -pipe -march=native -Wno-error"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 

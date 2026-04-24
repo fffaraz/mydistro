@@ -11,3 +11,5 @@ RUN \
 		python3 rsync texinfo uuid-dev xz-utils zlib1g-dev zstd && \
 	apt-get install -yq curl groff nano ncdu tree unzip upx-ucl vim wget && \
 	rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/mydistro

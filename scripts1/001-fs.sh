@@ -4,14 +4,29 @@ set -exuo pipefail
 mkdir -pv $LFS
 cd $LFS
 
-mkdir -p bin etc lib lib64 usr/local var
-mkdir -p tools
+mkdir \
+	boot/efi \
+	dev \
+	etc/init.d \
+	home \
+	lib \
+    lib64 \
+	mnt \
+	opt \
+	proc \
+	root \
+	run \
+	sbin \
+	srv \
+	sys \
+	tmp \
+	usr/bin \
+	usr/lib \
+	usr/libexec \
+	usr/local/bin \
+	usr/local/lib \
+	usr/local/sbin \
+	usr/sbin \
+	var/log
 
-ln -s $LFS/bin ./sbin
-ln -s $LFS/bin ./usr/bin
-ln -s $LFS/bin ./usr/sbin
-ln -s $LFS/bin ./usr/local/bin
-ln -s $LFS/bin ./usr/local/sbin
-
-ln -s $LFS/lib ./usr/lib
-ln -s $LFS/lib ./usr/local/lib
+mkdir tools
