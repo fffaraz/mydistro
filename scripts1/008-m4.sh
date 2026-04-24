@@ -3,7 +3,8 @@ set -exuo pipefail
 
 cd ./src
 if [ ! -d m4 ]; then
-	tar xf m4-*.tar.* && mv m4-*/ m4
+	tar xf m4-*.tar.*
+	mv m4-*/ m4
 	cd ./m4
 else
 	cd ./m4

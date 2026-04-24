@@ -5,6 +5,7 @@ cd ./src
 [ -d ncurses ] || (tar xf ncurses-*.tar.* && mv ncurses-*/ ncurses)
 cd ./ncurses
 
+# build tic first
 mkdir build
 pushd build
 ../configure --prefix=$LFS/tools AWK=gawk
