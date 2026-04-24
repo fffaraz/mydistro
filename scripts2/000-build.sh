@@ -16,9 +16,10 @@ export CXXFLAGS="${COMMON_FLAGS}"
 
 ./scripts/001-fs.sh
 ./scripts/002-files.sh
-./scripts/003-perl.sh
-./scripts/004-gettext.sh
-./scripts/005-python.sh
-./scripts/006-texinfo.sh
-./scripts/007-util-linux.sh
-./scripts/008-export.sh
+./scripts/003-gettext.sh
+./scripts/004-bison.sh
+./scripts/005-perl.sh
+./scripts/006-python.sh
+./scripts/007-texinfo.sh
+./scripts/008-util-linux.sh
+./scripts/009-export1.sh
