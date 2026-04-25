@@ -7,6 +7,7 @@ autoreconf -i -f
 
 ./configure \
 	--prefix=/usr \
+	--enable-maintainer-mode \
 	--disable-debuginfod \
 	--disable-libdebuginfod \
 	--disable-nls \
