@@ -84,7 +84,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 		fi
 		echo "==> Cloning $name from $repo @ $branch"
 		rm -rf "$name.tmp"
-		git -c advice.detachedHead=false clone --depth=1 --branch "$branch" "$repo" "$name.tmp"
+		git -c advice.detachedHead=false clone --depth=1 --recurse-submodules --branch "$branch" "$repo" "$name.tmp"
 		mv "$name.tmp" "$name"
 	else
 		echo "Error: unknown type '$type' on line: $line" >&2
