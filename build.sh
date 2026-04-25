@@ -10,9 +10,8 @@ fi
 # download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
 if [ "$BUILD_LFS" = "1" ]; then
 	./scripts/download-src-lfs.sh
-	# ./scripts/download-src.sh ./deps/sources-lfs.conf
 else
-	./scripts/download-src.sh ./deps/sources-min.conf
+	./scripts/download-src.sh ./deps/sources.conf
 fi
 
 # delete and recreate output directory
