@@ -23,6 +23,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/010-curl.sh
 ./scripts/011-nano.sh
 ./scripts/015-zstd.sh
+./scripts/016-elfutils.sh
 
 ./scripts/009-glibc.sh
 
