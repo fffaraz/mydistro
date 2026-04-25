@@ -17,3 +17,5 @@ cd ./src/ncurses
 
 make
 make install DESTDIR=$INITRAMFS_DIR
+
+ln -s libtinfow.so.6 $INITRAMFS_DIR/usr/lib/libtinfo.so.6
