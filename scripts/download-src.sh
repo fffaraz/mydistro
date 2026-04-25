@@ -65,8 +65,11 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 		hash="${fields[3]}"
 		if [[ -f "$name" ]]; then
 			echo "  Verifying existing '$name'"
-			verify_hash "$hash" "$name"
-			continue
+			if verify_hash "$hash" "$name"; then
+				continue
+			fi
+			echo "  Hash mismatch — removing and re-downloading '$name'"
+			rm -f "$name"
 		fi
 		echo "==> Downloading $name from $url"
 		curl -fL --retry 3 --retry-delay 2 -o "$name" "$url"
