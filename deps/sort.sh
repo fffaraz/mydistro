@@ -3,7 +3,7 @@
 
 DIR="$(dirname "$0")"
 
-for FILE in "$DIR"/sources-*.conf; do
+for FILE in "$DIR"/sources*.conf; do
 	echo "Sorting $FILE"
 	{
 		# Print header (comments and blank lines at the top)
