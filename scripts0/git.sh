@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile git
 cd ./src/git
 
 make configure

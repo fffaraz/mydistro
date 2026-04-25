@@ -1,6 +1,6 @@
 #!/bin/bash
+set -exuo pipefail
 
-# compile wlroots
 cd ./src/wlroots
 
 meson setup build/

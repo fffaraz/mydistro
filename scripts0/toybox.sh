@@ -1,7 +1,6 @@
 #!/bin/bash
 set -exuo pipefail
 
-# compile toybox
 cd ./src/toybox
 
 make defconfig || true
