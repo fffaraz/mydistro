@@ -6,6 +6,7 @@ mkdir -p ./initramfs-dir
 
 cd ./initramfs-dir
 mkdir -p \
+	bin \
 	boot/efi \
 	dev \
 	etc/init.d \
