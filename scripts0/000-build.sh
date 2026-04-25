@@ -11,7 +11,7 @@ export MAKEFLAGS=-j$(nproc)
 
 export INITRAMFS_DIR=$(pwd)/initramfs-dir
 
-git config --global --add safe.directory '*'
+command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
