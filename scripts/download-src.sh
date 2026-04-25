@@ -33,9 +33,7 @@ if [[ ! -f "$CONFIG" ]]; then
 	exit 1
 fi
 
-cd ./src
-
-git config --global advice.detachedHead false
+cd "$(dirname "$(realpath "$0")")/../src"
 
 while IFS= read -r line || [[ -n "$line" ]]; do
 	# Strip leading/trailing whitespace
@@ -77,7 +75,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 			continue
 		fi
 		echo "==> Cloning $name from $repo @ $branch"
-		git clone --depth=1 --branch "$branch" "$repo" "$name"
+		git -c advice.detachedHead=false clone --depth=1 --branch "$branch" "$repo" "$name"
 	else
 		echo "Error: unknown type '$type' on line: $line" >&2
 		exit 1
