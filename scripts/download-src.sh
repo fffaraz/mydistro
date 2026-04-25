@@ -61,7 +61,8 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 		url="${fields[2]}"
 		hash="${fields[3]}"
 		if [[ -f "$name" ]]; then
-			echo "  Skipping, '$name' already exists"
+			echo "  Verifying existing '$name'"
+			verify_hash "$hash" "$name"
 			continue
 		fi
 		echo "==> Downloading $name from $url"
