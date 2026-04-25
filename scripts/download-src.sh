@@ -56,26 +56,28 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 		exit 1
 	fi
 
-	dir="${fields[0]}"
+	name="${fields[0]}"
 	type="${fields[1]}"
-	[[ -d "$dir" ]] && {
-		echo "  Skipping, '$dir' already exists"
-		continue
-	}
 
 	if [[ "$type" == "url" ]]; then
 		url="${fields[2]}"
 		hash="${fields[3]}"
-		archive="${url##*/}"
-		echo "==> Downloading $dir from $url"
-		mkdir -p "$dir"
-		curl -fL -o "$dir/$archive" "$url"
-		verify_hash "$hash" "$dir/$archive"
+		if [[ -f "$name" ]]; then
+			echo "  Skipping, '$name' already exists"
+			continue
+		fi
+		echo "==> Downloading $name from $url"
+		curl -fL -o "$name" "$url"
+		verify_hash "$hash" "$name"
 	elif [[ "$type" == "git" ]]; then
 		repo="${fields[2]}"
 		branch="${fields[3]}"
-		echo "==> Cloning $dir from $repo @ $branch"
-		git clone --depth=1 --branch "$branch" "$repo" "$dir"
+		if [[ -d "$name" ]]; then
+			echo "  Skipping, '$name' already exists"
+			continue
+		fi
+		echo "==> Cloning $name from $repo @ $branch"
+		git clone --depth=1 --branch "$branch" "$repo" "$name"
 	else
 		echo "Error: unknown type '$type' on line: $line" >&2
 		exit 1
