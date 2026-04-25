@@ -17,7 +17,8 @@ verify_hash() {
 	elif [[ "$hash" == md5:* ]]; then
 		echo "${hash#md5:}  $file" | md5sum -c -
 	else
-		echo "$hash  $file" | md5sum -c -
+		echo "Error: unknown hash type in '$hash'" >&2
+		exit 1
 	fi
 }
 
