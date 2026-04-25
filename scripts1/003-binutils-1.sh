@@ -2,13 +2,10 @@
 set -exuo pipefail
 
 cd ./src
+[ -d ./binutils ] || (tar xf binutils-*.tar.* && mv binutils-*/ binutils)
+cd ./binutils
 
-if [ ! -d binutils ]; then
-	tar xf binutils-*.tar.*
-	mv binutils-*/ binutils
-	cd ./binutils
-else
-	cd ./binutils
+if [ -d ./.git ]; then
 	ln -s ../gmp gmp
 	ln -s ../mpfr mpfr
 fi
