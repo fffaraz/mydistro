@@ -36,6 +36,9 @@ fi
 cd "$(dirname "$(realpath "$0")")/../src"
 
 while IFS= read -r line || [[ -n "$line" ]]; do
+	# Strip carriage returns (handles CRLF line endings)
+	line="${line//$'\r'/}"
+
 	# Strip leading/trailing whitespace
 	line="${line#"${line%%[![:space:]]*}"}"
 	line="${line%"${line##*[![:space:]]}"}"
@@ -66,7 +69,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 			continue
 		fi
 		echo "==> Downloading $name from $url"
-		curl -fL -o "$name" "$url"
+		curl -fL --retry 3 --retry-delay 2 -o "$name" "$url"
 		verify_hash "$hash" "$name"
 	elif [[ "$type" == "git" ]]; then
 		repo="${fields[2]}"
