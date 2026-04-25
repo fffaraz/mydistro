@@ -3,8 +3,6 @@ set -exuo pipefail
 
 cd ./src/bison
 
-git config --global --add safe.directory $(pwd)
-
 rmdir ./submodules/autoconf
 ln -s ../../autoconf ./submodules/autoconf
 

@@ -10,7 +10,6 @@ else
 	cd ./coreutils
 	cp -r --reflink=auto ../gnulib ./gnulib-repo
 	rm ./gl/top/maint.mk.diff
-	git config --global --add safe.directory $(pwd)
 	./bootstrap --skip-po --gnulib-srcdir=./gnulib-repo
 fi
 

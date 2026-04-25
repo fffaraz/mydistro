@@ -1,8 +1,6 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd /opt/mydistro
-
 mkdir -p ./src /tmp/src-upper /tmp/src-work
 mount -t overlay overlay -o lowerdir=./src-ro,upperdir=/tmp/src-upper,workdir=/tmp/src-work ./src
 
@@ -12,6 +10,8 @@ export CXXFLAGS="${COMMON_FLAGS}"
 export MAKEFLAGS=-j$(nproc)
 
 export INITRAMFS_DIR=/opt/mydistro/initramfs-dir
+
+git config --global --add safe.directory '*'
 
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh

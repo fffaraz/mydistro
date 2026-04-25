@@ -8,7 +8,6 @@ cd ./src
 [ -d ./mpc ] || (tar xf mpc-*.tar.* && mv mpc-*/ mpc)
 if [ -d ./mpc/.git ]; then
 	cd ./mpc
-	git config --global --add safe.directory $(pwd)
 	autoreconf -vif
 	cd ..
 fi

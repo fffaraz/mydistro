@@ -18,6 +18,8 @@ COMMON_FLAGS="-O3 -pipe -march=native -Wno-error"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 
+git config --global --add safe.directory '*'
+
 ./scripts/001-fs.sh
 ./scripts/002-gmp-mpc-mpfr.sh
 ./scripts/003-binutils-1.sh
