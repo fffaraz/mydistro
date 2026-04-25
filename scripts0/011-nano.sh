@@ -3,7 +3,6 @@ set -exuo pipefail
 
 cd ./src/nano
 
-# ln -s ../gnulib ./gnulib
 cp -r --reflink=auto ../gnulib ./gnulib
 
 ./autogen.sh

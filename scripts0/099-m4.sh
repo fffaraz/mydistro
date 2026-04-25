@@ -2,8 +2,7 @@
 set -exuo pipefail
 
 cd ./src/m4
-cp -r --reflink=auto ../gnulib ./gnulib-repo
-./bootstrap --skip-po --skip-git --gnulib-srcdir=./gnulib-repo
+./bootstrap --skip-po --skip-git
 
 ./configure --prefix=/usr
 make
