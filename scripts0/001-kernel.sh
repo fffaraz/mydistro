@@ -20,6 +20,7 @@ make defconfig
 
 ./scripts/config --disable DEBUG_INFO
 ./scripts/config --enable DEBUG_INFO_NONE
+./scripts/config --disable DEBUG_STACK_USAGE
 
 make olddefconfig
 
