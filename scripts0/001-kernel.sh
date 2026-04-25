@@ -1,8 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-# compile linux kernel
-cd ./src/linux
+cd ./src
+[ -d linux ] || (tar xf linux-*.tar.* && mv linux-*/ linux)
+cd ./linux
 
 make defconfig
 
