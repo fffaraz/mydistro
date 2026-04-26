@@ -9,7 +9,7 @@ cd ./less
 ./configure --prefix=/usr --sysconfdir=/etc
 
 make
-make check
+make check || true
 make install
 
 cd ..

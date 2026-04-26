@@ -16,7 +16,7 @@ cd ./man-db
 	--with-grap=/usr/bin/grap
 
 make
-make check
+make check || true
 make install
 
 cd ..

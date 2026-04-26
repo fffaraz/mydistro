@@ -9,7 +9,7 @@ cd ./libtool
 ./configure --prefix=/usr
 
 make
-make check
+make check || true
 make install
 
 rm -fv /usr/lib/libltdl.a

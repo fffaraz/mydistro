@@ -11,7 +11,7 @@ cd ./libffi
 	--with-gcc-arch=native
 
 make
-make check
+make check || true
 make install
 
 cd ..

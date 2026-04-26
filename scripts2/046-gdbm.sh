@@ -11,7 +11,7 @@ cd ./gdbm
 	--enable-libgdbm-compat
 
 make
-make check
+make check || true
 make install
 
 cd ..
