@@ -51,3 +51,11 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/034-libcap.sh
 ./scripts/035-libxcrypt.sh
 ./scripts/036-shadow.sh
+./scripts/037-gcc.sh
+./scripts/038-ncurses.sh
+./scripts/039-sed.sh
+./scripts/040-psmisc.sh
+./scripts/041-gettext.sh
+./scripts/042-bison.sh
+./scripts/043-grep.sh
+./scripts/044-bash.sh
