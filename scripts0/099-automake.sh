@@ -2,6 +2,7 @@
 set -exuo pipefail
 
 cd ./src/automake
+
 ./bootstrap
 
 ./configure --prefix=/usr

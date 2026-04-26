@@ -2,6 +2,7 @@
 set -exuo pipefail
 
 cd ./src/autoconf
+
 cp .prev-version .tarball-version
 ./bootstrap
 

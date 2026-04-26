@@ -3,18 +3,14 @@ set -exuo pipefail
 
 cd ./src
 
-[ -d ./gmp ] || (tar xf gmp-*.tar.* && mv gmp-*/ gmp)
+cd ./gmp
+# no configuration needed
+cd ..
 
-[ -d ./mpc ] || (tar xf mpc-*.tar.* && mv mpc-*/ mpc)
-if [ -d ./mpc/.git ]; then
-	cd ./mpc
-	autoreconf -vif
-	cd ..
-fi
+cd ./mpc
+autoreconf -vif
+cd ..
 
-[ -d ./mpfr ] || (tar xf mpfr-*.tar.* && mv mpfr-*/ mpfr)
-if [ -d ./mpfr/.git ]; then
-	cd ./mpfr
-	./autogen.sh
-	cd ..
-fi
+cd ./mpfr
+./autogen.sh
+cd ..
