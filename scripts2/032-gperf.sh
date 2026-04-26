@@ -13,3 +13,6 @@ cd ./gperf
 
 make LDFLAGS="-static-libgcc -static-libstdc++"
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./gperf

@@ -5,6 +5,7 @@ cd ./src
 tar xf glibc-*.tar.*
 mv glibc-*/ glibc
 cd ./glibc
+
 patch -Np1 -i ../glibc-fhs-1.patch
 
 mkdir -v build
@@ -59,3 +60,6 @@ ln -sfv /usr/share/zoneinfo/America/New_York /etc/localtime
 # Configuring the Dynamic Loader
 cp ../../assets/etc/ld.so.conf /etc/ld.so.conf
 mkdir -pv /etc/ld.so.conf.d
+
+cd ../..
+rm -rf ./glibc

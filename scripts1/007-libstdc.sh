@@ -23,5 +23,5 @@ make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{stdc++{,exp,fs},supc++}.la
 
-cd ..
+cd ../..
 rm -rf ./gcc

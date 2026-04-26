@@ -21,5 +21,5 @@ cd build
 make
 make install
 
-cd ..
+cd ../..
 rm -rf ./binutils

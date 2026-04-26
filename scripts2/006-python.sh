@@ -13,3 +13,6 @@ cd ./python
 
 make
 make install
+
+cd ..
+rm -rf ./python

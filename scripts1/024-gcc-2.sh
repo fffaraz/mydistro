@@ -48,5 +48,5 @@ make DESTDIR=$LFS install
 
 ln -sv gcc $LFS/usr/bin/cc
 
-cd ..
+cd ../..
 rm -rf ./gcc

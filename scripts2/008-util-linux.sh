@@ -25,3 +25,6 @@ mkdir -pv /var/lib/hwclock
 
 make
 make install
+
+cd ..
+rm -rf ./util-linux

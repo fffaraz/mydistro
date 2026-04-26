@@ -41,5 +41,5 @@ readelf -l a.out | grep ': /lib'
 
 rm -v a.out dummy.log
 
-cd ..
+cd ../..
 rm -rf ./glibc

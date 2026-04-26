@@ -11,3 +11,6 @@ cd ./autoconf
 	--build=$(build-aux/config.guess)
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./autoconf

@@ -12,3 +12,6 @@ cd ./bison
 
 make
 make install
+
+cd ..
+rm -rf ./bison

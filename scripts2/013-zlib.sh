@@ -12,3 +12,6 @@ make check
 make install
 
 rm -fv /usr/lib/libz.a
+
+cd ..
+rm -rf ./zlib

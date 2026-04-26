@@ -9,3 +9,6 @@ cd ./texinfo
 ./configure --prefix=/usr
 make
 make install
+
+cd ..
+rm -rf ./texinfo

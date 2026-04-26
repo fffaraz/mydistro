@@ -30,5 +30,5 @@ make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
 
-cd ..
+cd ../..
 rm -rf ./binutils

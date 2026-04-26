@@ -19,3 +19,6 @@ sh Configure -des \
 
 make
 make install
+
+cd ..
+rm -rf ./perl
