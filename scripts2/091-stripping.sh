@@ -51,7 +51,7 @@ for i in $(find /usr/lib -type f -name \*.so* ! -name \*dbg) \
     case "$online_usrbin $online_usrlib $save_usrlib" in
         *$(basename $i)* )
             ;;
-        * ) strip --strip-debug $i
+        * ) strip --strip-debug $i || true
             ;;
     esac
 done
