@@ -15,7 +15,7 @@ docker build -t mydistro-builder:latest .
 docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts1:/opt/mydistro/scripts:ro \
-	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
+	-v $(pwd)/src-lfs:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output:/opt/mydistro/output \
 	--workdir /opt/mydistro \
 	--tmpfs /tmp \
