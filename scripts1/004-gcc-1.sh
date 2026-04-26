@@ -6,9 +6,12 @@ tar xf gcc-*.tar.*
 mv gcc-*/ gcc
 cd ./gcc
 
-ln -s ../mpfr mpfr
-ln -s ../gmp gmp
-ln -s ../mpc mpc
+tar -xf ../mpfr-*.tar.*
+mv -v mpfr-*/ mpfr
+tar -xf ../gmp-*.tar.*
+mv -v gmp-*/ gmp
+tar -xf ../mpc-*.tar.*
+mv -v mpc-*/ mpc
 
 case $(uname -m) in
 x86_64)
@@ -45,3 +48,5 @@ make install
 
 cd ..
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h >$(dirname $($LFS_TGT-gcc -print-libgcc-file-name))/include/limits.h
+
+rm -rf ./gcc

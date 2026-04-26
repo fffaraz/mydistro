@@ -12,3 +12,6 @@ cd ./grep
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./grep

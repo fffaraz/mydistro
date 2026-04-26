@@ -14,3 +14,6 @@ sed -i 's/extras//' Makefile.in
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./gawk

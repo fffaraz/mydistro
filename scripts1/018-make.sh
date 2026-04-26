@@ -13,3 +13,6 @@ cd ./make
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./make

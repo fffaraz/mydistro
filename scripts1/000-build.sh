@@ -19,7 +19,6 @@ export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 
 ./scripts/001-fs.sh
-./scripts/002-gmp-mpc-mpfr.sh
 ./scripts/003-binutils-1.sh
 ./scripts/004-gcc-1.sh
 ./scripts/005-linux-headers.sh

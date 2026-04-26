@@ -16,3 +16,6 @@ make DESTDIR=$LFS install
 
 ln -sv /usr/bin/bash $LFS/bin/sh
 ln -sv /usr/bin/bash $LFS/bin/bash
+
+cd ..
+rm -rf ./bash

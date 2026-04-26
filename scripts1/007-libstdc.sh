@@ -6,8 +6,8 @@ tar xf gcc-*.tar.*
 mv gcc-*/ gcc
 cd ./gcc
 
-mkdir -v build2
-cd build2
+mkdir -v build
+cd build
 
 ../libstdc++-v3/configure \
 	--host=$LFS_TGT \
@@ -22,3 +22,6 @@ make
 make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{stdc++{,exp,fs},supc++}.la
+
+cd ..
+rm -rf ./gcc

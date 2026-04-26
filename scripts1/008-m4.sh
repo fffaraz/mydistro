@@ -12,3 +12,6 @@ cd ./m4
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./m4

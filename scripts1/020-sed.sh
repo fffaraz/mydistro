@@ -12,3 +12,6 @@ cd ./sed
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./sed

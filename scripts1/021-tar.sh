@@ -13,3 +13,6 @@ cd ./tar
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./tar

@@ -1,11 +1,17 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/gcc
+cd ./src
+tar xf gcc-*.tar.*
+mv gcc-*/ gcc
+cd ./gcc
 
-[ -d mpfr ] || ln -s ../mpfr mpfr
-[ -d gmp ] || ln -s ../gmp gmp
-[ -d mpc ] || ln -s ../mpc mpc
+tar -xf ../mpfr-*.tar.*
+mv -v mpfr-*/ mpfr
+tar -xf ../gmp-*.tar.*
+mv -v gmp-*/ gmp
+tar -xf ../mpc-*.tar.*
+mv -v mpc-*/ mpc
 
 case $(uname -m) in
 x86_64)
@@ -15,8 +21,8 @@ esac
 
 sed '/thread_header =/s/@.*@/gthr-posix.h/' -i libgcc/Makefile.in libstdc++-v3/include/Makefile.in
 
-mkdir -v build3
-cd build3
+mkdir -v build
+cd build
 
 ../configure \
 	--build=$(../config.guess) \
@@ -41,3 +47,6 @@ make
 make DESTDIR=$LFS install
 
 ln -sv gcc $LFS/usr/bin/cc
+
+cd ..
+rm -rf ./gcc

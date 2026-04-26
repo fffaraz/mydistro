@@ -20,3 +20,6 @@ cd build
 
 make
 make install
+
+cd ..
+rm -rf ./binutils

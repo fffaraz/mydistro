@@ -13,3 +13,6 @@ cd ./diffutils
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./diffutils

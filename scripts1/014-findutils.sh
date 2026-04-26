@@ -13,3 +13,6 @@ cd ./findutils
 
 make
 make DESTDIR=$LFS install
+
+cd ..
+rm -rf ./findutils

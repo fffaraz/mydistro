@@ -1,12 +1,15 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/binutils
+cd ./src
+tar xf binutils-*.tar.*
+mv binutils-*/ binutils
+cd ./binutils
 
 sed '6031s/$add_dir//' -i ltmain.sh
 
-mkdir -v build2
-cd build2
+mkdir -v build
+cd build
 
 ../configure \
 	--prefix=/usr \
@@ -26,3 +29,6 @@ make
 make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
+
+cd ..
+rm -rf ./binutils

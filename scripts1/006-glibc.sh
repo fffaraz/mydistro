@@ -40,3 +40,6 @@ echo 'int main(){}' | $LFS_TGT-gcc -x c - -v -Wl,--verbose &>dummy.log
 readelf -l a.out | grep ': /lib'
 
 rm -v a.out dummy.log
+
+cd ..
+rm -rf ./glibc
