@@ -1,5 +1,8 @@
 {
     "files.watcherExclude": {
-        "**/src/**": true
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/src/**": true,
+        "**/src-lfs/**": true
     }
 }
