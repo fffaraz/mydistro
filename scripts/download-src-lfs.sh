@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-SRC_DIR=./src
+SRC_DIR=./src-lfs
 MD5_FILE=./deps/md5sums
 WGET_LIST=./deps/wget-list-systemd
 

@@ -1,14 +1,10 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src
-[ -d ./binutils ] || (tar xf binutils-*.tar.* && mv binutils-*/ binutils)
-cd ./binutils
+cd ./src/binutils
 
-if [ -d ./.git ]; then
-	ln -s ../gmp gmp
-	ln -s ../mpfr mpfr
-fi
+ln -s ../gmp gmp
+ln -s ../mpfr mpfr
 
 mkdir -p build
 cd build
