@@ -1,8 +1,17 @@
 {
+    "C_Cpp.files.exclude": {
+        "**/src/**": true
+    },
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/src/**": true,
         "**/src-lfs/**": true
+    },
+    "search.exclude": {
+        "**/src/**": true
+    },
+    "files.exclude": {
+        "**/.git": true
     }
 }
