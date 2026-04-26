@@ -20,6 +20,6 @@ docker run --privileged --rm -i --network none --name mydistro \
 	--workdir /opt/mydistro \
 	--tmpfs /tmp \
 	$ENTRY_POINT \
-	mydistro-builder:latest 2>&1 | tee ./output/build0.log
+	mydistro-builder:latest 2>&1 | tee ./output/build1.log
 
 ls -alh ./output
