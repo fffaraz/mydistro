@@ -2,15 +2,9 @@
 set -exuo pipefail
 
 cd ./src
-
-if [ ! -d file ]; then
-	tar xf file-*.tar.*
-	mv file-*/ file
-	cd ./file
-else
-	cd ./file
-	autoreconf -vif
-fi
+tar xf file-*.tar.*
+mv file-*/ file
+cd ./file
 
 mkdir build
 pushd build

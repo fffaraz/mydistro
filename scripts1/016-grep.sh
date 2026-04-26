@@ -2,16 +2,9 @@
 set -exuo pipefail
 
 cd ./src
-
-if [ ! -d grep ]; then
-	tar xf grep-*.tar.*
-	mv grep-*/ grep
-	cd ./grep
-else
-	cd ./grep
-	cp -r --reflink=auto ../gnulib ./gnulib-repo
-	./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
-fi
+tar xf grep-*.tar.*
+mv grep-*/ grep
+cd ./grep
 
 ./configure --prefix=/usr \
 	--host=$LFS_TGT \

@@ -2,14 +2,11 @@
 set -exuo pipefail
 
 cd ./src
-if [ ! -d glibc ]; then
-	tar xf glibc-*.tar.*
-	mv glibc-*/ glibc
-	cd ./glibc
-	patch -Np1 -i ../glibc-fhs-1.patch
-else
-	cd ./glibc
-fi
+tar xf glibc-*.tar.*
+mv glibc-*/ glibc
+cd ./glibc
+
+patch -Np1 -i ../glibc-fhs-1.patch
 
 case $(uname -m) in
 i?86)

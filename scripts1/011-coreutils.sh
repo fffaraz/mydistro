@@ -2,16 +2,9 @@
 set -exuo pipefail
 
 cd ./src
-if [ ! -d coreutils ]; then
-	tar xf coreutils-*.tar.*
-	mv coreutils-*/ coreutils
-	cd ./coreutils
-else
-	cd ./coreutils
-	cp -r --reflink=auto ../gnulib ./gnulib-repo
-	rm ./gl/top/maint.mk.diff
-	./bootstrap --skip-po --gnulib-srcdir=./gnulib-repo
-fi
+tar xf coreutils-*.tar.*
+mv coreutils-*/ coreutils
+cd ./coreutils
 
 ./configure --prefix=/usr \
 	--host=$LFS_TGT \

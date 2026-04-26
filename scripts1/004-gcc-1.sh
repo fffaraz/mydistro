@@ -2,7 +2,8 @@
 set -exuo pipefail
 
 cd ./src
-[ -d gcc ] || (tar xf gcc-*.tar.* && mv gcc-*/ gcc)
+tar xf gcc-*.tar.*
+mv gcc-*/ gcc
 cd ./gcc
 
 ln -s ../mpfr mpfr

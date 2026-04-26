@@ -2,7 +2,8 @@
 set -exuo pipefail
 
 cd ./src
-[ -d bash ] || (tar xf bash-*.tar.* && mv bash-*/ bash)
+tar xf bash-*.tar.*
+mv bash-*/ bash
 cd ./bash
 
 ./configure --prefix=/usr \

@@ -2,7 +2,8 @@
 set -exuo pipefail
 
 cd ./src
-[ -d linux ] || (tar xf linux-*.tar.* && mv linux-*/ linux)
+tar xf linux-*.tar.*
+mv linux-*/ linux
 cd ./linux
 
 make mrproper

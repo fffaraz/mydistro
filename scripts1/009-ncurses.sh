@@ -2,7 +2,8 @@
 set -exuo pipefail
 
 cd ./src
-[ -d ncurses ] || (tar xf ncurses-*.tar.* && mv ncurses-*/ ncurses)
+tar xf ncurses-*.tar.*
+mv ncurses-*/ ncurses
 cd ./ncurses
 
 # build tic first
