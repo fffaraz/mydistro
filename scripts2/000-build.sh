@@ -99,3 +99,11 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/082-vim.sh
 ./scripts/083-markupsafe.sh
 ./scripts/084-jinja2.sh
+./scripts/085-systemd.sh
+./scripts/086-dbus.sh
+./scripts/087-man-db.sh
+./scripts/088-procps-ng.sh
+./scripts/089-util-linux.sh
+./scripts/090-e2fsprogs.sh
+./scripts/091-stripping.sh
+./scripts/092-cleanup.sh
