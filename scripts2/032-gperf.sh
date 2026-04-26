@@ -2,15 +2,9 @@
 set -exuo pipefail
 
 cd ./src
-if [ ! -d gperf ]; then
-	tar xf gperf-*.tar.*
-	mv gperf-*/ gperf
-	cd ./gperf
-else
-	cd ./gperf
-	ln -s ../gnulib ./gnulib
-	./autogen.sh
-fi
+tar xf gperf-*.tar.*
+mv gperf-*/ gperf
+cd ./gperf
 
 ./configure --prefix=/usr \
 	--host=$LFS_TGT \

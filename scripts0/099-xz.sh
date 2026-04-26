@@ -1,6 +1,5 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/file
-
+cd ./src/xz
 autoreconf -vif

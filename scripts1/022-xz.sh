@@ -2,14 +2,9 @@
 set -exuo pipefail
 
 cd ./src
-if [ ! -d xz ]; then
-	tar xf xz-*.tar.*
-	mv xz-*/ xz
-	cd ./xz
-else
-	cd ./xz
-	autoreconf -vif
-fi
+tar xf xz-*.tar.*
+mv xz-*/ xz
+cd ./xz
 
 ./configure --prefix=/usr \
 	--host=$LFS_TGT \

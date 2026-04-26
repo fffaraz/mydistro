@@ -2,14 +2,9 @@
 set -exuo pipefail
 
 cd ./src
-if [ ! -d automake ]; then
-	tar xf automake-*.tar.*
-	mv automake-*/ automake
-	cd ./automake
-else
-	cd ./automake
-	./bootstrap
-fi
+tar xf automake-*.tar.*
+mv automake-*/ automake
+cd ./automake
 
 ./configure --prefix=/usr --host=$LFS_TGT
 make

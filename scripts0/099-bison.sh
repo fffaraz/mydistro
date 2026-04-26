@@ -5,6 +5,8 @@ cd ./src/bison
 
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib
 
+# sed -i '/\/\* directory \*\/ NULL,/a\ NULL,' src/output.c src/print-xml.c
+
 ./configure --disable-nls --disable-shared
 
 make

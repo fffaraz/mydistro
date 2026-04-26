@@ -2,7 +2,8 @@
 set -exuo pipefail
 
 cd ./src
-[ -d zlib ] || (tar xf zlib-*.tar.* && mv zlib-*/ zlib)
+tar xf zlib-*.tar.*
+mv zlib-*/ zlib
 cd zlib
 
 ./configure --prefix=/usr

@@ -2,13 +2,9 @@
 set -exuo pipefail
 
 cd ./src
-if [ ! -d util-linux ]; then
-	tar xf util-linux-*.tar.*
-	mv util-linux-*/ util-linux
-	cd ./util-linux
-else
-	cd ./util-linux
-fi
+tar xf util-linux-*.tar.*
+mv util-linux-*/ util-linux
+cd ./util-linux
 
 mkdir -pv /var/lib/hwclock
 

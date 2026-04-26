@@ -2,7 +2,8 @@
 set -exuo pipefail
 
 cd ./src
-[ -d perl ] || (tar xf perl-*.tar.* && mv perl-*/ perl)
+tar xf perl-*.tar.*
+mv perl-*/ perl
 cd ./perl
 
 sh Configure -des \
