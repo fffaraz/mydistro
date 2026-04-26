@@ -44,3 +44,10 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/027-pkgconf.sh
 ./scripts/028-binutils.sh
 ./scripts/029-gmp.sh
+./scripts/030-mpfr.sh
+./scripts/031-mpc.sh
+./scripts/032-attr.sh
+./scripts/033-acl.sh
+./scripts/034-libcap.sh
+./scripts/035-libxcrypt.sh
+./scripts/036-shadow.sh
