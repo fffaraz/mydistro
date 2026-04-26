@@ -19,3 +19,4 @@ make
 make install DESTDIR=$INITRAMFS_DIR
 
 ln -s libtinfow.so.6 $INITRAMFS_DIR/usr/lib/libtinfo.so.6
+ln -s /usr/lib/libtinfow.so.6 $INITRAMFS_DIR/lib64/libtinfo.so.6

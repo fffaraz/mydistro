@@ -3,7 +3,7 @@ set -exuo pipefail
 
 ENTRY_POINT="--entrypoint /opt/mydistro/scripts/000-build.sh"
 if [ "${1:-}" = "-d" ]; then
-	ENTRY_POINT="-t --entrypoint /bin/bash"
+	ENTRY_POINT="-t --entrypoint /bin/sh"
 fi
 
 docker rm -f mydistro || true
