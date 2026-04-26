@@ -70,3 +70,14 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/053-intltool.sh
 ./scripts/054-autoconf.sh
 ./scripts/055-automake.sh
+./scripts/056-openssl.sh
+./scripts/057-libelf.sh
+./scripts/058-libffi.sh
+./scripts/059-sqlite.sh
+./scripts/060-python.sh
+./scripts/061-flit-core.sh
+./scripts/062-packaging.sh
+./scripts/063-wheel.sh
+./scripts/064-setuptools.sh
+./scripts/065-ninja.sh
+./scripts/066-meson.sh
