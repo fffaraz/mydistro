@@ -46,7 +46,7 @@ for LIB in $online_usrlib; do
 done
 
 for i in $(find /usr/lib -type f -name \*.so* ! -name \*dbg) \
-         $(find /usr/lib -type f -name \*.a) \
+         $(find /usr/lib -type f -name \*.a)                 \
          $(find /usr/{bin,sbin,libexec} -type f); do
     case "$online_usrbin $online_usrlib $save_usrlib" in
         *$(basename $i)* )
