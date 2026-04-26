@@ -1,0 +1,4 @@
+https://www.linuxfromscratch.org/lfs/download.html
+https://www.linuxfromscratch.org/blfs/download.html
+https://github.com/glfs-book/glfs
+https://github.com/glfs-book/slfs
