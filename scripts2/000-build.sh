@@ -59,3 +59,14 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/042-bison.sh
 ./scripts/043-grep.sh
 ./scripts/044-bash.sh
+./scripts/045-libtool.sh
+./scripts/046-gdbm.sh
+./scripts/047-gperf.sh
+./scripts/048-expat.sh
+./scripts/049-inetutils.sh
+./scripts/050-less.sh
+./scripts/051-perl.sh
+./scripts/052-xml-parser.sh
+./scripts/053-intltool.sh
+./scripts/054-autoconf.sh
+./scripts/055-automake.sh
