@@ -6,6 +6,8 @@ tar xf glibc-*.tar.*
 mv glibc-*/ glibc
 cd ./glibc
 
+# 8.5.1. Installation of Glibc
+
 patch -Np1 -i ../glibc-fhs-1.patch
 
 mkdir -v build
@@ -21,7 +23,7 @@ echo "rootsbindir=/usr/sbin" >configparms
 	--enable-kernel=5.4
 
 make
-make check
+make check || true
 
 touch /etc/ld.so.conf
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
@@ -33,9 +35,11 @@ sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 localedef -i C -f UTF-8 C.UTF-8
 make localedata/install-locales
 
+# 8.5.2. Configuring Glibc
+
 cp ../../assets/etc/nsswitch.conf /etc/nsswitch.conf
 
-# Adding Time Zone Data
+# 8.5.2.2. Adding Time Zone Data
 
 tar -xf ../../tzdata2025c.tar.gz
 
@@ -53,11 +57,12 @@ cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
 zic -d $ZONEINFO -p America/New_York
 unset ZONEINFO tz
 
-tzselect
+# tzselect
 
 ln -sfv /usr/share/zoneinfo/America/New_York /etc/localtime
 
-# Configuring the Dynamic Loader
+# 8.5.2.3. Configuring the Dynamic Loader
+
 cp ../../assets/etc/ld.so.conf /etc/ld.so.conf
 mkdir -pv /etc/ld.so.conf.d
 

@@ -28,3 +28,4 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/011-iana-etc.sh
 ./scripts/012-glibc.sh
 ./scripts/013-zlib.sh
+./scripts/014-bzip2.sh

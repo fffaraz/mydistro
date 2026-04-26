@@ -6,13 +6,11 @@ tar xf gperf-*.tar.*
 mv gperf-*/ gperf
 cd ./gperf
 
-./configure --prefix=/usr \
-	--host=$LFS_TGT \
-	--build=$(build-aux/config.guess) \
-	--docdir=/usr/share/doc/gperf-3.3
+./configure --prefix=/usr --docdir=/usr/share/doc/gperf-3.3
 
-make LDFLAGS="-static-libgcc -static-libstdc++"
-make DESTDIR=$LFS install
+make
+make check
+make install
 
 cd ..
 rm -rf ./gperf

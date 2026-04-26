@@ -6,11 +6,10 @@ tar xf autoconf-*.tar.*
 mv autoconf-*/ autoconf
 cd ./autoconf
 
-./configure --prefix=/usr \
-	--host=$LFS_TGT \
-	--build=$(build-aux/config.guess)
+./configure --prefix=/usr
 make
-make DESTDIR=$LFS install
+make check
+make install
 
 cd ..
 rm -rf ./autoconf

@@ -15,7 +15,7 @@ make
 make DESTDIR=$LFS install
 
 ln -sv /usr/bin/bash $LFS/bin/sh
-ln -sv /usr/bin/bash $LFS/bin/bash
+ln -sv /usr/bin/bash $LFS/bin/bash # not in the book, but I want it
 
 cd ..
 rm -rf ./bash
