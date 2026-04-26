@@ -29,3 +29,12 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/012-glibc.sh
 ./scripts/013-zlib.sh
 ./scripts/014-bzip2.sh
+./scripts/015-xz.sh
+./scripts/016-lz4.sh
+./scripts/017-zstd.sh
+./scripts/018-file.sh
+./scripts/019-readline.sh
+./scripts/020-pcre2.sh
+./scripts/021-m4.sh
+./scripts/022-bc.sh
+./scripts/023-flex.sh
