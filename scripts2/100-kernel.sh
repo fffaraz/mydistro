@@ -8,14 +8,13 @@ cd ./linux
 
 make mrproper
 
-# Provide a kernel config; either copy one from assets or run `make menuconfig` interactively.
-if [ -f ../../assets/kernel.config ]; then
-	cp -v ../../assets/kernel.config .config
-	make olddefconfig
-else
-	# make menuconfig  # interactive; run manually if no preconfigured .config
-	make defconfig
-fi
+make defconfig
+
+./scripts/config --enable IKCONFIG
+./scripts/config --enable IKCONFIG_PROC
+
+make olddefconfig
+
 
 make
 make modules_install
