@@ -2,7 +2,7 @@
 set -exuo pipefail
 
 cd ./src
-tar xf systemd-*.tar.*
+tar xf systemd-2*.tar.* # make sure it doesn't match the systemd-man-pages tarball
 mv systemd-*/ systemd
 cd ./systemd
 
@@ -39,7 +39,7 @@ echo 'NAME="Linux From Scratch"' > /etc/os-release
 
 ninja install
 
-tar -xf ../../systemd-man-pages-259.1.tar.xz \
+tar -xf ../../systemd-man-pages-*.tar.* \
     --no-same-owner --strip-components=1 \
     -C /usr/share/man
 
