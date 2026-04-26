@@ -38,3 +38,9 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/021-m4.sh
 ./scripts/022-bc.sh
 ./scripts/023-flex.sh
+./scripts/024-tcl.sh
+./scripts/025-expect.sh
+./scripts/026-dejagnu.sh
+./scripts/027-pkgconf.sh
+./scripts/028-binutils.sh
+./scripts/029-gmp.sh
