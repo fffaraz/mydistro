@@ -3,9 +3,8 @@ set -exuo pipefail
 
 cd ./src
 
-cd ./gmp
-# no configuration needed
-cd ..
+tar xf gmp-*.tar.*
+mv gmp-*/ gmp
 
 cd ./mpc
 autoreconf -vif
