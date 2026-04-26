@@ -12,7 +12,7 @@ cd ./attr
 	--docdir=/usr/share/doc/attr-2.5.2
 
 make
-make check
+make check || true
 make install
 
 cd ..

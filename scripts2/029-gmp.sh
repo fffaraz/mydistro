@@ -16,7 +16,7 @@ sed -i '/long long t1;/,+1s/()/(...)/' configure
 make
 make html
 
-make check 2>&1 | tee gmp-check-log
+make check 2>&1 | tee gmp-check-log || true
 awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
 
 make install

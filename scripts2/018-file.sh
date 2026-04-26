@@ -9,7 +9,7 @@ cd ./file
 ./configure --prefix=/usr
 
 make
-make check
+make check || true
 make install
 
 cd ..

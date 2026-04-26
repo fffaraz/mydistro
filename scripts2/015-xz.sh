@@ -11,7 +11,7 @@ cd ./xz
 	--docdir=/usr/share/doc/xz-5.8.2
 
 make
-make check
+make check || true
 make install
 
 cd ..

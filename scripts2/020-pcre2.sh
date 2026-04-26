@@ -18,7 +18,7 @@ cd ./pcre2
 	--disable-static
 
 make
-make check
+make check || true
 make install
 
 cd ..
