@@ -9,10 +9,10 @@ This project is in early development and is not yet functional for general use.
 - **Source transparency**: All source code comes from upstream git repositories. No tarballs, no binaries.
 - **Atomic builds**: No package manager, no partial updates. The entire OS is built as one unit.
 - **Offline by design**: No internet needed to install or build the OS once sources are downloaded.
-- **Self-hosted**: The distribution can build itself with no external dependencies.
-- **English/US-only**: Only English language and United States locale are supported.
 - **Privacy-respecting**: No telemetry, no phoning home to update package repositories, no user age verification.
 - **Optimized builds**: Compiled with `-O3 -march=native` for maximum performance on the build host's CPU.
+- **Self-hosted**: The distribution can build itself with no external dependencies.
+- **English/US-only**: Only English language and United States locale are supported.
 
 ## Build Prerequisites
 
