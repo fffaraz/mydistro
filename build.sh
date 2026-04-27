@@ -14,9 +14,9 @@ else
 	./scripts/download-src.sh ./deps/sources.conf
 fi
 
-# delete and recreate output directory
-rm -rf ./output
-mkdir ./output
+# ensure output directory exists and clear its contents
+mkdir -p ./output
+rm -rf ./output/*
 
 SECONDS=0
 
