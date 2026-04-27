@@ -12,6 +12,7 @@ This project is in early development and is not yet functional for general use.
 - **Self-hosted**: The distribution can build itself with no external dependencies.
 - **English/US-only**: Only English language and United States locale are supported.
 - **Privacy-respecting**: No telemetry, no phoning home to update package repositories, no user age verification.
+- **Optimized builds**: Compiled with `-O3 -march=native` for maximum performance on the build host's CPU.
 
 ## Build Prerequisites
 
