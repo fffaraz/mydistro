@@ -1,8 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/xz
-autoreconf -vif
+cd ./src/libexpat/expat
+
+./buildconf.sh
 
 ./configure --prefix=/usr --disable-static
 

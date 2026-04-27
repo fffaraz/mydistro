@@ -26,3 +26,8 @@ sed -i '/^#include "tar.h"/a \
 sed -i 's/void write_error_details (char const \*name, size_t status, size_t size)/void write_error_details (char const *name, idx_t status, idx_t size)/' src/common.h
 sed -i 's/_Noreturn void write_fatal_details (char const \*name, ssize_t status, size_t size)/_Noreturn void write_fatal_details (char const *name, idx_t status, idx_t size)/' src/common.h
 sed -i 's/write_fatal_details (char const \*name, ssize_t status, size_t size)/write_fatal_details (char const *name, idx_t status, idx_t size)/' src/buffer.c
+
+FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --disable-nls
+
+make
+make install DESTDIR=$INITRAMFS_DIR

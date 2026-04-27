@@ -16,3 +16,8 @@ TREE_SITTER_D_VERSION=0.8.2
 EOF
 
 ./autogen.sh
+
+./configure --prefix=/usr --disable-static
+
+make
+make install DESTDIR=$INITRAMFS_DIR

@@ -1,12 +1,13 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/gperf
+cd ./src/acl
 
-ln -sfn ../gnulib ./gnulib
 ./autogen.sh
 
-./configure --prefix=/usr
+./configure --prefix=/usr \
+	--disable-static \
+	--disable-nls
 
 make
 make install DESTDIR=$INITRAMFS_DIR
