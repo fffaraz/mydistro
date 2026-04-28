@@ -4,10 +4,8 @@ set -exuo pipefail
 cd ./src
 
 # gmp ships as a tarball; mpc and mpfr come from git.
-if [ ! -d ./gmp ]; then
-	tar xf gmp-*.tar.*
-	mv gmp-*/ gmp
-fi
+tar xf gmp-*.tar.*
+mv gmp-*/ gmp
 
 # Build and install gmp.
 pushd gmp
