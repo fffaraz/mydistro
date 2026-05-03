@@ -4,6 +4,8 @@ A minimal Linux distribution built entirely from source, inside Docker.
 
 This project is in early development and is not yet functional for general use.
 
+> **Note**: We are looking for a better name to use for this distro. Suggestions welcome.
+
 ## Philosophy and Principles
 
 - **Source transparency**: All source code comes from upstream git repositories. No tarballs, no binaries.
