@@ -38,15 +38,14 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 # ./scripts/025-perl.sh
 # ./scripts/026-inetutils.sh
 
+./scripts/027-gmp-mpc-mpfr.sh
 ./scripts/009-glibc.sh
-
 ./scripts/099-make.sh
 ./scripts/099-m4.sh
 ./scripts/099-autoconf.sh
 ./scripts/099-automake.sh
 ./scripts/099-flex.sh
 ./scripts/099-bison.sh
-./scripts/099-gmp-mpc-mpfr.sh
 ./scripts/099-binutils.sh
 ./scripts/099-gcc.sh
 ./scripts/099-ncurses.sh
