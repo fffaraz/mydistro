@@ -3,17 +3,6 @@ set -exuo pipefail
 
 cd ./src/gettext
 
-# sed -i "s/am_set_or_augment = '+='/am_set_or_augment = '='/" ./gnulib/pygnulib/GLEmiter.py
-# sed -i "s/am_set_or_augment='+='/am_set_or_augment='='/" ./gnulib/gnulib-tool.sh
-
-cat >./gettext-tools/tree-sitter.cfg <<"EOF"
-TREE_SITTER_VERSION=0.23.2
-TREE_SITTER_GO_VERSION=0.23.4
-TREE_SITTER_RUST_VERSION=0.23.2
-TREE_SITTER_TYPESCRIPT_VERSION=0.23.2
-TREE_SITTER_D_VERSION=0.8.2
-EOF
-
 ./autogen.sh
 
 ./configure --prefix=/usr --disable-static
