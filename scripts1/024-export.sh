@@ -6,5 +6,5 @@ cd ./rootfs
 rmdir ./lib
 ln -sv /usr/lib ./lib
 
-rm -f ../output/bootstrap.tar.gz
-tar -czvf ../output/bootstrap.tar.gz .
+rm -f ../output/stage2.tar.gz
+tar -czvf ../output/stage2.tar.gz .
