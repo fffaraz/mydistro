@@ -12,3 +12,4 @@ cd ./src/attr
 
 make
 make install DESTDIR=$INITRAMFS_DIR
+make install
