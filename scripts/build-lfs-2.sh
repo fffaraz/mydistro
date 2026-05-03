@@ -10,22 +10,33 @@ while getopts "dn" opt; do
 	n) SKIP_IMPORT=true ;;
 	esac
 done
+shift $((OPTIND - 1))
+
+STAGE="${1:?stage number required (>=2)}"
+if ! [[ "$STAGE" =~ ^[0-9]+$ ]] || [ "$STAGE" -lt 2 ]; then
+	echo "error: stage number must be an integer >= 2 (got: $STAGE)" >&2
+	exit 1
+fi
+
+SCRIPTS_DIR="scripts${STAGE}"
+IMAGE_NAME="mydistro-stage${STAGE}:latest"
+ROOTFS_TARBALL="./output/stage${STAGE}.tar.gz"
 
 docker rm -f mydistro || true
 
 if [ "$SKIP_IMPORT" = false ]; then
-	docker rmi -f mydistro-bootstrap:latest || true
-	docker import ./output/bootstrap.tar.gz mydistro-bootstrap:latest
+	docker rmi -f "$IMAGE_NAME" || true
+	docker import "$ROOTFS_TARBALL" "$IMAGE_NAME"
 fi
 
 docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
-	-v $(pwd)/scripts2:/opt/mydistro/scripts:ro \
+	-v $(pwd)/$SCRIPTS_DIR:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src-lfs:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output:/opt/mydistro/output \
 	--workdir /opt/mydistro \
 	--tmpfs /tmp \
 	$ENTRY_POINT \
-	mydistro-bootstrap:latest 2>&1 | tee ./output/build2.log
+	"$IMAGE_NAME" 2>&1 | tee ./output/build${STAGE}.log
 
 ls -alh ./output

@@ -21,8 +21,9 @@ rm -rf ./output/*
 SECONDS=0
 
 if [ "$BUILD_LFS" = "1" ]; then
-	./scripts/build-lfs-1.sh # first stage
-	./scripts/build-lfs-2.sh # second stage
+	./scripts/build-lfs-1.sh   # first stage
+	./scripts/build-lfs-2.sh 2 # second stage
+	./scripts/build-lfs-2.sh 3 # third stage
 else
 	./scripts/build1.sh # first pass
 	./scripts/build2.sh # second pass
