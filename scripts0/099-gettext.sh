@@ -2,10 +2,9 @@
 set -exuo pipefail
 
 cd ./src/gettext
-rmdir ./gnulib
-ln -s ../gnulib ./gnulib
-sed -i "s/am_set_or_augment = '+='/am_set_or_augment = '='/" ./gnulib/pygnulib/GLEmiter.py
-sed -i "s/am_set_or_augment='+='/am_set_or_augment='='/" ./gnulib/gnulib-tool.sh
+
+# sed -i "s/am_set_or_augment = '+='/am_set_or_augment = '='/" ./gnulib/pygnulib/GLEmiter.py
+# sed -i "s/am_set_or_augment='+='/am_set_or_augment='='/" ./gnulib/gnulib-tool.sh
 
 cat >./gettext-tools/tree-sitter.cfg <<"EOF"
 TREE_SITTER_VERSION=0.23.2
