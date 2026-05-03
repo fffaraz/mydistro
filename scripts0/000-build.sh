@@ -15,7 +15,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
-./scripts/004-busybox.sh
+# ./scripts/004-busybox.sh
 ./scripts/005-syslinux.sh
 ./scripts/006-memtest86.sh
 # ./scripts/007-microwindows.sh
@@ -27,18 +27,17 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/016-zlib.sh
 ./scripts/017-elfutils.sh
 
-# LFS-derived additions (off by default — enable as the build matures).
-# ./scripts/018-bzip2.sh
-# ./scripts/019-attr.sh
-# ./scripts/020-acl.sh
-# ./scripts/021-libexpat.sh
-# ./scripts/022-iana-etc.sh
-# ./scripts/023-util-linux.sh
-# ./scripts/024-e2fsprogs.sh
-# ./scripts/025-perl.sh
-# ./scripts/026-inetutils.sh
-
+./scripts/018-bzip2.sh
+./scripts/019-attr.sh
+./scripts/020-acl.sh
+./scripts/021-libexpat.sh
+./scripts/022-iana-etc.sh
+./scripts/023-util-linux.sh
+./scripts/024-e2fsprogs.sh
+./scripts/025-perl.sh
+./scripts/026-inetutils.sh
 ./scripts/027-gmp-mpc-mpfr.sh
+
 ./scripts/009-glibc.sh
 ./scripts/099-make.sh
 ./scripts/099-m4.sh
@@ -51,21 +50,19 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-ncurses.sh
 ./scripts/099-bash.sh
 
-# Additional userland (off by default — these are completed-but-untested
-# from-git builds; enable individually as each is verified).
-# ./scripts/099-coreutils.sh
-# ./scripts/099-diffutils.sh
-# ./scripts/099-file.sh
-# ./scripts/099-findutils.sh
-# ./scripts/099-gawk.sh
-# ./scripts/099-gettext.sh
-# ./scripts/099-gperf.sh
-# ./scripts/099-grep.sh
-# ./scripts/099-gzip.sh
-# ./scripts/099-patch.sh
-# ./scripts/099-sed.sh
-# ./scripts/099-tar.sh
-# ./scripts/099-xz.sh
+./scripts/099-coreutils.sh
+./scripts/099-diffutils.sh
+./scripts/099-file.sh
+./scripts/099-findutils.sh
+./scripts/099-gawk.sh
+./scripts/099-gettext.sh
+./scripts/099-gperf.sh
+./scripts/099-grep.sh
+./scripts/099-gzip.sh
+./scripts/099-patch.sh
+./scripts/099-sed.sh
+./scripts/099-tar.sh
+./scripts/099-xz.sh
 
 ./scripts/012-initramfs.sh
 ./scripts/013-mkisofs.sh
