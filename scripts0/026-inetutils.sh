@@ -4,6 +4,12 @@ set -exuo pipefail
 cd ./src/inetutils
 
 cp -r --reflink=auto ../gnulib ./gnulib-repo
+
+# The maintainer-only README-release patch no longer applies against current
+# upstream gnulib master and isn't needed for building.
+# Drop it so bootstrap doesn't abort.
+rm -f gl/top/README-release.diff
+
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib-repo
 
 sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
