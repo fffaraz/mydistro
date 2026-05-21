@@ -1,7 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
-cp -r --reflink=auto ./src-ro ./src
+mkdir -p ./src
+cp --reflink=auto ./src-ro/linux-*.tar.* ./src/
 
 export HOME=/root
 export TERM=xterm-256color
