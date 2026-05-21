@@ -8,7 +8,8 @@ cd ./util-linux
 
 mkdir -pv /var/lib/hwclock
 
-./configure --libdir=/usr/lib \
+./configure \
+	--libdir=/usr/lib \
 	--runstatedir=/run \
 	--disable-chfn-chsh \
 	--disable-login \
