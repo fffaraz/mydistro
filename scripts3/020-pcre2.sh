@@ -6,7 +6,8 @@ tar xf pcre2-*.tar.*
 mv pcre2-*/ pcre2
 cd ./pcre2
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--docdir=/usr/share/doc/pcre2-10.47 \
 	--enable-unicode \
 	--enable-jit \

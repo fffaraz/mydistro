@@ -15,7 +15,8 @@ cd build
 
 echo "rootsbindir=/usr/sbin" >configparms
 
-../configure --prefix=/usr \
+../configure \
+	--prefix=/usr \
 	--disable-werror \
 	--disable-nscd \
 	libc_cv_slibdir=/usr/lib \
@@ -37,6 +38,8 @@ make localedata/install-locales
 
 # 8.5.2. Configuring Glibc
 
+# 8.5.2.1. Adding nsswitch.conf
+
 cp ../../../assets/etc/nsswitch.conf /etc/nsswitch.conf
 
 # 8.5.2.2. Adding Time Zone Data
@@ -46,8 +49,7 @@ tar -xf ../../tzdata2025c.tar.gz
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}
 
-for tz in etcetera southamerica northamerica europe africa antarctica \
-	asia australasia backward; do
+for tz in etcetera southamerica northamerica europe africa antarctica asia australasia backward; do
 	zic -L /dev/null -d $ZONEINFO ${tz}
 	zic -L /dev/null -d $ZONEINFO/posix ${tz}
 	zic -L leapseconds -d $ZONEINFO/right ${tz}

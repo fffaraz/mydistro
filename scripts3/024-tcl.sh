@@ -8,7 +8,8 @@ cd ./tcl
 
 SRCDIR=$(pwd)
 cd unix
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--mandir=/usr/share/man \
 	--disable-rpath
 

@@ -10,7 +10,8 @@ python3 -c 'from pty import spawn; spawn(["echo", "ok"])'
 
 patch -Np1 -i ../expect-5.45.4-gcc15-1.patch
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--with-tcl=/usr/lib \
 	--enable-shared \
 	--disable-rpath \

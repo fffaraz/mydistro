@@ -6,7 +6,8 @@ tar xf flex-*.tar.*
 mv flex-*/ flex
 cd ./flex
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--docdir=/usr/share/doc/flex-2.6.4
 

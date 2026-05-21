@@ -17,7 +17,8 @@ sed -e '270a\
 	-e '288i\   result = -1;' \
 	-i.orig input.c
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--with-curses \
 	--docdir=/usr/share/doc/readline-8.3
