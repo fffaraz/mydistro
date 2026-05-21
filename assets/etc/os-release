@@ -1,2 +1,7 @@
-PRETTY_NAME="MyDistro 1.0"
-NAME="MyDistro"
+NAME="Linux From Scratch"
+VERSION="13.0-systemd"
+ID=lfs
+PRETTY_NAME="Linux From Scratch 13.0-systemd"
+VERSION_CODENAME="<your name here>"
+HOME_URL="https://www.linuxfromscratch.org/lfs/"
+RELEASE_TYPE="stable"

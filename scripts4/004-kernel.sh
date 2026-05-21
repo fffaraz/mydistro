@@ -75,15 +75,5 @@ cp -iv .config /boot/config-6.18.10
 
 cp -r Documentation -T /usr/share/doc/linux-6.18.10
 
-install -v -m755 -d /etc/modprobe.d
-cat >/etc/modprobe.d/usb.conf <<"EOF"
-# Begin /etc/modprobe.d/usb.conf
-
-install ohci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i ohci_hcd $CMDLINE_OPTS
-install uhci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i uhci_hcd $CMDLINE_OPTS
-
-# End /etc/modprobe.d/usb.conf
-EOF
-
 cd ../..
 rm -rf ./linux

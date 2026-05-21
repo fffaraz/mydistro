@@ -1,0 +1,4 @@
+DISTRIB_ID="Linux From Scratch"
+DISTRIB_RELEASE="13.0-systemd"
+DISTRIB_CODENAME="<your name here>"
+DISTRIB_DESCRIPTION="Linux From Scratch"
