@@ -8,7 +8,7 @@ mkdir -p \
 	bin \
 	boot/efi \
 	dev \
-	etc/init.d \
+	etc \
 	home \
 	lib \
 	lib64 \
