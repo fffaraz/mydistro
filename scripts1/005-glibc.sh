@@ -41,7 +41,7 @@ readelf -l a.out | grep ': /lib'
 
 grep -E -o "$LFS/lib.*/S?crt[1in].*succeeded" dummy.log
 grep -B3 "^ $LFS/usr/include" dummy.log
-grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g'
+grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\n|g'
 grep "/lib.*/libc.so.6 " dummy.log
 grep found dummy.log
 
