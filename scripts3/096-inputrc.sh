@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-cat > /etc/inputrc << "EOF"
+cat >/etc/inputrc <<"EOF"
 # Begin /etc/inputrc
 # Modified by Chris Lynn <roryo@roryo.dynup.net>
 

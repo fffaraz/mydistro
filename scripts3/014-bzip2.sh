@@ -24,7 +24,7 @@ ln -sfv libbz2.so.1.0.8 /usr/lib/libbz2.so.1
 
 cp -v bzip2-shared /usr/bin/bzip2
 for i in /usr/bin/{bzcat,bunzip2}; do
-  ln -sfv bzip2 $i
+	ln -sfv bzip2 $i
 done
 
 rm -fv /usr/lib/libbz2.a

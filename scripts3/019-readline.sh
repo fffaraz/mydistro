@@ -13,9 +13,9 @@ sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf
 
 sed -e '270a\
      else\
-       chars_avail = 1;'      \
-    -e '288i\   result = -1;' \
-    -i.orig input.c
+       chars_avail = 1;' \
+	-e '288i\   result = -1;' \
+	-i.orig input.c
 
 ./configure --prefix=/usr \
 	--disable-static \

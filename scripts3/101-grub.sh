@@ -5,7 +5,7 @@ set -exuo pipefail
 # grub-install /dev/sdX
 
 mkdir -pv /boot/grub
-cat > /boot/grub/grub.cfg << "EOF"
+cat >/boot/grub/grub.cfg <<"EOF"
 # Begin /boot/grub/grub.cfg
 set default=0
 set timeout=5

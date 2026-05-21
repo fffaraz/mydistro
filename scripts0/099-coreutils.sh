@@ -3,7 +3,7 @@ set -exuo pipefail
 
 cd ./src/coreutils
 
-./bootstrap --skip-po 
+./bootstrap --skip-po
 
 FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --enable-install-program=hostname --enable-no-install-program=kill,uptime --disable-nls
 

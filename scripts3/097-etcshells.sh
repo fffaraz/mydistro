@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exuo pipefail
 
-cat > /etc/shells << "EOF"
+cat >/etc/shells <<"EOF"
 # Begin /etc/shells
 
 /bin/sh

@@ -2,7 +2,7 @@
 set -exuo pipefail
 
 # Site-specific: edit device names and filesystem types before booting.
-cat > /etc/fstab << "EOF"
+cat >/etc/fstab <<"EOF"
 # Begin /etc/fstab
 
 # file system  mount-point  type     options             dump  fsck

@@ -23,4 +23,3 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/007-texinfo.sh
 ./scripts/008-util-linux.sh
 ./scripts/009-export.sh
-

@@ -7,8 +7,8 @@ mv systemd-*/ systemd
 cd ./systemd
 
 sed -e 's/GROUP="render"/GROUP="video"/' \
-    -e 's/GROUP="sgx", //' \
-    -i rules.d/50-udev-default.rules.in
+	-e 's/GROUP="sgx", //' \
+	-i rules.d/50-udev-default.rules.in
 
 mkdir -p build
 cd build
@@ -34,14 +34,14 @@ meson setup .. \
 
 ninja
 
-echo 'NAME="Linux From Scratch"' > /etc/os-release
+echo 'NAME="Linux From Scratch"' >/etc/os-release
 # unshare -m ninja test
 
 ninja install
 
 tar -xf ../../systemd-man-pages-*.tar.* \
-    --no-same-owner --strip-components=1 \
-    -C /usr/share/man
+	--no-same-owner --strip-components=1 \
+	-C /usr/share/man
 
 systemd-machine-id-setup
 
