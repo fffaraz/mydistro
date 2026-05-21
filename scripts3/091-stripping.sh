@@ -1,7 +1,10 @@
 #!/bin/bash
 set -exuo pipefail
 
-save_usrlib="$(cd /usr/lib;	ls ld-linux*[^g])
+save_usrlib="$(
+	cd /usr/lib
+	ls ld-linux*[^g]
+)
              libc.so.6
              libthread_db.so.1
              libquadmath.so.0.0.0
@@ -29,7 +32,10 @@ online_usrlib="libbfd-2.46.0.20260210.so
                libreadline.so.8.3
                libz.so.1.3.2
                libzstd.so.1.5.7
-               $(cd /usr/lib; find libnss*.so* -type f)"
+               $(
+	cd /usr/lib
+	find libnss*.so* -type f
+)"
 
 for BIN in $online_usrbin; do
 	cp /usr/bin/$BIN /tmp/$BIN
