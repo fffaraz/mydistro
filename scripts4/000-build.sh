@@ -16,8 +16,6 @@ export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 
 ./scripts/001-files.sh
-./scripts/002-systemd.sh
-./scripts/003-fstab.sh
-./scripts/004-kernel.sh
-./scripts/005-grub.sh
-./scripts/006-export.sh
+./scripts/002-kernel.sh
+./scripts/003-grub.sh
+./scripts/004-export.sh

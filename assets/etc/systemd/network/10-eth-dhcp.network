@@ -1,0 +1,8 @@
+[Match]
+Name=<network-device-name>
+
+[Network]
+DHCP=ipv4
+
+[DHCPv4]
+UseDomains=true

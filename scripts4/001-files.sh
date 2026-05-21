@@ -18,3 +18,18 @@ cp -v ./assets/etc/modprobe.d/usb.conf /etc/modprobe.d/usb.conf
 
 mkdir -pv /boot/grub
 cp -v ./assets/boot/grub/grub.cfg /boot/grub/grub.cfg
+
+mkdir -pv /etc/systemd/system/getty@tty1.service.d
+cp -v ./assets/etc/systemd/system/getty@tty1.service.d/noclear.conf /etc/systemd/system/getty@tty1.service.d/noclear.conf
+
+cat >/etc/fstab <<"EOF"
+# Begin /etc/fstab
+
+# file system  mount-point  type     options             dump  fsck
+#                                                              order
+
+#/dev/<xxx>     /            <fff>    defaults            1     1
+#/dev/<yyy>     swap         swap     pri=1               0     0
+
+# End /etc/fstab
+EOF
