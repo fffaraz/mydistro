@@ -20,3 +20,4 @@ export CXXFLAGS="${COMMON_FLAGS}"
 ./scripts/003-fstab.sh
 ./scripts/004-kernel.sh
 ./scripts/005-grub.sh
+./scripts/006-export.sh

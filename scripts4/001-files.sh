@@ -18,9 +18,3 @@ cp -v ./assets/etc/modprobe.d/usb.conf /etc/modprobe.d/usb.conf
 
 mkdir -pv /boot/grub
 cp -v ./assets/boot/grub/grub.cfg /boot/grub/grub.cfg
-
-systemctl disable systemd-networkd-wait-online || true
-
-ln -sf /dev/null /etc/systemd/network/99-default.link
-
-systemctl disable systemd-resolved || true
