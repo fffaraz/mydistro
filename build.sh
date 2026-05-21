@@ -24,6 +24,7 @@ if [ "$BUILD_LFS" = "1" ]; then
 	./scripts/build-lfs-1.sh   # first stage
 	./scripts/build-lfs-2.sh 2 # second stage
 	./scripts/build-lfs-2.sh 3 # third stage
+	./scripts/build-lfs-2.sh 4 # fourth stage
 else
 	./scripts/build1.sh # first pass
 	./scripts/build2.sh # second pass
