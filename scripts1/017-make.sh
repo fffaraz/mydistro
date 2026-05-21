@@ -6,10 +6,10 @@ tar xf make-*.tar.*
 mv make-*/ make
 cd ./make
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
-	--build=$(build-aux/config.guess) \
-	--disable-nls
+	--build=$(build-aux/config.guess)
 
 make
 make DESTDIR=$LFS install

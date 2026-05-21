@@ -6,7 +6,8 @@ tar xf xz-*.tar.*
 mv xz-*/ xz
 cd ./xz
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess) \
 	--disable-static \

@@ -6,7 +6,8 @@ tar xf m4-*.tar.*
 mv m4-*/ m4
 cd ./m4
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
 

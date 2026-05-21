@@ -6,7 +6,8 @@ tar xf sed-*.tar.*
 mv sed-*/ sed
 cd ./sed
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(./build-aux/config.guess)
 

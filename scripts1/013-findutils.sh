@@ -6,7 +6,8 @@ tar xf findutils-*.tar.*
 mv findutils-*/ findutils
 cd ./findutils
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--localstatedir=/var/lib/locate \
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)

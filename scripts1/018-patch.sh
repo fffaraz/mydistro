@@ -6,7 +6,8 @@ tar xf patch-*.tar.*
 mv patch-*/ patch
 cd ./patch
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess)
 

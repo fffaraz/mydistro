@@ -6,7 +6,8 @@ tar xf grep-*.tar.*
 mv grep-*/ grep
 cd ./grep
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(./build-aux/config.guess)
 

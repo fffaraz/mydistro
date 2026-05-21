@@ -15,7 +15,8 @@ make -C progs tic
 install progs/tic $LFS/tools/bin
 popd
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(./config.guess) \
 	--mandir=/usr/share/man \

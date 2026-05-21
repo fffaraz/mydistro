@@ -6,7 +6,8 @@ tar xf bash-*.tar.*
 mv bash-*/ bash
 cd ./bash
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--build=$(sh support/config.guess) \
 	--host=$LFS_TGT \
 	--without-bash-malloc

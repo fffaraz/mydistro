@@ -6,7 +6,8 @@ tar xf coreutils-*.tar.*
 mv coreutils-*/ coreutils
 cd ./coreutils
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--host=$LFS_TGT \
 	--build=$(build-aux/config.guess) \
 	--enable-install-program=hostname \
