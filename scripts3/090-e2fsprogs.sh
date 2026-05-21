@@ -9,7 +9,8 @@ cd ./e2fsprogs
 mkdir -v build
 cd build
 
-../configure --prefix=/usr \
+../configure \
+	--prefix=/usr \
 	--sysconfdir=/etc \
 	--enable-elf-shlibs \
 	--disable-libblkid \

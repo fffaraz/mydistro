@@ -10,7 +10,8 @@ unset {C,CPP,CXX,LD}FLAGS
 
 sed 's/--image-base/--nonexist-linker-option/' -i configure
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--sysconfdir=/etc \
 	--disable-efiemu \
 	--disable-werror

@@ -6,7 +6,8 @@ tar xf util-linux-*.tar.*
 mv util-linux-*/ util-linux
 cd ./util-linux
 
-./configure --bindir=/usr/bin \
+./configure \
+	--bindir=/usr/bin \
 	--libdir=/usr/lib \
 	--runstatedir=/run \
 	--sbindir=/usr/sbin \

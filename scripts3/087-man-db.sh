@@ -6,7 +6,8 @@ tar xf man-db-*.tar.*
 mv man-db-*/ man-db
 cd ./man-db
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--docdir=/usr/share/doc/man-db-2.13.1 \
 	--sysconfdir=/etc \
 	--disable-setuid \

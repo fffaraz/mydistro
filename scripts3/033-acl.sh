@@ -6,7 +6,8 @@ tar xf acl-*.tar.*
 mv acl-*/ acl
 cd ./acl
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--docdir=/usr/share/doc/acl-2.3.2
 

@@ -6,7 +6,8 @@ tar xf pkgconf-*.tar.*
 mv pkgconf-*/ pkgconf
 cd ./pkgconf
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--docdir=/usr/share/doc/pkgconf-2.5.1
 

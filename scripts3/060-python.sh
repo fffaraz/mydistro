@@ -6,7 +6,8 @@ tar xf Python-*.tar.*
 mv Python-*/ python
 cd ./python
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--enable-shared \
 	--with-system-expat \
 	--enable-optimizations \

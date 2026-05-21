@@ -18,7 +18,8 @@ esac
 mkdir -v build
 cd build
 
-../configure --prefix=/usr \
+../configure \
+	--prefix=/usr \
 	LD=ld \
 	--enable-languages=c,c++ \
 	--enable-default-pie \
@@ -45,11 +46,11 @@ ln -svr /usr/bin/cpp /usr/lib
 
 ln -sv gcc.1 /usr/share/man/man1/cc.1
 
-ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/15.2.0/liblto_plugin.so \
-	/usr/lib/bfd-plugins/
+ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/15.2.0/liblto_plugin.so /usr/lib/bfd-plugins/
 
 echo 'int main(){}' | cc -x c - -v -Wl,--verbose &>dummy.log
 readelf -l a.out | grep ': /lib'
+
 grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log
 grep -B4 '^ /usr/include' dummy.log
 grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\n|g'

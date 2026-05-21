@@ -8,7 +8,8 @@ cd ./sqlite
 
 tar -xf ../sqlite-doc-3510200.tar.xz
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--enable-fts{4,5} \
 	CPPFLAGS="-D SQLITE_ENABLE_COLUMN_METADATA=1 \

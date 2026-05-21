@@ -6,7 +6,8 @@ tar xf gettext-*.tar.*
 mv gettext-*/ gettext
 cd ./gettext
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--docdir=/usr/share/doc/gettext-1.0
 

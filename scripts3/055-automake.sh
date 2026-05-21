@@ -8,7 +8,7 @@ cd ./automake
 
 ./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.18.1
 make
-make check || true
+make -j$(( $(nproc) * 2 )) check || true
 make install
 
 cd ..

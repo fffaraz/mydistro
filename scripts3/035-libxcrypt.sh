@@ -8,7 +8,8 @@ cd ./libxcrypt
 
 sed -i '/strchr/s/const//' lib/crypt-{sm3,gost}-yescrypt.c
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--enable-hashes=strong,glibc \
 	--enable-obsolete-api=no \
 	--disable-static \

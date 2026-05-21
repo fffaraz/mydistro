@@ -6,7 +6,8 @@ tar xf expat-*.tar.*
 mv expat-*/ expat
 cd ./expat
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--docdir=/usr/share/doc/expat-2.7.4
 

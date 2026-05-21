@@ -6,7 +6,8 @@ tar xf procps-ng-*.tar.*
 mv procps-ng-*/ procps-ng
 cd ./procps-ng
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--docdir=/usr/share/doc/procps-ng-4.0.6 \
 	--disable-static \
 	--disable-kill \

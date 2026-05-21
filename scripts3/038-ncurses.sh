@@ -6,7 +6,8 @@ tar xf ncurses-*.tar.*
 mv ncurses-*/ ncurses
 cd ./ncurses
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--mandir=/usr/share/man \
 	--with-shared \
 	--without-debug \

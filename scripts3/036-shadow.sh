@@ -17,7 +17,8 @@ sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD YESCRYPT:' \
 	-i etc/login.defs
 
 touch /usr/bin/passwd
-./configure --sysconfdir=/etc \
+./configure \
+	--sysconfdir=/etc \
 	--disable-static \
 	--with-{b,yes}crypt \
 	--without-libbsd \
@@ -34,7 +35,10 @@ grpconv
 mkdir -p /etc/default
 useradd -D --gid 999
 
-# passwd root  # interactive; set manually after build
+sed -i '/MAIL/s/yes/no/' /etc/default/useradd
+
+# interactive; set manually after build
+# passwd root
 
 cd ..
 rm -rf ./shadow

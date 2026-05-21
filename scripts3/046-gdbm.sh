@@ -6,7 +6,8 @@ tar xf gdbm-*.tar.*
 mv gdbm-*/ gdbm
 cd ./gdbm
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--enable-libgdbm-compat
 

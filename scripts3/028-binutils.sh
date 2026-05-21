@@ -9,7 +9,8 @@ cd ./binutils
 mkdir -v build
 cd build
 
-../configure --prefix=/usr \
+../configure \
+	--prefix=/usr \
 	--sysconfdir=/etc \
 	--enable-ld=default \
 	--enable-plugins \
@@ -21,7 +22,9 @@ cd build
 	--enable-default-hash-style=gnu
 
 make tooldir=/usr
+
 make -k check || true
+grep '^FAIL:' $(find -name '*.log') || true
 
 make tooldir=/usr install
 

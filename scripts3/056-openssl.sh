@@ -6,7 +6,8 @@ tar xf openssl-*.tar.*
 mv openssl-*/ openssl
 cd ./openssl
 
-./config --prefix=/usr \
+./config \
+	--prefix=/usr \
 	--openssldir=/etc/ssl \
 	--libdir=lib \
 	shared \

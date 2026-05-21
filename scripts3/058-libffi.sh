@@ -6,7 +6,8 @@ tar xf libffi-*.tar.*
 mv libffi-*/ libffi
 cd ./libffi
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--with-gcc-arch=native
 

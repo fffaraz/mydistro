@@ -6,7 +6,8 @@ tar xf elfutils-*.tar.*
 mv elfutils-*/ libelf
 cd ./libelf
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-debuginfod \
 	--enable-libdebuginfod=dummy
 

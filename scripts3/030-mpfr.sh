@@ -6,7 +6,8 @@ tar xf mpfr-*.tar.*
 mv mpfr-*/ mpfr
 cd ./mpfr
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--disable-static \
 	--enable-thread-safe \
 	--docdir=/usr/share/doc/mpfr-4.2.2

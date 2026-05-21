@@ -8,7 +8,8 @@ cd ./gmp
 
 sed -i '/long long t1;/,+1s/()/(...)/' configure
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--enable-cxx \
 	--disable-static \
 	--docdir=/usr/share/doc/gmp-6.3.0
