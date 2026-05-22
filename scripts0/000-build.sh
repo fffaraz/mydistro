@@ -55,7 +55,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-file.sh
 ./scripts/099-findutils.sh
 ./scripts/099-gawk.sh
-./scripts/099-gperf.sh
 ./scripts/099-grep.sh
 ./scripts/099-gzip.sh
 ./scripts/099-patch.sh
@@ -64,6 +63,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-xz.sh
 
 # ./scripts/099-gettext.sh
+# ./scripts/099-gperf.sh
 
 ./scripts/012-initramfs.sh
 ./scripts/013-mkisofs.sh
