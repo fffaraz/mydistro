@@ -15,7 +15,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
-./scripts/004-busybox.sh
 ./scripts/005-syslinux.sh
 ./scripts/006-memtest86.sh
 ./scripts/007-microwindows.sh
@@ -65,6 +64,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 # ./scripts/099-gettext.sh
 # ./scripts/099-gperf.sh
 
+./scripts/004-busybox.sh
 ./scripts/012-initramfs.sh
 ./scripts/013-mkisofs.sh
 ./scripts/014-mk-boot-img.sh
