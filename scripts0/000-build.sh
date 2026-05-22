@@ -15,17 +15,23 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
-# ./scripts/004-busybox.sh
+./scripts/004-busybox.sh
 ./scripts/005-syslinux.sh
 ./scripts/006-memtest86.sh
-# ./scripts/007-microwindows.sh
-# ./scripts/008-dropbear.sh
+./scripts/007-microwindows.sh
+./scripts/008-dropbear.sh
 ./scripts/003-openssl.sh
 ./scripts/010-curl.sh
 ./scripts/011-nano.sh
 ./scripts/015-zstd.sh
 ./scripts/016-zlib.sh
 ./scripts/017-elfutils.sh
+
+./scripts/012-initramfs.sh
+./scripts/013-mkisofs.sh
+./scripts/014-mk-boot-img.sh
+
+exit 0
 
 ./scripts/018-bzip2.sh
 ./scripts/019-attr.sh
@@ -63,7 +69,3 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-sed.sh
 ./scripts/099-tar.sh
 ./scripts/099-xz.sh
-
-./scripts/012-initramfs.sh
-./scripts/013-mkisofs.sh
-./scripts/014-mk-boot-img.sh
