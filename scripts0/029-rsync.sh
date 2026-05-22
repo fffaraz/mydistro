@@ -3,7 +3,7 @@ set -exuo pipefail
 
 cd ./src/rsync
 
-./configure.sh --prefix=/usr \
+./configure --prefix=/usr \
 	--disable-md2man \
 	--disable-xxhash \
 	--disable-zstd \
