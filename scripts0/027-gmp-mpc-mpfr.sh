@@ -8,8 +8,11 @@ tar xf gmp-*.tar.*
 mv gmp-*/ gmp
 
 # Build and install gmp (shared lib needed at runtime by coreutils' expr/factor).
+# gmp's configure runs a "long long reliability test" that fails with our
+# global -O3 -march=native CFLAGS; gmp wants to pick its own flags, so clear
+# CFLAGS/CXXFLAGS for this build and use --enable-fat for a CPU-agnostic build.
 cd gmp
-./configure --prefix=/usr --enable-shared
+env -u CFLAGS -u CXXFLAGS ./configure --prefix=/usr --enable-shared --enable-fat
 make
 make install DESTDIR=$INITRAMFS_DIR
 cd ..
