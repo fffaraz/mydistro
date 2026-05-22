@@ -37,6 +37,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/025-perl.sh
 ./scripts/026-inetutils.sh
 ./scripts/027-gmp-mpc-mpfr.sh
+./scripts/029-rsync.sh
 
 ./scripts/009-glibc.sh
 ./scripts/099-make.sh
