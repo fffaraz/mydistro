@@ -8,11 +8,12 @@ tar xf gmp-*.tar.*
 mv gmp-*/ gmp
 
 # Build and install gmp (shared lib needed at runtime by coreutils' expr/factor).
-# gmp's configure runs a "long long reliability test" that fails with our
-# global -O3 -march=native CFLAGS; gmp wants to pick its own flags, so clear
-# CFLAGS/CXXFLAGS for this build and use --enable-fat for a CPU-agnostic build.
+# gmp 6.3.0's configure-time "long long reliability test" relies on signed
+# left-shift overflow wrapping; newer gcc treats that as UB and miscompiles
+# the test, so configure rejects every ABI. -fwrapv forces wrap semantics.
+# --enable-fat builds a CPU-agnostic libgmp (no -march=native lock-in).
 cd gmp
-env -u CFLAGS -u CXXFLAGS ./configure --prefix=/usr --enable-shared --enable-fat
+CFLAGS="-O2 -fwrapv" ./configure --prefix=/usr --enable-shared --enable-fat
 make
 make install DESTDIR=$INITRAMFS_DIR
 cd ..
