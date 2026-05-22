@@ -27,12 +27,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/016-zlib.sh
 ./scripts/017-elfutils.sh
 
-./scripts/012-initramfs.sh
-./scripts/013-mkisofs.sh
-./scripts/014-mk-boot-img.sh
-
-exit 0
-
 ./scripts/018-bzip2.sh
 ./scripts/019-attr.sh
 ./scripts/020-acl.sh
@@ -69,3 +63,7 @@ exit 0
 ./scripts/099-sed.sh
 ./scripts/099-tar.sh
 ./scripts/099-xz.sh
+
+./scripts/012-initramfs.sh
+./scripts/013-mkisofs.sh
+./scripts/014-mk-boot-img.sh
