@@ -14,7 +14,6 @@ mkdir -p ./mnt
 sync
 mount ./output/boot.img ./mnt
 
-
 rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found/*", "/opt/*"} / ./mnt
 sync
 
