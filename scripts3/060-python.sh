@@ -19,11 +19,7 @@ make
 
 make install
 
-cat >/etc/pip.conf <<"EOF"
-[global]
-root-user-action = ignore
-disable-pip-version-check = true
-EOF
+cp ../../assets/etc/pip.conf /etc/pip.conf
 
 install -v -dm755 /usr/share/doc/python-3.14.3/html
 
