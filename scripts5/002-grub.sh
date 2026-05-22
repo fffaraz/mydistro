@@ -23,15 +23,15 @@ mount "${LOOPDEV}p1" ./mnt
 mkdir -p ./mnt/boot
 
 grub-install \
-    --target=i386-pc \
-    --boot-directory=./mnt/boot \
-    --modules="part_msdos ext2" \
-    "$LOOPDEV"
+	--target=i386-pc \
+	--boot-directory=./mnt/boot \
+	--modules="part_msdos ext2" \
+	"$LOOPDEV"
 sync
 
 rsync -aAXv \
-    --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found/*","/opt/*"} \
-    / ./mnt
+	--exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found/*","/opt/*"} \
+	/ ./mnt
 sync
 
 umount ./mnt
