@@ -4,7 +4,7 @@ set -exuo pipefail
 # create and format boot image
 dd if=/dev/zero of=./output/boot.img bs=1M count=2048
 sync
-mkfs -v -t fat ./output/boot.img
+mkfs -t fat ./output/boot.img
 sync
 
 # make boot image
