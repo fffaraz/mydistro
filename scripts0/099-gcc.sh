@@ -18,7 +18,6 @@ cd build
 	--disable-libsanitizer \
 	--disable-multilib \
 	--disable-nls \
-	--disable-shared \
 	--enable-languages=c,c++ \
 	--with-as=/usr/bin/as \
 	--with-ld=/usr/bin/ld
