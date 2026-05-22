@@ -26,4 +26,4 @@ make
 
 cp ./arch/x86/boot/bzImage ../../output/bzImage
 
-make headers_install INSTALL_HDR_PATH=$INITRAMFS_DIR/usr
+# make headers_install INSTALL_HDR_PATH=$INITRAMFS_DIR/usr
