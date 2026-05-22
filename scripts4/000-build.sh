@@ -15,7 +15,5 @@ COMMON_FLAGS="-O3 -pipe -march=native -Wno-error"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 
-./scripts/001-files.sh
-./scripts/002-kernel.sh
-./scripts/003-grub.sh
-./scripts/004-export.sh
+./scripts/001-kernel.sh
+./scripts/002-export.sh
