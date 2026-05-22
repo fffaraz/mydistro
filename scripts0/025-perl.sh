@@ -4,7 +4,8 @@ set -exuo pipefail
 cd ./src/perl
 
 # Configure perl as a non-debug, optimised build.
-sh Configure -des \
+sh Configure \
+	-des \
 	-Dprefix=/usr \
 	-Dvendorprefix=/usr \
 	-Dprivlib=/usr/lib/perl5/core_perl \

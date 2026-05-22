@@ -16,7 +16,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
 ./scripts/030-nasm.sh
-./scripts/031-python.sh
 ./scripts/005-syslinux.sh
 ./scripts/006-memtest86.sh
 ./scripts/007-microwindows.sh
@@ -32,6 +31,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/019-attr.sh
 ./scripts/020-acl.sh
 ./scripts/021-libexpat.sh
+./scripts/031-python.sh
 ./scripts/022-iana-etc.sh
 ./scripts/023-util-linux.sh
 ./scripts/024-e2fsprogs.sh
