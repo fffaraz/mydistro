@@ -3,9 +3,9 @@ set -exuo pipefail
 
 rm -f ./output/stage5.tar.gz
 tar \
-	--exclude=/opt/mydistro \
+	--exclude=/.dockerenv \
+	--exclude=/dev \
 	--exclude=/proc \
 	--exclude=/sys \
-	--exclude=/dev \
-	--exclude=/.dockerenv \
+	--exclude=/opt/mydistro \
 	-czf ./output/stage5.tar.gz /

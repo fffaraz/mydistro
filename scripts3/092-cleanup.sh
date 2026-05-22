@@ -11,9 +11,9 @@ find /usr -depth -name $(uname -m)-lfs-linux-gnu\* | xargs rm -rf
 
 rm -f ./output/stage4.tar.gz
 tar \
-	--exclude=/opt/mydistro \
+	--exclude=/.dockerenv \
+	--exclude=/dev \
 	--exclude=/proc \
 	--exclude=/sys \
-	--exclude=/dev \
-	--exclude=/.dockerenv \
+	--exclude=/opt/mydistro \
 	-czf ./output/stage4.tar.gz /
