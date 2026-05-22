@@ -3,7 +3,7 @@ set -exuo pipefail
 
 cd ./src/gzip
 
-./bootstrap --skip-po --no-git
+./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib
 
 ./configure --prefix=/usr
 
