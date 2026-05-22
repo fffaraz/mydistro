@@ -13,6 +13,7 @@ cp -v ./assets/etc/lfs-release /etc/lfs-release
 cp -v ./assets/etc/lsb-release /etc/lsb-release
 cp -v ./assets/etc/os-release /etc/os-release
 cp -v ./assets/etc/fstab /etc/fstab
+cp -v ./assets/etc/shadow /etc/shadow
 
 install -v -m755 -d /etc/modprobe.d
 cp -v ./assets/etc/modprobe.d/usb.conf /etc/modprobe.d/usb.conf
