@@ -11,3 +11,5 @@ FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --enable-install-program=host
 
 make
 make install DESTDIR=$INITRAMFS_DIR
+
+ln -sv /usr/bin/pwd $INITRAMFS_DIR/bin/pwd
