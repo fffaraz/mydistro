@@ -33,6 +33,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/022-iana-etc.sh
 ./scripts/023-util-linux.sh
 ./scripts/024-e2fsprogs.sh
+./scripts/028-libxcrypt.sh
 ./scripts/025-perl.sh
 ./scripts/026-inetutils.sh
 ./scripts/027-gmp-mpc-mpfr.sh
