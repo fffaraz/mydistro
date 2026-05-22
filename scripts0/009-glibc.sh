@@ -6,6 +6,7 @@ cd ./src/glibc
 mkdir build
 cd build
 
+echo '+gccwarn-c = -Wno-error' > configparms
 ../configure --prefix=/usr
 
 make
