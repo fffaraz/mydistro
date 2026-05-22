@@ -37,7 +37,7 @@ find . | cpio -o -H newc >../output/initramfs.cpio
 # -o, --create
 # -H, --format=
 
-# gzip cpio archive
+# create initramfs.cpio.gz
 gzip -f ../output/initramfs.cpio
 
 # create initramfs.tar.gz

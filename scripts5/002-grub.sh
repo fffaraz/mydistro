@@ -1,5 +1,21 @@
 #!/bin/bash
 set -exuo pipefail
 
-# Site-specific: replace /dev/sdX with the actual install disk before running grub-install.
-# grub-install /dev/sdX
+dd if=/dev/zero of=./output/boot.img bs=1M count=2048
+sync
+mkfs -t ext4 ./output/boot.img
+sync
+
+grub-install ./output/boot.img
+sync
+
+mkdir -p ./mnt
+sync
+mount ./output/boot.img ./mnt
+
+
+rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found/*", "/opt/*"} / ./mnt
+sync
+
+umount ./mnt
+rmdir ./mnt

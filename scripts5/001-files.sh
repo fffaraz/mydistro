@@ -12,6 +12,7 @@ cp -v ./assets/etc/profile /etc/profile
 cp -v ./assets/etc/lfs-release /etc/lfs-release
 cp -v ./assets/etc/lsb-release /etc/lsb-release
 cp -v ./assets/etc/os-release /etc/os-release
+cp -v ./assets/etc/fstab /etc/fstab
 
 install -v -m755 -d /etc/modprobe.d
 cp -v ./assets/etc/modprobe.d/usb.conf /etc/modprobe.d/usb.conf
@@ -21,15 +22,3 @@ cp -v ./assets/boot/grub/grub.cfg /boot/grub/grub.cfg
 
 mkdir -pv /etc/systemd/system/getty@tty1.service.d
 cp -v ./assets/etc/systemd/system/getty@tty1.service.d/noclear.conf /etc/systemd/system/getty@tty1.service.d/noclear.conf
-
-cat >/etc/fstab <<"EOF"
-# Begin /etc/fstab
-
-# file system  mount-point  type     options             dump  fsck
-#                                                              order
-
-#/dev/<xxx>     /            <fff>    defaults            1     1
-#/dev/<yyy>     swap         swap     pri=1               0     0
-
-# End /etc/fstab
-EOF
