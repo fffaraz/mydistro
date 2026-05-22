@@ -4,7 +4,7 @@ set -exuo pipefail
 rm -f ./output/boot.img
 dd if=/dev/zero of=./output/boot.img bs=1M count=2048
 sync
-mkfs -t ext4 ./output/boot.img
+mkfs -v -t ext4 ./output/boot.img
 sync
 
 grub-install --target i386-pc ./output/boot.img
