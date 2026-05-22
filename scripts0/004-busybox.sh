@@ -9,7 +9,7 @@ sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config
 sed -i 's/CONFIG_TC=y/CONFIG_TC=n/' .config
 
 # Disable applets provided by coreutils (099-coreutils.sh), diffutils (099-diffutils.sh),
-# findutils (099-findutils.sh), and grep (099-grep.sh).
+# findutils (099-findutils.sh), grep (099-grep.sh), and xz (099-xz.sh).
 # coreutils is configured with --enable-install-program=hostname --enable-no-install-program=kill,uptime,
 # so busybox keeps KILL and UPTIME but loses HOSTNAME.
 disabled_applets=(
@@ -24,6 +24,7 @@ disabled_applets=(
 	CMP DIFF
 	FIND XARGS
 	EGREP FGREP GREP
+	LZMA UNLZMA XZ UNXZ XZCAT
 )
 for applet in "${disabled_applets[@]}"; do
 	sed -i "s/^CONFIG_${applet}=y$/# CONFIG_${applet} is not set/" .config
