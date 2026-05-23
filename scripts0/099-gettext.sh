@@ -95,5 +95,12 @@ EOF
 
 ./configure --prefix=/usr --disable-static
 
+# gettext-tools/examples/ relies on autopull.sh fetching per-language .po
+# files from the Translation Project for examples like hello-csharp and
+# hello-java*. We build offline (--network none), so update-po fails on
+# every missing language. Drop the examples subdir — they're samples, not
+# part of the runtime.
+sed -i '/^SUBDIRS = /s/ examples//' gettext-tools/Makefile
+
 make
 make install DESTDIR=$INITRAMFS_DIR
