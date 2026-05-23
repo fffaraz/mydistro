@@ -22,6 +22,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/008-dropbear.sh
 ./scripts/003-openssl.sh
 ./scripts/010-curl.sh
+./scripts/032-pkgconf.sh
 ./scripts/011-nano.sh
 ./scripts/015-zstd.sh
 ./scripts/016-zlib.sh
