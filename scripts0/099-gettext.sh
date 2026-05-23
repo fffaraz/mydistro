@@ -104,3 +104,35 @@ sed -i '/^SUBDIRS = /s/ examples//' gettext-tools/Makefile
 
 make
 make install DESTDIR=$INITRAMFS_DIR
+
+# Inject a gettext-${ARCHIVE_VERSION}/ entry into the installed autopoint
+# archive. Release tarballs ship this entry pre-baked; a from-git build
+# leaves it absent because gettext-tools/misc/archive.dir.tar is not in
+# version control — the Makefile bootstraps the archive from the host's
+# already-installed gettext (debian's, in pass 1) and copies it through
+# unchanged. Without this, pass 2's autoreconf of elfutils fails with
+# "infrastructure files for version 0.26 not found".
+#
+# add-to-archive in the source does the same thing but expects a release
+# tar.gz; we replicate the directory-assembly half against the install tree.
+ARCHIVE_VERSION=$(sed -n 's/^ARCHIVE_VERSION=//p' gettext-tools/configure.ac)
+ARCHIVE=$INITRAMFS_DIR/usr/share/gettext/archive.dir.tar.xz
+PKGDATA=$INITRAMFS_DIR/usr/share/gettext
+
+work=$(mktemp -d)
+mkdir "$work/extracted"
+xz -dc <"$ARCHIVE" | tar -xf - -C "$work/extracted"
+
+dst=$work/extracted/gettext-$ARCHIVE_VERSION
+rm -rf "$dst"
+mkdir -p "$dst/po" "$dst/m4"
+cp -p "$PKGDATA/ABOUT-NLS" "$dst/"
+cp -p "$PKGDATA/config.rpath" "$dst/"
+find "$PKGDATA/po" -maxdepth 1 -type f ! -name Makevars \
+	-exec cp -p {} "$dst/po/" \;
+cp -p "$PKGDATA/m4/"*.m4 "$dst/m4/"
+
+(cd "$work/extracted" && tar -cf - --owner=0 --group=0 -- *) |
+	xz -c >"$ARCHIVE.new"
+mv "$ARCHIVE.new" "$ARCHIVE"
+rm -rf "$work"
