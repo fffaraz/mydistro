@@ -10,7 +10,9 @@ export TEXINFO_XS=omit
 cp -r --reflink=auto ../gnulib ./gnulib
 
 ./autogen.sh
-./configure --prefix=/usr --enable-utf8 --enable-year2038 --disable-nls --docdir=/tmp/nano-doc --mandir=/tmp/nano-man --infodir=/tmp/nano-info
+# Pass-2 ncurses is configured with --with-termlib, so define_key/tigetstr/etc.
+# live in libtinfow rather than libncursesw — link it explicitly.
+LIBS="-ltinfow" ./configure --prefix=/usr --enable-utf8 --enable-year2038 --disable-nls --docdir=/tmp/nano-doc --mandir=/tmp/nano-man --infodir=/tmp/nano-info
 make
 make install DESTDIR=$INITRAMFS_DIR
 
