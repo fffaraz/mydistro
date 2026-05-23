@@ -3,6 +3,10 @@ set -exuo pipefail
 
 cd ./src/nano
 
+# Pass-1 texinfo XS modules were compiled against debian's perl, but pass-2
+# perl differs — skip XS so texi2any falls back to pure Perl.
+export TEXINFO_XS=omit
+
 cp -r --reflink=auto ../gnulib ./gnulib
 
 ./autogen.sh
