@@ -5,7 +5,8 @@ cd ./src/util-linux
 
 ./autogen.sh
 
-./configure --bindir=/usr/bin \
+./configure \
+	--bindir=/usr/bin \
 	--libdir=/usr/lib \
 	--runstatedir=/run \
 	--sbindir=/usr/sbin \

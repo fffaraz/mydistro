@@ -6,7 +6,7 @@ cd ./src/e2fsprogs
 mkdir -p build
 cd build
 
-../configure --prefix=/usr --sysconfdir=/etc --enable-elf-shlibs --disable-nls
+../configure --prefix=/usr --sysconfdir=/etc --enable-elf-shlibs --disable-nls --disable-libblkid
 
 make
 make install DESTDIR=$INITRAMFS_DIR
