@@ -25,4 +25,6 @@ cd build
 make
 make install DESTDIR=$INITRAMFS_DIR
 
+ln -sf gcc $INITRAMFS_DIR/usr/bin/cc
+
 # echo 'int main(){return 0;}' | gcc -x c - -o /tmp/test && /tmp/test && echo OK
