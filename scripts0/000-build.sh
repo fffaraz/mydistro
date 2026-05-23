@@ -66,7 +66,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-tar.sh
 ./scripts/099-xz.sh
 
-# ./scripts/099-gettext.sh
+./scripts/099-gettext.sh
 # ./scripts/099-gperf.sh
 
 ./scripts/004-busybox.sh
