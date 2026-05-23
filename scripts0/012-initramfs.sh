@@ -24,6 +24,12 @@ cp ./src/cacert.pem ./initramfs-dir/etc/ssl/certs/ca-certificates.crt
 # large dummy file
 # dd if=/dev/zero of=./initramfs-dir/largefile bs=1M count=128
 
+# Rebuild /etc/ld.so.cache. 009-glibc.sh's `make install` already ran ldconfig once,
+# but that snapshot predates the 099-* libs (liblzma, libncurses, libbash, ...).
+# Pass 2's upstream ld.so only falls back to /lib64 and /usr/lib64, so anything
+# in /usr/lib that's not cached (e.g. liblzma.so.5) is unfindable at runtime.
+"$INITRAMFS_DIR/sbin/ldconfig" -r "$INITRAMFS_DIR"
+
 cd ./initramfs-dir
 
 # remove unnecessary files
