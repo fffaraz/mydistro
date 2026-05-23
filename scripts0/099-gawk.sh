@@ -8,11 +8,11 @@ cd ./src/gawk
 ln -sf "$(which aclocal)" /usr/local/bin/aclocal-1.16
 ln -sf "$(which automake)" /usr/local/bin/automake-1.16
 
-sed -i 's/extras//' Makefile.in 2>/dev/null || true
+sed -i 's/extras//' Makefile.in
 
-./bootstrap.sh 2>/dev/null || ./configure --help >/dev/null 2>&1 || autoreconf -vif
+./bootstrap.sh
 
-./configure --prefix=/usr --disable-nls
+./configure --prefix=/usr --disable-nls --disable-mpfr
 
 make
 make install DESTDIR=$INITRAMFS_DIR
