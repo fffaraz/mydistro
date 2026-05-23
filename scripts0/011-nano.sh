@@ -11,8 +11,15 @@ cp -r --reflink=auto ../gnulib ./gnulib
 
 ./autogen.sh
 # Pass-2 ncurses is configured with --with-termlib, so define_key/tigetstr/etc.
-# live in libtinfow rather than libncursesw — link it explicitly.
-LIBS="-ltinfow" ./configure --prefix=/usr --enable-utf8 --enable-year2038 --disable-nls --docdir=/tmp/nano-doc --mandir=/tmp/nano-man --infodir=/tmp/nano-info
+# live in libtinfow rather than libncursesw — link it explicitly when present.
+# Pass-1 (debian) has no libtinfow, and forcing it makes autoconf's compiler
+# sanity check fail with "C compiler cannot create executables".
+NANO_LIBS=
+if ldconfig -p 2>/dev/null | grep -q 'libtinfow\.so'; then
+	NANO_LIBS="-ltinfow"
+fi
+LIBS="$NANO_LIBS" ./configure --prefix=/usr --enable-utf8 --enable-year2038 --disable-nls --docdir=/tmp/nano-doc --mandir=/tmp/nano-man --infodir=/tmp/nano-info
+
 make
 make install DESTDIR=$INITRAMFS_DIR
 
