@@ -93,6 +93,15 @@ EOF
 
 ./autogen.sh
 
+# GCC 15 defaults to -std=gnu23, which makes glibc 2.41+ expose wmemchr (in
+# wchar.h) and bsearch (in stdlib.h) as function-like _Generic macros guarded
+# by __GLIBC_USE (ISOC23). gnulib's wchar.in.h has a __GNUC__ >= 15 block that
+# re-declares wmemchr, and the preprocessor expands the macro before the
+# declaration, producing a syntax error. Pin to gnu17 so __STDC_VERSION__ stays
+# at 201710L and those _Generic macros are not defined.
+export CFLAGS="${CFLAGS} -std=gnu17"
+export CXXFLAGS="${CXXFLAGS} -std=gnu++17"
+
 ./configure --prefix=/usr --disable-static
 
 # gettext-tools/examples/ relies on autopull.sh fetching per-language .po
