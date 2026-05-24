@@ -13,6 +13,10 @@ export INITRAMFS_DIR=$(pwd)/initramfs-dir
 
 command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 
+# Pass-1 texinfo XS modules were compiled against debian's perl, but pass-2
+# perl differs — skip XS so texi2any falls back to pure Perl.
+export TEXINFO_XS=omit
+
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
 ./scripts/030-nasm.sh
