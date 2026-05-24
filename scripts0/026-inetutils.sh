@@ -14,7 +14,8 @@ rm -f gl/top/README-release.diff
 
 sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
 
-./configure --prefix=/usr \
+./configure \
+	--prefix=/usr \
 	--bindir=/usr/bin \
 	--localstatedir=/var \
 	--disable-logger \
