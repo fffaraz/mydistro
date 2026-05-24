@@ -17,8 +17,8 @@ cp ./src/syslinux/bios/com32/libutil/libutil.c32 ./iso-dir/isolinux
 cp ./src/syslinux/bios/com32/menu/vesamenu.c32 ./iso-dir/isolinux
 cp ./src/syslinux/bios/com32/menu/menu.c32 ./iso-dir/isolinux
 
-# mk iso
-mkisofs -J -R -o ./output/mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
+# mk iso (xorriso's mkisofs emulation — pass 2 has no debian genisoimage)
+xorriso -as mkisofs -J -R -o ./output/mydistro.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table iso-dir
 
 # alt mk iso
 # cd ./src/linux

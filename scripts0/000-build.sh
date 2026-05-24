@@ -80,5 +80,6 @@ export TEXINFO_XS=omit
 
 ./scripts/004-busybox.sh
 ./scripts/012-initramfs.sh
+./scripts/035-xorriso.sh
 ./scripts/013-mkisofs.sh
 ./scripts/014-mk-boot-img.sh
