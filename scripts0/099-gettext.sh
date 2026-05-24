@@ -134,13 +134,17 @@ make
 
 # Pass 2's freshly-built initramfs has no groff, so gettext's HTML man pages
 # don't get rendered and install-html-local then fails copying nonexistent
-# files. Touch empty stubs for whatever $(man_HTML) resolves to in each man
-# Makefile so the install step succeeds — rendered HTML man pages aren't
-# something an initramfs needs.
+# files. The .1 man pages are also absent: they're regenerated from the just-
+# built binaries via help2man, and the rule chain depends on $(top_srcdir)/
+# ../.version (a gnulib bootstrap file) which doesn't exist in a from-git
+# build. Touch empty stubs for $(man_HTML) and $(man_MANS) so the install
+# step succeeds — rendered man pages aren't something an initramfs needs.
 for d in gettext-runtime/man gettext-tools/man; do
 	[ -f "$d/Makefile" ] || continue
-	for f in $(make -C "$d" -s --eval='_dump_html:; @echo $(man_HTML)' _dump_html 2>/dev/null); do
-		[ -e "$d/$f" ] || : >"$d/$f"
+	for var in man_HTML man_MANS; do
+		for f in $(make -C "$d" -s --eval="_dump_${var}:; @echo \$(${var})" "_dump_${var}" 2>/dev/null); do
+			[ -e "$d/$f" ] || : >"$d/$f"
+		done
 	done
 done
 
