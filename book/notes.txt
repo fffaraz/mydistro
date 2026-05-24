@@ -1,4 +1,8 @@
 https://www.linuxfromscratch.org/lfs/download.html
 https://www.linuxfromscratch.org/blfs/download.html
+
+Gaming Linux From Scratch
 https://github.com/glfs-book/glfs
+
+Supplemental Linux From Scratch
 https://github.com/glfs-book/slfs
