@@ -1,12 +1,14 @@
 #!/bin/bash
 set -exuo pipefail
 
-cd ./src/gperf
+cd ./src
+tar -xf gperf.tar.gz
+cd gperf-3.3
 
 # ln -sfn ../gnulib ./gnulib
-cp -r --reflink=auto ../gnulib ./gnulib
+# cp -r --reflink=auto ../gnulib ./gnulib
 
-./autogen.sh
+# ./autogen.sh
 
 ./configure --prefix=/usr
 
