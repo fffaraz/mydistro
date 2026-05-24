@@ -76,6 +76,7 @@ export TEXINFO_XS=omit
 
 ./scripts/099-gettext.sh
 ./scripts/099-texinfo.sh
+./scripts/099-groff.sh
 
 ./scripts/004-busybox.sh
 ./scripts/012-initramfs.sh
