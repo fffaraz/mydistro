@@ -8,6 +8,7 @@ COMMON_FLAGS="-O3 -pipe -march=native -Wno-error"
 export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 export MAKEFLAGS=-j$(nproc)
+export SOURCE_DATE_EPOCH=1700000000 # fixed timestamp for reproducibility; 2023-11-14T22:13:20Z
 
 export INITRAMFS_DIR=$(pwd)/initramfs-dir
 
