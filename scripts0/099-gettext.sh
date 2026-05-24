@@ -91,16 +91,35 @@ TREE_SITTER_TYPESCRIPT_VERSION=$TREE_SITTER_TYPESCRIPT_VERSION
 TREE_SITTER_D_VERSION=$TREE_SITTER_D_VERSION
 EOF
 
-./autogen.sh
+# glibc 2.43's features.h forces _ISOC23_SOURCE=1 whenever _GNU_SOURCE is set
+# (autoconf's AC_USE_SYSTEM_EXTENSIONS sets _GNU_SOURCE), which forces
+# __GLIBC_USE_ISOC23=1 regardless of __STDC_VERSION__. <wchar.h> and <stdlib.h>
+# then define wmemchr/bsearch as function-like _Generic macros. gnulib's
+# "Declarations for ISO C N3322" block (guarded by __GNUC__ >= 15) redeclares
+# those names as plain functions, and the macro expands inside the
+# redeclaration, producing "expected identifier or '(' before '_Generic'".
+# Pinning -std=gnu17 used to suppress this on glibc 2.41 but is bypassed by
+# the _GNU_SOURCE chain on 2.43. Undef the names inside that block before
+# they get redeclared. Patch the gnulib master before autogen.sh so the fix
+# propagates through gnulib-tool into every gettext-*/gnulib-lib/ copy.
+sed -i '/^#if defined __GNUC__ && __GNUC__ >= 15 && !defined __clang__$/a\
+# undef wmemcpy\
+# undef wmemmove\
+# undef wcsncpy\
+# undef wcsncat\
+# undef wmemcmp\
+# undef wcsncmp\
+# undef wmemchr\
+# undef wmemset' gnulib/lib/wchar.in.h
+sed -i '/^#if defined __GNUC__ && __GNUC__ >= 15 && !defined __clang__$/a\
+# undef bsearch\
+# undef qsort' gnulib/lib/stdlib.in.h
 
-# GCC 15 defaults to -std=gnu23, which makes glibc 2.41+ expose wmemchr (in
-# wchar.h) and bsearch (in stdlib.h) as function-like _Generic macros guarded
-# by __GLIBC_USE (ISOC23). gnulib's wchar.in.h has a __GNUC__ >= 15 block that
-# re-declares wmemchr, and the preprocessor expands the macro before the
-# declaration, producing a syntax error. Pin to gnu17 so __STDC_VERSION__ stays
-# at 201710L and those _Generic macros are not defined.
 export CFLAGS="${CFLAGS} -std=gnu17"
 export CXXFLAGS="${CXXFLAGS} -std=gnu++17"
+
+
+./autogen.sh
 
 ./configure --prefix=/usr --disable-static
 
