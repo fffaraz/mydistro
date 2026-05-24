@@ -30,3 +30,7 @@ mkdir -p \
 	usr/local/sbin \
 	usr/sbin \
 	var/log
+
+# /tmp must be world-writable + sticky (mode 1777); some tools (e.g. syslinux's
+# linux installer) refuse to run otherwise. mkdir -p uses umask, which gives 0755.
+chmod 1777 ./tmp
