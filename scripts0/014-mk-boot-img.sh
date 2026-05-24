@@ -10,7 +10,11 @@ mkfs.vfat ./output/boot.img
 sync
 
 # make boot image
-./src/syslinux/bios/mtools/syslinux ./output/boot.img
+# ./src/syslinux/bios/mtools/syslinux ./output/boot.img
+
+# Use the linux/ variant (direct loop-device install) rather than mtools/ —
+# pass 2's rootfs has no mcopy/mformat, which the mtools/ variant shells out to.
+./src/syslinux/bios/linux/syslinux --install ./output/boot.img
 sync
 
 mkdir -p ./mnt
