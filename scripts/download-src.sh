@@ -79,7 +79,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 		repo="${fields[2]}"
 		branch="${fields[3]}"
 		if [[ -d "$name" ]]; then
-			echo "  Skipping, '$name' already exists"
+			echo "  Skipping git clone, directory '$name' already exists"
 			continue
 		fi
 		echo "==> Cloning $name from $repo @ $branch"
