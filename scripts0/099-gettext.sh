@@ -131,6 +131,19 @@ export CXXFLAGS="${CXXFLAGS} -std=gnu++17"
 sed -i '/^SUBDIRS = /s/ examples//' gettext-tools/Makefile
 
 make
+
+# Pass 2's freshly-built initramfs has no groff, so gettext's HTML man pages
+# don't get rendered and install-html-local then fails copying nonexistent
+# files. Touch empty stubs for whatever $(man_HTML) resolves to in each man
+# Makefile so the install step succeeds — rendered HTML man pages aren't
+# something an initramfs needs.
+for d in gettext-runtime/man gettext-tools/man; do
+	[ -f "$d/Makefile" ] || continue
+	for f in $(make -C "$d" -s --eval='_dump_html:; @echo $(man_HTML)' _dump_html 2>/dev/null); do
+		[ -e "$d/$f" ] || : >"$d/$f"
+	done
+done
+
 make install DESTDIR=$INITRAMFS_DIR
 
 # Inject a gettext-${ARCHIVE_VERSION}/ entry into the installed autopoint
