@@ -49,6 +49,7 @@ export TEXINFO_XS=omit
 
 ./scripts/009-glibc.sh
 ./scripts/099-make.sh
+./scripts/099-gperf.sh
 ./scripts/099-m4.sh
 ./scripts/099-autoconf.sh
 ./scripts/099-automake.sh
@@ -74,7 +75,6 @@ export TEXINFO_XS=omit
 
 ./scripts/099-gettext.sh
 ./scripts/099-texinfo.sh
-# ./scripts/099-gperf.sh
 
 ./scripts/004-busybox.sh
 ./scripts/012-initramfs.sh
