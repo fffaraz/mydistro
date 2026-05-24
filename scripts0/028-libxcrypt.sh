@@ -3,9 +3,13 @@ set -exuo pipefail
 
 cd ./src/libxcrypt
 
-./autogen.sh
+# requires git:
+# ./autogen.sh
 
-./configure --prefix=/usr \
+autoreconf -fiv -Wall,error
+
+./configure \
+	--prefix=/usr \
 	--enable-hashes=strong,glibc \
 	--enable-obsolete-api=glibc \
 	--disable-static \
