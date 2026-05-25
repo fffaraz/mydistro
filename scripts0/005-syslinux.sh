@@ -15,4 +15,8 @@ sed -i 's/lmalloc\.o/lmalloc.o calloc.o/' ./mk/lib.mk
 # are not installed anyway — drop the .menu files so menugen.py is never invoked.
 rm -f ./com32/cmenu/*.menu
 
-CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=not-too-long make OPTFLAGS="-O3 -Wno-error" bios
+# -fcf-protection=none: pass-2 gcc is built with --enable-cet=auto default,
+# so it emits endbr32 + .note.gnu.property into the i386 c32 ELF modules.
+# syslinux's freestanding com32 loader can't handle either, which breaks
+# vesamenu/libcom32 — both ISO and boot.img fail to boot in pass 2.
+CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=not-too-long make OPTFLAGS="-O3 -Wno-error -fcf-protection=none" bios
