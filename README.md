@@ -29,7 +29,7 @@ This project is in early development and is not yet functional for general use.
 ```sh
 ./build.sh           # Main mode: build from upstream git sources
 ./build.sh --lfs     # LFS mode: build following the Linux From Scratch book
-./run.sh --qemu      # Boot the ISO in QEMU (graphical)
+./run.sh --iso       # Boot the ISO image in QEMU (graphical)
 ./run.sh --cli       # Boot the kernel + initramfs on a serial console
 ./run.sh --docker    # Run the initramfs as a Docker container
 ```
