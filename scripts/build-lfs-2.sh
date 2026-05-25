@@ -20,7 +20,7 @@ fi
 
 SCRIPTS_DIR="scripts${STAGE}"
 IMAGE_NAME="mydistro-stage${STAGE}:latest"
-ROOTFS_TARBALL="./output/stage${STAGE}.tar.gz"
+ROOTFS_TARBALL="./output/lfs/stage${STAGE}.tar.gz"
 
 docker rm -f mydistro || true
 
@@ -33,10 +33,10 @@ docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/$SCRIPTS_DIR:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src-lfs:/opt/mydistro/src-ro:ro \
-	-v $(pwd)/output:/opt/mydistro/output \
+	-v $(pwd)/output/lfs:/opt/mydistro/output \
 	--workdir /opt/mydistro \
 	--tmpfs /tmp \
 	$ENTRY_POINT \
-	"$IMAGE_NAME" 2>&1 | tee ./output/build${STAGE}.log
+	"$IMAGE_NAME" 2>&1 | tee ./output/build-lfs${STAGE}.log
 
-ls -alh ./output
+ls -alh ./output/lfs

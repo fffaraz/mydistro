@@ -17,7 +17,7 @@ fi
 # ensure output directory exists and clear its contents
 mkdir -p ./output
 rm -rf ./output/*
-mkdir -p ./output/{1,2}
+mkdir -p ./output/{1,2,lfs}
 
 SECONDS=0
 

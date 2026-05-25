@@ -15,7 +15,7 @@ docker rm -f mydistro || true
 
 if [ "$SKIP_IMPORT" = false ]; then
 	docker rmi -f mydistro-initramfs:latest || true
-	docker import ./output/initramfs.tar.gz mydistro-initramfs:latest
+	docker import ./output/1/initramfs.tar.gz mydistro-initramfs:latest
 fi
 
 docker run --privileged --rm -i --network none --name mydistro \
