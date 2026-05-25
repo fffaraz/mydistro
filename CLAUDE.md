@@ -9,13 +9,13 @@ Always identify which mode the user's request targets before reading any script.
 The primary mode. Builds the OS from upstream **git source repositories**, in a single pass repeated twice for self-hosting.
 
 - **Sources**: `src/` (one subdir per dependency, cloned from upstream git). Listed in `deps/sources.conf`. Downloaded by `scripts/download-src.sh`.
-- **Build scripts**: `scripts0/` only. The execution order is dictated by `scripts0/000-build.sh`, **not** by filename ordering. Optional scripts that `000-build.sh` does **not** call: `009-musl.sh` (alternate libc), `ladybird.sh`, `moby.sh`, `podman.sh`, `toybox.sh`, `wlroots.sh`. The `099-*` toolchain rebuilds (make, m4, autoconf, automake, flex, bison, binutils, gcc, ncurses, bash, coreutils, diffutils, file, findutils, gawk, gettext, gperf, grep, gzip, patch, sed, tar, xz) **are** wired in and rebuild themselves against the freshly built glibc — always check `000-build.sh` before assuming a script is live.
-- **Pass 1** — `scripts/build1.sh`: runs `scripts0/` inside a container based on `debian:sid-slim` (the project `Dockerfile`). Produces `output/initramfs.tar.gz`.
-- **Pass 2** — `scripts/build2.sh`: imports `initramfs.tar.gz` as the image `mydistro-initramfs:latest` and re-runs the **same `scripts0/`** inside it. This is the self-hosting step (the OS rebuilds itself).
+- **Build scripts**: `scripts0/` only. The execution order is dictated by `scripts0/000-build.sh`, **not** by filename ordering. Scripts that `000-build.sh` does **not** call (commented out or unused): `007-microwindows.sh`, `009-musl.sh` (alternate libc), `036-mtools.sh`, `ladybird.sh`, `moby.sh`, `podman.sh`, `toybox.sh`, `wlroots.sh`. The `099-*` toolchain rebuilds (make, gperf, m4, autoconf, automake, libtool, flex, bison, binutils, gcc, ncurses, bash, coreutils, diffutils, file, findutils, gawk, grep, gzip, patch, sed, tar, xz, gettext, texinfo, groff) **are** wired in and rebuild themselves against the freshly built glibc — always check `000-build.sh` before assuming a script is live.
+- **Pass 1** — `scripts/build1.sh`: runs `scripts0/` inside a container based on `debian:sid-slim` (the project `Dockerfile`). Writes to `output/1/` (final artifacts include `initramfs.tar.gz`).
+- **Pass 2** — `scripts/build2.sh`: imports `output/1/initramfs.tar.gz` as the image `mydistro-initramfs:latest` and re-runs the **same `scripts0/`** inside it, writing to `output/2/`. This is the self-hosting step (the OS rebuilds itself).
 - **Container mounts** (both passes):
   - `src/` → `/opt/mydistro/src-ro` **read-only**; `000-build.sh` then overlay-mounts a writable tmpfs at `./src`. **Build steps must `cd ./src/<pkg>`, never `./src-ro/<pkg>`.**
   - `scripts0/` → `/opt/mydistro/scripts` read-only.
-  - `assets/` read-only, `output/` writable.
+  - `assets/` read-only; the pass's output subdir (`output/1` or `output/2`) is mounted at `/opt/mydistro/output` (writable).
 
 Invoke: `./build.sh` (add `-d` to `build1.sh`/`build2.sh` for an interactive shell; `build2.sh -n` skips the `docker import` step when iterating).
 
@@ -58,8 +58,8 @@ Layout details:
 
 Invoke: `./build.sh --lfs`.
 
-- `scripts/build-lfs-1.sh [-d]`: runs stage 1 in `mydistro-builder`. `-d` drops to a shell.
-- `scripts/build-lfs-2.sh [-d] [-n] <stage>`: runs stage `<stage>` (≥ 2). Imports `output/stage${stage}.tar.gz` as `mydistro-stage${stage}:latest`, mounts `scripts${stage}/`, logs to `output/build${stage}.log`. `-d` shell, `-n` skip `docker import` when iterating.
+- `scripts/build-lfs-1.sh [-d]`: runs stage 1 in `mydistro-builder`. Writes to `output/lfs/`. `-d` drops to a shell.
+- `scripts/build-lfs-2.sh [-d] [-n] <stage>`: runs stage `<stage>` (≥ 2). Imports `output/lfs/stage${stage}.tar.gz` as `mydistro-stage${stage}:latest`, mounts `scripts${stage}/`, writes to `output/lfs/`, logs to `output/build-lfs${stage}.log`. `-d` shell, `-n` skip `docker import` when iterating.
 
 ## Shared mechanics
 
@@ -67,10 +67,10 @@ Invoke: `./build.sh --lfs`.
 - **Offline builds**: containers run with `--network none` and `--privileged` (privileged is needed for the overlay mount). All downloads happen on the host before the container starts.
 - **Compiler flags** (set by every `000-build.sh`): `CFLAGS`/`CXXFLAGS` = `-O3 -pipe -march=native -Wno-error`, `MAKEFLAGS=-j$(nproc)`. `-march=native` means built artifacts are tied to the build host's CPU.
 - **Architecture**: x86_64 only (hardcoded throughout — kernel target, `qemu-system-x86_64`, `bzImage`, syslinux/grub-x86).
-- **Output**: everything lands in `output/` (cleared at the start of each `./build.sh` run). Final artifacts: Mode A — `bzImage`, `initramfs.cpio.gz`, `initramfs.tar.gz`, `mydistro.iso`, `boot.img`; Mode B — `bzImage`, `initramfs.cpio.gz` (plus the intermediate `stage${N}.tar.gz` files each LFS stage leaves behind).
-- **Run the result**: `./run.sh --cli` (serial console, uses `bzImage` + `initramfs.cpio.gz`), `--qemu` (graphical ISO boot — Mode A only, since Mode B doesn't build an ISO), or `--docker` (import the initramfs and run a shell — Mode A only).
+- **Output**: `build.sh` creates `output/{1,2,lfs}` and clears `output/` at the start of each run. Mode A pass 1 → `output/1/`, pass 2 → `output/2/`; Mode B → `output/lfs/`. Final artifacts: Mode A — `bzImage`, `initramfs.cpio.gz`, `initramfs.tar.gz`, `mydistro.iso`, `boot.img`; Mode B — `bzImage`, `initramfs.cpio.gz` (plus the intermediate `stage${N}.tar.gz` files each LFS stage leaves behind).
+- **Run the result**: `./run.sh` always reads from `./output/1` (Mode A pass-1 artifacts). `--cli` = serial console (`bzImage` + `initramfs.cpio.gz`); `--iso` = graphical boot of `mydistro.iso`; `--img` = boot the raw `boot.img` disk image; `--docker` = import `initramfs.tar.gz` and drop into a shell. None of these target Mode B output directly — point them at a hand-copied `output/1/` if you need to boot LFS artifacts.
 - **Reference material**: `book/lfs/` and `book/blfs/` hold the LFS/BLFS book copies the LFS mode tracks; consult them before changing `scripts1/`..`scripts5/` logic.
-- **Formatting**: shell scripts are formatted with `shfmt -l -w .` (tabs; see `.editorconfig`). No automated test suite — verification is "did it build, does it boot in `./run.sh`".
+- **Formatting**: shell scripts use tabs and are formatted with `shfmt -l -w .` (no indent setting in `.editorconfig` — it only excludes `src/**`). No automated test suite — verification is "did it build, does it boot in `./run.sh`".
 
 ## Rules for AI agents
 
