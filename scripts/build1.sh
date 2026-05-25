@@ -16,10 +16,10 @@ docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
 	-v $(pwd)/scripts0:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
-	-v $(pwd)/output:/opt/mydistro/output \
+	-v $(pwd)/output/1:/opt/mydistro/output \
 	--workdir /opt/mydistro \
 	--tmpfs /tmp \
 	$ENTRY_POINT \
 	mydistro-builder:latest 2>&1 | tee ./output/build1.log
 
-ls -alh ./output
+ls -alh ./output/1
