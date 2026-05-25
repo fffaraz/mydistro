@@ -15,17 +15,24 @@ sed -i 's/lmalloc\.o/lmalloc.o calloc.o/' ./mk/lib.mk
 # are not installed anyway — drop the .menu files so menugen.py is never invoked.
 rm -f ./com32/cmenu/*.menu
 
-# -fcf-protection=none: pass-2 gcc is built with --enable-cet=auto default,
-# so it emits endbr32 + .note.gnu.property into the i386 c32 ELF modules.
-# syslinux's freestanding com32 loader can't handle either, which breaks
-# vesamenu/libcom32 — both ISO and boot.img fail to boot in pass 2.
+# Pass-2 toolchain defaults break syslinux's freestanding com32 loader:
 #
-# OPTFLAGS only reaches embedded.mk (isolinux.bin) and lib.mk; elf.mk and
-# com32.mk roll their own GCCOPT and ignore it, so the c32 modules
-# (ldlinux/libcom32/libutil/menu/vesamenu) were still being built with CET.
-# Result: isolinux.bin's banner printed, then load of ldlinux.c32 hung silently.
-# Inject the flag straight into GCCOPT for those two makefiles.
+# 1. gcc --enable-cet=auto emits endbr32 — disable with -fcf-protection=none.
+# 2. binutils 2.31+ defaults to -z separate-code, splitting the .c32 modules
+#    into two LOAD segments (R E / RW) with a page-aligned gap. The com32
+#    ELF loader expects a single RWE LOAD segment and silently hangs on
+#    ldlinux.c32 after isolinux.bin prints its banner.
+# 3. as defaults to -mx86-used-note=yes, leaving a .note.gnu.property /
+#    GNU_PROPERTY segment behind — strip it from every built .c32.
+#
+# OPTFLAGS only flows through embedded.mk (isolinux.bin) and lib.mk; elf.mk
+# and com32.mk roll their own GCCOPT/LDFLAGS, so patch them directly.
 sed -i 's|^GCCOPT += -Os -fomit-frame-pointer$|& -fcf-protection=none|' ./mk/elf.mk
 sed -i 's|^GCCOPT += -Os$|& -fcf-protection=none|' ./mk/com32.mk
+sed -i 's|^LDFLAGS *= .*elf.ld --as-needed$|& -z noseparate-code|' ./mk/elf.mk
+sed -i 's|^LDFLAGS *= .*-T \$(COM32LD)$|& -z noseparate-code|' ./mk/com32.mk
 
 CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=not-too-long make OPTFLAGS="-O3 -Wno-error -fcf-protection=none" bios
+
+# Strip asm-emitted GNU property notes from every built .c32 module.
+find ./bios -name '*.c32' -exec objcopy --remove-section=.note.gnu.property {} \;
