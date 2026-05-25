@@ -17,5 +17,10 @@ EOF
 	--with-ssl=openssl \
 	--disable-nls
 
+# wget 1.25.0: gnulib_po/Makefile is generated with an empty top_builddir,
+# turning $(top_builddir)/config.status into /config.status and breaking make.
+# NLS is disabled, so drop the directory from SUBDIRS entirely.
+sed -i 's| gnulib_po||' Makefile
+
 make
 make install DESTDIR=$INITRAMFS_DIR
