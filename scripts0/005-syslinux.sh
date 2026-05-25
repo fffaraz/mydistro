@@ -43,10 +43,10 @@ sed -i 's|^LDFLAGS *= .*-T \$(COM32LD)$|& -z noseparate-code|' ./mk/com32.mk
 #   - -DCORE_DEBUG -DDEBUG_STDIO: route every dprintf() in core/ and
 #     libcom32core/ through printf() so they appear on screen
 # Remove all three knobs once the root cause is identified.
-sed -i 's|^; %define DEBUG_TRACERS|%define DEBUG_TRACERS|' ./core/tracers.inc
-sed -i 's|^; %define DEBUG_MESSAGES|%define DEBUG_MESSAGES|' ./core/tracers.inc
+# sed -i 's|^; %define DEBUG_TRACERS|%define DEBUG_TRACERS|' ./core/tracers.inc
+# sed -i 's|^; %define DEBUG_MESSAGES|%define DEBUG_MESSAGES|' ./core/tracers.inc
 
-CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=2020 make OPTFLAGS="-Os -Wno-error -fcf-protection=none -DCORE_DEBUG -DDEBUG_STDIO" bios
+CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=2020 make OPTFLAGS="-Os -Wno-error -fcf-protection=none" bios # -DCORE_DEBUG -DDEBUG_STDIO
 
 # Strip asm-emitted GNU property notes from every built .c32 module.
 find ./bios -name '*.c32' -exec objcopy --remove-section=.note.gnu.property {} \;
