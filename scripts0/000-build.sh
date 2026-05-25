@@ -48,6 +48,7 @@ export TEXINFO_XS=omit
 ./scripts/027-gmp-mpc-mpfr.sh
 ./scripts/029-rsync.sh
 ./scripts/034-git.sh
+./scripts/038-wget.sh
 
 ./scripts/009-glibc.sh
 ./scripts/099-make.sh
