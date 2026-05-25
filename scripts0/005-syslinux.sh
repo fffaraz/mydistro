@@ -1,6 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
+# https://src.fedoraproject.org/rpms/syslinux
+# git://git.kernel.org/pub/scm/boot/syslinux/syslinux.git
+
 cd ./src/syslinux
 
 # apply patches
