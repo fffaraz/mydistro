@@ -6,7 +6,7 @@ set -exuo pipefail
 # qemu-system-x86_64: symbol lookup error: /snap/core20/current/lib/x86_64-linux-gnu/libpthread.so.0: undefined symbol: __libc_pthread_init, version GLIBC_PRIVATE
 unset GTK_PATH
 
-OUTPUT_DIR="./output/1"
+OUTPUT_DIR="./output/2"
 
 if [[ "${1:-}" == "--cli" ]]; then
 	echo "To exit QEMU when running in a terminal without a graphical interface: Ctrl+A -> X"
