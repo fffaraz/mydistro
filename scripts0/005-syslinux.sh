@@ -32,7 +32,18 @@ sed -i 's|^GCCOPT += -Os$|& -fcf-protection=none|' ./mk/com32.mk
 sed -i 's|^LDFLAGS *= .*elf.ld --as-needed$|& -z noseparate-code|' ./mk/elf.mk
 sed -i 's|^LDFLAGS *= .*-T \$(COM32LD)$|& -z noseparate-code|' ./mk/com32.mk
 
-CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=2020 make OPTFLAGS="-O3 -Wno-error -fcf-protection=none" bios
+# DIAGNOSTIC BUILD — pass-2 still hangs after the ISOLINUX banner with no
+# error message. Enable every syslinux trace knob so we can see exactly which
+# step of pm_fs_init / load_env32 dies:
+#   - tracers.inc: uncomment DEBUG_MESSAGES + DEBUG_TRACERS (nasm side, real-mode
+#     status lines + per-step single-char tracers)
+#   - -DCORE_DEBUG -DDEBUG_STDIO: route every dprintf() in core/ and
+#     libcom32core/ through printf() so they appear on screen
+# Remove all three knobs once the root cause is identified.
+sed -i 's|^; %define DEBUG_TRACERS|%define DEBUG_TRACERS|' ./core/tracers.inc
+sed -i 's|^; %define DEBUG_MESSAGES|%define DEBUG_MESSAGES|' ./core/tracers.inc
+
+CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=2020 make OPTFLAGS="-Os -Wno-error -fcf-protection=none -DCORE_DEBUG -DDEBUG_STDIO" bios
 
 # Strip asm-emitted GNU property notes from every built .c32 module.
 find ./bios -name '*.c32' -exec objcopy --remove-section=.note.gnu.property {} \;
