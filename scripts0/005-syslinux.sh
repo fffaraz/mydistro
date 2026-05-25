@@ -32,7 +32,7 @@ sed -i 's|^GCCOPT += -Os$|& -fcf-protection=none|' ./mk/com32.mk
 sed -i 's|^LDFLAGS *= .*elf.ld --as-needed$|& -z noseparate-code|' ./mk/elf.mk
 sed -i 's|^LDFLAGS *= .*-T \$(COM32LD)$|& -z noseparate-code|' ./mk/com32.mk
 
-CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=not-too-long make OPTFLAGS="-O3 -Wno-error -fcf-protection=none" bios
+CFLAGS="" CXXFLAGS="" LDFLAGS="" DATE=2020 make OPTFLAGS="-O3 -Wno-error -fcf-protection=none" bios
 
 # Strip asm-emitted GNU property notes from every built .c32 module.
 find ./bios -name '*.c32' -exec objcopy --remove-section=.note.gnu.property {} \;
