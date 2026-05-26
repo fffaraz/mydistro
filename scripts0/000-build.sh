@@ -9,26 +9,14 @@ export CFLAGS="${COMMON_FLAGS}"
 export CXXFLAGS="${COMMON_FLAGS}"
 export MAKEFLAGS=-j$(nproc)
 export SOURCE_DATE_EPOCH=1700000000 # fixed timestamp for reproducibility; 2023-11-14T22:13:20Z
-
 export INITRAMFS_DIR=$(pwd)/initramfs-dir
-
-command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
-
-# Offline build: gnulib-based ./bootstrap scripts call wget to fetch translation
-# PO files. The container runs with --network none, so even a real wget would
-# fail. Drop a no-op wget on PATH so bootstrap's "have wget?" check passes and
-# the PO fetch silently succeeds (NLS is disabled in every package we build).
-# /usr/local/bin precedes /usr/bin on PATH and is on a regular fs (/tmp is
-# mounted noexec via --tmpfs in build1.sh/build2.sh).
-cat >/usr/local/bin/wget <<'EOF'
-#!/bin/sh
-exit 0
-EOF
-chmod +x /usr/local/bin/wget
+export PATH="$(pwd)/assets/stub-bin:$PATH"
 
 # Pass-1 texinfo XS modules were compiled against debian's perl, but pass-2
 # perl differs — skip XS so texi2any falls back to pure Perl.
 export TEXINFO_XS=omit
+
+command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 
 ./scripts/001-kernel.sh
 ./scripts/002-initramfs.sh
