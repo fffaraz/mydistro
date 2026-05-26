@@ -17,17 +17,18 @@ fi
 # ensure output directory exists and clear its contents
 mkdir -p ./output
 rm -rf ./output/*
-mkdir -p ./output/{1,2,lfs}
 
 SECONDS=0
 
 if [ "$BUILD_LFS" = "1" ]; then
+	mkdir -p ./output/lfs
 	./scripts-host/build-lfs1.sh   # first stage
 	./scripts-host/build-lfs2.sh 2 # second stage
 	./scripts-host/build-lfs2.sh 3 # third stage
 	./scripts-host/build-lfs2.sh 4 # fourth stage
 	./scripts-host/build-lfs2.sh 5 # fifth stage
 else
+	mkdir -p ./output/{1,2}
 	./scripts-host/build-pass1.sh # first pass
 	./scripts-host/build-pass2.sh # second pass
 fi

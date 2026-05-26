@@ -26,6 +26,6 @@ docker run --privileged --rm -i --network none --name mydistro \
 	--workdir /opt/mydistro \
 	--tmpfs /tmp \
 	$ENTRY_POINT \
-	mydistro-initramfs:latest 2>&1 | tee ./output/build2.log
+	mydistro-initramfs:latest 2>&1 | tee ./output/build-pass2.log
 
 ls -alh ./output/2

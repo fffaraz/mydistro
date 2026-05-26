@@ -118,7 +118,6 @@ sed -i '/^#if defined __GNUC__ && __GNUC__ >= 15 && !defined __clang__$/a\
 export CFLAGS="${CFLAGS} -std=gnu17"
 export CXXFLAGS="${CXXFLAGS} -std=gnu++17"
 
-
 ./autogen.sh
 
 ./configure --prefix=/usr --disable-static
