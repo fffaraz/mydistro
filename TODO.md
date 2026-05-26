@@ -1,6 +1,6 @@
 # Dockerfile package minimization
 
-Audit of `Dockerfile` apt packages vs. actual usage in `scripts0/`.
+Audit of `Dockerfile` apt packages vs. actual usage in `scripts-build/`.
 
 ## High confidence — remove
 
@@ -17,7 +17,7 @@ Audit of `Dockerfile` apt packages vs. actual usage in `scripts0/`.
 ## Medium confidence — remove with a tiny tweak
 
 - **`nasm`** — needed for `005-syslinux.sh`. `030-nasm.sh` runs first but only does `make install DESTDIR=$INITRAMFS_DIR` (not on host PATH). Add a plain `make install` to that script and host `nasm` becomes redundant.
-- **`python-is-python3`** — `python3` stays. We already removed `*.menu` files that would invoke `python` in syslinux. Worth grepping `src/` post-clone for stray shebangs, but no active script in `scripts0/` calls bare `python`.
+- **`python-is-python3`** — `python3` stays. We already removed `*.menu` files that would invoke `python` in syslinux. Worth grepping `src/` post-clone for stray shebangs, but no active script in `scripts-build/` calls bare `python`.
 - **`libzstd-dev`** — kernel needs the `zstd` *binary* for `KERNEL_ZSTD` (keep `zstd`), but no script links against libzstd before `015-zstd.sh` builds it. `017-elfutils.sh` configures `--without-zstd`. Likely safe.
 
 ## Keep — verified consumers exist
