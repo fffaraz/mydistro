@@ -18,7 +18,7 @@ if ! [[ "$STAGE" =~ ^[0-9]+$ ]] || [ "$STAGE" -lt 2 ]; then
 	exit 1
 fi
 
-SCRIPTS_DIR="scripts${STAGE}"
+SCRIPTS_DIR="scripts-lfs${STAGE}"
 IMAGE_NAME="mydistro-stage${STAGE}:latest"
 ROOTFS_TARBALL="./output/lfs/stage${STAGE}.tar.gz"
 

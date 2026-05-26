@@ -20,7 +20,7 @@ fi
 
 docker run --privileged --rm -i --network none --name mydistro \
 	-v $(pwd)/assets:/opt/mydistro/assets:ro \
-	-v $(pwd)/scripts0:/opt/mydistro/scripts:ro \
+	-v $(pwd)/scripts-build:/opt/mydistro/scripts:ro \
 	-v $(pwd)/src:/opt/mydistro/src-ro:ro \
 	-v $(pwd)/output/2:/opt/mydistro/output \
 	--workdir /opt/mydistro \

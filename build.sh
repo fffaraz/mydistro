@@ -9,9 +9,9 @@ fi
 
 # download source repositories on the host machine to avoid doing it inside the container, which doesn't have network access
 if [ "$BUILD_LFS" = "1" ]; then
-	./scripts/download-src-lfs.sh
+	./scripts-host/download-src-lfs.sh
 else
-	./scripts/download-src.sh ./deps/sources.conf
+	./scripts-host/download-src.sh ./deps/sources.conf
 fi
 
 # ensure output directory exists and clear its contents
@@ -22,14 +22,14 @@ mkdir -p ./output/{1,2,lfs}
 SECONDS=0
 
 if [ "$BUILD_LFS" = "1" ]; then
-	./scripts/build-lfs-1.sh   # first stage
-	./scripts/build-lfs-2.sh 2 # second stage
-	./scripts/build-lfs-2.sh 3 # third stage
-	./scripts/build-lfs-2.sh 4 # fourth stage
-	./scripts/build-lfs-2.sh 5 # fifth stage
+	./scripts-host/build-lfs1.sh   # first stage
+	./scripts-host/build-lfs2.sh 2 # second stage
+	./scripts-host/build-lfs2.sh 3 # third stage
+	./scripts-host/build-lfs2.sh 4 # fourth stage
+	./scripts-host/build-lfs2.sh 5 # fifth stage
 else
-	./scripts/build1.sh # first pass
-	./scripts/build2.sh # second pass
+	./scripts-host/build-pass1.sh # first pass
+	./scripts-host/build-pass2.sh # second pass
 fi
 
 echo "Build took $((SECONDS / 60))m $((SECONDS % 60))s"
