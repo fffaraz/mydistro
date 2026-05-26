@@ -9,18 +9,6 @@ cat >m4/ax_code_coverage.m4 <<'EOF'
 AC_DEFUN([AX_CODE_COVERAGE], [])
 EOF
 
-# gnulib-tool unconditionally calls `wget` to fetch its own PO files from
-# translationproject.org. The container has no network and no wget on the
-# host image, and --skip-po only covers wget's own translations (not gnulib's).
-# NLS is disabled below anyway, so feed gnulib-tool a no-op wget on PATH.
-mkdir -p ./stub-bin
-cat >./stub-bin/wget <<'EOF'
-#!/bin/sh
-exit 0
-EOF
-chmod +x ./stub-bin/wget
-export PATH="$PWD/stub-bin:$PATH"
-
 ./bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib
 
 ./configure \
