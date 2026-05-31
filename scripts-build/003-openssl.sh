@@ -3,8 +3,8 @@ set -exuo pipefail
 
 cd ./src/openssl
 
-./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib --docdir=/tmp/openssl-doc shared
+./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib shared
 
 make
-make install DESTDIR=$INITRAMFS_DIR
-make install
+make install_sw DESTDIR=$INITRAMFS_DIR
+make install_sw
