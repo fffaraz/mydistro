@@ -30,6 +30,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/003-openssl.sh
 ./scripts/010-curl.sh
 ./scripts/032-pkgconf.sh
+./scripts/099-ncurses.sh
 ./scripts/011-nano.sh
 ./scripts/015-zstd.sh
 ./scripts/016-zlib.sh
@@ -63,7 +64,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-bison.sh
 ./scripts/099-binutils.sh
 ./scripts/099-gcc.sh
-./scripts/099-ncurses.sh
 ./scripts/099-bash.sh
 
 ./scripts/099-coreutils.sh

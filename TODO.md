@@ -10,7 +10,6 @@ Audit of `Dockerfile` apt packages vs. actual usage in `scripts-build/`.
 | `genisoimage` | `013-mkisofs.sh` uses `xorriso -as mkisofs`. `035-xorriso.sh` builds xorriso before 013 runs. |
 | `libblkid-dev` | Only consumer is `024-e2fsprogs.sh` which configures with `--disable-libblkid`. |
 | `libmpc-dev`, `libmpfr-dev` | `027-gmp-mpc-mpfr.sh` builds gmp/mpc/mpfr from source. Only consumer is `099-gcc.sh`, which runs after 027. The host `gcc` package brings the runtime libs as a transitive dep anyway. |
-| `gcc`, `g++`, `make` | Already in `build-essential`. Redundant (not extra installs, but worth tidying). |
 
 ## Medium confidence — remove with a tiny tweak
 
