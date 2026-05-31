@@ -8,7 +8,6 @@ Audit of `Dockerfile` apt packages vs. actual usage in `scripts-build/`.
 |---|---|
 | `mtools` | Never invoked. `014-mk-boot-img.sh` uses the syslinux `linux/` installer; the `mtools/` variant (and the `036-mtools.sh` build) is commented out. |
 | `genisoimage` | `013-mkisofs.sh` uses `xorriso -as mkisofs`. `035-xorriso.sh` builds xorriso before 013 runs. |
-| `libfreetype-dev` | Zero references in any active script. |
 | `libblkid-dev` | Only consumer is `024-e2fsprogs.sh` which configures with `--disable-libblkid`. |
 | `libmpc-dev`, `libmpfr-dev` | `027-gmp-mpc-mpfr.sh` builds gmp/mpc/mpfr from source. Only consumer is `099-gcc.sh`, which runs after 027. The host `gcc` package brings the runtime libs as a transitive dep anyway. |
 | `gcc`, `g++`, `make` | Already in `build-essential`. Redundant (not extra installs, but worth tidying). |
