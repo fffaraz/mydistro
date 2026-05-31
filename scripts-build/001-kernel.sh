@@ -20,6 +20,12 @@ make defconfig
 ./scripts/config --enable DEBUG_INFO_NONE
 ./scripts/config --disable DEBUG_STACK_USAGE
 
+# defconfig enables SYSTEM_TRUSTED_KEYRING, which forces the host tool
+# certs/extract-cert to compile against openssl. We don't sign modules
+# (MODULE_SIG is off) and openssl isn't installed yet at this point in the
+# build, so disable it to drop the build-time openssl dependency.
+./scripts/config --disable SYSTEM_TRUSTED_KEYRING
+
 make olddefconfig
 
 make
