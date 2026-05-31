@@ -7,3 +7,4 @@ cd ./src/openssl
 
 make
 make install DESTDIR=$INITRAMFS_DIR
+make install
