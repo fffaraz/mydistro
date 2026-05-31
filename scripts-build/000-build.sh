@@ -25,6 +25,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/006-memtest86.sh
 ./scripts/039-libpng.sh
 ./scripts/003-openssl.sh
+./scripts/028-libxcrypt.sh
 ./scripts/040-freetype.sh
 ./scripts/007-microwindows.sh
 ./scripts/008-dropbear.sh
@@ -44,7 +45,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/022-iana-etc.sh
 ./scripts/023-util-linux.sh
 ./scripts/024-e2fsprogs.sh
-./scripts/028-libxcrypt.sh
 ./scripts/025-perl.sh
 ./scripts/033-help2man.sh
 ./scripts/026-inetutils.sh

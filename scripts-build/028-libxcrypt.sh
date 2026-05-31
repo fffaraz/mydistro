@@ -17,3 +17,4 @@ autoreconf -fiv -Wall,error
 
 make
 make install DESTDIR=$INITRAMFS_DIR
+make install
