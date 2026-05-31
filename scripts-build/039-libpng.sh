@@ -3,7 +3,7 @@ set -exuo pipefail
 
 cd ./src/libpng
 
-./autogen.sh
+# ./autogen.sh
 
 ./configure --prefix=/usr --disable-static
 
