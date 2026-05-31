@@ -23,7 +23,8 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/030-nasm.sh
 ./scripts/005-syslinux.sh
 ./scripts/006-memtest86.sh
-# ./scripts/007-microwindows.sh
+./scripts/039-libpng.sh
+./scripts/007-microwindows.sh
 ./scripts/008-dropbear.sh
 ./scripts/003-openssl.sh
 ./scripts/010-curl.sh
