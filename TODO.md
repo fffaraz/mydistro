@@ -11,7 +11,6 @@ Audit of `Dockerfile` apt packages vs. actual usage in `scripts-build/`.
 ## Medium confidence — remove with a tiny tweak
 
 - **`nasm`** — needed for `005-syslinux.sh`. `030-nasm.sh` runs first but only does `make install DESTDIR=$INITRAMFS_DIR` (not on host PATH). Add a plain `make install` to that script and host `nasm` becomes redundant.
-- **`python-is-python3`** — `python3` stays. We already removed `*.menu` files that would invoke `python` in syslinux. Worth grepping `src/` post-clone for stray shebangs, but no active script in `scripts-build/` calls bare `python`.
 
 ## Keep — verified consumers exist
 
