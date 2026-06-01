@@ -33,6 +33,7 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/032-pkgconf.sh
 ./scripts/099-ncurses.sh
 ./scripts/011-nano.sh
+./scripts/041-ncdu.sh
 ./scripts/015-zstd.sh
 ./scripts/016-zlib.sh
 ./scripts/017-elfutils.sh
