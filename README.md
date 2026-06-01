@@ -8,6 +8,7 @@ This project is in early development and is not yet functional for general use.
 
 ## Philosophy and Principles
 
+- **Desktop-focused**: Built as a desktop operating system, with a graphical desktop environment as a first-class target.
 - **Source transparency**: All source code comes from upstream git repositories. No tarballs, no binaries.
 - **Atomic builds**: No package manager, no partial updates. The entire OS is built as one unit.
 - **Offline by design**: No internet needed to install or build the OS once sources are downloaded.
