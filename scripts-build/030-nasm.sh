@@ -13,4 +13,5 @@ make
 # which we don't have. Drop empty placeholders so install doesn't abort.
 touch nasm.1 ndisasm.1
 
+# make install DESTDIR=$INITRAMFS_DIR
 make install
