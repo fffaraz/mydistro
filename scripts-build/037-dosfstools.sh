@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -exuo pipefail
 
 # Real mkfs.vfat — pass 2 otherwise falls back to busybox's mkfs_vfat applet,

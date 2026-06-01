@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -exuo pipefail
 
 mkdir -pv /{boot,home,mnt,opt,srv}

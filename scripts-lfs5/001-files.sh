@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -exuo pipefail
 
 cp -v ./assets/etc/hostname /etc/hostname

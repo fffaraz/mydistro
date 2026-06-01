@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -exuo pipefail
 
 ENTRY_POINT="--entrypoint /opt/mydistro/scripts/000-build.sh"

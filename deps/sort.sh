@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # Sort sources-*.conf files alphabetically by package name, preserving the header.
 
 DIR="$(dirname "$0")"

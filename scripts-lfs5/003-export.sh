@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -exuo pipefail
 
 rm -f ./output/stage6.tar.gz

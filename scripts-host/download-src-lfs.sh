@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -euo pipefail
 
 SRC_DIR=./src-lfs

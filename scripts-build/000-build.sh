@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -exuo pipefail
 
 mkdir -p ./src /tmp/src-upper /tmp/src-work

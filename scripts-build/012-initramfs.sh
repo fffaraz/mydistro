@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 set -exuo pipefail
 
 cp ./assets/etc/init.d/rcS ./initramfs-dir/etc/init.d/rcS
