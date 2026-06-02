@@ -22,13 +22,22 @@ sed -i 's/groups$(EXEEXT) //' src/Makefile.in
 # --without-libbsd: glibc has no readpassphrase(), and we don't build libbsd,
 #   so use shadow's bundled fallback (this also skips the configure-time probe).
 # --with-yescrypt: enable the yescrypt hash (libxcrypt from 028 provides it).
+# --without-libpam: shadow defaults to "use PAM if found", and the pass-1 debian
+#   build host may have it — but this distro ships no PAM stack or /etc/pam.d, so
+#   force shadow's built-in /etc/passwd + /etc/shadow auth (login_nopam) instead.
 # Man pages live under `if ENABLE_REGENERATE_MAN` (xsltproc/docbook); leaving
 #   --enable-man off drops the whole man/ subdir, so no docbook toolchain needed.
+# --prefix=/usr: shadow zeroes exec_prefix for a /usr prefix, so `login` (its
+#   one bin_PROGRAMS entry) installs to /bin/login — exactly where agetty's
+#   compiled-in _PATH_LOGIN expects it. This provides the /bin/login that
+#   util-linux's --disable-login left missing.
 ./configure \
+	--prefix=/usr \
 	--sysconfdir=/etc \
 	--with-group-name-max-length=32 \
 	--with-yescrypt \
 	--without-libbsd \
+	--without-libpam \
 	--disable-static
 
 make

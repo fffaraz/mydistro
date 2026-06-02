@@ -8,6 +8,13 @@ cp ./assets/etc/hosts $INITRAMFS_DIR/etc/hosts
 cp ./assets/etc/os-release $INITRAMFS_DIR/etc/os-release
 cp ./assets/etc/profile $INITRAMFS_DIR/etc/profile
 cp ./assets/etc/resolv.conf $INITRAMFS_DIR/etc/resolv.conf
+cp ./assets/etc/nsswitch.conf $INITRAMFS_DIR/etc/nsswitch.conf
+install -m 600 ./assets/etc/shadow $INITRAMFS_DIR/etc/shadow
+
+# Local systemd drop-ins / units (getty@tty1 noclear drop-in, .network files).
+# systemd's `ninja install` only lays down the stock /etc/systemd defaults, so
+# our overrides from assets have to be merged in on top.
+cp -rv ./assets/etc/systemd/. $INITRAMFS_DIR/etc/systemd/
 
 touch $INITRAMFS_DIR/etc/fstab
 
