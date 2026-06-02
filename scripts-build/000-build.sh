@@ -90,7 +90,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/045-ninja.sh
 ./scripts/042-systemd.sh
 
-
 # ./scripts/004-busybox.sh
 ./scripts/012-initramfs.sh
 ./scripts/035-xorriso.sh
