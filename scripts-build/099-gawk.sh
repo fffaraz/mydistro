@@ -5,8 +5,8 @@ cd ./src/gawk
 
 # Some upstream Makefile.in references aclocal-1.16/automake-1.16; provide
 # shims that point at whichever versions are installed in the build image.
-ln -sf "$(which aclocal)" /usr/local/bin/aclocal-1.16
-ln -sf "$(which automake)" /usr/local/bin/automake-1.16
+ln -sf "$(command -v aclocal)" /usr/local/bin/aclocal-1.16
+ln -sf "$(command -v automake)" /usr/local/bin/automake-1.16
 
 ./bootstrap.sh
 
