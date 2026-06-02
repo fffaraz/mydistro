@@ -37,3 +37,5 @@ ninja
 DESTDIR=$INITRAMFS_DIR ninja install
 
 ln -sv /usr/lib/systemd/systemd $INITRAMFS_DIR/init
+
+touch $INITRAMFS_DIR/etc/machine-id
