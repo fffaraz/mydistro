@@ -25,6 +25,10 @@ sed -i 's/groups$(EXEEXT) //' src/Makefile.in
 # --without-libpam: shadow defaults to "use PAM if found", and the pass-1 debian
 #   build host may have it — but this distro ships no PAM stack or /etc/pam.d, so
 #   force shadow's built-in /etc/passwd + /etc/shadow auth (login_nopam) instead.
+# --disable-logind: the logind integration only *queries* sessions via libsystemd
+#   (which lives only in the OS image, not the pass-1 build container). Session
+#   *registration* is pam_systemd's job, which we don't have (--without-libpam),
+#   so the integration would query sessions nothing ever creates — drop it.
 # Man pages live under `if ENABLE_REGENERATE_MAN` (xsltproc/docbook); leaving
 #   --enable-man off drops the whole man/ subdir, so no docbook toolchain needed.
 # --prefix=/usr: shadow zeroes exec_prefix for a /usr prefix, so `login` (its
@@ -38,6 +42,7 @@ sed -i 's/groups$(EXEEXT) //' src/Makefile.in
 	--with-yescrypt \
 	--without-libbsd \
 	--without-libpam \
+	--disable-logind \
 	--disable-static
 
 make
