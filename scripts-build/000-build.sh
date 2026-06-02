@@ -83,11 +83,18 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-texinfo.sh
 ./scripts/099-groff.sh
 
-# systemd build dependencies: libcap (linked by systemd) plus the meson/ninja
-# build system — none are in the base image, so build them from source first.
+# systemd build dependencies, none of which are in the base image:
+#   libcap              - linked by systemd
+#   meson / ninja       - its build system
+#   jinja2 + markupsafe - python modules systemd's meson uses for templating
+# The python modules go in a vendor dir we add to PYTHONPATH, so the system
+# python3 (the base image's in pass 1, ours in pass 2) can import them.
+export PYTHONPATH="/usr/lib/python3-vendor${PYTHONPATH:+:$PYTHONPATH}"
 ./scripts/043-libcap.sh
 ./scripts/044-meson.sh
 ./scripts/045-ninja.sh
+./scripts/046-markupsafe.sh
+./scripts/047-jinja2.sh
 ./scripts/042-systemd.sh
 
 # ./scripts/004-busybox.sh
