@@ -83,6 +83,11 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-texinfo.sh
 ./scripts/099-groff.sh
 
+# systemd build dependencies: libcap (linked by systemd) plus the meson/ninja
+# build system — none are in the base image, so build them from source first.
+./scripts/043-libcap.sh
+./scripts/044-meson.sh
+./scripts/045-ninja.sh
 ./scripts/042-systemd.sh
 
 
