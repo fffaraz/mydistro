@@ -104,6 +104,8 @@ export PYTHONPATH="/usr/lib/python3-vendor${PYTHONPATH:+:$PYTHONPATH}"
 # systemd's unit dir so PID 1 socket-activates the system bus.
 ./scripts/050-dbus.sh
 
+./scripts/051-which.sh
+
 # ./scripts/004-busybox.sh
 ./scripts/099-cacert.sh
 ./scripts/012-initramfs.sh
