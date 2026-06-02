@@ -83,6 +83,8 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-texinfo.sh
 ./scripts/099-groff.sh
 
+./scripts/042-systemd.sh
+
 
 # ./scripts/004-busybox.sh
 ./scripts/012-initramfs.sh
