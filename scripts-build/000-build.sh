@@ -98,6 +98,7 @@ export PYTHONPATH="/usr/lib/python3-vendor${PYTHONPATH:+:$PYTHONPATH}"
 ./scripts/042-systemd.sh
 
 # ./scripts/004-busybox.sh
+./scripts/099-cacert.sh
 ./scripts/012-initramfs.sh
 ./scripts/035-xorriso.sh
 ./scripts/013-mkisofs.sh

@@ -33,3 +33,9 @@ done
 
 make
 make CONFIG_PREFIX=$INITRAMFS_DIR install
+
+cp ./src/busybox/examples/inittab $INITRAMFS_DIR/etc/inittab
+ln -sv /sbin/init $INITRAMFS_DIR/init
+
+cp ./assets/etc/init.d/rcS $INITRAMFS_DIR/etc/init.d/rcS
+chmod +x $INITRAMFS_DIR/etc/init.d/rcS
