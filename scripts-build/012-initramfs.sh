@@ -1,7 +1,8 @@
 #!/usr/bin/bash
 set -exuo pipefail
 
-cp ./assets/etc/init.d/rcS ./initramfs-dir/etc/init.d/rcS
+cp ./assets/etc/passwd ./initramfs-dir/etc/passwd
+cp ./assets/etc/group ./initramfs-dir/etc/group
 cp ./assets/etc/hostname ./initramfs-dir/etc/hostname
 cp ./assets/etc/hosts ./initramfs-dir/etc/hosts
 cp ./assets/etc/os-release ./initramfs-dir/etc/os-release
@@ -9,31 +10,10 @@ cp ./assets/etc/profile ./initramfs-dir/etc/profile
 cp ./assets/etc/resolv.conf ./initramfs-dir/etc/resolv.conf
 cp ./src/busybox/examples/inittab ./initramfs-dir/etc/inittab
 
+cp ./assets/etc/init.d/rcS ./initramfs-dir/etc/init.d/rcS
 chmod +x ./initramfs-dir/etc/init.d/rcS
 
 touch ./initramfs-dir/etc/fstab
-echo "root::0:0:root:/root:/bin/sh" >./initramfs-dir/etc/passwd
-cat >./initramfs-dir/etc/group <<'EOF'
-root:x:0:
-bin:x:1:
-sys:x:2:
-kmem:x:3:
-tty:x:5:
-daemon:x:6:
-disk:x:8:
-lp:x:9:
-dialout:x:10:
-audio:x:11:
-video:x:12:
-utmp:x:13:
-cdrom:x:15:
-adm:x:16:
-input:x:24:
-kvm:x:61:
-wheel:x:97:
-nogroup:x:99:
-users:x:999:
-EOF
 
 ln -sv /sbin/init ./initramfs-dir/init
 ln -sv /proc/self/mounts ./initramfs-dir/etc/mtab
