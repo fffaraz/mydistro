@@ -11,7 +11,6 @@ cd ./src/util-linux
 	--runstatedir=/run \
 	--sbindir=/usr/sbin \
 	--disable-chfn-chsh \
-	--disable-login \
 	--disable-nologin \
 	--disable-su \
 	--disable-setpriv \
