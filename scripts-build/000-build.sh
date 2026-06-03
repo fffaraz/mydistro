@@ -112,6 +112,6 @@ export PYTHONPATH="/usr/lib/python3-vendor${PYTHONPATH:+:$PYTHONPATH}"
 ./scripts/012-initramfs.sh
 ./scripts/035-xorriso.sh
 ./scripts/013-mkisofs.sh
-# ./scripts/036-mtools.sh
+./scripts/036-mtools.sh
 ./scripts/037-dosfstools.sh
 ./scripts/014-mk-boot-img.sh
