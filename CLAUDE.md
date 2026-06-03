@@ -1,4 +1,6 @@
-# mydistro — AI agent context
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 A from-scratch Linux distribution built entirely from source inside Docker. There are **two completely independent build modes** that share nothing except the top-level `build.sh` dispatcher and the Debian-based `Dockerfile` used to bootstrap stage 1.
 
@@ -9,7 +11,7 @@ Always identify which mode the user's request targets before reading any script.
 The primary mode. Builds the OS from upstream **git source repositories**, in a single pass repeated twice for self-hosting.
 
 - **Sources**: `src/` (one subdir per dependency, cloned from upstream git). Listed in `deps/sources.conf`. Downloaded by `scripts-host/download-src.sh`.
-- **Build scripts**: `scripts-build/` only. The execution order is dictated by `scripts-build/000-build.sh`, **not** by filename ordering. Scripts that `000-build.sh` does **not** call (commented out or unused): `007-microwindows.sh`, `009-musl.sh` (alternate libc), `036-mtools.sh`, `ladybird.sh`, `moby.sh`, `podman.sh`, `toybox.sh`, `wlroots.sh`. The `099-*` toolchain rebuilds (make, gperf, m4, autoconf, automake, libtool, flex, bison, binutils, gcc, ncurses, bash, coreutils, diffutils, file, findutils, gawk, grep, gzip, patch, sed, tar, xz, gettext, texinfo, groff) **are** wired in and rebuild themselves against the freshly built glibc — always check `000-build.sh` before assuming a script is live.
+- **Build scripts**: `scripts-build/` only. The execution order is dictated by `scripts-build/000-build.sh`, **not** by filename ordering. Scripts that `000-build.sh` does **not** call (commented out or unused): `004-busybox.sh` (commented out), `009-musl.sh` (alternate libc), `ladybird.sh`, `moby.sh`, `podman.sh`, `toybox.sh`, `wlroots.sh`. (`007-microwindows.sh` and `036-mtools.sh` **are** wired in.) The `099-*` toolchain rebuilds (make, gperf, m4, autoconf, automake, libtool, flex, bison, binutils, gcc, ncurses, bash, coreutils, diffutils, file, findutils, gawk, grep, gzip, patch, sed, tar, xz, gettext, texinfo, groff) **are** wired in and rebuild themselves against the freshly built glibc — always check `000-build.sh` before assuming a script is live.
 - **Pass 1** — `scripts-host/build-pass1.sh`: runs `scripts-build/` inside a container based on `debian:sid-slim` (the project `Dockerfile`). Writes to `output/1/` (final artifacts include `initramfs.tar.gz`).
 - **Pass 2** — `scripts-host/build-pass2.sh`: imports `output/1/initramfs.tar.gz` as the image `mydistro-initramfs:latest` and re-runs the **same `scripts-build/`** inside it, writing to `output/2/`. This is the self-hosting step (the OS rebuilds itself).
 - **Container mounts** (both passes):
@@ -68,7 +70,7 @@ Invoke: `./build.sh --lfs`.
 - **Compiler flags** (set by every `000-build.sh`): `CFLAGS`/`CXXFLAGS` = `-O3 -pipe -march=native -Wno-error`, `MAKEFLAGS=-j$(nproc)`. `-march=native` means built artifacts are tied to the build host's CPU.
 - **Architecture**: x86_64 only (hardcoded throughout — kernel target, `qemu-system-x86_64`, `bzImage`, syslinux/grub-x86).
 - **Output**: `build.sh` creates `output/{1,2,lfs}` and clears `output/` at the start of each run. Mode A pass 1 → `output/1/`, pass 2 → `output/2/`; Mode B → `output/lfs/`. Final artifacts: Mode A — `bzImage`, `initramfs.cpio.gz`, `initramfs.tar.gz`, `mydistro.iso`, `boot.img`; Mode B — `bzImage`, `initramfs.cpio.gz` (plus the intermediate `stage${N}.tar.gz` files each LFS stage leaves behind).
-- **Run the result**: `./run.sh` always reads from `./output/1` (Mode A pass-1 artifacts). `--cli` = serial console (`bzImage` + `initramfs.cpio.gz`); `--iso` = graphical boot of `mydistro.iso`; `--img` = boot the raw `boot.img` disk image; `--docker` = import `initramfs.tar.gz` and drop into a shell. None of these target Mode B output directly — point them at a hand-copied `output/1/` if you need to boot LFS artifacts.
+- **Run the result**: `./run.sh` always reads from `./output/2` (Mode A pass-2 artifacts). `--cli` = serial console (`bzImage` + `initramfs.cpio.gz`); `--iso` = graphical boot of `mydistro.iso`; `--img` = boot the raw `boot.img` disk image; `--docker` = import `initramfs.tar.gz` and drop into a shell. None of these target Mode B output directly — point them at a hand-copied `output/2/` if you need to boot LFS artifacts.
 - **Reference material**: `book/lfs/` and `book/blfs/` hold the LFS/BLFS book copies the LFS mode tracks; consult them before changing `scripts-lfs1/`..`scripts-lfs5/` logic.
 - **Formatting**: shell scripts use tabs and are formatted with `shfmt -l -w .` (no indent setting in `.editorconfig` — it only excludes `src/**`). No automated test suite — verification is "did it build, does it boot in `./run.sh`".
 
