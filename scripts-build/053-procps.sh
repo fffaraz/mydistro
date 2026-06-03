@@ -12,9 +12,19 @@ cd ./src/procps
 # gettextize/autopoint for the po/ tree).
 ./autogen.sh
 
+# procps locates ncurses *only* through pkg-config (PKG_CHECK_MODULES([ncursesw]);
+# its AC_CHECK_LIB fallback is commented out upstream). 099-ncurses installs the
+# widec libs into the container but without .pc files (no --enable-pc-files), so
+# the probe fails. Pre-set NCURSES_CFLAGS/NCURSES_LIBS to non-empty values:
+# PKG_CHECK_MODULES then skips pkg-config and trusts these instead. The headers
+# (curses.h/ncurses.h/term.h) sit in the default /usr/include. 099 builds with
+# --with-termlib, so top's <term.h> calls (setupterm/tigetstr) resolve from
+# libtinfow rather than libncursesw — link both.
+export NCURSES_CFLAGS="-I/usr/include"
+export NCURSES_LIBS="-lncursesw -ltinfow"
+
 # --disable-kill: util-linux (023) already installs `kill`; skip procps' copy to
 #   avoid the file collision in $INITRAMFS_DIR.
-# top, watch, slabtop and w link ncurses (099-ncurses provides the widec libs).
 ./configure \
 	--prefix=/usr \
 	--disable-static \
