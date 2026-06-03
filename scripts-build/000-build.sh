@@ -106,6 +106,7 @@ export PYTHONPATH="/usr/lib/python3-vendor${PYTHONPATH:+:$PYTHONPATH}"
 
 ./scripts/051-which.sh
 ./scripts/052-cpio.sh
+./scripts/053-procps.sh
 
 # ./scripts/004-busybox.sh
 ./scripts/099-cacert.sh
