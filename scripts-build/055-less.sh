@@ -19,4 +19,11 @@ fi
 LIBS="$LESS_LIBS" ./configure --prefix=/usr --sysconfdir=/etc
 
 make
+
+# The install target depends on the formatted man pages (less.nro etc.), but
+# only Makefile.aut knows how to stuff the version into the *.nro.VER templates.
+# The configure-generated Makefile lists them as prereqs with no recipe, so
+# generate them here before installing.
+make -f Makefile.aut less.nro lesskey.nro lessecho.nro
+
 make install DESTDIR=$INITRAMFS_DIR
