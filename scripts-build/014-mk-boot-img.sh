@@ -19,6 +19,8 @@ sync
 
 mkdir -p ./mnt
 sync
+
+losetup -f
 mount ./output/boot.img ./mnt
 
 # copy kernel and initramfs and memtest86+
