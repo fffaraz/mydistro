@@ -3,7 +3,7 @@ set -exuo pipefail
 
 cd ./src/groff
 
-./bootstrap
+./bootstrap --no-git --gnulib-srcdir=./gnulib
 
 PAGE=letter ./configure --prefix=/usr
 
