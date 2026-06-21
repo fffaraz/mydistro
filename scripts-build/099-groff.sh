@@ -3,6 +3,9 @@ set -exuo pipefail
 
 cd ./src/groff
 
+# git-version-gen needs either a working `git describe` or .tarball-version.
+echo 1.24.1 >.tarball-version
+
 ./bootstrap --no-git --gnulib-srcdir=./gnulib
 
 PAGE=letter ./configure --prefix=/usr
