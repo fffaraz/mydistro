@@ -16,17 +16,6 @@ export PATH="$(pwd)/assets/stub-bin:$PATH"
 # perl differs — skip XS so texi2any falls back to pure Perl.
 export TEXINFO_XS=omit
 
-command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
-
-# Repair libtool's ltversion.m4 if a prior pass installed it with an empty
-# git-derived serial ("# serial  ltversion.m4"). aclocal reads this system
-# macro and, under `-Wall,error` (e.g. 028-libxcrypt), rejects the malformed
-# serial. No-op when the file is absent or already well-formed.
-if test -f /usr/share/aclocal/ltversion.m4; then
-	sed -i -E 's|^# serial[[:space:]]+ltversion\.m4|# serial 1 ltversion.m4|' \
-		/usr/share/aclocal/ltversion.m4
-fi
-
 ./scripts/002-initramfs.sh
 ./scripts/099-patch.sh
 ./scripts/029-rsync.sh
