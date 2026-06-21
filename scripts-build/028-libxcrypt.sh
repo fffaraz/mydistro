@@ -3,8 +3,7 @@ set -exuo pipefail
 
 cd ./src/libxcrypt
 
-# requires git:
-# ./autogen.sh
+# ./autogen.sh # requires git
 
 autoreconf -fiv -Wall,error
 
