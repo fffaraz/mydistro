@@ -9,3 +9,4 @@ cd ./src/patch
 
 make
 make install DESTDIR=$INITRAMFS_DIR
+make install

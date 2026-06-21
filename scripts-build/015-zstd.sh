@@ -5,3 +5,4 @@ cd ./src/zstd
 
 make PREFIX=/usr
 make install PREFIX=/usr DESTDIR=$INITRAMFS_DIR
+make install

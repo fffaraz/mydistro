@@ -19,6 +19,9 @@ export TEXINFO_XS=omit
 command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 
 ./scripts/002-initramfs.sh
+./scripts/099-patch.sh
+./scripts/029-rsync.sh
+./scripts/015-zstd.sh
 ./scripts/003-openssl.sh
 ./scripts/001-kernel.sh
 ./scripts/030-nasm.sh
@@ -36,10 +39,8 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/055-less.sh
 ./scripts/011-nano.sh
 ./scripts/041-ncdu.sh
-./scripts/015-zstd.sh
 ./scripts/016-zlib.sh
 ./scripts/017-elfutils.sh
-
 ./scripts/018-bzip2.sh
 ./scripts/019-attr.sh
 ./scripts/020-acl.sh
@@ -52,10 +53,8 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/033-help2man.sh
 ./scripts/026-inetutils.sh
 ./scripts/027-gmp-mpc-mpfr.sh
-./scripts/029-rsync.sh
 ./scripts/034-git.sh
 ./scripts/038-wget.sh
-
 ./scripts/009-glibc.sh
 ./scripts/099-make.sh
 ./scripts/099-gperf.sh
@@ -68,7 +67,6 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-binutils.sh
 ./scripts/099-gcc.sh
 ./scripts/099-bash.sh
-
 ./scripts/099-coreutils.sh
 ./scripts/099-diffutils.sh
 ./scripts/099-file.sh
@@ -76,15 +74,12 @@ command -v git >/dev/null 2>&1 && git config --global --add safe.directory '*'
 ./scripts/099-gawk.sh
 ./scripts/099-grep.sh
 ./scripts/099-gzip.sh
-./scripts/099-patch.sh
 ./scripts/099-sed.sh
 ./scripts/099-tar.sh
 ./scripts/099-xz.sh
-
 ./scripts/099-gettext.sh
 ./scripts/099-texinfo.sh
 ./scripts/099-groff.sh
-
 ./scripts/048-bc.sh
 ./scripts/049-shadow.sh
 
