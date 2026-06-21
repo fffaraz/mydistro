@@ -2,9 +2,9 @@
 set -exuo pipefail
 
 # initialize initramfs directory structure
-mkdir -p ./initramfs-dir
+mkdir -p $INITRAMFS_DIR
 
-cd ./initramfs-dir
+cd $INITRAMFS_DIR
 mkdir -p \
 	bin \
 	boot/efi \
