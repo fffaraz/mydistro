@@ -12,4 +12,5 @@ cd ./src/cpio
 FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --disable-nls CFLAGS="$CFLAGS -std=gnu17"
 
 make
-make install DESTDIR=$INITRAMFS_DIR
+make install
+# make install DESTDIR=$INITRAMFS_DIR
